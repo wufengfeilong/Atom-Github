@@ -45,3 +45,4 @@ Step 1.Add DoubleDatePicker to your layout xml file.
 `getStartDate()`: get start date
 
 `getEndDate()`: get end date
+测试
