@@ -1,22 +1,3 @@
- ###### 一级标题
-
-**你好**
-
-```
- public void addListeners() {
-       // アドレススピナーリスナー
-       ipSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
-               String[] ips = getResources().getStringArray(R.array.ip);
-               sendUrl.setText("https://" + ips[pos] + ":8080/upload/");
-           }
-
-           @Override
-           public void onNothingSelected(AdapterView<?> adapterView) {
-           }
-       });
-```
 # DoubleDatePicker
 
  ![image](https://github.com/wufengfeilong/MyLib/blob/master/example.gif)
