@@ -8,3 +8,29 @@
 1. Atom Beautify Ctrl+Alt+B 规范文件编码风格 可以设置保存时自动美化代码
 2. Color Picker Ctrl+Alt+C 选颜色
 3. Minimap 右上角代码小图
+
+#### Atom提交到Github方式
+前提条件：本地安装了git
+1. 在本地目录（例：E:\）空白处鼠标右键单击【Git GUI Here】，如下图：
+
+  ![](img/1.PNG)
+
+2. 选择【Create New Repository】
+
+  ![](img/2.PNG)
+
+3. 输入仓库名字（例：AtomGithub），选择【Create】
+
+    ![](img/3.PNG)
+
+4. 这样在该目录下就生成了一个仓库（E:\AtomGithub），里面只有一个.git文件夹。
+
+5. 关联一个远程仓库，在命令行输入如下命令（改成自己的）：
+
+  `git remote add origin https://github.com/wufengfeilong/Atom-Github.git`
+
+6. 打开Atom编辑器，把本地仓库导进来，将需要上传的文件放进仓库里。
+7. 用快捷键【Ctrl+Shift+9】打开Git面板，把需要提交的文件Stage到下面。
+8. 输入提交信息，进行提交。
+9. 提交完成，点击提交下面的上下箭头进行【Push】。
+至此，用Atom本地提交到Github就完成了。
