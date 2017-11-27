@@ -1,0 +1,11 @@
+#### 快捷键
+* Ctrl+Shift+M 打开MarkDown预览
+* Ctrl+\ 打开/关闭目录树
+* Ctrl+，打开setting
+* ctrl-shift-U 调出切换编码选项
+
+#### 插件
+1. Atom Beautify Ctrl+Alt+B 规范文件编码风格 可以设置保存时自动美化代码
+2. Color Picker Ctrl+Alt+C 选颜色
+3. Minimap 右上角代码小图
+4. 
