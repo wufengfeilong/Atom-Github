@@ -1,0 +1,15 @@
+Android 写自己的开源库，发布到 JitPack.io：
+http://www.jianshu.com/p/e443456bb506
+
+* project build.gradle add
+```
+  dependencies {
+          classpath 'com.android.tools.build:gradle:2.3.0'
+          classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+      }
+```
+* module build.gradle add
+```
+  apply plugin: 'com.github.dcendents.android-maven'
+  group = 'com.github.wufengfeilong'
+```

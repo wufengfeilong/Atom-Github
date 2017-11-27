@@ -1,0 +1,3 @@
+AssetManager assertMgr = getContext().getAssets();
+Typeface font = Typeface.createFromAsset(assertMgr, "DFYuan-GBOtf-W5.otf");
+paint.setTypeface(font);

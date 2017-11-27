@@ -1,0 +1,12 @@
+在module的build.gradle最下面添加
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                //根据提示修改版本
+                details.useVersion '25.3.0'
+            }
+        }
+    }
+}
