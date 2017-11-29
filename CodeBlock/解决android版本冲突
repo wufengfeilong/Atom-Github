@@ -1,4 +1,5 @@
-在module的build.gradle最下面添加
+#### 在module的build.gradle最下面添加
+```
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested
@@ -10,3 +11,4 @@ configurations.all {
         }
     }
 }
+```
