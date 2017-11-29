@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>跟随鼠标的文字</title>
+<style type="text/css">
+.spanstyle
+{
+position: absolute;
+visibility: visible;
+top: -50px;
+font-size: 9pt;
+color: #FF6600;
+font-weight: bold;
+}
+</style>
+<script language="javascript">
+//设定参数
+var x, y; //鼠标当前在页面上的位置
+var step = 20 //字符显示间距，为了好看，step=0则字符显示没有间距，视觉效果差
+var flag = 0;
+var message = "JS跟随鼠标的文字."; //跟随鼠标要显示的字符串
+message= message.split(""); //分割字符串
+var xpos = new Array();
+for(i=0; i<=message.length-1; i++) {
+xpos[i] = -50;
+}
+var ypos = new Array(); //分割字符串
+for(i=0; i<=message.length-1; i++) {
+ypos[i] = -50;
+}
+function handlerMM(e) { //函数:得到当前鼠标在页面中的位置
+x = (document.layers) ? e.pageX : document.body.scrollLeft + event.clientX;
+y = (document.layers) ? e.pageY : document.body.scrollTop + event.clientY;
+flag = 1;
+}
+
+function makesnake() {
+
+for (i=message.length-1; i>=1; i--) { //处理坐标队列
+xpos[i]=xpos[i-1]+step //将每一座标数据前移一格，并加上字符间距
+ypos[i]=ypos[i-1]
+}
+xpos[0]=x+step //将新数据写进坐标数据队列尾部
+ypos[0]=y
+for (i=0; i<message.length-1; i++) {
+
+var thisspan = eval("span"+(i)+".style")// 生成当前操作对象spanx.style
+thisspan.left=xpos[i]
+thisspan.top=ypos[i]
+
+}
+var timer=setTimeout("makesnake()",30) //30毫秒后再次根据情况调整各字符位置
+}
+</script>
+</head>
+<body onload="makesnake()">
+<center>
+<h1>跟随鼠标的文字</h1>
+<h4><font color="#FF0000">注：火狐浏览器无效果！</font></h4>
+<hr>
+<br>
+<script language="javascript">
+for(i=0; i<=message.length-1; i++) { //创建跟随文字的各个标签
+//使用span来标记字符，是为了方便使用CSS，并可以自由的绝对定位
+document.write("<span id='span" + i + "'class='spanstyle'>");
+document.write(message[i]);
+document.write("</span>");
+}
+
+document.onmousemove = handlerMM; //给document对象的onmousemove事件赋上handlerMM函数
+</script>
+</center>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>静态页面检索</title>
+</head>
+
+<body>
+<input type="text" id="searchvalue"  /> <input type="button" onclick="javascript:search()"value="查询" />
+<div  cols="100" rows="10" id="textvalue" >123456789123456123456789<br/>qweqwwertyuiopasdfghjkklzxcvnm<br/>在手操器上我们可以看到总共有6个轻触式按钮，  在每一个轻触式按钮的下面，都有一个指示灯，当按下其中一个键或者同时按下两个按键时，屏幕显示相对应的菜单。为了方便以后的叙述，将上述各键自左至右，从上到下定义如下：  1.故障（ALARM）键； 2.程序（Prg）键； 3.退出（Esc）键；  4.UP
+（）键； 5.ENTER
+（）键； 6.DOWN
+（）键； 
+当同时按下
+和
+键，您可以切换各个菜单，然后按键可以进入您所选择的菜单里；
+按
+或键，您可以查看所选择菜单里的各项内容。 
+因为控制面板菜单有中文和英文两种，您可以通过按
+键和键来切换中英文画面。 
+当需要设定或者修改机组的各项参数时，您可以按键来选择需要修改的参数项，然后
+按
+/
+键来修改数值，修改完毕后按键确认。当按下Esc键时，您就可以退出该栏菜单。  当机组出现故障时，手操器左上角的ALARM键会亮红灯；此时按下该键您就可以在显示屏幕上看到相应的故障信息。当机组存在多项故障时，
+您可以通过按
+/键来翻看各项故障信息。当故障排除后，您可以按ALARM键来复位故障报警。  机组开停控制：在遥控按Prg键可在手操器显示任何画面时开/停机组。Prg键和遥控开关的关系为：控制空调机开机后，空调机开关状态即受异地遥控开关的控制。此时如果遥控开关断开，空调机停机；遥控开关闭合，空调机正常运行。  如果机组使用PLAN网络以实现机组之间的轮值备用功能，网络中机组数目当然大于一台，
+此时可通过同时按
+键和键来切换不同机组的画面，屏幕右上角的数字表示机组编号，如显示“01”表示第一号机组。 </div>
+
+<script>
+
+function search(){
+
+var searchtext=document.getElementById("searchvalue").value;
+var textvalue=document.getElementById("textvalue").innerHTML;
+if(searchtext.length==0){
+return;
+}
+document.getElementById("textvalue").innerHTML=textvalue.replaceAll(searchtext,"<font color='red'>"+searchtext+"</font>");
+}
+
+String.prototype.replaceAll = function(s1,s2){    
+return this.replace(new RegExp(s1,"gm"),s2);    
+}
+</script>
+
+</body>
+</html>

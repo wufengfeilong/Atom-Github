@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Js逐字显示</title>
+<script language="javascript">
+ content = "有个太太多年来不断抱怨对面的太太很懒惰，“那个女人的衣服永远洗不干净，看，她晾在外院子里的衣服，总是有斑点，我真的不知道，她怎么连洗衣服都洗成那个样子”。直到有一天，有个明察秋毫的朋友到她家，才发现不是对面的太太衣服洗不干净。细心的朋友拿了一块抹布，把这个太太的窗户上的灰渍抹掉，说：“看，这不就干净了吗”？原来，是自己家的窗户脏了。　";
+ i = 0;
+ function show(){  
+ str  = content.substr(0,i); 
+ txt.innerHTML = str + "_"; 
+ i++; 
+ if (i>content.length)i=0; 
+ setTimeout("show()",200); }
+</script>
+</head>
+<body onLoad="show()">
+<div id="txt"></div>
+</body>
+</html> 
