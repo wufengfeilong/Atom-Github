@@ -1,0 +1,30 @@
+状态栏透明
+
+状态栏、导航栏透明，背景图片全屏显示的呢？ 
+按道理想，既然可以设导航栏的颜色，那么我直接把颜色设成透明色，是不是就可以了呢？
+答案是，正解~
+
+不过，还是要处理一些特殊情况。
+
+首先，我们把styles中的颜色设为透明，然后在主页面根布局下，设置一个背景图和设置 android:fitsSystemWindows=”true” 属性
+```
+<style name="BaseAppTheme" parent="AppTheme.Base">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/transparence</item>    <!-- 状态栏 -->
+    <item name="colorPrimaryDark">@color/transparence</item> <!-- toolbar -->
+    <item name="colorAccent">@color/colorAccent</item>  <!-- 重点 -->
+</style>
+```
+4.4系统支持的就是透明状态栏，所以只需要将状态栏颜色设为透明，即可到达效果。
+而5.0支持的是变色状态栏，得到的效果与我们预期不同，特做如下处理：
+
+在代码中设置，判断当sdk大于等于5.0时，执行以下代码
+```
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    Window window = getWindow();
+    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.TRANSPARENT);
+}
+```
