@@ -1,0 +1,9 @@
+1. 通过cmd窗口执行：svn help
+2. 切换到SVN项目，执行svn clean up即可。
+注意：如果在安装TortoiseSVN 时没有安装windows版本的svn 命令行组件，需要另外下载。
+
+在http://subversion.apache.org/packages.html#windows 找到windows下的svn客户端工具。
+选择Win32Svn 进行安装。
+安装好后，bin目录下就是相应程序了。
+通过添加环境变量的方式，把bin目录添加到path。
+启动cmd，敲入 svn help 以确认是否安装成功。
