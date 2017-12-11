@@ -1,0 +1,5 @@
+keytool -genkey -alias tomcat -keyalg RSA -keystore tomcat.jks -validity 3600 -storepass 123456
+
+keytool -export -alias tomcat -file tomcat.cer -keystore tomcat.jks -storepass 123456
+
+keytool -printcert -rfc -file tomcat.cer

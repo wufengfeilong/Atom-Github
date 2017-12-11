@@ -1,0 +1,10 @@
+spring boot配置下载文件地址（静态资源目录）
+在application.yml文件下，添加：
+spring:
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/static/,file:${web.path}
+
+web:
+  path: C:/down_path/
