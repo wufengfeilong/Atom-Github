@@ -7,4 +7,24 @@ dependencies {
 }
 ```
 **If you are using Kotlin, replace annotationProcessor with kapt.**
-2. 
+2. #####  JakeWharton/RxAndroid:
+https://github.com/ReactiveX/RxAndroid
+```
+dependencies {
+  compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  compile 'io.reactivex.rxjava2:rxjava:2.1.7'
+}
+```
+3. #####  JakeWharton/square/retrofit
+https://github.com/square/retrofit
+```
+dependencies {
+  compile 'com.squareup.retrofit2:retrofit:2.3.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+  compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+}
+```
+4. Android自定义仪表盘View，仿新旧两版芝麻信用分、炫酷汽车速度仪表盘
+https://github.com/woxingxiao/DashboardView
+
+5.
