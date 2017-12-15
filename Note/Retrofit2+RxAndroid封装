@@ -1,0 +1,83 @@
+1. 创建Retrofit APIService接口
+```
+public interface RetrofitAPIService {
+    @GET("getCards")
+    Observable<List<Card>> getCards();
+    @GET("getById/{id}")
+    Observable<Card> getById(@Path("id") int id);
+}
+```
+2. 创建RetrofitManager管理类
+```
+public class RetrofitManager {
+    String BASEURL = "http://172.29.140.35:5004/Card/";
+    RetrofitAPIService retrofitAPIService;
+    private static RetrofitManager apiManager;
+    public interface Result<T>{
+        void getResult(T t);
+    }
+    //获取ApiManager的单例
+    public static RetrofitManager getInstance() {
+        if (apiManager == null) {
+            synchronized (RetrofitManager.class) {
+                if (apiManager == null) {
+                    apiManager = new RetrofitManager();
+                }
+            }
+        }
+        return apiManager;
+    }
+    public RetrofitAPIService getRetrofitAPIService(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASEURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        retrofitAPIService = retrofit.create(RetrofitAPIService.class);
+        return retrofitAPIService;
+    }
+    //封装的方法
+    public void getCards(final Result result){
+        RetrofitManager
+                .getInstance()
+                .getRetrofitAPIService()
+                .getCards()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Card>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<Card> cards) {
+                        if (result!=null) {
+                            result.getResult(cards);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+}
+```
+3. 使用方法
+```
+RetrofitManager.getInstance().getCards(new RetrofitManager.Result<List<Card>>() {
+            @Override
+            public void getResult(List<Card> list) {
+                Log.e(TAG, "getResult: hahah50");
+                mData = list;
+                adapter.notifyDataSetChanged();
+            }
+        });
+```
