@@ -77,3 +77,14 @@ zebra stripes	are neat	$1
 横线 Ctrl + R
 撤销 Ctrl + Z
 重做 Ctrl + Y
+***
+### 题外篇
+在GitHub的Readme文件中加入JitPack版本显示格式：
+[![Release](https://jitpack.io/v/User/Repo.svg)](https://jitpack.io/#User/Repo)
+
+User：wufengfeilong
+
+Repo：库名字，本例中MyLib
+
+例子：
+[![Release](https://jitpack.io/v/wufengfeilong/MyLib.svg)](https://jitpack.io/#wufengfeilong/MyLib)
