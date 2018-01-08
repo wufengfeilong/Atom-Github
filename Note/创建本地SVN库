@@ -1,0 +1,15 @@
+1. 在本地目录下创建一个空文件夹，例：F盘下创建SVN文件夹
+2.  进入“conf”这个文件夹，打开“svnserve.conf”这个件
+打开密码功能,将
+# password-db = passwd
+# anon-access = read
+# auth-access = write
+前面的“# ”号去掉，变为
+password-db = passwd
+anon-access = read
+auth-access = write
+注意：password-db = passwd前面不能有空格。
+
+3. 在打开同级目录下面的“passwd”文件，写入一个用户名和密码，例如“fjs = fjs”，等号前面的是用户名，等号后面的是密码
+4. 开启svn服务器cmd下输入svnserve -d -r F:\SVN
+5. 右击打开svn-->Repo-browser输入svn://172.29.140.35（本机IP）
