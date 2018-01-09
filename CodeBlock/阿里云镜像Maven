@@ -8,3 +8,8 @@
       <url>http://maven.aliyun.com/nexus/content/groups/public</url>
     </mirror>
   </mirrors>
+
+  ### maven使用本地jar包
+  找到本地apache-maven安装目录下的conf下的settings.xml。
+  在settings标签下面添加：
+  <localRepository>C:\tools\mvnjar</localRepository>
