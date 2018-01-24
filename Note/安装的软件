@@ -22,3 +22,5 @@
 12. Maven             <br>
 13. DexPot          虚拟多桌面  <br>
   http://www.dexpot.de/
+######  隐藏任务栏图标
+右键Settings，Plugins and Extras，SevenDex这一项打钩的取消
