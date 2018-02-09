@@ -29,4 +29,8 @@
 16. HBuilder
 17. WGestures 触发角，一个更简单、更现代的鼠标手势
 18. putty 远程连接服务器输命令工具
-19. 
+19. VMware 虚拟机
+20. 宝塔面板 http://www.bt.cn/download/linux.html
+
+CentOs下安装命令：
+yum install -y wget && wget -O install.sh http://download.bt.cn/install/install.sh && sh install.sh

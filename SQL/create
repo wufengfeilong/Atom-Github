@@ -11,3 +11,17 @@ CREATE TABLE `NewTable` (
 PRIMARY KEY (`id`)
 )
 ;
+
+CREATE TABLE `mid_category` (
+`id`  varchar NOT NULL COMMENT '编号' ,
+`big_category_id`  varchar COMMENT '大分类编号' ,
+`mid_category`  varchar NOT NULL COMMENT '中分类' ,
+`create_by`  varchar NOT NULL COMMENT '创建者' ,
+`create_date`  timestamp NOT NULL COMMENT '创建时间' ,
+`update_by`  varchar NOT NULL COMMENT '更新者' ,
+`update_date`  timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
+`remarks`  varchar NULL COMMENT '备注' ,
+`del_flg`  char(1) NOT NULL COMMENT '删除标记' ,
+PRIMARY KEY (`id`)
+)
+;
