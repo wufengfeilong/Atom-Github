@@ -28,3 +28,14 @@ PRIMARY KEY (`id`)
 
 查询数据库设置的字符编码
 show variables like 'char%'
+设置一次：
+set character_set_database=utf8;
+set character_set_server=utf8;
+要永久修改要修改配置文件my.ini
+但是发现安装目录下只有my-default.ini，我在里面[mysqld[下增加了character_set_server=utf8，
+重启服务，发现无效。
+
+那我们就复制内容到在建一个my.ini，里面[mysqld]增加了character_set_server=utf8
+重启mysql服务：
+net stop mysql
+net start mysql
