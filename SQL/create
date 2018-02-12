@@ -25,3 +25,6 @@ CREATE TABLE `mid_category` (
 PRIMARY KEY (`id`)
 )
 ;
+
+查询数据库设置的字符编码
+show variables like 'char%'
