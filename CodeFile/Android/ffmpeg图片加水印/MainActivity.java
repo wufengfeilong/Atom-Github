@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     private String selectFilePath;
     private String outFilePath;
 
-    String[] cmd = new String[8];
+    String[] cmd = new String[10];
     String cmd5Opacity;
     String cmd5Overlay = "overlay=10:10";
 
@@ -156,7 +156,9 @@ public class MainActivity extends AppCompatActivity {
         cmd[4] = "-filter_complex";
         cmd[5] = cmd5Opacity+cmd5Overlay;
         cmd[6] = "-y";
-        cmd[7] = outputPath;
+        cmd[7] = "-preset";
+        cmd[8] = "ultrafast";
+        cmd[9] = outputPath;
     }
 
     @OnClick({R.id.select_logo_btn, R.id.video_select_btn, R.id.compose_btn, R.id.left_top, R.id.center_top, R.id.right_top, R.id.left_center, R.id.center_center, R.id.right_center, R.id.left_bottom, R.id.center_bottom, R.id.right_bottom})

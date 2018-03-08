@@ -8,7 +8,9 @@ private void addWaterMark(String originalPath, String imgPath, String outputPath
         cmd[4] = "-filter_complex";
         cmd[5] = cmd5Opacity+cmd5Overlay;
         cmd[6] = "-y";
-        cmd[7] = outputPath;
+        cmd[7] = "-preset";
+        cmd[8] = "ultrafast";
+        cmd[9] = outputPath;
     }
 
 
