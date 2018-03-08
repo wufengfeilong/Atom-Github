@@ -1,0 +1,17 @@
+private void addWaterMark(String originalPath, String imgPath, String outputPath) {
+        //String cmd="-i "+ selectFilePath+" -vf movie="+alphaCacheImgPath+",scale=150:183[wm];[in][wm]overlay="+picX+":"+picY+"[out] -y -b 0.5M "+outFile;
+        cmd[0] = "-i";
+        cmd[1] = originalPath;
+        cmd[2] = "-i";
+        cmd[3] = imgPath;
+        cmd[4] = "-filter_complex";
+        cmd[5] = cmd5Opacity+cmd5Overlay;
+        cmd[6] = "-y";
+        cmd[7] = outputPath;
+    }
+
+
+
+float alphaVal = 1 - progress / 100;
+cmd5Opacity = "[1]lut=a=val* "+ alphaVal +"[a];[0][a]"; //[1]lut=a=val*0.3[a];[0][a]overlay=0:0    0.0完全透明 1.0完全不透明
+cmd5Overlay = "overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2";
