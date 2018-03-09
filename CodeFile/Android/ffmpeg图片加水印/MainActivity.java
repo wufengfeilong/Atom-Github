@@ -85,10 +85,11 @@ public class MainActivity extends AppCompatActivity {
     private String outFilePath;
 
     String[] cmd = new String[10];
-    String cmd5Opacity;
+    String cmd5Opacity = "";
     String cmd5Overlay = "overlay=10:10";
 
     String selectFileName;
+    String selectSuffixName;
     String fileParentPath;
 
     boolean isVideoSelected;
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     int PERMISSION_REQUEST_CODE = 1;
     int progress;
     long old_duration;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -285,6 +285,7 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     selectFilePath = UriUtils.getPath(this, data.getData());
                     selectFileName = getFileName(selectFilePath);
+                    selectSuffixName = getSuffixName(selectFileName);
                     Log.e(TAG, "onActivityResult: selectFileName=" + selectFileName);
                     Log.e(TAG, "onActivityResult: selectFilePath=" + selectFilePath);
                     String fileExtension = MimeTypeMap.getFileExtensionFromUrl(selectFilePath.toString());
@@ -324,6 +325,13 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
         }
+    }
+
+    private String getSuffixName(String name) {
+        // 带.的后缀名
+        String suffixName = name.substring(name.lastIndexOf("."));
+        Log.e(TAG, "getSuffixName: suffixName=" + suffixName);
+        return suffixName;
     }
 
     /**
@@ -384,12 +392,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onSuccess() {
-                    String outFile = null;
-                    if (isVideoSelected) {
-                        outFile = outFilePath + File.separator + selectFileName + "_out.mp4";
-                    } else {
-                        outFile = outFilePath + File.separator + selectFileName + "_out.jpg";
-                    }
+                    String outFile = outFilePath + File.separator + selectFileName + "_out"+selectSuffixName;
                     addWaterMark(selectFilePath, logoPath, outFile);
                     execCMD();
                 }
@@ -400,6 +403,7 @@ public class MainActivity extends AppCompatActivity {
             });
         } catch (FFmpegNotSupportedException e) {
             // Handle if FFmpeg is not supported by device
+            Toast.makeText(MainActivity.this, "FFmpegNotSupportedException=" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -426,7 +430,6 @@ public class MainActivity extends AppCompatActivity {
             String time = msg.substring(posTime, msg
                     .indexOf("bitrate") - 1);
             time = time.substring(time.indexOf("=") + 1, time.length());// 截取当前所用时间字符串
-            Log.e(TAG, "onProgress: time=" + time);
             int h = Integer.parseInt(time.substring(0, 2));// 封装成小时
             int m = Integer.parseInt(time.substring(3, 5));// 封装成分钟
             int s = Integer.parseInt(time.substring(6, 8));// 封装成秒
@@ -444,12 +447,14 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onStart() {
+
                 }
 
                 @Override
                 public void onProgress(String message) {
                     getExecProgress(message);
                     composePb.setProgress(progress);
+                    Log.e(TAG, "execVideo: onProgress"+message);
                 }
 
                 @Override
