@@ -80,3 +80,6 @@ http://blog.csdn.net/qq_14904081/article/details/75012337
 
 在Spring Boot中使用Spring-data-jpa实现分页查询:(Springboot自带page，pageable)
 http://blog.csdn.net/zhengxiangwen/article/details/63815551
+
+SpringBoot JPA 表关联查询
+http://blog.csdn.net/linzhiqiang0316/article/details/53022683
