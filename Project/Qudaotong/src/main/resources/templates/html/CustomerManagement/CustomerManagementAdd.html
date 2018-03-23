@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<script src="js/common/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link href="css/common/management.css" rel="stylesheet">
+<link href="css/common/customermanagement.css" rel="stylesheet">
+<meta charset="utf-8">
+</head>
+<body class="nav-md">
+	<div class="container">
+		<form method="POST" th:action="@{/Customeradd}"  onSubmit="return checkCustomer()"
+			th:object="${customer}" id="customerForm" name="customerForm">
+			<table>
+				<div class="input-group">
+					<span class="input-group-addon">客户姓名</span> <input type="text"
+						class="form-control" name="customername" id="customername"
+						placeholder="请输入客户姓名" onblur="CheckUserName('customername');">
+				</div>
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon" id="">客户公司</span>
+					<!-- 输入时，不可与数据库中的重复 -->
+					<input type="text" class="form-control" name="company" id="company"
+						placeholder="请输入客户公司" >
+
+				</div>
+				<br>
+
+				<div class="input-group">
+					<span class="input-group-addon" >客户职业</span> 
+					<select  class="form-control" name="position">
+						<option value="0">请选择客户职业</option>
+						<option th:each="position:${positions}" th:text="${position.position}"></option>
+					</select>
+				</div>
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon">客户电话</span> <input type="text"
+						class="form-control" name="telephone" placeholder="请输入客户电话号码">
+				</div>
+				<br>
+				    <button class="btn btn-success">确认</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" class="btn btn-warning">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary"  onclick="javascript:history.back();">返回</button>
+			</table>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+  
+  function checkCustomer(){
+		if (document.customerForm.customername.value == ""){
+			alert ("提示：\n\n必须输入客户名！");
+			document.customerForm.customername.focus();
+			return false;
+		}
+		if (document.customerForm.company.value == ""){
+			alert ("提示：\n\n必须输入客户公司！");
+			document.customerForm.company.focus();
+			return false;
+		}
+		if (document.customerForm.position.value == "0"){
+			alert ("提示：\n\n必须选择客户职业！");
+			document.customerForm.position.focus();
+			return false;
+		}
+		if(!(document.customerForm.telephone.value.match(/^(\d{3})(\-)?(\d{8})$/))){
+			alert ("提示：\n\n11位手机号码格式为：XXXXXXXXXXX，XXX-XXXXXXXX！");
+			document.customerForm.telephone.focus();
+			return false;
+		}
+		return true;
+  }
+  </script>
+</html>

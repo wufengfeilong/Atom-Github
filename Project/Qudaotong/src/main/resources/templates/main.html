@@ -1,0 +1,166 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>渠道通主页面</title>
+<link th:href="@{css/jqueryui.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{css/layout-default.css}" rel="stylesheet"
+	type="text/css" />
+<link th:href="@{css/tlayout.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{css/vjpublic.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{css/vjpage.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{css/main/config.css}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" th:src="@{js/public.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery-1.10.2.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery.layout.js}"></script>
+<script type="text/javascript" th:src="@{js/themeinfographic.js}"></script>
+<script type="text/javascript" th:src="@{js/page9.js}"></script>
+
+
+<script type="text/javascript">
+	function setTab(m, n) {
+		var tli = document.getElementById("leftmenu" + m).getElementsByTagName(
+				"li");
+		var mli = document.getElementById("mcont" + m).getElementsByTagName(
+				"ul");
+		for (i = 0; i < tli.length; i++) {
+			mli[i].style.display = i == n ? "block" : "none";
+		}
+	}
+</script>
+</head>
+<style>
+#header_b {
+	width: 88.4%;
+	height: 60px;
+	padding: 0px;
+	left: 220px;
+	background-color: #2070A0;
+	float: left;
+	font-size: 25px;
+	line-height: 50px;
+	position: absolute;
+	z-index: 9999;
+	background-attachment: fixed;
+}
+</style>
+
+<body data-curpagename="page9" class="body_style1">
+	<div id="header_b">
+		<div class="menu"></div>
+	</div>
+	<div id="page9_jContainer1" class="tlayout_style2">
+		<div id="page9_jContainer1_container" class="container">
+			<div id="page9_jRegion1" class="page9_jContainer1_west">
+				<div id="page9_jPanel1" class="Panel Panel_Null">
+					<div id="page9_jImages2" class="Timage Timage_style1 Timage_auto">
+						<img src="images/head.png" style="width: 65px" title="" />
+						<!-- <img src="images/vj_btn2hover.png" style="margin-left:204px;position:absolute;z-index:9999;background-size: 100% 100%;" title=""/> -->
+					</div>
+					<div id="page9_jLabel2" class="text">当前登录</div>
+					<div id="page9_jLabel3" class="text">
+						<h3 th:text="${name}"></h3>
+					</div>
+				</div>
+				<div id="page9_jPanel2" class="Panel Panel_Null">
+					<div id="page9_jLabel1" class="text">渠道通</div>
+					<div id="page9_jImages1" class="Timage Timage_style1 Timage_auto">
+						<img src="images/jlogosmall_white.png"
+							alt="images/jlogosmall_white.png" title="" />
+					</div>
+				</div>
+				<div id="page9_jPanel4" class="Panel Panel_Null">
+					<input type="text" class="Edit Edit_style1" value=""
+						id="page9_jEdit1" />
+					<div id="page9_jButton1"
+						class="vjbutton border_radius_5 color_y vjbutton_c_style3">
+						<div class="vjbutton_txtR">查找</div>
+					</div>
+				</div>
+				<div class="MenuV MenuV_style3" id="page9_jMenuV1">
+					<ul id="leftmenu0">
+						<li class="hover" onclick="setTab(0,0)"><a
+							href="javascript:void(0);"><span>渠道通管理</span></a></li>
+						<li class="has-sub" onclick="setTab(0,1)"><a
+							href="javascript:void(0);"><span>我的客户管理</span></a>
+							<ul>
+								<li class="jiedian"><a href="#"><span>客户1</span></a></li>
+							</ul></li>
+						<li class="has-sub" onclick="setTab(0,2)"><a
+							href="javascript:void(0);"><span>我的订单管理</span></a>
+							<ul>
+								<li><a href="#"><span id="btn1">订单1</span></a></li>
+							</ul></li>
+						<li class="navmenu" onclick="setTab(0,3)"><a
+							href="javascript:void(0);"><span>我的货物管理</span></a></li>
+						<li onclick="setTab(0,4)"><a href="javascript:void(0);"><span>我的销售管理</span></a></li>
+						<li onclick="setTab(0,5)"><a href="javascript:void(0);"><span>我的促销管理</span></a></li>
+						<li onclick="setTab(0,6)"><a href="javascript:void(0);"><span>我的库存管理</span></a></li>
+						<li onclick="setTab(0,7)"><a href="javascript:void(0);"><span>业务报表</span></a></li>
+						<li onclick="setTab(0,8)"><a href="javascript:void(0);"><span>我的员工管理</span></a></li>
+						<li onclick="setTab(0,9)"><a href="javascript:void(0);"><span>我的资产管理</span></a></li>
+						<li onclick="setTab(0,10)" class="last"><a
+							href="javascript:void(0);"><span>系统管理</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="page9_jRegion2" class="page9_jContainer1_center">
+				<div id="mcont0" class="bb">
+					<ul class="block" style="display: block">
+						<object style="border: 0px" type="text/x-scriptlet"
+							th:data="@{news}" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							th:data="@{Customerlist}" width=1500px height=100%></object>
+						<!-- <ul>
+					        <object style="border:0px" type="text/x-scriptlet" data="html/qudaotong.html" width=1500px  height=100%></object>
+					   </ul> -->
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							th:data="@{Orderlist}" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							th:data="@{Goodlist}" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							data="html/PromotionalManagement.html" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							data="html/PromotionalManagement.html" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							data="html/InventoryManagement.html" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							data="html/BusinessReport.html" width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet" data="1.html"
+							width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet" data="1.html"
+							width=1500px height=100%></object>
+					</ul>
+					<ul class="block" style="display: none">
+						<object style="border: 0px" type="text/x-scriptlet"
+							th:data="@{updatePassword}" width=1500px height=100%></object>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse"> <i
+		class="icon-double-angle-up icon-only"></i>
+	</a>
+</body>
+<script type="text/javascript" th:src="@{js/Timage.js}"></script>
+<script type="text/javascript" th:src="@{js/TmenuV.js}"></script>
+</html>

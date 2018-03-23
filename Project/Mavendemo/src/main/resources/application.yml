@@ -1,0 +1,40 @@
+server:
+#  context-path: /hello
+  port: 8082
+  
+webInfo:
+  webName: 项目名字 Maven Demo
+  structureWay: 构建方式 生产模式
+  
+spring:
+  application: 
+    name: Drs
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+    thymeleaf: 
+      cache: false
+      mode: LEGACYHTML5
+      
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: zfw
+      password: 123456
+      
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/static/,file:${web.path}
+    
+web:
+  path: C:/down_path/
+
+      

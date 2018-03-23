@@ -1,0 +1,28 @@
+server:
+  context-path: /Qudaotong
+  port: 5005
+debug: true
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.29.140.35:3306/qudaotong
+    username: zfw
+    password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect  
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

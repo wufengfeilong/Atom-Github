@@ -1,0 +1,17 @@
+server:
+#  context-path: /hello
+  port: 8080
+webInfo:
+  webName: 项目名字 Maven Demo
+  structureWay: 构建方式 开发模式
+spring:
+  application: 
+    name: Drs
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+    thymeleaf: 
+      cache: true
+      mode: LEGACYHTML5

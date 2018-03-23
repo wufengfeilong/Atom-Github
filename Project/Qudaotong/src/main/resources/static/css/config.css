@@ -1,0 +1,139 @@
+﻿body{font-size:12px;}
+
+#page4_jPanel1{
+  top: 1px;
+  height: 686px;
+  width: 1260px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/jloginbg03.jpg) no-repeat;
+}
+
+#page4_jPanel2{
+  top: 220px;
+  height: 388px;
+  width: 588px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/jloginbox01.png) no-repeat;
+}
+
+#page4_jHtmlForm1_form{
+  position:absolute;
+  left: 125px;
+  top: 189px;
+  width: 424px;
+  height: 174px;
+}
+
+#page4_jLabel1{
+  /* left: 49px; */
+  top: 31px;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+#page4_jEdit1{
+  left: 132px;
+  top: 22px;
+ /*  width:262px; */
+  height:27px;
+}
+
+#page4_jLabel2{
+ /*  left: 49px; */
+  top: 66px;
+  font-size: 19px;
+  line-height: 16px;
+}
+#page4_jLabel3{
+  top: 101px;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+#page4_jCheckBox1{
+  left: 131px;
+  top: 97px;
+}
+
+#page4_jButton1{
+  left: 131px;
+  top: 131px;
+  width:79px;
+  height:20px;
+}
+
+#page4_jButton2{
+  left: 226px;
+  top: 131px;
+  width:79px;
+  height:20px;
+}
+
+
+ 
+#page4_jImages2{
+  left: 92px;
+  top: 90px;
+  height: 45px;
+  width: 45px;
+}
+
+#page4_jLabel4{
+  left: 338px;
+  top: 111px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  line-height: 20px;
+}
+
+#page4_jLabel5{
+  left: 328px;
+  top: 166px;
+  font-size: 24px;
+  font-family: "微软雅黑";
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 26px;
+}
+
+#page4_jLabel6{
+  left: 434px;
+  top: 177px;
+  font-size: 18px;
+  color: #DBF1FB;
+  line-height: 20px;
+}
+
+#page4_jEdit2{
+  left: 132px;
+  top: 60px;
+ /*  width:262px; */
+  height:27px;
+}
+#page4_jEdit3{
+  left: 132px;
+  top: 98px;
+ /*  width:262px; */
+  height:27px;
+}
+
+#page4_jLabel7{
+  left: 37px;
+  top: 335px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 16px;
+}
+
+#page4_jLabel8{
+  left: 59px;
+  top: 339px;
+  line-height: 14px;
+}
+

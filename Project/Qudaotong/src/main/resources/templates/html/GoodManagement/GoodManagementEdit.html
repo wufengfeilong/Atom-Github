@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<script src="js/common/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link href="css/common/customermanagement.css" rel="stylesheet">
+<meta charset="utf-8">
+</head>
+<body class="nav-md">
+	<div class="container">
+		<form method="POST" th:action="@{/Goodedit}">
+			<table>
+				<tr th:each="good : ${good}">
+
+					<div class="input-group" id="hidden">
+						<span class="input-group-addon">货物id</span> <input type="text"
+							class="form-control" name="id" th:value="${good.id}">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">货物编码</span> <input type="text"
+							class="form-control" name="good_number"
+							th:value="${good.good_number}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">货物名称</span> <input type="text"
+							class="form-control" name="good_name"
+							th:value="${good.good_name}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">进货价</span> <input type="text"
+							class="form-control" name="purchase_price"
+							th:value="${good.purchase_price}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">库存数量</span> <input type="text"
+							class="form-control" name="inventory_quantity"
+							th:value="${good.inventory_quantity}">
+					</div>
+					<br>
+					<button class="btn btn-success">确认</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" class="btn btn-warning">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary"  onclick="javascript:history.back();">返回</button>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	
+</script>
+</html>

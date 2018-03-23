@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>注册免费管理系统|移动订货系统第１品牌</title>
+<link rel="stylesheet" href="https://sso.dinghuo123.com/portal/css/reset.css?v=1517896544882">
+<link rel="stylesheet" href="https://sso.dinghuo123.com/portal/css/lib.css?v=1517896544882">
+<link rel="stylesheet" href="/portal/css/ui-dialog.css?v=1517896544882 /">
+<link rel="stylesheet" href="https://sso.dinghuo123.com/portal/css/login.css?v=1517896544882">
+</head>
+<body id="register" style="background: url(images/register-bg-20160908.jpg) no-repeat scroll center center transparent;">
+	<div class="header">
+	</div>
+	<div class="container">
+		<div class="link-con">
+			<a id="registerLink" target="_blank" style="background: url(images/register-link-20160908.png) center right no-repeat;">
+
+			</a>
+		</div>
+		<div class="form-con">
+			<div class="my-form" id="step1">
+				<form th:action="@{/registerUser}" method="post" th:object="${user}" id="step1Form" novalidate="novalidate">
+					<div class="control-box">
+						<div class="warn" id="warn1"></div>
+						<div class="control-form">
+							<input type="text" name="name" id="name" tabindex="1" class="ui-input"   placeholder="请输入用户名" autocomplete="off">
+						</div>
+						<div class="control-form">
+							<input type="password" name="password" id="password" tabindex="1" class="ui-input"   placeholder="请输入用户密码" autocomplete="off">
+						</div>
+						<div class="control-form">
+							<input type="button" onclick="save();" id="registerBtn1" tabindex="6" class="ui-btn" value="免费注册">
+						</div>
+						<div class="down-con">
+							<a class="down-a" href="https://sso.dinghuo123.com/login"><em class="ui-icon-phone"></em>登录</a>
+						</div>
+					</div>
+				</form>
+				
+				
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="" name="openId" id="openId">
+	<input type="hidden" id="appUrl" value="https://sso.dinghuo123.com">
+	<input type="hidden" id="service" value="ydh-web">
+	<input type="hidden" id="relayState" value="">
+	<script charset="utf-8"  src="https://lxbjs.baidu.com/lxb.js?sid=3889406"></script>
+	<script charset="utf-8" src="https://tag.baidu.com/vcard/v.js?siteid=3889406&amp;url=https%3A%2F%2Fsso.dinghuo123.com%2Fapply%2Fapply2&amp;source=&amp;rnd=1170827947&amp;hm=1"></script>
+	<script type="text/javascript" async="" src="https://dn-growing.qbox.me/vds.js"></script>
+	<script src="https://hm.baidu.com/hm.js?e6a820e58d40d6bbfdaa42e767e97522"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/js/lib/jquery.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/commonJS/jquery.defaultvalue.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/commonJS/jquery.combo.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/js/lib/icheck/icheck.js?v=1517896544882"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/commonJS/jquery.validate.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/lib/jquery.cookie.js?v=1517896544882"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/js/lib/dialog-min.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/js/lib/dialog-plus-min.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/js/login-util.js"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/commonJS/statistics.js?v=1517896544882"></script>
+	<script type="text/javascript" src="https://sso.dinghuo123.com/portal/commonJS/growingio-pc.js"></script>
+	<script type="text/javascript" src="js/jQuery.md5.js"></script>	
+	
+	<script type="text/javascript">
+	function save() {
+		var password = $("#password").val();
+        //加密成MD5
+        var passwd = $.md5(password);
+        alert(passwd);
+        var name = $("#name").val();
+        alert(name);
+        $.ajax({
+		    type:"POST",                      //请求类型
+		    url:"registerUser", 
+		    /* data: $('#step1Form').serialize(), */ //URL 
+		    data:{
+		    	password:passwd,
+		    	name:name
+		    	}, //传递的参数
+		    dataType:"text",                 //返回的数据类型
+		    success:function(data){          //data就是返回的json类型的数据
+		      alert('注册成功')
+		      location.href= "/Qudaotong";
+		    },
+		    error:function(data){
+		     alert(data.msg+"失败");
+		    }
+		});
+	};
+	</script>
+</body>
+</html>

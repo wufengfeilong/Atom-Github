@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<script src="js/common/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link href="css/common/customermanagement.css" rel="stylesheet">
+<meta charset="utf-8">
+</head>
+<body class="nav-md">
+	<div class="container">
+		<form method="POST" th:action="@{/Goodadd}" th:object="${good}" name="goodForm" onSubmit="return checkGood()">
+			<table>
+				<div class="input-group">
+					<span class="input-group-addon" id="checkUserNameResult">货物编码</span>
+					<input type="text" class="form-control" name="good_number" id="good_number"
+						placeholder="请输入货物编码" >
+						<span id="goodNumberCheck"></span>
+				</div>
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon" id="checkPasswordResult">货物名称</span>
+					<input type="text" class="form-control" name="good_name"
+						placeholder="请输入货物名称" >
+				</div>
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon" >进货价</span> <input
+						type="text" class="form-control" name="purchase_price"
+						placeholder="请输入进货价" >
+				</div>
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon">库存数量</span> <input type="text"
+						class="form-control" name="inventory_quantity"
+						placeholder="请输入库存数量">
+				</div>
+				<br>
+				    <button class="btn btn-success">确认</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" class="btn btn-warning">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary"  onclick="javascript:history.back();">返回</button>
+			</table>
+		</form>
+	</div>
+
+</body>
+	<script type="text/javascript">
+	function checkGood(){
+	
+		if (document.goodForm.good_number.value == ""){
+			alert ("提示：\n\n必须输入货物编码！");
+			document.goodForm.good_number.focus();
+			return false;
+		}
+		if (document.goodForm.good_name.value == ""){
+			alert ("提示：\n\n必须输入货物名称！");
+			document.goodForm.good_name.focus();
+			return false;
+		}
+		if (document.goodForm.purchase_price.value == ""){
+			alert ("提示：\n\n必须输入进货价！");
+			document.goodForm.purchase_price.focus();
+			return false;
+		}
+		if (document.goodForm.inventory_quantity.value == ""){
+			alert ("提示：\n\n必须输入库存数量！");
+			document.goodForm.inventory_quantity.focus();
+			return false;
+		}
+		return true;
+	}
+	  
+ 
+  </script>
+</html>

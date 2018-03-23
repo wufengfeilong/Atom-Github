@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<script src="js/common/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link href="css/common/customermanagement.css" rel="stylesheet">
+<meta charset="utf-8">
+</head>
+<body class="nav-md">
+	<div class="container">
+		<form method="POST" th:action="@{/Orderedit}">
+			<table>
+				<tr th:each="order : ${torder}">
+
+					<div class="input-group" id="hidden">
+						<span class="input-group-addon">货物编号</span> <input type="text"
+							class="form-control" name="id" th:value="${order.id}">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">公司名称</span> <input type="text"
+							class="form-control" name="company" th:value="${order.company}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">订单名称</span> <input type="text"
+							class="form-control" name="ordername"
+							th:value="${order.ordername}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">订单编号</span> <input type="text"
+							class="form-control" name="ordernumber"
+							th:value="${order.ordernumber}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">订单数量</span> <input type="text"
+							class="form-control" name="orderquantity"
+							th:value="${order.orderquantity}">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">创建时间</span> <input type="date"
+							class="form-control" name="ordersettime"
+							th:value="${order.ordersettime}">
+					</div>
+					<br>
+					<button class="btn btn-success">确认</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" class="btn btn-warning">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary"  onclick="javascript:history.back();">返回</button>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	
+</script>
+</html>

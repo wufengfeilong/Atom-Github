@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <title>demo</title>
+        
+    </head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/bootstrap.js"></script>
+    <link href="bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
+     <style>
+		    .container {
+		  padding-right: 15px;
+		  padding-left: 15px;
+		  margin-right: auto;
+		  margin-left: auto;
+		}
+		@media (min-width: 768px) {
+		  .container {
+		    width: 750px;
+		  }
+		}
+		@media (min-width: 992px) {
+		  .container {
+		    width: 970px;
+		  }
+		}
+		@media (min-width: 1200px) {
+		  .container {
+		    width: 1170px;
+		  }
+		}
+		.container-fluid {
+		  padding-right: 15px;
+		  padding-left: 15px;
+		  margin-right: auto;
+		  margin-left: auto;
+		}
+		 .container{
+          margin:60px auto auto auto;
+        }
+        body {
+        background:  url(images/bg-a4.jpg) no-repeat fixed top;
+        
+        } 
+        
+	        .c-dbt{
+		color: #ffffff;
+		width: 100%;
+		text-align: center;
+		top:90px;
+		font-size: 44px;
+		font-weight: bold;
+		line-height: 50px;
+	   }
+		.c-fb{
+		position: absolute;
+		color: #ffffff;
+		width: 70%;
+		text-align: center;
+		top:185px;
+		font-size: 30px;
+		line-height: 36px;
+		font-weight: normal;
+	}
+		.c-fb span{
+		color:#00fff0;
+	}
+		.img img{
+		float:left;
+		margin-left:89px;
+		display:inline;
+		margin-top:70%;
+	}
+    	 h1.fb-glitch {
+            color: #abff79;
+        }
+   </style>
+  
+   <body>
+       <div class="container" th:each="news : ${newss}">
+         <h1 class="c-dbt">渠道通，打造企业专属的移动客户管理系统</h1>
+         <h3 class="c-fb">助力订单量增长<span>7倍</span></h3>
+	        <div id="img" style="position:absolute;left:20%;top:50%">
+		       <img src="images/pic-a1.jpg" alt="图片" width="304" height="389">
+		    </div >
+            <div id="qudaotong" style="position:absolute;left:50%;top:50%;">
+	           <h1 class="fb-glitch"><span th:text="${news.title}"></span></h1><br>
+	           <h2>&nbsp;&nbsp; <span th:text="${news.subtitle}"></span></h2> 
+	           
+	           <h3 style="font-family: sans-serif;">
+		            <span th:text="${news.content}"></span>
+	           </h3>
+           </div>
+           
+	   </div>
+    </body>
+</html>
