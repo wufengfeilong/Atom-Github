@@ -1,0 +1,13 @@
+server:
+  port: 8123
+  context-path: /gps
+  tomcat:
+    uri-encoding: UTF-8
+  ssl:
+    # 172.29.140.35
+    key-store: E:\keystore\tomcat.jks
+    # 123.233.115.107
+    #key-store: D:\keystore\tomcat.jks
+    key-store-password: 123456
+    key-store-type: JKS
+    key-alias: tomcat

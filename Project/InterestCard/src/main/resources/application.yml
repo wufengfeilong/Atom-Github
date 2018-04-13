@@ -1,0 +1,23 @@
+server:
+  port: 5004
+  tomcat:
+    uri-encoding: UTF-8
+  context-path: /Card
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: zfw
+    password: 123456
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/static/,file:${web.path}
+
+web:
+  path: E:/STS/Card/download/
