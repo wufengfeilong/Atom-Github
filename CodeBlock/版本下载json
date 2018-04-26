@@ -1,0 +1,25 @@
+{"data":{
+  "appname": "Park_2.0.apk",
+  "serverVersion": "2.0",
+  "serverFlag": "2",
+  "lastForce" : "1",
+  "updateurl": "http://172.29.140.35:8080/PARK/Park_2.0.apk",
+  "upgradeinfo": "有新版本（此版本必须更新），新版本内容：\n1.优化内存\n2.图片显示优化\n3.增加定位功能"
+},
+  "result":"true"}
+
+//非强制更新
+  //{"data":{
+//  "appname": "Park_2.0.apk",
+//  "serverVersion": "2.0",
+//  "serverFlag": "2",
+//  "lastForce" : "0",
+//  "updateurl": "http://172.29.140.35:8080/PARK/Park_2.0.apk",
+//  "upgradeinfo": "有新版本，新版本内容：\n1.优化内存\n2.图片显示优化\n3.增加定位功能\n\n是否更新？"
+//},
+//  "result":"true"}
+
+https://www.jianshu.com/p/a48707578f55  Android App更新模块
+
+mProgressListener.onProgress((int) totalSize * 100 / updateTotalSize);这个地方应该改成mProgressListener.onProgress((int) (totalSize * 100 / updateTotalSize));
+如果文件太大上面一种写法会导致进度显示为负数
