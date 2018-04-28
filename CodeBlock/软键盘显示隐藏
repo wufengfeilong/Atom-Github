@@ -13,4 +13,30 @@ imm.hideSoftInputFromWindow(view, InputMethodManager.HIDE_NOT_ALWAYS);
 imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
 
 // 强制隐藏软键盘
-imm.hideSoftInputFromWindow(view.getWindowToken(), 0); 
+imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+/**
+     * 添加软键盘状态监听器321+4
+     */
+    @Override
+    public void setKeyboardStateListener() {
+        //获取当前屏幕内容的高度
+//        int screenHeight = getWindow().getDecorView().getHeight();
+        getWindow().getDecorView().addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                //获取View可见区域的bottom
+                Rect rect = new Rect();
+                getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+                if(bottom!=0 && oldBottom!=0 && bottom - rect.bottom <= 0){
+                    if (isIntroduceChange) {
+                        getTitleRightView().setVisibility(View.VISIBLE);
+                    } else {
+                        getTitleRightView().setVisibility(View.GONE);
+                    }
+                }else {
+                    //Log.d("软键盘", "开启");
+                }
+            }
+        });
+    }
