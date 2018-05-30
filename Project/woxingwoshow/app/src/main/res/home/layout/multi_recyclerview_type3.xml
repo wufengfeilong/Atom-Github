@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:gravity="center_vertical"
+              android:background="@android:color/white"
+              android:padding="5dp"
+              android:layout_height="48dp"
+              android:weightSum="8">
+    <ImageView
+            android:id="@+id/multi_list_type3_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/phone_book_gray"/>
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:orientation="vertical"
+    >
+        <TextView
+                android:id="@+id/multi_list_type3_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="19sp"
+                android:layout_marginLeft="15dp"/>
+        <TextView
+                android:id="@+id/multi_list_type3_introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"/>
+    </LinearLayout>
+
+    <ImageView
+            android:layout_weight="1"
+            android:id="@+id/multi_list_type3_follow"
+            android:layout_width="60dp"
+            android:layout_height="30dp"/>
+
+</LinearLayout>

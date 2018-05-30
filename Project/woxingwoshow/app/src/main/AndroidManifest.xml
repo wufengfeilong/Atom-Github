@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="woxingwoxiu.com">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位 -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission> -->
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> -->
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <!-- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission> -->
+    <!-- 用于读取手机当前的状态 -->
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission> -->
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission> -->
+    <!-- 访问网络，网络定位需要上网 -->
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission> -->
+
+
+    <!-- 访问电话状态权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写sd卡权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 相机拍照功能权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 录制音频权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 读sd卡权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 在sd中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 读取联系人权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- 环信即时通讯权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- ShareSDK需要权限start -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- ShareSDK需要权限end -->
+    <application
+        android:name=".ShowApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
+        <activity android:name=".home.HomeActivity">
+
+        </activity>
+        <!-- zfw start -->
+         <service
+         android:name="com.baidu.location.f"
+         android:enabled="true"
+         android:process=":remote">
+         </service>
+
+
+         <meta-data
+         android:name="com.baidu.lbsapi.API_KEY"
+         android:value="yYBXORlancX2CMawGk4r6pGmU9s1UQwP">
+         </meta-data>
+
+        <activity android:name=".home.activity.SearchUserActivity"/>
+        <activity
+                android:name=".play.activity.PlayVideoActivity"
+                android:theme="@style/TranslucentTheme"/>
+        <activity android:name=".home.activity.PickCityActivity"/>
+        <!-- zfw end -->
+
+
+        <!-- dss start -->
+        <activity
+            android:name=".login.activity.LoginActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".login.activity.LoginPhoneActivity" />
+        <activity android:name=".login.activity.LoginVerifyActivity" />
+        <activity android:name=".login.activity.UserAgreementActivity" />
+        <activity android:name=".login.activity.DataEditingActivity" />
+        <activity android:name=".login.activity.NotLoginInterfaceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".login.activity.GetPhoneActivity"></activity>
+        <!-- dss end -->
+
+
+        <!-- lily start -->
+        <activity
+            android:name=".release.activity.RecordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.RiseAnimation" />
+        <activity
+            android:name=".release.activity.ReleaseEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.RiseAnimation" />
+        <activity
+            android:name=".release.activity.AlbumImportActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <activity
+            android:name=".release.activity.AlbumEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.RiseAnimation" />
+        <activity
+            android:name=".release.activity.MusicOnlineActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <activity
+            android:name=".release.activity.PublishEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <activity
+            android:name=".release.activity.ChooseCoverActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <activity
+            android:name=".release.activity.DraftListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <activity
+            android:name=".release.activity.AddTopicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <activity
+            android:name=".release.activity.FriendsListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleAppTheme" />
+        <!-- lily end -->
+
+        <activity android:name=".me.activity.QRCodeGenerateActivity" />
+        <activity android:name=".me.activity.QRCodeScanActivity" />
+        <activity android:name=".me.activity.AboutUsActivity" />
+        <activity android:name=".me.activity.FeedbackActivity" />
+        <activity android:name=".me.activity.IfSolveActivity" />
+        <activity android:name=".message.activity.MessageReportReasonActivity" />
+        <activity android:name=".message.activity.MessageFriendInformationActivity" />
+        <activity android:name=".message.activity.MessageFriendFansListActivity" />
+        <activity android:name=".message.activity.MessageFriendAttentionListActivity" />
+        <activity android:name=".message.activity.MessageWealthActivity" />
+        <activity android:name=".message.activity.MessageMyTeamActivity" />
+        <activity android:name=".message.activity.MessageBillActivity" />
+        <activity android:name=".me.activity.SettingActivity" />
+        <activity android:name=".me.activity.CertificationInfoActivity" />
+        <activity android:name=".me.activity.NameCertifyActivity" />
+        <activity android:name=".me.activity.MeEditActivity" />
+        <activity android:name=".letter.activity.LetterSettingActivity" />
+        <activity android:name=".letter.activity.LetterListActivity" />
+        <activity android:name=".letter.activity.MultiItemRvActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".me.activity.FindFriendsActivity"/>
+        <!-- ShareSDK配置 START -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1106830209" />
+            </intent-filter>
+        </activity>
+      <!--  <activity
+            android:name="cn.sharesdk.tencent.qzone.ReceiveActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1106830209" />
+            </intent-filter>
+        </activity>-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- ShareSDK配置 END -->
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="woxingwoxiu.com.me.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name=".login.utils.MyFileProvider"
+            android:authorities="woxingwoxiu.com.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="1133180511146798#woxingwoshow" />
+        <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+            -->
+        </receiver>
+
+
+    </application>
+
+</manifest>

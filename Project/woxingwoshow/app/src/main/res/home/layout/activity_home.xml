@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+>
+    <data>
+        <variable name="presenter" type="woxingwoxiu.com.home.HomePresenter"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+    >
+        <FrameLayout
+                android:id="@+id/home_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+        </FrameLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:weightSum="5"
+        >
+            <ImageView
+                    android:id="@+id/home_btm_menu_home"
+                    style="@style/HomeBottomImageView"
+                    android:src="@drawable/home_selected"
+                    android:onClick="@{()->presenter.toHome()}"
+            />
+            <ImageView
+                    android:id="@+id/home_btm_menu_near"
+                    style="@style/HomeBottomImageView"
+                    android:src="@drawable/near_no_select"
+                    android:onClick="@{()->presenter.toNear()}"
+            />
+            <ImageView
+                    android:id="@+id/home_btm_menu_capture"
+                    style="@style/HomeBottomImageView"
+                    android:src="@drawable/capture"
+                    android:onClick="@{()->presenter.toCapture()}"
+            />
+            <ImageView
+                    android:id="@+id/home_btm_menu_msg"
+                    style="@style/HomeBottomImageView"
+                    android:src="@drawable/info_no_select"
+                    android:onClick="@{()->presenter.toMsg()}"
+            />
+            <ImageView
+                    android:id="@+id/home_btm_menu_me"
+                    style="@style/HomeBottomImageView"
+                    android:src="@drawable/me_no_select"
+                    android:onClick="@{()->presenter.toMe()}"
+            />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

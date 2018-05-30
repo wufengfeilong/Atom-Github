@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="loginPresenter"
+            type="woxingwoxiu.com.login.presenter.LoginPresenter"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/login_cross_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/login_multiply"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:padding="20dp"
+                android:onClick="@{()->loginPresenter.onCross()}" />
+
+            <TextView
+                android:id="@+id/login_problem_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="遇到问题？"
+                android:padding="20dp"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginTop="70dp"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="注册登录后体验更多精彩瞬间"
+                android:layout_marginBottom="230dp"
+                android:textColor="@color/dim_foreground_dark"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/login_weixin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_weixin"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="@{()->loginPresenter.onLoginWeixin()}" />
+            <ImageView
+                android:id="@+id/login_qq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_qq"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="@{()->loginPresenter.onLoginQQ()}" />
+
+            <ImageView
+                android:id="@+id/login_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/login_tel"
+                android:onClick="@{()->loginPresenter.onLoginTel()}" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

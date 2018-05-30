@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="MessageMyTeamBean"
+            type="woxingwoxiu.com.message.bean.MessageMyTeamBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/me_image" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="2dp"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingLeft="10dp"
+                android:layout_weight="1.6"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/team_grade_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:textColor="@color/deepblack"
+                    android:singleLine="true"
+                    android:text="@{MessageMyTeamBean.friendName}"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="注册时间："
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/team_reg_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="@{MessageMyTeamBean.friendRegTime}"
+                        android:textSize="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="#808080" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="1dp"
+                android:orientation="vertical"
+                android:layout_weight="1.5"
+                android:weightSum="2"
+                android:paddingTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingTop="0dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="推荐财富值："
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/wealth_recommend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="@{MessageMyTeamBean.friendPostTimes}"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingTop="0dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="视频财富值："
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/wealth_movie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="@{MessageMyTeamBean.friendActivities}"
+                        android:textSize="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#808080" />
+    </LinearLayout>
+</layout>

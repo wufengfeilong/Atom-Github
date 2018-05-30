@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="haveUserBean"
+            type="woxingwoxiu.com.home.bean.SearchUserBean.HaveUserBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/has_user_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/head_pic"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{haveUserBean.userName}"
+            android:layout_gravity="center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:background="@drawable/message_attention"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>

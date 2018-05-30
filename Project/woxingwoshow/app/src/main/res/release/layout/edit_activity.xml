@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/preview_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.opengl.GLSurfaceView
+            android:id="@+id/edit_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/top_tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/release_edit_margin_right">
+
+            <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/release_margin"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_white" />
+
+            <ImageView
+                android:id="@+id/filter_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/release_margin"
+                android:layout_marginRight="@dimen/release_margin"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/filter_camera" />
+
+            <ImageView
+                android:id="@+id/volume_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/release_margin"
+                android:layout_marginRight="@dimen/release_margin"
+                android:layout_toLeftOf="@+id/filter_img"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/volume" />
+
+            <ImageView
+                android:id="@+id/music_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/release_margin"
+                android:layout_toLeftOf="@+id/volume_img"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/set_music" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/edit_bottom_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/save_to_draft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/release_edit_margin_bottom"
+                android:layout_marginLeft="@dimen/release_margin"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/save_draft" />
+
+            <ImageView
+                android:id="@+id/next_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/release_edit_margin_bottom"
+                android:layout_toRightOf="@+id/save_to_draft"
+                android:onClick="onMenuClick"
+                android:src="@drawable/next_camera" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/edit_bar_bottom"
+        layout="@layout/edit_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/release_edit_bottom_bar_height"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

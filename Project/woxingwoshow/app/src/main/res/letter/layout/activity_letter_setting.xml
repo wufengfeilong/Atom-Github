@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.letter.presenter.LetterSettingPresenter" />
+
+        <variable
+            name="bean"
+            type="woxingwoxiu.com.letter.bean.PrivateLetterBean.LetterBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/letter_setting_title"
+            app:presenter="@{presenter}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/head_pic"
+                android:id="@+id/letter_setting_head"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@{bean.userName}"
+                android:textColor="@color/black_deep" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                android:text="查看资料 >" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="消息免打扰"
+                android:textColor="@color/black_deep" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="清空消息记录"
+            android:textColor="@color/black_deep"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="删除对话"
+            android:textColor="@color/black_deep" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="拉黑"
+            android:textColor="@color/colorRed"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="举报"
+            android:textColor="@color/colorRed"
+            android:onClick="@{()->presenter.toReport()}"
+            />
+
+    </LinearLayout>
+</layout>
+

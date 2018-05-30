@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.release.presenter.RecordPresenter" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <android.opengl.GLSurfaceView
+            android:id="@+id/camera_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <woxingwoxiu.com.release.view.CameraHintView
+            android:id="@+id/camera_hint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true" />
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/record_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_camera_top_height"
+            android:layout_alignParentTop="true"
+            app:presenter="@{presenter}" />
+
+        <include
+            android:id="@+id/record_more_menu_bar"
+            layout="@layout/record_more_menu_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_more_menu_height"
+            android:layout_below="@+id/actionbar"
+            android:visibility="gone"
+            app:presenter="@{presenter}" />
+
+        <include
+            android:id="@+id/record_bottom_bar"
+            layout="@layout/record_bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:presenter="@{presenter}" />
+
+        <TextView
+            android:id="@+id/count_down_tv"
+            android:layout_width="@dimen/release_count_down_tv_height"
+            android:layout_height="@dimen/release_count_down_tv_height"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/holo_red_light"
+            android:background="@drawable/count_down_tv_bg"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="@dimen/release_count_down_text_size"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/item_beauty_select"
+            layout="@layout/stub_item_beauty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_bottom_bar_height"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            app:presenter="@{presenter}" />
+
+        <include
+            android:id="@+id/item_filter_select"
+            layout="@layout/stub_item_filter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_bottom_bar_height"
+            android:visibility="gone"
+            app:presenter="@{presenter}" />
+    </RelativeLayout>
+</layout>

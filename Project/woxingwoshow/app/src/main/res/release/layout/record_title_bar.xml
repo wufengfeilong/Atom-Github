@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.release.presenter.RecordPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/release_camera_top_height"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/progress_bar"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <woxingwoxiu.com.release.view.RecordProgressView
+                android:id="@+id/record_progress"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@android:color/transparent" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/close_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/release_margin"
+            android:onClick="@{()->presenter.onCloseClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/close_icon" />
+
+        <ImageView
+            android:id="@+id/music_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/release_margin"
+            android:layout_toLeftOf="@+id/reverse_camera"
+            android:onClick="@{()->presenter.onMusicClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/music_camera" />
+
+        <ImageView
+            android:id="@+id/reverse_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/release_margin"
+            android:layout_marginRight="@dimen/release_margin"
+            android:layout_toLeftOf="@+id/more_camera"
+            android:onClick="@{()->presenter.onReverseCameraClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/reverse_camera" />
+
+        <ImageView
+            android:id="@+id/more_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/release_margin"
+            android:layout_marginRight="@dimen/release_margin"
+            android:onClick="@{()->presenter.onMoreClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/more_camera" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="say_sth">说点什么...</string>
+    <string name="send">发送</string>
+    <string name="look_all">查看全部</string>
+    <string name="count_reply">条回复></string>
+    <string name="look_reply">查看回复</string>
+    <string name="reply_report">举报</string>
+    <string name="all_reply">全部回复(</string>
+</resources>

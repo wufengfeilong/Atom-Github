@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.release.presenter.RecordPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/record_bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/fair_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/start_camera_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/release_margin"
+            android:onClick="@{()->presenter.onFairClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/fair_camera" />
+
+        <ImageView
+            android:id="@+id/save_video_btn"
+            android:layout_width="@dimen/release_save_camera_btn_height"
+            android:layout_height="@dimen/release_save_camera_btn_height"
+            android:layout_above="@+id/select_tab_ll"
+            android:layout_marginBottom="@dimen/release_margin"
+            android:layout_toRightOf="@+id/restart_camera_btn"
+            android:onClick="@{()->presenter.onSaveBtnClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/save_icon"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/delete_last_video_btn"
+            android:layout_width="@dimen/release_save_camera_btn_height"
+            android:layout_height="@dimen/release_save_camera_btn_height"
+            android:layout_above="@+id/select_tab_ll"
+            android:layout_marginBottom="@dimen/release_margin"
+            android:layout_toLeftOf="@+id/restart_camera_btn"
+            android:onClick="@{()->presenter.deleteLastVideo()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/cancel_camera"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/restart_camera_btn"
+            android:layout_width="@dimen/release_restart_camera_btn_height"
+            android:layout_height="@dimen/release_restart_camera_btn_height"
+            android:layout_above="@+id/select_tab_ll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/release_margin"
+            android:layout_toRightOf="@+id/stop_camera_btn"
+            android:layout_marginLeft="@dimen/release_restart_horizontal_margin"
+            android:layout_marginRight="@dimen/release_restart_horizontal_margin"
+            android:onClick="@{()->presenter.onRecordRestartClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/start_camera"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/stop_camera_btn"
+            android:layout_width="@dimen/release_restart_camera_btn_height"
+            android:layout_height="@dimen/release_restart_camera_btn_height"
+            android:layout_above="@+id/select_tab_ll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/release_margin"
+            android:layout_marginLeft="@dimen/release_restart_horizontal_margin"
+            android:layout_marginRight="@dimen/release_restart_horizontal_margin"
+            android:onClick="@{()->presenter.onStopRecordClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/stop_camera"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/start_camera_btn"
+            android:layout_width="@dimen/release_start_camera_btn_height"
+            android:layout_height="@dimen/release_start_camera_btn_height"
+            android:layout_above="@+id/select_tab_ll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/release_margin"
+            android:onClick="@{()->presenter.onRecordClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/start_camera" />
+
+        <LinearLayout
+            android:id="@+id/select_tab_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->presenter.onStartAlbum()}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/release_camera_select_margin"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/release_select_way_album"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/release_middle_text_size" />
+
+                <ImageView
+                    android:id="@+id/release_select_way_album"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/selector_camera"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/release_camera_select_margin"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/release_select_way_shoot"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/release_middle_text_size" />
+
+                <ImageView
+                    android:id="@+id/release_select_way_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/selector_camera" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

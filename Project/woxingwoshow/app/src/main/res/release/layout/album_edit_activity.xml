@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="woxingwoxiu.com.release.activity.AlbumEditActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.opengl.GLSurfaceView
+            android:id="@+id/album_edit_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_gravity="top">
+
+            <ImageButton
+                android:id="@+id/album_edit_back_btn"
+                style="?android:attr/actionButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_round_bg" />
+
+            <ImageButton
+                android:id="@+id/album_edit_next_img"
+                style="?android:attr/actionButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_round_bg" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/release_margin"
+            android:layout_marginRight="@dimen/release_margin">
+
+            <TextView
+                android:id="@+id/album_edit_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/release_margin"
+                android:background="@drawable/album_edit_remind_bg"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="@dimen/release_margin_middle"
+                android:text="@string/release_album_edit_tx"
+                android:textColor="@android:color/white" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/album_edit_out_img_height"
+                android:layout_below="@+id/album_edit_txt"
+                android:layout_margin="@dimen/release_margin_small">
+
+                <woxingwoxiu.com.release.videorange.VideoRangeSeekBar xmlns:custom="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ffffff"
+                    custom:gradientWidth="20dp"
+                    custom:indicatorWidth="4dp"
+                    custom:thumbBandHeight="59dp"
+                    custom:thumbWidth="20dp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/edit_img_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/release_cover_img_width" />
+
+            </FrameLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

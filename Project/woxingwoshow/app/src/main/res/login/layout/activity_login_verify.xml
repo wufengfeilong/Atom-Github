@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="numbean"
+        type="woxingwoxiu.com.login.bean.LoginVerifyBean.VerifyBean" />
+    <variable
+        name="verifyPresenter"
+        type="woxingwoxiu.com.login.presenter.LoginVerifyPresenter"/>
+
+</data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/login_cross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/login_multiply"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:padding="20dp"
+                android:onClick="@{()->verifyPresenter.onCross()}"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="60dp"
+            >
+            <TextView
+                android:id="@+id/login_text_Tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{numbean.phoneNumSpace}"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/bright_foreground_light_disabled"
+                />
+
+            <woxingwoxiu.com.login.utils.VeriftyEditText
+                android:id="@+id/login_verify_num"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/login_text_Tel"
+                android:layout_below="@+id/login_text_Tel"
+                android:layout_marginTop="19dp"
+                android:background="@null"
+                android:digits="1234567890"
+                android:hint="现在随便输入"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textSize="30sp" />
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="#aa000000"
+                android:layout_below="@+id/login_verify_num"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_get_verify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->verifyPresenter.onClickGetVerify()}"
+                android:layout_below="@+id/login_text_Tel"
+                android:layout_toRightOf="@id/login_verify_num"
+                android:text="获取验证码"
+                android:layout_marginTop="20dp"
+                android:layout_alignBottom="@id/login_verify_num"
+                android:gravity="center"
+                android:textColor="@color/login_red"
+                />
+
+            <Button
+                android:id="@+id/login_verify_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/view_line"
+                android:background="@drawable/focused_text"
+                android:onClick="@{()->verifyPresenter.onNext()}" />
+
+            <CheckBox
+                android:id="@+id/login_verify_agree"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@id/login_verify_next"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/checkbox_pressed"
+                android:button="@null"
+                android:checked="true"
+                />
+
+            <TextView
+                android:id="@+id/login_verify_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/login_verify_agree"
+                android:layout_alignBottom="@+id/login_verify_agree"
+                android:layout_toRightOf="@+id/login_verify_agree"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="12dp"
+                android:onClick="@{()->verifyPresenter.onClickGoUserAgreement()}"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

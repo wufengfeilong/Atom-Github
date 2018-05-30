@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize">
+
+        <ImageButton
+            android:id="@+id/release_back_btn"
+            style="?android:attr/actionButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerInside"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:onClick="onMenuClick"
+            android:src="@drawable/back_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@{title}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/release_middle_text_size" />
+    </RelativeLayout>
+</layout>

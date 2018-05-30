@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="woxingwoxiu.com.release.activity.PublishEditActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/release_margin"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/close_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/release_publish_title_tx"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/release_middle_text_size" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/preview_fl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="top"
+                    android:background="@color/release_publish_gray" />
+
+                <ImageView
+                    android:id="@+id/preview_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/release_publish_preview_height"
+                    android:clickable="false"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/edit_title"
+                        android:layout_width="@dimen/release_publish_edit_title_width"
+                        android:layout_height="@dimen/release_publish_user_info_height"
+                        android:layout_gravity="left"
+                        android:background="@drawable/edit_title_bg"
+                        android:drawableLeft="@drawable/edit_title_icon"
+                        android:drawablePadding="@dimen/release_publish_user_info_margin"
+                        android:gravity="center_vertical|left"
+                        android:hint="@string/publish_edit_cover_title_hint"
+                        android:maxLines="2"
+                        android:onClick="onMenuClick"
+                        android:paddingLeft="@dimen/release_margin"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="@dimen/release_small_text_size" />
+
+                    <RelativeLayout
+                        android:id="@+id/user_info_rl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="@dimen/release_margin"
+                        android:layout_marginTop="@dimen/release_margin">
+
+                        <ImageView
+                            android:id="@+id/user_icon"
+                            android:layout_width="@dimen/release_publish_user_info_height"
+                            android:layout_height="@dimen/release_publish_user_info_height"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/edit_title_icon" />
+
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/release_publish_user_info_height"
+                            android:layout_marginLeft="@dimen/release_publish_user_info_margin"
+                            android:layout_toRightOf="@+id/user_icon"
+                            android:gravity="center_vertical|left"
+                            android:text="用户51124635"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/release_small_text_size" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/release_publish_gray" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/release_margin"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/say_something_bg"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/content_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/release_margin"
+                        android:layout_marginRight="@dimen/release_margin"
+                        android:layout_weight="3"
+                        android:background="@null"
+                        android:gravity="center_vertical|left"
+                        android:hint="@string/publish_edit_content_hint"
+                        android:maxLength="50"
+                        android:maxLines="3"
+                        android:textColor="@color/release_publish_gray"
+                        android:textColorHint="@color/release_publish_gray"
+                        android:textSize="@dimen/release_small_text_size" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/release_margin"
+                        android:layout_marginRight="@dimen/release_margin"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:id="@+id/publish_edit_friends"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:onClick="onMenuClick"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/friends" />
+
+                        <ImageView
+                            android:id="@+id/publish_edit_add_topic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/release_margin"
+                            android:layout_toRightOf="@+id/publish_edit_friends"
+                            android:onClick="onMenuClick"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/add_topic" />
+
+                        <TextView
+                            android:id="@+id/publish_edit_content_length"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/release_publish_gray"
+                            android:textSize="@dimen/release_small_text_size" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal|top">
+
+                    <Button
+                        android:id="@+id/publish_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/release_margin"
+                        android:background="@drawable/publish_btn"
+                        android:onClick="onMenuClick" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

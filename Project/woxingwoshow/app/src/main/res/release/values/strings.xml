@@ -1,0 +1,81 @@
+<resources>
+    <string name="release_select_way_album">相册</string>
+    <string name="release_select_way_shoot">拍摄</string>
+    <string name="release_inflater_not_support_error">当前机型不支持该滤镜</string>
+
+    <string name="release_set_last_video_toast_msg">已为您恢复上次的拍摄内容</string>
+
+    <!-- 权限设定提示用 -->
+    <string name="release_set_permission_msg">拍摄视频需要相机、麦克风等权限，请在设置中开启权限。</string>
+    <string name="release_set_storage_permission_msg">获取未发布视频列表需要访问存储权限，请在设置中开启权限。</string>
+    <string name="release_set">设置</string>
+    <string name="release_cancel">取消</string>
+    <string name="release_permission_refused">您未开启相机、麦克风等权限，不能使用拍摄功能。</string>
+    <string name="release_storage_permission_refused">您未开启存储权限，不能显示视频列表。</string>
+
+    <!-- 保存／舍弃提示用 -->
+    <string name="release_save_dialog_title">是否保存当前的拍摄进度？</string>
+    <string name="release_save_dialog_msg">稍后继续拍摄</string>
+    <string name="release_save_btn_tx">保存</string>
+    <string name="release_destroy_btn_tx">丢弃</string>
+
+    <!-- 删除提示用 -->
+    <string name="release_delete_dialog_title">提示</string>
+    <string name="release_delete_dialog_msg">确认删除上一段视频？</string>
+    <string name="release_confirm_btn_tx">确定</string>
+
+    <string name="release_camera_beauty_tx">美颜</string>
+    <string name="release_camera_filter_tx">滤镜</string>
+    <string name="release_camera_speed">镜头速度</string>
+    <string name="release_camera_speed_normal">正常</string>
+    <string name="release_camera_speed_slow">慢镜头</string>
+    <string name="release_camera_speed_fast">快镜头</string>
+    <string name="release_camera_count_down">倒计时</string>
+    <string name="release_camera_count_down_no">无</string>
+    <string name="release_camera_count_down_3">3秒</string>
+    <string name="release_camera_count_down_10">10秒</string>
+
+    <!-- 从相册中选择提示用 -->
+    <string name="release_album_empty_tx">您本地还没有视频，快去拍摄吧！</string>
+
+    <!-- 从相册视频编辑提示用 -->
+    <string name="release_album_edit_tx">已选择%s秒</string>
+
+    <string name="camera_error_title">相机异常</string>
+    <string name="cannot_connect_camera">无法连接相机，请在系统设置里修改权限</string>
+    <string name="camera_disabled">相机不可用</string>
+    <string name="upload_file_success">上传成功</string>
+    <string name="upload_file_fail">上传失败</string>
+    <string name="upload_file">文件上传中...</string>
+    <string name="compose_file">文件合成中...</string>
+    <string name="get_file_url">获取上传视频中...</string>
+
+    <string name="video_range_title_1">拖动两侧滑杆裁剪视频</string>
+    <string name="video_range_title_2">裁剪后视频时长:</string>
+
+    <!-- 在线音乐 -->
+    <string name="release_music_title_tx">在线音乐</string>
+
+    <!-- 待发布列表 -->
+    <string name="release_draft_list_title_tx">待发布</string>
+
+    <!-- 发布编缉画面 -->
+    <string name="release_publish_title_tx">发布</string>
+    <string name="publish_edit_cover_title_hint">编缉封面标题</string>
+    <string name="publish_edit_content_hint">说点什么…</string>
+    <string name="publish_edit_content_length">%s/50</string>
+    <string name="publish_edit_check_max">您输入的字数已达上限</string>
+    <string name="publish_edit_topic_unit"># </string>
+    <string name="publish_edit_add_friend_error">您已经@过此用户，不能重复@。</string>
+    <!-- 封面选择 -->
+    <string name="choose_cover_title_tx">封面选择</string>
+    <string name="choose_cover_confirm">确定</string>
+    <string name="choose_cover_hint">拖动选择封面</string>
+    <string name="choose_cover_title_hint">填写封面标题...</string>
+
+    <!-- 待发布视频列表画面 -->
+    <string name="release_draft_delete_btn_tx">删除</string>
+    <string name="release_draft_remind_tx">待发布视频在应用卸载后会被删除，请及时发布</string>
+
+
+</resources>

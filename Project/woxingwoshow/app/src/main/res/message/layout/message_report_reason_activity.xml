@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.message.presenter.MessageReportReasonPresenter"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <include layout="@layout/message_report_reason_title"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="请选择你要举报的理由"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            >
+            <RadioButton
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="色情低俗"
+                android:button="@null"
+                android:background="@color/white"
+                style="@style/reportCheckboxTheme"
+                />
+
+            <RadioButton
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:text="诱导分享、关注、骗点击"
+                android:background="@color/white"
+                style="@style/reportCheckboxTheme"
+                />
+
+            <RadioButton
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="违法违规"
+                android:button="@null"
+                android:background="@color/white"
+                style="@style/reportCheckboxTheme"
+                />
+            <RadioButton
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发布政治敏感问题"
+                android:button="@null"
+                android:background="@color/white"
+                style="@style/reportCheckboxTheme"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</layout>

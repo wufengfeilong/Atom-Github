@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="home_tab_menu">
+        <item>新闻</item>
+        <item>少儿</item>
+        <item>萌宠</item>
+        <item>教育</item>
+        <item>职场</item>
+        <item>才艺</item>
+        <item>娱乐</item>
+        <item>游玩</item>
+        <item>游戏</item>
+        <item>运动</item>
+        <item>健康</item>
+        <item>美食</item>
+        <item>美妆</item>
+        <item>穿秀</item>
+        <item>生活</item>
+    </string-array>
+</resources>

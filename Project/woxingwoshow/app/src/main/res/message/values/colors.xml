@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="deepblack">#000000</color>
+    <color name="lightgray">#c6c6c6</color>
+    <color name="userwhite">#FFFFFF</color>
+    <color name="submitcolor">#FF00FF</color>
+</resources>

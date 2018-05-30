@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="Bean"
+            type="woxingwoxiu.com.message.bean.MessageWealthBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/left_cross"
+                android:layout_width="24dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/left" />
+
+            <TextView
+                android:layout_width="337dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="账单"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/head" />
+
+            <LinearLayout
+                android:layout_width="187dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="8dp">
+
+                <TextView
+                    android:id="@+id/post_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="发布小视频"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/post_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="2018-5-4 10：00"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/wealth_count"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:text="100"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+    <data >
+        <variable
+            name="bean"
+            type="woxingwoxiu.com.message.bean.FansBean"/>
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.message.presenter.FansHomePresenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/fans_home_title"
+            bind:presenter="@{presenter}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/head_pic"
+                    android:layout_gravity="center"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:onClick="@{()->presenter.toFansList()}">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="13221"
+                                        android:textColor="@color/deepblack"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="粉丝"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginRight="20dp"
+                                    android:gravity="center"
+                                    android:onClick="@{()->presenter.toFansAttention()}">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="223"
+                                        android:textColor="@color/deepblack"
+                                        />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="关注"
+                                        android:textSize="13sp"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginRight="20dp"
+                                    android:gravity="center"
+                                    android:onClick="@{()->presenter.toTeam()}">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="200"
+                                        android:textColor="@color/deepblack"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="我的团队"
+                                        android:textSize="13sp"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginRight="20dp"
+                                    android:gravity="center"
+                                    android:onClick="@{()->presenter.toMoney()}">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="150"
+                                        android:textColor="@color/deepblack"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="财富值"
+                                        android:textSize="13sp"/>
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="160dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/attention_fans"
+                                android:layout_margin="10dp"
+                                android:onClick="@{()->presenter.getAttention()}"
+                                android:id="@+id/get_attention"/>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_margin="10dp"
+                                android:visibility="gone"
+                                android:id="@+id/cancel_attention"
+                                >
+                                <ImageView
+                                    android:layout_width="120dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="15dp"
+                                    android:background="@drawable/send_to_fans"/>
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/cancle_attention_fans"
+                                    android:onClick="@{()->presenter.cancelAttention()}"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        
+                        
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></LinearLayout>
+                    
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/position"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="哈尔滨"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/deepblack"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="女"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/deepblack"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="1996年10月22日"
+                    android:textColor="@color/deepblack"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/action_number"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="2102"/>
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fans_video_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

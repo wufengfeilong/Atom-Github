@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="presenter" type="woxingwoxiu.com.home.presenter.SearchUserPresenter"/>
+    </data>
+    <LinearLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@color/gray_light"
+            tools:context="woxingwoxiu.com.home.activity.SearchUserActivity">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:weightSum="9"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+        >
+            <EditText
+                    android:id="@+id/search_user_title_et"
+                    android:layout_width="0dp"
+                    android:layout_weight="8"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:cursorVisible="false"
+                    android:drawableLeft="@drawable/search_gray"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/search_user_et_hint"
+                    android:background="@drawable/ellipse_shape_bg"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                />
+            <TextView
+                    android:id="@+id/search_user_title_cancel"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"
+                    android:onClick="@{()->presenter.cancelClick()}"
+                    android:text="@string/home_cancel"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_layout_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:weightSum="2"
+                android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->presenter.myQrCodeClick()}"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/qr_code"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="16sp"
+                        android:text="@string/my_qr_code"
+                        android:textColor="@android:color/black"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_light"/>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->presenter.scanClick()}"
+                    android:layout_height="match_parent">
+                <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/scan_black"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="16sp"
+                          android:layout_marginLeft="10dp"
+                          android:text="@string/scan_scan"
+                          android:textColor="@android:color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+        <com.liaoinstan.springview.widget.SpringView
+                android:id="@+id/search_user_springView"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/search_user_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+            </com.liaoinstan.springview.widget.SpringView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/no_answer"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="居然没有结果，换个姿势再试一次吧"
+                android:gravity="center"/>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/search_layout_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+</layout>

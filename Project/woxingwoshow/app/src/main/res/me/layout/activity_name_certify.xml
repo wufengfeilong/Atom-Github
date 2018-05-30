@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.me.presenter.NameCertifyPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="10"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@color/graySimple">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_gravity="center"
+                android:onClick="@{()->presenter.onClickBack()}"
+                android:text=" ＜ " />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:text="实名认证"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/nameCertify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@color/graySimple"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:background="@drawable/shape_et"
+                        android:hint="真实姓名" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@color/graySimple"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:background="@drawable/shape_et"
+                        android:hint="身份证号" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@color/graySimple"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:background="@drawable/shape_et"
+                        android:hint="手机号" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@color/graySimple"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:text="手持身份证照片" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:gravity="center_vertical"
+                        android:background="@color/graySimple"
+                        android:weightSum="100"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="5"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textColor="@color/colorBlack"
+                            android:maxLines="4"
+                            android:text="" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="25"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/video_category"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="40"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:maxLines="4"
+                            android:text="必须本人手持身份证，保证身份证上信息清晰可见[样例见左图]" />
+
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="90dp"
+                            android:background="@color/colorLightGray"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="5"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textColor="@color/colorBlack"
+                            android:maxLines="4"
+                            android:text="" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="25"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/video_category"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@color/graySimple"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:text="独立身份证照" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:gravity="center_vertical"
+                        android:background="@color/graySimple"
+                        android:weightSum="100"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="5"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textColor="@color/colorBlack"
+                            android:maxLines="4"
+                            android:text="" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="25"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/video_category"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="40"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:maxLines="4"
+                            android:text="上传本人身份证正面照片，保证身份证上信息清晰可见[样例见左图]" />
+
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="90dp"
+                            android:background="@color/colorLightGray"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="5"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textColor="@color/colorBlack"
+                            android:maxLines="4"
+                            android:text="" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="25"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/video_category"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@color/graySimple"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:text="本人银行卡号" />
+                    <Spinner
+                        android:id="@+id/manager_propertyFeeEdit_discount"
+                        android:paddingTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:entries="@array/bank"
+                        android:spinnerMode="dropdown" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/colorLightGray"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:background="@drawable/shape_et"
+                        android:hint="输入银行卡号" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_horizontal"
+                        android:background="@color/graySimple"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/agree"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/colorRed"
+                            android:text="同意我行我秀主播协议" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_horizontal"
+                        android:background="@color/graySimple"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="提交审核" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

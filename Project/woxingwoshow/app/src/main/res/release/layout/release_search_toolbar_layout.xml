@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/release_search"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/draft_item_icon_width"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="@dimen/release_margin"
+            android:background="@drawable/search_box"
+            android:drawableLeft="@drawable/search_white"
+            android:gravity="left|center_vertical"
+            android:hint="@{title}"
+            android:paddingLeft="@dimen/release_publish_user_info_margin"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="@dimen/release_margin"
+            android:layout_marginRight="@dimen/release_margin"
+            android:padding="@dimen/release_publish_user_info_margin"
+            android:clickable="true"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:onClick="onMenuClick"
+            android:singleLine="true"
+            android:text="@string/release_cancel"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/release_middle_text_size" />
+    </LinearLayout>
+</layout>

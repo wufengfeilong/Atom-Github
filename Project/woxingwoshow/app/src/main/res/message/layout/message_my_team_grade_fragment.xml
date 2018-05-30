@@ -1,0 +1,25 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="presenter"
+            type="woxingwoxiu.com.message.presenter.MessageMyTeamFragmentPresenter"/>
+    </data>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            <com.liaoinstan.springview.widget.SpringView
+                    android:id="@+id/team_grade_springView"
+                    android:layout_marginTop="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/team_grade_tg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                </android.support.v7.widget.RecyclerView>
+            </com.liaoinstan.springview.widget.SpringView>
+
+        </LinearLayout>
+</layout>
