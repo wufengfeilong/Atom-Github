@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        applicationId "com.fcn.park"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "DzDK0HfV9U6JD6hROPLdU8",
+                GETUI_APP_KEY   : "4UHf7b7Tny971Lxe8xyPY6",
+                GETUI_APP_SECRET: "uXfllvkFMZ8Ryt93r1QVpA"
+        ]
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            // 绿色物管
+                            'src/main/res',
+                            'src/main/res/property',
+                            'src/main/res/property/drawable',
+                            'src/main/res/property/drawable-xxxhdpi',
+                            'src/main/res/property/layout',
+                            'src/main/res/property/values',
+                            'src/main/res/property/menu',
+
+                            // 管理中心
+                            'src/main/res/manager',
+                            'src/main/res/manager/drawable',
+                            'src/main/res/manager/drawable-xxxhdpi',
+                            'src/main/res/manager/layout',
+                            'src/main/res/manager/menu',
+                            'src/main/res/manager/values',
+
+                            // 房屋租赁
+                            'src/main/res/rent',
+                            'src/main/res/rent/drawable',
+                            'src/main/res/rent/drawable-xxxhdpi',
+                            'src/main/res/rent/layout',
+                            'src/main/res/rent/values',
+
+                            // 个人中心
+                            'src/main/res/me',
+                            'src/main/res/me/drawable',
+                            'src/main/res/me/drawable-xxxhdpi',
+                            'src/main/res/me/layout',
+                            'src/main/res/me/menu',
+                            'src/main/res/me/values',
+
+                            // 园区动态
+                            'src/main/res/info',
+                            'src/main/res/info/drawable',
+                            'src/main/res/info/drawable-xxxhdpi',
+                            'src/main/res/info/layout',
+                            'src/main/res/info/values',
+                    ]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation 'com.android.support:recyclerview-v7:26.0.0-beta1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:design:26.0.0-beta1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+    /*第三方开源库*/
+    compile 'com.apkfuns.logutils:library:1.5.1.1'
+    compile 'top.zibin:Luban:1.0.9'
+    compile 'com.liaoinstan.springview:library:1.2.6'
+    compile 'com.getui:sdk:2.10.2.0'
+    /* 网络通信用 */
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    /* 图片加载框架 */
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    /* 支付宝 */
+    compile files('libs/alipaySdk-20170407.jar')
+
+    /* Java 的HTML解析器 */
+    compile files('libs/jsoup-1.10.2.jar')
+    /* 微信 */
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
+    /* 响应式编程 */
+    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.3@aar'
+    /* 轮播 */
+    compile 'com.youth.banner:banner:1.4.10'
+    /* 卡片显示*/
+    compile 'com.android.support:cardview-v7:26.0.0-beta1'
+    /* 轮播 */
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+}

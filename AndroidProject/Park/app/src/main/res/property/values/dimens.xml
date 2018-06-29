@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="property_default_margin">16dp</dimen>
+
+    <!-- 绿色物管最大字号 -->
+    <dimen name="property_max_text_size">36sp</dimen>
+    <!-- 绿色物管小字号 -->
+    <dimen name="property_min_text_size">16sp</dimen>
+    <!-- 绿色物管MINI字号 -->
+    <dimen name="property_item_mini_text_size">12sp</dimen>
+    <!-- 绿色物管中字号 -->
+    <dimen name="property_middle_text_size">20sp</dimen>
+    <!-- 绿色物管 list 分割线高度 -->
+    <dimen name="property_default_line_height">1dp</dimen>
+    <!-- 绿色物管 list 月租车辆审核列表Item最小高度 -->
+    <dimen name="property_rent_park_item_min_height">72dp</dimen>
+    <!-- 绿色物管 editText上下padding -->
+    <dimen name="property_edit_text_padding_vertical">4dp</dimen>
+    <!--绿色物管边距-->
+    <dimen name="property_padding">3dp</dimen>
+    <!--绿色物管服务item图标-->
+    <dimen name="property_business_icon">22dp</dimen>
+    <!--绿色物管服务item高度-->
+    <dimen name="property_business_item_height">120dp</dimen>
+    <!--绿色物管服务item边距-->
+    <dimen name="property_business_item_margin">10dp</dimen>
+    <!--绿色物管投诉建议view宽度-->
+    <dimen name="property_suggestion_view_width">300dp</dimen>
+    <!--绿色物管投诉建议按钮宽度-->
+    <dimen name="property_suggestion_btn_width">300dp</dimen>
+    <!--绿色物管投诉建议view高度-->
+    <dimen name="property_suggestion_view_height">40dp</dimen>
+    <!--绿色物管投诉建议ImageView高度-->
+    <dimen name="property_suggestion_img_height">200dp</dimen>
+    <!--绿色物管投诉建议EditText高度-->
+    <dimen name="property_suggestion_edit_height">120dp</dimen>
+    <!--绿色物管投诉建议EditText内边距-->
+    <dimen name="property_suggestion_edit_padding">5dp</dimen>
+
+</resources>

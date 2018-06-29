@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.PostNewsMapper">
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.PostNewsModel">
+        <id column="news_id" property="newsId" jdbcType="INTEGER"/>
+        <result column="title" property="newsTitle" jdbcType="VARCHAR"/>
+        <result column="category" property="newsType" jdbcType="VARCHAR"/>
+        <result column="news_thumbnail" property="newsThumbnail" jdbcType="VARCHAR"/>
+        <result column="news_content" property="newsContent" jdbcType="VARCHAR"/>
+        <result column="news_sources" property="newsSources" jdbcType="VARCHAR"/>
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR"/>
+        <result column="update_timestamp" property="updateTime" jdbcType="VARCHAR"/>
+        <result column="insert_user" property="insertUser" jdbcType="VARCHAR"/>
+        <result column="insert_timestamp" property="insertTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 查询新闻列表 -->
+    <select id="getPostNewsList" resultType="fcn.co.jp.park.util.PageData" parameterType="fcn.co.jp.park.util.PageData" useCache="false">
+        select
+        tpn.category as category, tpn.news_id as newsId, tpn.title as newsTitle, pic.file_path as newsThumbnail, date_format(tpn.update_timestamp, '%Y-%m-%d') as updateTime
+        from t_post_news tpn
+        left join t_picture pic on(pic.picture_id = tpn.news_thumbnail)
+        where category = #{category, jdbcType=VARCHAR}
+        LIMIT #{numS},#{numE}
+    </select>
+
+    <!-- 新闻数量 -->
+    <select id="selectNewsCount" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer" useCache="false">
+        SELECT
+        count(*)
+        FROM
+        t_post_news
+        WHERE
+        <if test="category != null and category != ''">
+          category=#{category}
+        </if>
+    </select>
+
+    <!-- 根据新闻的news_id,查询新闻详情 -->
+    <select id="getPostNewsInfoById" parameterType="fcn.co.jp.park.util.PageData"
+            resultType="fcn.co.jp.park.util.PageData"
+            useCache="false">
+        select
+        tpn.news_id as newsId, tpn.title as newsTitle, pic.file_path as newsThumbnail, tpn.news_content as newsContent, tpn.news_sources as newsSources,
+         tpn.update_user as updateUser, date_format(tpn.update_timestamp, '%Y-%m-%d') as updateTime,
+         tpn.insert_user as insertUser, date_format(tpn.insert_timestamp, '%Y-%m-%d') as insertTime
+        from t_post_news tpn
+        left join t_picture pic on(pic.picture_id = tpn.news_thumbnail)
+        where news_id = #{newsId,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据新闻的news_id,删除相应的新闻条目 -->
+    <delete id="deletePostNewsById" parameterType="fcn.co.jp.park.util.PageData">
+        delete from t_post_news
+        where news_id = #{newsId,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 发布新的新闻条，上传图片 -->
+    <insert id="insertImg" parameterType="fcn.co.jp.park.util.PageData">
+        INSERT INTO
+        t_picture (path, createUser, createDate)
+        VALUES
+        (#{path,jdbcType=VARCHAR}, #{createUser, jdbcType=VARCHAR}, now())
+    </insert>
+
+    <select id="selectUploadImgId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT id
+        FROM
+            t_picture
+        WHERE
+            path = #{filePath,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 发布新的新闻条，插入到DB -->
+    <insert id="insertPostNews" parameterType="fcn.co.jp.park.util.PageData">
+        insert into t_post_news (title,category, news_thumbnail, news_content, news_sources, update_user, update_timestamp, insert_user, insert_timestamp)
+        values (#{newsTitle,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{newsThumbnail,jdbcType=VARCHAR}, #{newsContent,jdbcType=VARCHAR}
+        , #{newsSources,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, now(), #{insertUser,jdbcType=VARCHAR}, now())
+    </insert>
+
+    <!-- 根据新闻的news_id,更新相应的新闻条目 -->
+    <update id="updatePostNewsById" parameterType="fcn.co.jp.park.util.PageData">
+        update t_post_news
+        set
+        title = #{newsTitle,jdbcType=VARCHAR},
+        news_thumbnail = #{newsThumbnail,jdbcType=VARCHAR},
+        news_content = #{newsContent,jdbcType=VARCHAR},
+        news_sources = #{newsSources,jdbcType=VARCHAR},
+        update_user = #{updateUser,jdbcType=VARCHAR},
+        update_timestamp = now()
+        where news_id = #{newsId,jdbcType=INTEGER}
+    </update>
+</mapper>

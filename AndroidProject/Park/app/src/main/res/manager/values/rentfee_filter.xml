@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string-array name="rentFee_discount">
+        <item>无折扣</item>
+        <item>9折</item>
+        <item>8折</item>
+        <item>7折</item>
+    </string-array>
+</resources>

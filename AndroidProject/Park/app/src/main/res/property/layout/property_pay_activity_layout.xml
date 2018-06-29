@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.fcn.park.property.bean.PropertyMainBean" />
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.property.contract.PropertyPayContract.Presenter" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.fcn.park.property.activity.PropertyMainActivity">
+
+        <include layout="@layout/app_layout_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/property_default_margin"
+            android:gravity="center_vertical|center_horizontal"
+            android:maxLines="2"
+            android:text="@{bean.payType == 6 ? bean.plateNum : bean.companyStr}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/property_middle_text_size"
+            android:visibility="@{bean.payStatus ? View.GONE : View.VISIBLE}" />
+
+        <TextView
+            android:id="@+id/property_empty_payment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/property_default_margin"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/property_middle_text_size"
+            android:visibility="@{bean.payStatus ? View.VISIBLE : View.GONE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/property_default_margin"
+            android:layout_marginRight="@dimen/property_default_margin"
+            android:orientation="vertical"
+            android:visibility="@{bean.payStatus ? View.GONE : View.VISIBLE}">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/property_default_margin"
+                    android:text="@string/property_should_pay_txt"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:id="@+id/property_pay_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="@dimen/property_default_margin"
+                    android:layout_toLeftOf="@+id/property_yuan"
+                    android:gravity="right|bottom"
+                    android:includeFontPadding="false"
+                    android:text="@{bean.payType == 6 ? bean.parkingPayNum : (bean.payType == 5 ? bean.parkingPayNum : (bean.payType == 4 ? bean.rentNumStr : (bean.payType == 3 ? bean.propertyPayNumStr :(bean.payType == 2 ? bean.electricPayNumStr : bean.waterPayNumStr))))}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_max_text_size" />
+
+                <TextView
+                    android:id="@+id/property_yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:gravity="left|bottom"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 2 | bean.payType == 1) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_water_start_num"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 2 ? (bean.electricStartNumStr + @string/property_electric_unit) : (bean.waterStartNumStr + @string/property_water_unit)}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 2 | bean.payType == 1) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_water_end_num"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 2 ? (bean.electricEndNumStr + @string/property_electric_unit) : (bean.waterEndNumStr + @string/property_water_unit)}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 2 | bean.payType == 1) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_water_record_date"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 2 ? bean.electricRecordDate : bean.waterRecordDate}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 3) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_management_start_date"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.propertyStartDate}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 3) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_management_end_date"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.propertyEndDate}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 4) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_rent_date_interval"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.rentStartDate + @string/property_rent_date_interval_unit + bean.rentEndDate}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 4) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_rent_area"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.rentAreaStr + @string/property_rent_area_unit}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 4) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_rent_unit_price"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.rentUnitPrice + @string/property_rent_price_unit}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 3 || bean.payType == 4) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_management_discount"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 3 ? bean.propertyDiscount : bean.rentDiscount}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{bean.payType == 5 ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_temporary_park_plate_num"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.plateNum}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 6 | bean.payType == 5) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 6 ? @string/property_temporary_park_enter_time : @string/property_rent_park_start_time}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 6 ? bean.enterTime : bean.startDate}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal|center_vertical"
+                android:visibility="@{(bean.payType == 6 | bean.payType == 5) ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 6 ? @string/property_temporary_park_time_length : @string/property_rent_park_end_time}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/property_middle_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{bean.payType == 6 ? bean.timeLength : bean.endDate}"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/property_min_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2">
+
+                <Button
+                    android:id="@+id/property_pay_now_btn"
+                    style="@style/property_button_style"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="onItemClick"
+                    android:text="@string/property_pay_immediately_btn_txt" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

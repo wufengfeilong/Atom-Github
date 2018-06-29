@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="bean"
+            type="com.fcn.park.info.bean.EnterpriseListBean.BusinesslistBean" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/info_enterprise_card_margin"
+        app:cardCornerRadius="@dimen/info_news_padding_top"
+        app:cardElevation="@dimen/info_enterprise_card_elevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/info_manager_demand_padding">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/info_image_view"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                binding:imageRadius="@{8}"
+                binding:imageRoundUrl="@{bean.logo}"
+                android:visibility="@{bean.logo == null?View.GONE:View.VISIBLE}"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/info_manager_demand_padding"
+                android:layout_marginTop="@dimen/info_manager_demand_padding"
+                android:singleLine="true"
+                android:gravity="center"
+                android:padding="@dimen/info_manager_margin_top"
+                android:text="@{bean.companyName}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/info_empty_text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/info_manager_margin_top"
+                android:textSize="@dimen/info_demand_text"
+                binding:appendText='@{@string/info_enterprise_address}'
+                binding:text='@{bean.address == null ? "" : bean.address}'
+                android:maxEms="11"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/info_manager_margin_top"
+                android:textSize="@dimen/info_demand_text"
+                binding:appendText='@{@string/info_enterprise_contact}'
+                binding:text="@{bean.contact}"
+                android:maxEms="11"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/info_manager_margin_top"
+                android:textSize="@dimen/info_demand_text"
+                binding:appendText='@{@string/info_enterprise_phone}'
+                binding:text="@{bean.contactTel}"
+                android:maxEms="11"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

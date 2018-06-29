@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.me.PersonMapper" >
+    <!-- 查询个人信息 -->
+    <select id="getPersonalInfo" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select
+        t.img_path as userPicture,
+        t.user_name as name,
+        t.phone as contactInfo
+        from
+        t_user t
+        where
+        t.user_id=#{userId}
+
+    </select>
+
+    <!-- 修改用户个人信息 -->
+    <update id="updatePersonalInfo" parameterType="fcn.co.jp.park.util.PageData" flushCache="false">
+        UPDATE t_user
+        SET
+        user_name = #{name},
+        phone = #{contactInfo},
+        update_timestamp = NOW()
+        WHERE
+        user_id = #{userId}
+    </update>
+    <!-- 修改用户头像 -->
+    <update id="updateUserPicture" parameterType="fcn.co.jp.park.util.PageData" flushCache="false">
+        update
+        t_user
+        set
+        img_path = #{userPicture},
+        update_timestamp = NOW()
+        where
+        user_id = #{userId}
+    </update>
+    <!-- 通过手机查询个人用户 -->
+
+    <select id="findByPhone" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select
+        *
+        from
+        t_user
+        where
+        phone=#{contactInfo}
+        AND
+        user_id <![CDATA[ <> ]]> #{userId}
+        AND del_flg='0'
+    </select>
+    <!-- 通过手机查询企业用户 -->
+
+    <select id="findBycompanyPhone" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select * from t_company_basic_info where contact_tel=#{contactInfo} AND user_id <![CDATA[ <> ]]> #{userId} AND del_flg='0'
+    </select>
+</mapper>

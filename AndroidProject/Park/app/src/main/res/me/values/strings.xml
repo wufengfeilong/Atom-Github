@@ -1,0 +1,29 @@
+<resources>
+    <string name="me_person_name">个人中心</string>
+    <string name="me_company_name">企业中心</string>
+    <string name="me_company_auth">企业认证</string>
+    <string name="me_company_demand">企业需求</string>
+    <string name="me_person_my_msg">我的消息</string>
+    <string name="me_person_my_car">我的车辆</string>
+    <string name="me_person_my_repair">我的报修</string>
+    <string name="me_person_my_ver">版本信息</string>
+    <string name="me_person_update_pwd">修改密码</string>
+    <string name="me_person_quit_login">退出登录</string>
+  <!--报修String-->
+    <string name="me_repair_time">报修时间：</string>
+    <string name="me_repair_con">报修内容：</string>
+    <string name="me_repair_name">报修姓名：</string>
+    <string name="me_repair_tel">报修电话：</string>
+    <string name="me_repair_address">报修地址：</string>
+    <!--我的车辆-->
+    <string name="me_car_editor">车辆编辑</string>
+    <string name="me_car_info">车辆信息</string>
+    <string name="me_car_add">车辆追加：</string>
+    <string name="me_car_name_editor">车主姓名</string>
+    <string name="me_car_plate_number">车牌号</string>
+    <string name="me_car_phone">电话号</string>
+    <string name="me_car_save">保存</string>
+
+
+
+</resources>

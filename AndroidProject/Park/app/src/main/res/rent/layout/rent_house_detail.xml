@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="rentHouseDetailBean"
+            type="com.fcn.park.rent.bean.RentHouseDetailBean" />
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.rent.contract.RentHouseDetailContract.Presenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <!--轮播图-->
+                <com.bigkoo.convenientbanner.ConvenientBanner
+                    android:id="@+id/convenient_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_margin="4dp"
+                    app:canLoop="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/windowBackground" />
+
+                <View  android:layout_height="1px"
+                    android:layout_width="match_parent"
+                    android:background="#66CCFF"
+
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        binding:text="@{rentHouseDetailBean.rentAddBean.house_title}" />
+                </LinearLayout>
+                <View  android:layout_height="1px"
+                    android:layout_width="match_parent"
+                    android:background="#66CCFF"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="月租金："
+                        binding:text="@{rentHouseDetailBean.rentAddBean.house_price}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="面积："
+                        binding:text="@{rentHouseDetailBean.rentAddBean.house_area}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="地址："
+                        binding:text="@{rentHouseDetailBean.rentAddBean.house_address}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="联系电话："
+                        binding:text="@{rentHouseDetailBean.rentAddBean.house_phone}" />
+
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/windowBackground" />
+
+                <View  android:layout_height="1px"
+                    android:layout_width="match_parent"
+                    android:background="#66CCFF"
+
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="详情描述："
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="暂无发展简介"
+                        android:visibility="@{TextUtils.isEmpty(rentHouseDetailBean.rentAddBean.house_direct)? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:background="@color/windowBackground"
+                        android:padding="6dp"
+                        android:text="@{rentHouseDetailBean.rentAddBean.house_direct}"
+                        android:visibility="@{TextUtils.isEmpty(rentHouseDetailBean.rentAddBean.house_direct)? View.GONE : View.VISIBLE}" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</layout>

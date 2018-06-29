@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.me.MeCarMapper">
+
+    <sql id="get_car_list">
+        car_owner as carOwner, plate_number as plateNumber,phone as phone,car_id as carId
+    </sql>
+    <!-- 查询我的汽车信息 -->
+    <select id="getCarList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="get_car_list"/>
+        from t_mycar
+    </select>
+    <!--更新车辆信息-->
+    <update id="updateCarList" parameterType="fcn.co.jp.park.util.PageData">
+        update
+        t_mycar
+        set
+        car_owner = #{CarOwner}, plate_number = #{PlateNumber}, phone = #{Phone}
+        where
+        car_id = #{carId}
+    </update>
+    <!--追加车辆信息-->
+    <insert id="insertCarList" parameterType="fcn.co.jp.park.util.PageData">
+    insert into t_mycar(car_owner,plate_number,phone)
+    values(#{CarOwner},#{PlateNumber},#{Phone})
+    </insert>
+
+    <!-- 根据新闻的news_id,删除相应的新闻条目 -->
+    <delete id="deleteCarById" parameterType="fcn.co.jp.park.util.PageData">
+        delete from t_mycar
+        where
+         car_id = #{carId}
+    </delete>
+</mapper>

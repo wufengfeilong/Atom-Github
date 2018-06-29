@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="carWaitCheckListBean"
+            type="com.fcn.park.manager.bean.car.CarWaitCheckBean.CarWaitCheckListBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <!--车牌号-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="@{@string/manager_monthly_vehicle_carNumber + carWaitCheckListBean.carNumber}"
+            android:textColor="@color/manager_monthly_vehicle"
+            android:textSize="@dimen/manager_item_car_wait_check_list_content_title_size" />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+        <!--公司名称-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="@{@string/manager_monthly_vehicle_check_company + carWaitCheckListBean.company}"
+                android:textColor="@color/manager_monthly_vehicle"
+                android:textSize="@dimen/manager_item_car_wait_check_list_content_title_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

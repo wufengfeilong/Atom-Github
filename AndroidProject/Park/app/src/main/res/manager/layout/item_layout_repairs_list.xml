@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="bean"
+            type="com.fcn.park.manager.bean.ManagerRepairsListBean.RepairsListBean"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/manager_item_repairs_list_layout_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/manager_item_repairs_list_layout_marginBottom"
+                    android:layout_marginTop="@dimen/manager_item_repairs_list_layout_marginTop"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/colorTextBlack"
+                    android:text='@{@string/manager_repair_unit+bean.userName}' />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/manager_item_repairs_list_layout_marginBottom"
+                    android:layout_marginTop="@dimen/manager_item_repairs_list_layout_marginTop"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/colorTextBlack"
+                    android:text='@{@string/manager_repair_address+bean.repairAddress}' />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/manager_item_repairs_list_layout_marginBottom"
+                    android:layout_marginTop="@dimen/manager_item_repairs_list_layout_marginTop"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/colorTextBlack"
+                    android:text='@{@string/manager_repair_time+bean.repairTime}' />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_vector_go_gray" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

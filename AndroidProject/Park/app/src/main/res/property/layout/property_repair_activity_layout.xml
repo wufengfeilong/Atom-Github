@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.fcn.park.property.contract.PropertyRepairContract.Presenter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.fcn.park.property.activity.PropertyRepairActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/app_layout_title" />
+
+        <com.fcn.park.base.widget.InputIconLayout
+            android:id="@+id/repair_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/property_repair_edit_text"
+            android:textSize="16sp"
+            app:inputHint="@string/property_repair_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:leftIcon="@drawable/repair_name" />
+
+        <com.fcn.park.base.widget.InputIconLayout
+            android:id="@+id/repair_phone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/property_repair_edit_text"
+            android:textSize="16sp"
+            app:inputHint="@string/property_repair_phone"
+            app:inputMaxLength="11"
+            app:inputType="num"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repair_name"
+            app:leftIcon="@drawable/repair_phone" />
+
+        <com.fcn.park.base.widget.InputIconLayout
+            android:id="@+id/repair_address"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/property_repair_edit_text"
+            android:textSize="16sp"
+            app:inputHint="@string/property_repair_address"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repair_phone"
+            app:leftIcon="@drawable/repair_address" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:gravity="left"
+            android:text="@string/property_repair_upload_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repair_address" />
+
+        <LinearLayout
+            android:id="@+id/repair_add_pictureList"
+            android:layout_width="300dp"
+            android:layout_height="65dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <ImageView
+                android:id="@+id/repair_add_picture1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginRight="20dp"
+                android:onClick="openSelectPhotoPop1"
+                android:src="@drawable/find_add_img" />
+
+            <ImageView
+                android:id="@+id/repair_add_picture2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginRight="20dp"
+                android:onClick="openSelectPhotoPop2"
+                android:src="@drawable/find_add_img" />
+
+            <ImageView
+                android:id="@+id/repair_add_picture3"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:onClick="openSelectPhotoPop3"
+                android:src="@drawable/find_add_img" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/repair_content"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/property_repair_edit_text"
+            android:gravity="top|left"
+            android:hint="@string/property_repair_description"
+            android:padding="5dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repair_add_pictureList" />
+
+        <Button
+            android:id="@+id/find_comment_submit"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:onClick="@{()->presenter.onClickSubmit()}"
+            android:text="@string/property_repair_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repair_content" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

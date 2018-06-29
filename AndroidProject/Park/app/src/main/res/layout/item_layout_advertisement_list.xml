@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+        <variable
+            name="listAdvertisingApprovalBean"
+            type="com.fcn.park.manager.bean.ManagerAdvertisingApprovalListBean.ListAdvertisingApprovalBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/item_layout_advertisement_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="8dp"
+            android:scaleType="fitXY"
+            binding:imageUrl="@{listAdvertisingApprovalBean.advertisingImg}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@{listAdvertisingApprovalBean.advertisingComment}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@color/colorLightGray"/>
+    </LinearLayout>
+</layout>

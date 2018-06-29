@@ -1,0 +1,31 @@
+<resources>
+    <string name="info_update_time">更新时间：</string>
+    <string name="info_enterprise_address">公司地址：</string>
+    <string name="info_enterprise_contact">联 系 人：</string>
+    <string name="info_enterprise_phone">联系电话：</string>
+    <string name="info_source">来源：</string>
+    <string name="info_Demand_p">人员需求</string>
+    <string name="info_Demand_x">项目需求</string>
+    <string name="demand_edit_title">编 辑</string>
+    <string name="info_demand_title">需求主题：</string>
+    <string name="info_manager_contract">联系人：</string>
+    <string name="info_manager_address">地址：</string>
+    <string name="info_manager_demand">需求明细：</string>
+    <string name="info_manager_request">暂无需求要求</string>
+    <string name="info_hint_title">请输入需求主题(35字以内)</string>
+    <string name="info_demand_category">类别：</string>
+    <string name="info_hint_source">请输入来源(15字以内)</string>
+    <string name="info_hint_contact">请输入联系人(15字以内)</string>
+    <string name="info_hint_tel">请输入联系电话(15字以内)</string>
+    <string name="info_hint_address">请输入地址(30字以内)</string>
+    <string name="info_empty">暂无数据</string>
+    <string name="info_enterprise_name">公司名称：</string>
+    <string name="info_enterprise_industry">行业范围：</string>
+    <string name="info_enterprise_email">E_mail：</string>
+    <string name="info_enterprise_develop">发展简介</string>
+    <string name="info_enterprise_no_develop">暂无发展简介</string>
+    <string name="info_publish_source">发布来源：</string>
+    <string name="info_publish_time">发布时间:</string>
+
+
+</resources>

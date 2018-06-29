@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.PropertyFeeMapper" >
+
+  <update id="updateByPrimaryKey" parameterType="fcn.co.jp.park.util.PageData" >
+    UPDATE t_propertyfee
+    SET company_space = #{COMPANYSPACE,jdbcType=VARCHAR},
+    unitprice = #{UNITPRICE,jdbcType=VARCHAR},
+    propertyfee_startDate = #{STARTDATE,jdbcType=VARCHAR},
+    propertyfee_endDate = #{ENDDATE,jdbcType=VARCHAR},
+    discount = #{DISCOUNT,jdbcType=VARCHAR},
+    fee = #{FEE,jdbcType=VARCHAR},
+    comment = #{COMMENT,jdbcType=VARCHAR}
+    WHERE propertyFee_id = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="getPropertyFeeList" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+    SELECT
+    propertyFee_id AS propertyFeeId,
+    company_name AS companyName,
+    company_mail AS companyMail,
+    propertyfee_startDate AS startDate,
+    propertyfee_endDate AS endDate,
+    company_space AS companySpace,
+    unitprice AS unitPrice,
+    discount AS discount,
+    fee AS fee,
+    comment AS comment,
+    isPay AS isPay,
+    del_flag AS delFlag
+    FROM t_propertyfee
+    WHERE del_flag = 0
+    LIMIT #{numS},#{numE}
+  </select>
+
+  <select id="getPropertyFeeListCount"  resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM
+    t_propertyfee
+    WHERE del_flag = 0
+  </select>
+</mapper>

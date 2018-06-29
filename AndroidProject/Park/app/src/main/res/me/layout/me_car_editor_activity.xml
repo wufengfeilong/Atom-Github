@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.me.contract.MeCarEditorContract.Presenter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/app_layout_title" />
+
+        <TextView
+            android:id="@+id/car_name_editor_text"
+            android:layout_width="@dimen/me_car_text_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_text_height"
+            android:gravity="center_vertical"
+            android:text="@string/me_car_name_editor"
+            android:textSize="@dimen/me_car_font_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
+
+        <EditText
+
+            android:id="@+id/car_name_editor"
+            android:layout_width="@dimen/me_car_text_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_margin"
+            android:background="@drawable/property_repair_edit_text"
+            android:paddingLeft="@dimen/me_car_item_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_name_editor_text">
+
+        </EditText>
+
+        <TextView
+            android:id="@+id/car_plate_number_text"
+            android:layout_width="@dimen/me_car_text_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_margin"
+            android:gravity="center_vertical"
+            android:text="@string/me_car_plate_number"
+            android:textSize="@dimen/me_car_font_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_name_editor" />
+
+        <EditText
+            android:id="@+id/car_plate_number"
+            android:layout_width="@dimen/me_car_text_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_margin"
+            android:background="@drawable/property_repair_edit_text"
+            android:paddingLeft="@dimen/me_car_item_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_plate_number_text"></EditText>
+
+        <TextView
+            android:id="@+id/car_phone_text"
+            android:layout_width="@dimen/me_car_text_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_margin"
+            android:gravity="center_vertical"
+            android:text="@string/me_car_phone"
+            android:textSize="@dimen/me_car_font_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_plate_number" />
+
+        <EditText
+            android:id="@+id/car_phone"
+            android:layout_width="@dimen/me_car_text_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_margin"
+            android:background="@drawable/property_repair_edit_text"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:paddingLeft="@dimen/me_car_item_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_phone_text">
+
+        </EditText>
+
+        <Button
+            android:layout_width="@dimen/me_car_button_width"
+            android:layout_height="@dimen/me_car_text_height"
+            android:layout_marginTop="@dimen/me_car_text_height"
+            android:onClick="@{()->presenter.onClickSubmit()}"
+            android:text="@string/me_car_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_phone" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

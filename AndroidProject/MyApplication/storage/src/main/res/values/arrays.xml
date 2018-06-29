@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ip">
+        <item>172.29.140.35</item>
+        <item>172.29.140.45</item>
+    </string-array>
+    <string-array name="search_type">
+        <item>品名</item>
+        <item>出/入庫日付</item>
+    </string-array>
+    <string name="array"/>
+</resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/manager_menu_group_one">
+
+        <item
+            android:id="@+id/manager_title_enterprise_check"
+            android:icon="@drawable/ic_vector_manager_enterprise_check"
+            android:title="@string/manager_title_enterprise_check" />
+        <item
+            android:id="@+id/manager_title_property_management_fee"
+            android:icon="@drawable/ic_vector_manager_property_management_fee"
+            android:title="@string/manager_title_property_management_fee" />
+        <item
+            android:id="@+id/manager_title_rent"
+            android:icon="@drawable/ic_vector_manager_rent"
+            android:title="@string/manager_title_rent" />
+        <item
+            android:id="@+id/manager_title_water_electricity_fee"
+            android:icon="@drawable/ic_vector_manager_water_electricity_fee"
+            android:title="@string/manager_title_water_electricity_fee" />
+    </group>
+    <group android:id="@+id/manager_menu_group_two">
+        <item
+            android:id="@+id/manager_title_publish_repairs"
+            android:icon="@drawable/ic_vector_manager_publish_repairs"
+            android:title="@string/manager_title_publish_repairs" />
+        <item
+            android:id="@+id/manager_title_reply_message"
+            android:icon="@drawable/ic_vector_manager_reply_message"
+            android:title="@string/manager_title_reply_message" />
+    </group>
+    <group android:id="@+id/manager_menu_group_three">
+        <item
+            android:id="@+id/manager_title_monthly_vehicle_check"
+            android:icon="@drawable/ic_vector_manager_monthly_vehicle_check"
+            android:title="@string/manager_title_monthly_vehicle_check" />
+        <item
+            android:id="@+id/manager_title_parking_fee"
+            android:icon="@drawable/ic_vector_manager_parking_fee"
+            android:title="@string/manager_title_parking_fee" />
+    </group>
+    <group android:id="@+id/manager_menu_group_four">
+        <item
+            android:id="@+id/manager_title_make_announcement"
+            android:icon="@drawable/ic_vector_manager_make_announcement"
+            android:title="@string/manager_title_make_announcement" />
+        <item
+            android:id="@+id/manager_title_post_news"
+            android:icon="@drawable/ic_vector_manager_post_news"
+            android:title="@string/manager_title_post_news" />
+        <item
+            android:id="@+id/manager_title_publish_activities"
+            android:icon="@drawable/ic_vector_manager_publish_activities"
+            android:title="@string/manager_title_publish_activities" />
+        <item
+            android:id="@+id/manager_title_park_introduction"
+            android:icon="@drawable/ic_vector_manager_park_introduction"
+            android:title="@string/manager_title_park_introduction" />
+    </group>
+    <group android:id="@+id/manager_menu_group_five">
+        <item
+            android:id="@+id/manager_title_user_management"
+            android:icon="@drawable/ic_vector_manager_user_management"
+            android:visible="false"
+            android:title="@string/manager_title_user_management" />
+
+        <item
+            android:id="@+id/manager_rent_house_management"
+            android:icon="@drawable/ic_vector_manager_rent_house"
+            android:title="@string/manager_title_rent_house_management"
+            />
+        <item
+            android:id="@+id/manager_title_advertising_position_management"
+            android:icon="@drawable/ic_vector_manager_advertising_position_management"
+            android:title="@string/manager_title_advertising_position_management" />
+    </group>
+    <group android:id="@+id/manager_menu_group_six">
+        <item
+            android:id="@+id/manager_title_reset_password"
+            android:icon="@drawable/ic_vector_manager_reset_password"
+            android:title="@string/manager_title_reset_password" />
+        <item
+            android:id="@+id/manager_title_quit"
+            android:icon="@drawable/ic_vector_manager_exit"
+            android:title="@string/manager_title_quit" />
+    </group>
+</menu>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="manager_post_news_list_image_height">80dp</dimen>
+    <dimen name="manager_post_news_list_image_width">105dp</dimen>
+
+    <dimen name="manager_post_news_add_content_title_size">15sp</dimen>
+
+    <dimen name="manager_text_view_title_size">15sp</dimen>
+    <dimen name="manager_text_view_content_size">16sp</dimen>
+    <dimen name="manager_item_car_wait_check_list_content_title_size">16sp</dimen>
+    <dimen name="manager_item_parking_fee_content_title_size">16sp</dimen>
+
+    <!-- XML布局中，控件距其顶部、左边、右边的大小 -->
+    <dimen name="manager_layout_marginTop">10dp</dimen>
+    <dimen name="manager_layout_marginLeft">20dp</dimen>
+    <dimen name="manager_layout_marginRight">20dp</dimen>
+
+
+    <dimen name="manager_item_repairs_list_layout_margin">10dp</dimen>
+    <dimen name="manager_item_repairs_list_layout_marginBottom">5dp</dimen>
+    <dimen name="manager_item_repairs_list_layout_marginTop">5dp</dimen>
+
+    <dimen name="manager_repairs_detail_layout_marginBottom">8dp</dimen>
+    <dimen name="manager_repairs_detail_layout_marginLeft">12dp</dimen>
+    <dimen name="manager_repairs_detail_layout_marginRight">12dp</dimen>
+    <dimen name="manager_repairs_detail_layout_marginTop">14dp</dimen>
+    <dimen name="manager_repairs_detail_size">17sp</dimen>
+
+    <dimen name="manager_repairs_image_layout_width">68dp</dimen>
+    <dimen name="manager_repairs_image_layout_height">68dp</dimen>
+    <dimen name="manager_repairs_image_layout_marginRight">20dp</dimen>
+
+</resources>

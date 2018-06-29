@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="electricFeeDetailEditBean"
+            type="com.fcn.park.manager.bean.ElectricFeeListBean.ListElectricBean" />
+
+        <variable
+            name="electricFeeDetailEditPresenter"
+            type="com.fcn.park.manager.presenter.ElectricFeeEditPresenter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10.0">
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:id="@+id/sl_manager_electricfeeEdit"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="9.0"
+            android:background="@android:color/white"
+            android:fitsSystemWindows="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="6"
+                        android:text="@string/manager_electricity_fee_startNum"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/manager_electricFeeEdit_startNum"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_et"
+                        android:inputType="numberDecimal"
+                        android:text="@{electricFeeDetailEditBean.startNum}"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manager_electricity_fee_Num_unit"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="6"
+                        android:text="@string/manager_electricity_fee_endNum"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/manager_electricFeeEdit_endNum"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_et"
+                        android:inputType="numberDecimal"
+                        android:text="@{electricFeeDetailEditBean.endNum}"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manager_electricity_fee_Num_unit"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="6"
+                        android:text="@string/manager_electricity_fee_costNum"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/manager_electricFeeEdit_costNum"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_et"
+                        android:inputType="numberDecimal"
+                        android:text="@{electricFeeDetailEditBean.costNum}"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manager_electricity_fee_Num_unit"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="6"
+                        android:text="@string/manager_electricity_fee_unitPrice"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/manager_electricFeeEdit_unitPrice"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_et"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        binding:text="@{electricFeeDetailEditBean.unitPrice}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manager_electricity_fee_electricityFeeUnitPrice_unit"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="6"
+                        android:text="@string/manager_electricity_fee_fee"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/manager_electricFeeEdit_fee"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_et"
+                        android:inputType="numberDecimal"
+                        android:text="@{electricFeeDetailEditBean.fee}"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manager_electricity_fee_price_unit"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="6"
+                        android:text="@string/manager_electricity_fee_recordDate"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/manager_electricFeeEdit_recordDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:onClick="@{()->electricFeeDetailEditPresenter.onRecordDateClick()}"
+                        android:text="@{electricFeeDetailEditBean.recordDate}"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/manager_electricFeeEdit_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{electricFeeDetailEditBean.electricFeeId}"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1.0"
+            android:background="@android:color/white"
+            android:gravity="bottom"
+            android:padding="5dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_blue_btn"
+                android:onClick="@{()->electricFeeDetailEditPresenter.onClickSubmit()}"
+                android:text="更 新"
+                android:textColor="@color/colorTitleColor"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

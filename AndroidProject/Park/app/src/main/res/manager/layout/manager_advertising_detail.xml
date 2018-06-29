@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="advertisingBean"
+            type="com.fcn.park.manager.bean.ManagerAdvertisingApprovalBean" />
+
+        <variable
+            name="advertisingPresenter"
+            type="com.fcn.park.manager.presenter.ManagerAdvertisingPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/expanded_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/manager_advertising_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/app_layout_title" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <!-- 租赁者 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@{@string/manager_advertising_renter_name + advertisingBean.insertUser}"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <!-- 套餐类型 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@{@string/manager_advertising_apply_set_type + advertisingBean.setType}"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <!-- 审批状况 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@{@string/manager_advertising_approval_status + advertisingBean.approvalStatus}"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <!-- 开始日期 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@{@string/manager_advertising_start_date + advertisingBean.payTime}"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <!-- 终止日期 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@{@string/manager_advertising_end_time + advertisingBean.endDays}"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@string/manager_advertising_comment_title"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/manager_layout_marginLeft"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:text="@{advertisingBean.advertisingComment}"
+                        android:textSize="@dimen/manager_text_view_content_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@string/manager_advertising_img_title"
+                        android:textSize="@dimen/manager_text_view_title_size" />
+
+                    <ImageView
+                        android:id="@+id/manager_advertising_thumbnail"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="@dimen/manager_layout_marginLeft"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:onClick="enlargeImg"
+                        android:src="@{advertisingBean.advertisingImg}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:text="@string/manager_advertising_refuse_reason_title"
+                        android:textSize="@dimen/manager_text_view_title_size"
+                        android:visibility="@{advertisingBean.refuseFlg == 0 ? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/manager_advertising_refuse_data_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/manager_layout_marginLeft"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:text="@{advertisingBean.rejectReason}"
+                        android:textSize="@dimen/manager_text_view_content_size"
+                        android:visibility="@{advertisingBean.refuseFlg == 0 ? View.VISIBLE : View.GONE}" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

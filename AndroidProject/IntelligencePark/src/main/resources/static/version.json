@@ -1,0 +1,12 @@
+{"data":{
+  "appname": "Park_2.0.apk",
+  "serverVersion": "2.0",
+  "serverFlag": "2",
+  "lastForce" : "0",
+  "updateurl": "http://172.29.140.35:8080/PARK/images/Park_2.0.apk",
+  "upgradeinfo": "有新版本，新版本内容：\n1.优化内存\n2.图片显示优化\n3.增加定位功能\n\n是否更新？"
+},
+  "result":"true"}
+
+
+

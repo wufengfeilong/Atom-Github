@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.property.PropertySuggestionMapper" >
+    <!--插入建议-->
+    <insert id="insertSuggestion" parameterType="fcn.co.jp.park.util.PageData">
+        INSERT INTO
+        t_suggestion(user_id,describe_content)
+        VALUES
+        (#{userId},#{describeContent})
+    </insert>
+</mapper>

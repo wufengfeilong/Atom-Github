@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="waterFeeListBean"
+            type="com.fcn.park.manager.bean.WaterFeeListBean.ListWaterBean" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{@string/manager_water_fee_company_name + waterFeeListBean.companyName}"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{@string/manager_water_fee + waterFeeListBean.fee + @string/manager_water_fee_price }"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{@string/manager_water_fee_pay_status + (waterFeeListBean.isPay == 1 ? @string/manager_water_fee_payed : @string/manager_water_fee_notpayed)}"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_do_with"
+            style="@style/text_small_button"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_red_btn"
+            android:text="催缴费"
+            android:visibility="@{waterFeeListBean.isPay == 1 ? View.GONE:View.VISIBLE }" />
+
+    </LinearLayout>
+
+</layout>

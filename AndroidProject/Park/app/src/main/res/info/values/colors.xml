@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="info_windowBackground">#f4f4f4</color>
+    <color name="info_colorTextBlack">#333</color>
+    <color name="info_colorBlue">#308ee3</color>
+    <color name="info_red">#ffff0000</color>
+    <color name="info_news_text">#868585</color>
+
+</resources>

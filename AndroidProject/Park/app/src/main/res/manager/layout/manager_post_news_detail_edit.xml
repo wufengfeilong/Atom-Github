@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="postNewsDetailEditBean"
+            type="com.fcn.park.manager.bean.ManagerPostNewsListBean.ListNewsBean"/>
+        <variable
+            name="postNewsDetailEditPresenter"
+            type="com.fcn.park.manager.presenter.ManagerPostNewsDetailEditPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 标题栏 -->
+        <include
+            android:id="@+id/app_title_layout"
+            layout="@layout/app_layout_title" />
+
+        <LinearLayout
+            android:id="@+id/post_news_add_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_title_layout"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/post_news_add_content_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="主标题："
+                        android:textSize="@dimen/manager_post_news_add_content_title_size" />
+
+                    <EditText
+                        android:id="@+id/manager_post_news_detail_edit_news_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:text="@{postNewsDetailEditBean.newsTitle}"
+                        android:maxLength="35"
+                        android:maxLines="2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="来源："
+                        android:textSize="@dimen/manager_post_news_add_content_title_size" />
+
+                    <EditText
+                        android:id="@+id/manager_post_news_detail_edit_news_source"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_et"
+                        android:maxLength="15"
+                        android:text="@{postNewsDetailEditBean.newsSources}"
+                        android:maxLines="1" />
+
+                    <LinearLayout
+                        android:id="@+id/manager_post_news_detail_edit_news_img_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="添加图片："
+                            android:textSize="@dimen/manager_post_news_add_content_title_size" />
+
+                        <ImageView
+                            android:id="@+id/manager_post_news_detail_edit_news_img"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/ic_vector_post_news_add"
+                            android:onClick="updatePostNewsDetailImage"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="内容："
+                        android:textSize="@dimen/manager_post_news_add_content_title_size" />
+
+                    <EditText
+                        android:id="@+id/manager_post_news_detail_edit_news_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{postNewsDetailEditBean.newsContent}"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top" />
+                    <WebView
+                        android:id="@+id/manager_post_news_detail_edit_news_content_web_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/post_news_detail_edit_news_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorTitleColor"
+                android:background="@drawable/bg_blue_btn"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:onClick="@{()->postNewsDetailEditPresenter.onClickNewsDetailEdit()}"
+                android:text="@string/manager_edit_OK" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

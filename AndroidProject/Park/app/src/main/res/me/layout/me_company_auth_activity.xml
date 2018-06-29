@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="presenter" type="com.fcn.park.me.presenter.MeCompanyAuthPresenter"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <include layout="@layout/app_layout_title"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                <com.fcn.park.base.widget.InputIconLayout
+                        android:id="@+id/company_input_full_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:inputHint="请输入注册企业名"
+                        app:inputType="text"
+                        app:inputMaxLength="50"
+                        app:leftIcon="@drawable/ic_vector_company_name"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                    <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@color/me_colorLightBlue2"
+                            >
+
+                        <Spinner
+                                android:id="@+id/sp_industry_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="13sp"
+                                android:entries="@array/group_industry_type"
+                                android:spinnerMode="dropdown" />
+
+                        <TextView
+                                android:id="@+id/tv_industry_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="40dp"
+                                android:background="@color/me_colorLightBlue2"
+                                android:hint="请选择行业"
+                                android:padding="10dp"
+                                android:singleLine="true"
+                                android:textColor="@android:color/white"
+                                android:textColorHint="@android:color/white"
+                                android:textSize="13sp" />
+
+                    </FrameLayout>
+                </LinearLayout>
+                <com.fcn.park.base.widget.InputIconLayout
+                        android:id="@+id/company_detail_addr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:inputHint="请输入详细地址"
+                        app:inputType="text"
+                        app:inputMaxLength="100"
+                        app:leftIcon="@drawable/ic_vector_company_addr"/>
+                <com.fcn.park.base.widget.InputIconLayout
+                        android:id="@+id/company_landline_tel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:inputHint="请输入联系电话"
+                        app:inputMaxLength="12"
+                        app:leftIcon="@drawable/ic_vector_company_tel"/>
+                <com.fcn.park.base.widget.InputIconLayout
+                        android:id="@+id/company_contact_person"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:inputHint="请输入联系人"
+                        app:inputType="text"
+                        app:inputMaxLength="30"
+                        app:leftIcon="@drawable/ic_vector_company_contact"/>
+                <com.fcn.park.base.widget.InputIconLayout
+                        android:id="@+id/company_contact_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:inputHint="请输入邮箱地址"
+                        app:inputMaxLength="50"
+                        app:leftIcon="@drawable/ic_vector_company_mail"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:weightSum="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                        <TextView
+                                android:text="请上传营业执照："
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        <ImageView
+                                android:id="@+id/company_business_license"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:onClick="@{()->presenter.addLicense()}"
+                                android:src="@drawable/ic_vector_company_business_license"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                        <TextView
+                                android:text="请上传公司LOGO："
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        <ImageView
+                                android:id="@+id/company_logo"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:onClick="@{()->presenter.addLogo()}"
+                                android:src="@drawable/ic_vector_company_business_license"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <Button
+                        style="@style/big_button"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/bg_blue_btn"
+                        android:onClick="@{()->presenter.onClickSave()}"
+                        android:text="保存" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

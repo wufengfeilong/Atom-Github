@@ -1,0 +1,34 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="manager_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/manager_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/manager_colorPrimaryDark</item>
+        <item name="colorAccent">@color/manager_colorAccent</item>
+    </style>
+
+    <!--自定义灰色线条-->
+    <style name="manager_divider_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/manager_colorGray</item>
+    </style>
+
+    <!--自定义灰色亮线条-->
+    <style name="manager_divider_line_light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/manager_colorLightDivider</item>
+    </style>
+
+    <style name="text_small_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:paddingRight">25dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.property.contract.PropertySuggestionContract.Presenter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.fcn.park.property.activity.PropertySuggestionActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/app_layout_title" />
+
+        <ImageView
+            android:id="@+id/suggestion_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/property_suggestion_img_height"
+            android:background="@drawable/suggestion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
+
+        <TextView
+            android:id="@+id/describe_text"
+            android:layout_width="@dimen/property_suggestion_view_width"
+            android:layout_height="@dimen/property_suggestion_view_height"
+            android:layout_marginTop="@dimen/property_business_item_margin"
+            android:gravity="left"
+            android:text="@string/property_suggestion_tips"
+            android:textSize="@dimen/property_min_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/suggestion_img" />
+
+        <EditText
+            android:id="@+id/describe_content"
+            android:layout_width="@dimen/property_suggestion_view_width"
+            android:layout_height="@dimen/property_suggestion_edit_height"
+            android:background="@drawable/property_repair_edit_text"
+            android:padding="@dimen/property_suggestion_edit_padding"
+            android:textSize="@dimen/property_min_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/describe_text" />
+
+        <Button
+            android:id="@+id/find_comment_submit"
+            android:layout_width="@dimen/property_suggestion_btn_width"
+            android:layout_height="@dimen/property_suggestion_view_height"
+            android:layout_marginTop="@dimen/property_business_item_margin"
+            android:onClick="@{()->presenter.onClickSubmit()}"
+            android:text="@string/property_repair_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/describe_content" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="manager_colorPrimary">#3F51B5</color>
+    <color name="manager_colorPrimaryDark">#303F9F</color>
+    <color name="manager_colorAccent">#FF4081</color>
+
+    <color name="manager_colorTitleColor">@android:color/white</color>
+    <color name="manager_colorBlue">#308ee3</color>
+    <color name="manager_colorBottomSelected">@color/colorBlue</color>
+    <color name="manager_colorBottomUnSelected">#676c72</color>
+
+    <color name="manager_windowBackground">#f4f4f4</color>
+    <color name="manager_colorManagerMenuSpace">#FFefefef</color>
+    <color name="manager_colorGray">#aaa</color>
+    <color name="manager_colorLightDivider">#eee</color>
+    <color name="manager_colorTextBlack">#333</color>
+    <color name="manager_colorRed">#f46360</color>
+
+    <color name="white_gray">#EFEFEF</color>
+    <color name="manager_monthly_vehicle">#333</color>
+    <color name="manager_parking_fee">#333</color>
+</resources>

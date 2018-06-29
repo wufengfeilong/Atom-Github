@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+        <import type="android.view.View" />
+
+        <variable
+            name="needInfo"
+            type="com.fcn.park.info.bean.NeedInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/info_news_padding_top"
+                    android:layout_marginLeft="@dimen/info_needs_margin_left"
+                    android:layout_marginTop="@dimen/info_needs_margin_top"
+                    android:maxLines="2"
+                    android:text="@{needInfo.title}"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/info_needs_text_size" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_manager_demand_padding"
+                    android:background="@color/windowBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/info_manager_demand_padding">
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_publish_source"
+                        binding:text="@{needInfo.source}"
+                        android:textSize="@dimen/info_manager_text"
+                        />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/info_manager_contract"
+                        android:textSize="@dimen/info_manager_text"
+                        binding:text="@{needInfo.contact}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/info_enterprise_phone"
+                        android:textSize="@dimen/info_manager_text"
+                        binding:text="@{needInfo.tel}" />
+
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_manager_address"
+                        android:textSize="@dimen/info_manager_text"
+                        binding:text="@{needInfo.address}" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_manager_demand_padding"
+                    android:background="@color/windowBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/info_manager_demand_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/info_manager_text"
+                        android:text="@string/info_manager_demand"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/info_needs_padding"
+                        android:text="@string/info_manager_request"
+                        android:visibility="@{TextUtils.isEmpty(needInfo.content)? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/windowBackground"
+                        android:padding="@dimen/info_enterprise_card_elevation"
+                        android:textSize="@dimen/info_manager_text"
+                        android:text="@{needInfo.content}"
+                        android:visibility="@{TextUtils.isEmpty(needInfo.content)? View.GONE : View.VISIBLE}" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</layout>

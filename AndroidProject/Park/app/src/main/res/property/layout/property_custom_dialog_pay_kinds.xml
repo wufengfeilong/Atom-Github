@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/property_pay_icon_wei_xin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/property_custom_dialog_bg"
+        android:gravity="center"
+        android:onClick="onItemClick"
+        android:paddingBottom="@dimen/property_default_margin"
+        android:paddingTop="@dimen/property_default_margin"
+        android:text="@string/property_pay_icon_wei_xin"
+        android:textSize="@dimen/property_middle_text_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/property_default_line_height"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/property_pay_icon_alipay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/property_custom_dialog_bg"
+        android:gravity="center"
+        android:onClick="onItemClick"
+        android:paddingBottom="@dimen/property_default_margin"
+        android:paddingTop="@dimen/property_default_margin"
+        android:text="@string/property_pay_icon_alipay"
+        android:textSize="@dimen/property_middle_text_size" />
+
+    <TextView
+        android:id="@+id/property_pay_icon_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onItemClick"
+        android:layout_marginTop="@dimen/property_default_margin"
+        android:background="@color/property_custom_dialog_bg"
+        android:gravity="center"
+        android:paddingBottom="@dimen/property_default_margin"
+        android:paddingTop="@dimen/property_default_margin"
+        android:text="@string/property_pay_icon_cancel"
+        android:textSize="@dimen/property_middle_text_size" />
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="carInfo"
+            type="com.fcn.park.me.bean.MeCarInfoBean.CarInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_car_item_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/me_car_item_padding">
+
+        <ImageView
+            android:layout_width="@dimen/me_car_pic_height"
+            android:layout_height="@dimen/me_car_pic_height"
+            android:layout_margin="@dimen/me_car_small_margin"
+            android:background="@drawable/me_car" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/me_car_item_padding">
+
+            <TextView
+                android:id="@+id/carOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{carInfo.carOwner}"
+                android:textSize="@dimen/me_car_font_size_normal" />
+
+            <TextView
+                android:id="@+id/plateNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{carInfo.plateNumber}"
+                android:textSize="@dimen/me_car_font_size_small" />
+
+            <TextView
+                android:id="@+id/carPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{carInfo.phone}"
+                android:textSize="@dimen/me_car_font_size_small" />
+
+            <TextView
+                android:id="@+id/carId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{carInfo.carId}"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

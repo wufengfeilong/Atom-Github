@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.ParkIntroductionMapper">
+
+    <sql id="get_park_introduction_info">
+        park_id as parkId, park_name as parkName, pic1.file_path as parkThumbnail1, pic2.file_path as parkThumbnail2,
+        pic3.file_path as parkThumbnail3, park_content as parkContent, park_address as parkAddress, park_telephone as parkTelephone
+    </sql>
+
+    <!-- 根据园区的park_id,查询园区的简介内容 -->
+    <select id="selectParkInfo" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+        select
+        <include refid="get_park_introduction_info"/>
+        from t_park_info tpi
+        left join t_picture pic1 on(pic1.picture_id = tpi.picture_id_1)
+        left join t_picture pic2 on(pic2.picture_id = tpi.picture_id_2)
+        left join t_picture pic3 on(pic3.picture_id = tpi.picture_id_3)
+        <if test="park_id != null and park_id != ''">
+            where park_id = #{parkId,jdbcType=INTEGER}
+        </if>
+
+    </select>
+
+    <!-- 新建园区简介内容 -->
+    <insert id="insertParkInfo" parameterType="fcn.co.jp.park.util.PageData"  useGeneratedKeys="true" keyProperty="park_id">
+        insert into t_park_info (park_name, picture_id_1, picture_id_2, picture_id_3, park_content, park_address, park_telephone, update_user, update_timestamp, insert_user, insert_timestamp)
+        values (#{parkName,jdbcType=VARCHAR}, #{img1,jdbcType=INTEGER}, #{img2,jdbcType=INTEGER}, #{img3,jdbcType=INTEGER}, #{parkContent,jdbcType=VARCHAR}
+        , #{parkAddress,jdbcType=VARCHAR}, #{parkTelephone,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, now(), #{insertUser,jdbcType=VARCHAR}, now())
+    </insert>
+
+    <!-- 更新园区简介内容 -->
+    <update id="updateParkInfo" parameterType="fcn.co.jp.park.util.PageData">
+         update t_park_info
+         set
+         park_name = #{parkName,jdbcType=VARCHAR},
+         picture_id_1 = #{img1,jdbcType=INTEGER},
+         picture_id_2 = #{img2,jdbcType=INTEGER},
+         picture_id_3 = #{img3,jdbcType=INTEGER},
+         park_content = #{parkContent,jdbcType=VARCHAR},
+         park_address = #{parkAddress,jdbcType=VARCHAR},
+         park_telephone = #{parkTelephone,jdbcType=VARCHAR},
+         update_user = #{updateUser,jdbcType=VARCHAR},
+         update_timestamp = now()
+         where park_id = #{parkId,jdbcType=INTEGER}
+    </update>
+</mapper>

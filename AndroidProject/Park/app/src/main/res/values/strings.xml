@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">智慧园区</string>
+    <string name="top_page">首页</string>
+    <string name="activity_page">动态</string>
+    <string name="my_page">我的</string>
+    <string name="last_item">亲已经加载全部喽^_^！</string>
+    <string name="no_internet">手机未连接网络，请连接后重试</string>
+    <string name="publish_time">发布时间：</string>
+    <string name="title_water_fee">水费缴费</string>
+    <string name="title_electric_fee">电费缴费</string>
+    <string name="title_property_fee">物业缴费</string>
+    <string name="title_parking_fee">停车缴费</string>
+    <string name="title_rent_fee">租赁缴费</string>
+    <string name="title_house_rent">房屋租赁</string>
+    <string name="title_public_repair">公共报修</string>
+    <string name="title_complain">投诉建议</string>
+    <string name="title_convenient_service">便民服务</string>
+    <string name="title_advertisement_rent">租广告位</string>
+    <string name="title_month_car_apply">月租申请</string>
+    <string name="title_recommend">强力推荐</string>
+    <string name="title_most_new_rent">最新租赁</string>
+    <string name="title_more">更多>></string>
+    <string name="menu_more">更多</string>
+    <string name="title_notice">公告</string>
+    <string name="title_help">关于我们</string>
+
+    <string name="company_check_toast">请进行企业认证</string>
+    <string name="company_check_to_personal_toast">请使用个人账户进行登录</string>
+    <string name="login_check_toast">请登录</string>
+
+    <string name="max_input_length">%1$d/%2$d</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <style name="EnterpriseInfoTextStyle">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

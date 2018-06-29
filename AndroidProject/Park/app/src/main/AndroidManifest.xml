@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fcn.park">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name=".ParkApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher_app"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher_app"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 个推 -->
+
+        <service
+            android:name=".getui_push.DemoPushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice" />
+        <service android:name=".getui_push.DemoIntentService" />
+
+        <activity
+            android:name=".guide.GuideActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".login.activity.LoginActivity" />
+        <activity android:name=".login.activity.ForgetPasswordActivity" />
+        <activity android:name=".login.activity.RegisterActivity" />
+        <activity android:name=".login.activity.RegisterClauseActivity" />
+        <activity android:name=".property.activity.PropertyServiceActivity"/>
+        <activity android:name=".property.activity.PropertyPlantLeaseActivity" />
+        <activity android:name=".property.activity.PropertyRepairActivity" />
+        <activity android:name=".property.activity.PropertyCleanActivity" />
+        <activity android:name=".property.activity.PropertyDeliverWaterActivity" />
+        <activity android:name=".property.activity.PropertyMoveHouseActivity" />
+        <activity android:name=".property.activity.PropertyPayActivity" />
+        <activity android:name=".property.activity.PropertyPayStatusActivity" />
+        <activity android:name=".property.activity.PropertyPlateNumEditActivity" />
+        <activity android:name=".property.activity.PropertySuggestionActivity" />
+        <activity android:name=".property.activity.PropertyPaymentListActivity" />
+        <activity android:name=".property.activity.PropertyPaymentDetailActivity" />
+        <activity android:name=".property.activity.PropertyRentParkListActivity" />
+        <activity android:name=".manager.activity.ManagerResetPasswordActivity" />
+        <activity android:name=".manager.activity.ManagerPostNewsListActivity" />
+        <activity android:name=".manager.activity.ManagerPostNewsDetailActivity" />
+        <activity android:name=".manager.activity.car.CarWaitCheckListActivity" />
+        <activity android:name=".manager.activity.ManagerRepairsListActivity" />
+        <activity android:name=".manager.activity.ManagerRepairsDetailActivity" />
+        <activity android:name=".manager.activity.car.ManagerCarWaitCheckDetailActivity" />
+        <activity android:name=".manager.activity.car.ManagerParkFeeListActivity" />
+        <activity android:name=".manager.activity.car.ManagerParKFeeDetailActivity" />
+	<activity android:name=".manager.activity.ManagerEnterpriseCheckListActivity" />
+        <activity android:name=".manager.activity.ManagerPostNewsAddActivity" />
+        <activity android:name=".manager.activity.ManagerPostNewsDetailEditActivity" />
+        <activity android:name=".manager.activity.ManagerParkIntroductionActivity" />
+        <activity android:name=".manager.activity.ManagerAdvertisingTypeActivity" />
+        <activity android:name=".manager.activity.ManagerAdvertisingListActivity" />
+        <activity android:name=".manager.activity.ManagerAdvertisingApprovalListActivity" />
+        <activity android:name=".manager.activity.ManagerAdvertisingApprovalDetailActivity" />
+        <activity android:name=".manager.activity.ManagerAdvertisingDetailActivity" />
+        <activity android:name=".manager.activity.ManagerAdvertisingFeeEditActivity" />
+        <activity android:name=".manager.activity.PropertyFeeListActivity" />
+        <activity android:name=".manager.activity.PropertyFeeDetailActivity" />
+        <activity android:name=".manager.activity.PropertyFeeEditActivity" />
+        <activity android:name=".manager.activity.RentFeeListActivity" />
+        <activity android:name=".manager.activity.RentFeeDetailActivity" />
+        <activity android:name=".manager.activity.RentFeeEditActivity" />
+        <activity android:name=".manager.activity.WaterAndElectricFeeTypeActivity" />
+        <activity android:name=".manager.activity.WaterFeeListActivity" />
+        <activity android:name=".manager.activity.WaterFeeDetailActivity" />
+        <activity android:name=".manager.activity.WaterFeeEditActivity" />
+        <activity android:name=".manager.activity.ElectricFeeListActivity" />
+        <activity android:name=".manager.activity.ElectricFeeDetailActivity" />
+        <activity android:name=".manager.activity.ElectricFeeEditActivity" />
+        <activity android:name=".rent.activity.RentReleasedHouseListActivity" />
+        <!-- dss start -->
+        <activity android:name=".manager.activity.ManagerMessageReplyDetailActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".manager.activity.ManagerMessageReplyListActivity"/>
+        <!-- dss start -->
+        
+        <!-- zfw start -->
+        <activity android:name=".me.activity.MeCompanyAuthActivity" />
+        <activity android:name=".me.activity.MePersonInfoActivity" />
+        <activity android:name=".me.activity.MeCompanyInfoActivity" />
+        <activity android:name=".me.activity.MeRepairRecordListActivity" />
+        <activity android:name=".me.activity.MeMyMessageActivity" />
+        <activity android:name=".me.activity.MeRepairRecordDetailActivity" />
+        <activity android:name=".me.activity.MeMyMsgDetailActivity" />
+        <activity android:name=".me.activity.MeCarInfoActivity" />
+        <activity android:name=".me.activity.MeCarEditorActivity" />
+        <activity android:name=".me.activity.MeAddCarActivity" />
+        <activity android:name=".me.activity.MeVersionInfoActivity" />
+
+        <service
+            android:name=".me.service.MeUpdateService"
+            android:exported="false"></service>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.fcn.park.me.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- zfw end -->
+        <activity android:name=".info.view.InfoNewsDetailActivity" />
+        <activity android:name=".info.view.InfoEnterpriseDetailActivity" />
+        <activity android:name=".info.view.InfoDemandDetailActivity" />
+        <activity android:name=".info.view.ManagerDemandListActivity" />
+        <activity android:name=".info.view.ManagerDemandAddActivity" />
+        <activity android:name=".info.view.ManagerDemandDetailActivity" />
+        <activity android:name=".info.view.ManagerDemandEditActivity" />
+
+        <!-- dyj  start -->
+        <activity android:name=".property.activity.PropertyParkPayActivity" />
+        <activity android:name=".property.activity.PropertyParkPayCheckStatusActivity" />
+        <activity android:name=".rent.activity.RentAddActivity" />
+        <activity android:name=".rent.activity.RentHouseDetailActivity" />
+        <activity android:name=".rent.activity.RentHouseListActivity" />
+        <!-- dyj  end -->
+        <activity android:name=".home.parkinfo.ParkInfoActivity" />
+        <activity android:name=".home.advertisement.activity.AdvertisementActivity" />
+        <activity android:name=".home.advertisement.activity.AdvertisementListActivity" />
+    </application>
+</manifest>

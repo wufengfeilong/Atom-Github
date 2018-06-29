@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/person_menu_group_basic">
+        <item
+            android:id="@+id/person_menu_item_avatar"
+            android:enabled="false"
+            android:title="头像"
+            android:titleCondensed="userPicture" />
+        <item
+            android:id="@+id/person_menu_item_name"
+            android:title="名字"
+            android:enabled="false"
+            android:titleCondensed="name" />
+    </group>
+    <group android:id="@+id/person_menu_group_contact">
+        <item
+            android:id="@+id/person_menu_item_phone"
+            android:enabled="false"
+            android:title="联系电话"
+            android:titleCondensed="contactInfo" />
+    </group>
+</menu>

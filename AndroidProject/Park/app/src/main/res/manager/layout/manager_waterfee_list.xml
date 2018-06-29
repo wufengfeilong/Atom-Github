@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/ll_manager_water_fee"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <com.liaoinstan.springview.widget.SpringView
+            android:id="@+id/spring_view_water_fee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.fcn.park.base.widget.EmptyRecyclerView
+                android:id="@+id/recycler_view_water_fee"
+                android:background="@color/windowBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.liaoinstan.springview.widget.SpringView>
+
+        <include
+            android:id="@+id/empty_view_water_fee"
+            layout="@layout/include_empty_layout" />
+    </LinearLayout>
+
+</layout>

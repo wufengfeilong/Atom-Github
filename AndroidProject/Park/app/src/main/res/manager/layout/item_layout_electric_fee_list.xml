@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="electricFeeBean"
+            type="com.fcn.park.manager.bean.ElectricFeeListBean.ListElectricBean" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{@string/manager_electricity_fee_company_name + electricFeeBean.companyName}"
+                android:textColor="@color/colorTextBlack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{@string/manager_electricity_fee + electricFeeBean.fee + @string/manager_electricity_fee_price }"
+                android:textColor="@color/colorTextBlack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{@string/manager_electricity_fee_pay_status + (electricFeeBean.isPay == 1 ? @string/manager_electricity_fee_payed : @string/manager_electricity_fee_notpayed)}"
+                android:textColor="@color/colorTextBlack" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_do_with"
+            style="@style/text_small_button"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_red_btn"
+            android:text="催缴费"
+            android:visibility="@{electricFeeBean.isPay == 1 ? View.GONE:View.VISIBLE }" />
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.AdvertisingInfoMapper">
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.AdvertisingInfoModel">
+        <id column="advertising_id" property="AdvertisingId" jdbcType="INTEGER"/>
+        <result column="advertising_img" property="AdvertisingImg" jdbcType="VARCHAR"/>
+        <result column="comment" property="AdvertisingComment" jdbcType="VARCHAR"/>
+        <result column="set_type" property="setType" jdbcType="VARCHAR"/>
+        <result column="approval_status" property="approvalStatus" jdbcType="VARCHAR"/>
+        <result column="approval_date" property="approvalDate" jdbcType="VARCHAR"/>
+        <result column="reject_reason" property="rejectReason" jdbcType="VARCHAR"/>
+        <result column="pay_status" property="PayStatus" jdbcType="VARCHAR"/>
+        <result column="pay_time" property="payTime" jdbcType="VARCHAR"/>
+        <result column="insert_user" property="insertUser" jdbcType="VARCHAR"/>
+        <result column="insert_timestamp" property="insertTime" jdbcType="VARCHAR"/>
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR"/>
+        <result column="update_timestamp" property="updateTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 查询待审批广告的列表内容 -->
+    <select id="getAdvertisingApprovalList" resultType="fcn.co.jp.park.util.PageData" parameterType="fcn.co.jp.park.util.PageData" useCache="false">
+        select
+        tadv.advertising_id as advertisingId, mdis.distinguish_name as setType, tuser.user_name as insertUser, date_format(tadv.insert_timestamp, '%Y-%m-%d') as insertTime
+        from t_advertising tadv
+        left join m_distinguish mdis on (tadv.set_type = mdis.distinguish_id and mdis.distinguish_key = 'ADVERTISE_SET_TYPE')
+        left join t_user tuser on(tadv.insert_user = tuser.user_id)
+        where tadv.approval_status = '0'
+    </select>
+
+    <!-- 广告位列表的数量(待审核的) -->
+    <select id="selectAdvertisingApprovalCount" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer" useCache="false">
+        SELECT
+        count(*)
+        FROM
+        t_advertising
+        WHERE
+        approval_status = '0'
+    </select>
+
+    <!-- 查询已审批广告的列表内容 -->
+    <select id="getAdvertisingList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        adv.advertising_id as advertisingId, adv.approval_status as approvalStatus, mdis.distinguish_name as setType, adv.pay_status as payStatus,
+        date_format(adv.pay_timestamp, '%Y-%m-%d') as payTime, pic.file_path as advertisingImg, adv.comment as advertisingComment,
+        date_format(adv.approval_date, '%Y-%m-%d') as approvalDate, tuser.user_name as insertUser
+        from t_advertising adv
+        left join m_distinguish mdis on(adv.set_type = mdis.distinguish_id and mdis.distinguish_key = 'ADVERTISE_SET_TYPE')
+        left join t_picture pic on(adv.advertising_img = pic.picture_id)
+        left join t_user tuser on(adv.insert_user = tuser.user_id)
+        where approval_status = '1' or approval_status = '2'
+        order by approval_status
+    </select>
+
+    <!-- 根据广告的advertising_id,查询广告详情 -->
+    <select id="getAdvertisingDetailInfoById" parameterType="fcn.co.jp.park.util.PageData"
+            resultType="fcn.co.jp.park.util.PageData"
+            useCache="false">
+        select
+        tadv.advertising_id as advertisingId, pic.file_path as advertisingImg, tadv.comment as advertisingComment,tadv.pay_status as payStatus,
+        date_format(tadv.pay_timestamp, '%Y-%m-%d') as payTime, tadv.approval_status as approvalStatus, mdis.distinguish_name as setType, mdis.distinguish_value as advertisingFee,
+        date_format(tadv.approval_date, '%Y-%m-%d') as approvalDate, tadv.reject_reason as rejectReason, tuser.user_id as userId, tuser.user_name as insertUser,
+        date_format(tadv.insert_timestamp, '%Y-%m-%d') as insertTime, tadv.update_user as updateUser, date_format(tadv.update_timestamp, '%Y-%m-%d') as updateTime
+        from t_advertising tadv
+        left join m_distinguish mdis on(tadv.set_type = mdis.distinguish_id and mdis.distinguish_key = 'ADVERTISE_SET_TYPE')
+        left join t_picture pic on(pic.picture_id = tadv.advertising_img)
+        left join t_user tuser on(tadv.insert_user = tuser.user_id)
+        where advertising_id = #{advertisingId,jdbcType=INTEGER}
+    </select>
+
+    <!-- 插入广告 -->
+    <insert id="addAdvertisement" parameterType="fcn.co.jp.park.util.PageData" >
+        insert into
+            t_advertising (advertising_img, comment, set_type, insert_user, insert_timestamp)
+        values (#{advertising_img}, #{content}, #{setType}, #{userName}, NOW())
+    </insert>
+
+    <!-- 点击“通过”按钮后，更新用户提交的广告的信息 -->
+    <update id="updateAdvertisingInfoByPassOn" parameterType="fcn.co.jp.park.util.PageData">
+        update t_advertising
+        set
+        approval_status = #{approvalStatus,jdbcType=VARCHAR},
+        reject_reason = '',
+        approval_date = now(),
+        update_user = #{updateUser,jdbcType=VARCHAR},
+        update_timestamp = now()
+        where advertising_id = #{advertisingId,jdbcType=INTEGER}
+    </update>
+    <insert id="insertOKMsg" parameterType="fcn.co.jp.park.util.PageData">
+        insert into t_message(title, content, activity_type, user_id, insert_user, insert_timestamp, parkPay_id)
+        values(#{msgTitle}, #{msgContent}, 10, #{userId}, #{insertUser}, now(), #{advertisingId})
+    </insert>
+    <insert id="insertNGMsg" parameterType="fcn.co.jp.park.util.PageData">
+        insert into t_message(title, content, activity_type, user_id, insert_user, insert_timestamp, parkPay_id)
+        values(#{msgTitle}, #{msgContent}, 11, #{userId}, #{insertUser}, now(), #{advertisingId})
+    </insert>
+
+    <!-- 点击“通过”按钮后，更新用户提交的广告的信息 -->
+    <update id="updateAdvertisingInfoByRefuse" parameterType="fcn.co.jp.park.util.PageData">
+        update t_advertising
+        set
+        approval_status = #{approvalStatus,jdbcType=VARCHAR},
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+        update_user = #{updateUser,jdbcType=VARCHAR},
+        update_timestamp = now()
+        where advertising_id = #{advertisingId,jdbcType=INTEGER}
+    </update>
+
+    <!-- 获取广告列表条数 -->
+    <select id="getAdvertisementInfoCount"  parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer">
+        select
+        count(advertising_id)
+        from t_advertising
+    </select>
+</mapper>

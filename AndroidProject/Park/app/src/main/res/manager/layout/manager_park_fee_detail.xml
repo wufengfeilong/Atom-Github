@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="parkFeeDetailInfoBean"
+            type="com.fcn.park.manager.bean.car.ParkFeeDetailInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@android:color/white"
+                        android:divider="@drawable/divider_line"
+                        android:dividerPadding="10dp"
+                        android:orientation="vertical"
+                        android:showDividers="middle">
+
+
+                            <!-- 姓名 -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_parking_fee_name+parkFeeDetailInfoBean.applicantName}'
+                                android:textColor="#868585"
+                                android:textSize="13sp"/>
+                              <!--  android:visibility="@{carWaitCheckDetailInfoBean.applicantName==null?View.GONE:View.VISIBLE}" />-->
+                            <!-- 电话 -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_parking_fee_phone+parkFeeDetailInfoBean.phone}'
+                                android:textColor="#868585"
+                                android:textSize="13sp"/>
+                           <!-- 车牌号-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_parking_fee_carNumber+parkFeeDetailInfoBean.carNumber}'
+                                android:textColor="#868585"
+                                android:textSize="13sp"/>
+                            <!-- 缴费金额-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_parking_fee_paymentmoney+parkFeeDetailInfoBean.paymentmoney}'
+                                android:textColor="#868585"
+                                android:textSize="13sp"/>
+                            <!-- 缴费时间-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_parking_fee_paymenttime+parkFeeDetailInfoBean.paymenttime}'
+                                android:textColor="#868585"
+                                android:textSize="13sp"/>
+                        <!--缴费方式-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="12dp"
+                            android:text='@{@string/manager_parking_fee_paymentway+parkFeeDetailInfoBean.paymentway}'
+                            android:textColor="#868585"
+                            android:textSize="13sp"/>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
+
+

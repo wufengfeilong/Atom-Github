@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="infoBean"
+            type="com.fcn.park.info.bean.InfoNewsBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/info_news_padding_top"
+                    android:layout_marginLeft="@dimen/info_needs_margin_left"
+                    android:layout_marginTop="@dimen/info_needs_margin_top"
+                    android:maxLines="2"
+                    android:text="@{infoBean.title}"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/info_needs_text_size" />
+                <!--"更新时间："+-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/info_manager_demand_padding"
+                    android:layout_marginLeft="@dimen/info_needs_margin_left"
+                    android:text='@{@string/info_update_time+infoBean.updateDate}'
+                    android:textColor="@color/info_news_text"
+                    android:textSize="@dimen/info_news_text"
+                    android:visibility="@{infoBean.updateDate==null?View.GONE:View.VISIBLE}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_manager_demand_padding"
+                    android:background="@color/colorLightDivider"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/info_needs_margin_left"
+                    android:layout_marginTop="@dimen/info_manager_demand_padding"
+                    android:layout_marginRight="@dimen/info_needs_margin_left"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_source" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/info_manager_demand_padding"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@{infoBean.sources}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_publish_time" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{infoBean.insertTimestamp == null ?  infoBean.updateTimestamp : infoBean.insertTimestamp}" />
+                </LinearLayout>
+                <WebView
+                    android:id="@+id/web_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/info_news_margin" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

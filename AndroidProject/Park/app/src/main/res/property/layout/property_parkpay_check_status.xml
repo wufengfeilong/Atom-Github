@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="parkPayBean"
+            type="com.fcn.park.property.bean.PropertyParkPayBean" />
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.property.contract.PropertyParkPayCheckStatusContract.Presenter" />
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        tools:context="com.fcn.park.property.activity.PropertyParkPayActivity">
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadingEdge="vertical"
+            android:scrollbars="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/nameEdit"
+                    android:layout_alignBottom="@+id/nameEdit"
+                    android:layout_weight="1"
+                    android:text="申请人姓名：" />
+
+                <EditText
+                    android:id="@+id/nameEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="请输入申请人姓名"
+                    android:inputType="textPersonName"
+                    android:text="@={parkPayBean.applicantName}" />
+
+                <TextView
+                    android:id="@+id/companyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/companyEdit"
+                    android:layout_alignBottom="@+id/companyEdit"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_weight="1"
+                    android:text="公司：" />
+
+                <EditText
+                    android:id="@+id/companyEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/nameEdit"
+                    android:layout_below="@+id/nameEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="请输入公司"
+                    android:inputType="textPersonName"
+                    android:text="@={parkPayBean.company}" />
+
+                <TextView
+                    android:id="@+id/phoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/phoneEdit"
+                    android:layout_alignBottom="@+id/phoneEdit"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_weight="1"
+                    android:text="电话：" />
+
+                <EditText
+                    android:id="@+id/phoneEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/companyEdit"
+                    android:layout_below="@+id/companyEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="请输入电话号码"
+                    android:inputType="textPersonName"
+                    android:text="@={parkPayBean.phone}" />
+
+                <TextView
+                    android:id="@+id/carNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/carNumber"
+                    android:layout_alignBottom="@+id/carNumber"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_weight="1"
+                    android:text="车牌号：" />
+
+                <EditText
+                    android:id="@+id/carNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/phoneEdit"
+                    android:layout_below="@+id/phoneEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="请输入车牌号"
+                    android:inputType="textPersonName"
+                    android:text="@={parkPayBean.carNumber}" />
+
+                <TextView
+                    android:id="@+id/onJobProText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_alignTop="@+id/onJobProImage"
+                    android:layout_toStartOf="@+id/onJobProImage"
+                    android:layout_weight="1"
+                    android:text="在职证明：" />
+
+                <ImageView
+                    android:id="@+id/onJobProImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignStart="@+id/carNumber"
+                    android:layout_below="@+id/carNumber"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/driverCardText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_alignTop="@+id/driverCardImage"
+                    android:layout_toStartOf="@+id/driverCardImage"
+                    android:layout_weight="1"
+                    android:text="驾驶证：" />
+
+
+                <ImageView
+                    android:id="@+id/driverCardImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignStart="@+id/onJobProImage"
+                    android:layout_below="@+id/onJobProImage"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/driveringCardText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_alignTop="@+id/driveringCardImage"
+                    android:layout_toStartOf="@+id/driveringCardImage"
+                    android:layout_weight="1"
+                    android:text="行驶证：" />
+
+
+                <ImageView
+                    android:id="@+id/driveringCardImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignStart="@+id/driverCardImage"
+                    android:layout_below="@+id/driverCardImage"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/applyTypeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_alignTop="@+id/applyType"
+                    android:layout_toStartOf="@+id/applyType"
+                    android:layout_weight="1"
+                    android:text="申请类型：" />
+
+                <TextView
+                    android:id="@+id/applyType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/driveringCardImage"
+                    android:layout_below="@+id/driveringCardImage"
+                    android:layout_marginTop="15dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/startDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/startDateEdit"
+                    android:layout_alignBottom="@+id/startDateEdit"
+                    android:layout_alignStart="@+id/applyTypeText"
+                    android:layout_weight="1"
+                    android:text="使用区间：" />
+
+                <EditText
+                    android:id="@+id/startDateEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_alignStart="@+id/carNumber"
+                    android:layout_below="@+id/applyType"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:enabled="false" />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/statusEdit"
+                    android:layout_alignBottom="@+id/statusEdit"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_weight="1"
+                    android:text="审核状态：" />
+
+                <TextView
+                    android:id="@+id/statusEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/startDateEdit"
+                    android:layout_below="@+id/startDateEdit"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:text="未通过"
+                    android:textColor="@color/info_red" />
+
+                <TextView
+                    android:id="@+id/reasonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/reasonEdit"
+                    android:layout_alignBottom="@+id/reasonEdit"
+                    android:layout_alignRight="@+id/nameText"
+                    android:layout_weight="1"
+                    android:text="未通过原因：" />
+
+                <TextView
+                    android:id="@+id/reasonEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/statusEdit"
+                    android:layout_below="@+id/statusEdit"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1" />
+
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/reasonEdit"
+                    android:layout_below="@+id/reasonEdit"
+                    android:onClick="@{()->presenter.onClickApplyCommit()}"
+                    android:text="重新申请" />
+
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

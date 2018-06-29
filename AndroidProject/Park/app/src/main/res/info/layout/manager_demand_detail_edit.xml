@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="demandDetailInfoBean"
+            type="com.fcn.park.info.bean.DemandDetailInfoBean" />
+
+        <variable
+            name="managerDemandEditPresenter"
+            type="com.fcn.park.info.presenter.ManagerDemandEditPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 标题栏 -->
+        <include
+            android:id="@+id/app_title_layout"
+            layout="@layout/app_layout_title" />
+
+        <LinearLayout
+            android:id="@+id/demand_add_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_title_layout"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/add_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"
+                    android:padding="@dimen/info_manager_demand_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:text="@string/info_demand_title"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <EditText
+                        android:id="@+id/demand_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_f"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:maxLength="35"
+                        android:maxLines="2"
+                        android:text="@{demandDetailInfoBean.title}" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_source"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <EditText
+                        android:id="@+id/demand_source"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_t"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:maxLength="15"
+                        android:maxLines="1"
+                        android:text="@{demandDetailInfoBean.source}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_manager_contract"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <EditText
+                        android:id="@+id/demand_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_t"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:maxLength="15"
+                        android:maxLines="1"
+                        android:text="@{demandDetailInfoBean.contact}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_enterprise_phone"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <EditText
+                        android:id="@+id/demand_tel"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_t"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:maxLength="15"
+                        android:maxLines="1"
+                        android:text="@{demandDetailInfoBean.tel}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:text="@string/info_manager_address"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <EditText
+                        android:id="@+id/demand_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_f"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:maxLength="30"
+                        android:maxLines="2"
+                        android:text="@{demandDetailInfoBean.address}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_manager_demand"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <EditText
+                        android:id="@+id/demand_detailed"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:text="@{demandDetailInfoBean.content}" />
+
+                    <Button
+                        android:id="@+id/demand_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_f"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="@dimen/info_manager_demand_padding"
+                        android:background="@color/info_colorBlue"
+                        android:onClick="@{()->managerDemandEditPresenter.onClickDemandEdit()}"
+                        android:text="提交"
+                        android:textColor="@color/info_windowBackground" />
+                </LinearLayout>
+
+
+            </ScrollView>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

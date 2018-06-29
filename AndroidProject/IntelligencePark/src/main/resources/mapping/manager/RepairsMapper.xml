@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--Created by 丁胜胜 on 2018/04/17.-->
+<!--描述：管理中心的报修一览用Mapper-->
+
+<mapper namespace="fcn.co.jp.park.mapper.manager.RepairsMapper">
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.RepairsModel">
+        <id column="repair_id" property="repairId" jdbcType="INTEGER"/>
+        <result column="repair_name" property="repairName" jdbcType="VARCHAR"/>
+        <result column="repair_phone" property="repairPhone" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="repair_address" property="repairAddress" jdbcType="VARCHAR"/>
+        <result column="repair_content" property="repairContent" jdbcType="VARCHAR"/>
+        <result column="repairPicture1" property="repairPic1" jdbcType="VARCHAR"/>
+        <result column="repairPicture2" property="repairPic2" jdbcType="VARCHAR"/>
+        <result column="repairPicture3" property="repairPic3" jdbcType="VARCHAR"/>
+        <result column="repair_time" property="repairTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!-- 查询报修一览列表 -->
+    <select id="getRepairsList" resultType="fcn.co.jp.park.util.PageData">
+    SELECT
+            tpr.repair_id as repairId,
+            tpr.repair_address as repairAddress,
+            tpr.repair_phone as repairPhone,
+           date_format(tpr.repair_time, '%Y-%m-%d %T') as repairTime,
+            t_user.user_name as userName
+        from  t_property_repair tpr left join t_user on tpr.user_id= t_user.user_id ORDER BY repair_time DESC
+       limit #{numS},#{numE}
+    </select>
+
+    <!--查询报修详情-->
+    <select id="getRepairsInfoById" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+       SELECT
+			tpr.repair_id as repairId,
+			tpr.repair_name as repairName,
+			tpr.repair_phone as repairPhone,
+			tpr.repair_address as repairAddress,
+			pic1.file_path as repairPic1,
+			pic2.file_path as repairPic2,
+			pic3.file_path as repairPic3,
+			tpr.repair_content as repairContent,
+			date_format(tpr.repair_time, '%Y-%m-%d') as repairTime
+	  from t_property_repair tpr
+			left join t_picture pic1 on(pic1.picture_id = tpr.repairPicture1)
+			left join t_picture pic2 on(pic2.picture_id = tpr.repairPicture2)
+			left join t_picture pic3 on(pic3.picture_id = tpr.repairPicture3)
+      where repair_id = #{repairId,jdbcType=INTEGER}
+    </select>
+
+    <!--查询报修列表总条数-->
+    <select id="getRepairsListCount" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer" useCache="false">
+        SELECT
+        count(0)
+        FROM
+        t_property_repair
+    </select>
+</mapper>

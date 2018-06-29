@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="bean" type="com.fcn.park.me.bean.MeMsgDetailBean"/>
+        <variable name="presenter" type="com.fcn.park.me.presenter.MeMyMsgDetailPresenter"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <include layout="@layout/app_layout_title"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:text="@{bean.title}"
+            />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="@{bean.creatTime}"
+                />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="@{bean.content}"
+                />
+                <LinearLayout
+                        android:gravity="center|bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <Button
+                            android:id="@+id/bottom_btn_go"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="invisible"
+                            android:onClick="@{()->presenter.toPayFee()}"
+                    />
+                </LinearLayout>
+
+            </LinearLayout>
+    </LinearLayout>
+</layout>

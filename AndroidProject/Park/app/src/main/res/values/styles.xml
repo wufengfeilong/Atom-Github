@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorBlue</item>
+        <item name="colorAccent">@color/colorGray</item>
+    </style>
+
+    <!--用来填补空白的控件-->
+    <style name="weight_view">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <!--大的按钮（适用于登录或注册）-->
+    <style name="big_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">13dp</item>
+        <item name="android:layout_marginRight">13dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--自定义灰色亮线条-->
+    <style name="divider_line_light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/colorLightDivider</item>
+    </style>
+
+    <style name="PopWindow_y_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popshow_y_anim</item>
+        <!-- 指定显示的动画xml -->
+
+        <item name="android:windowExitAnimation">@anim/pophidden_y_anim</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+
+    <!-- 页面底部的按钮的共通Style -->
+    <style name="button_bg_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@drawable/bg_blue_btn</item>
+        <item name="android:textColor">@color/colorTitleColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

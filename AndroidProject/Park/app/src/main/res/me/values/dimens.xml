@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--我的车辆list item的高度-->
+    <dimen name="me_car_item_height">100dp</dimen>
+    <!--我的车辆list item小边距-->
+    <dimen name="me_car_item_padding">5dp</dimen>
+    <!--我的车辆list小字号-->
+    <dimen name="me_car_font_size_small">15dp</dimen>
+    <!--我的车辆list正常字号-->
+    <dimen name="me_car_font_size_normal">18dp</dimen>
+    <!--我的车辆大边距-->
+    <dimen name="me_car_margin">20dp</dimen>
+    <!--我的车辆小边距-->
+    <dimen name="me_car_small_margin">2dp</dimen>
+    <!--我的车辆TextView/EditView高度-->
+    <dimen name="me_car_text_height">40dp</dimen>
+    <!--我的车辆TextView/EditView宽度-->
+    <dimen name="me_car_text_width">300dp</dimen>
+    <!--我的车辆按钮宽度-->
+    <dimen name="me_car_button_width">150dp</dimen>
+    <!--我的车辆图片高度-->
+    <dimen name="me_car_pic_height">85dp</dimen>
+    <!-- 列表标题文字尺寸-->
+    <dimen name="me_list_title_size">18sp</dimen>
+    <!-- 列表时间文字尺寸-->
+    <dimen name="me_list_date_size">12sp</dimen>
+
+</resources>

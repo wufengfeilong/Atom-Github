@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <!--<variable-->
+            <!--name="bean"-->
+            <!--type="com.fcn.park.property.bean.PropertyMainBean" />-->
+
+        <variable
+            name="payStatus"
+            type="Boolean" />
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.property.contract.PropertyPayStatusContract.Presenter" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:gravity="top|right"
+            android:text="@string/property_pay_status_need_invoice"
+            android:textSize="@dimen/property_min_text_size"
+            android:onClick="@{()->presenter.onNeedInvoiceClick()}"
+            android:visibility="@{payStatus ? View.VISIBLE : View.INVISIBLE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/property_default_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/property_default_margin"
+                android:layout_weight="2"
+                android:gravity="center_vertical|center_horizontal">
+
+                <ImageView
+                    android:id="@+id/property_pay_status_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@{payStatus ? @drawable/property_pay_success : @drawable/property_pay_failed}" />
+
+                <TextView
+                    android:id="@+id/property_pay_status_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/property_pay_status_img"
+                    android:layout_marginTop="@dimen/property_default_margin"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@{payStatus ? @string/property_pay_success : @string/property_pay_failed}"
+                    android:textSize="@dimen/property_min_text_size" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/property_pay_success_num"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/property_default_margin"
+                android:layout_weight="2"
+                android:visibility="@{payStatus ? View.VISIBLE : View.INVISIBLE}">
+
+                <TextView
+                    android:id="@+id/property_pay_status_num_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/property_pay_status_num_txt"
+                    android:textSize="@dimen/property_middle_text_size" />
+                <!--android:text="@{bean.payType == 4 ? bean.rentNumStr : (bean.payType == 3 ? bean.propertyPayNumStr :(bean.payType == 2 ? bean.electricPayNumStr : bean.electricPayNumStr))}"-->
+
+                <TextView
+                    android:id="@+id/property_pay_status_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/property_yuan"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/property_default_margin"
+                    android:textColor="@{payStatus ? @android:color/black : @color/property_colorOrange}"
+                    android:textSize="@dimen/property_max_text_size" />
+
+                <TextView
+                    android:id="@+id/property_yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/property_yuan"
+                    android:textSize="@dimen/property_middle_text_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <Button
+                    style="@style/property_button_style"
+                    android:layout_centerInParent="true"
+                    android:onClick="@{()-> payStatus ? presenter.onClickComplete() : presenter.onClickConfirm()}"
+                    android:text="@{payStatus ? @string/property_pay_status_complete : @string/property_pay_status_confirm}" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

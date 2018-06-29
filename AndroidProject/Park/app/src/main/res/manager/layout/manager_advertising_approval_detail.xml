@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="advertisingApprovalBean"
+            type="com.fcn.park.manager.bean.ManagerAdvertisingApprovalBean" />
+
+        <variable
+            name="advertisingApprovalPresenter"
+            type="com.fcn.park.manager.presenter.ManagerAdvertisingApprovalPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/approval_expanded_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/approval_advertising_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/app_layout_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:weightSum="10.0">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="9.0">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <!-- 租赁者 -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:text="@{@string/manager_advertising_renter_name + advertisingApprovalBean.insertUser}"
+                            android:textSize="@dimen/manager_text_view_title_size" />
+
+                        <!-- 套餐类型 -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:text="@{@string/manager_advertising_apply_set_type + advertisingApprovalBean.setType}"
+                            android:textSize="@dimen/manager_text_view_title_size" />
+
+                        <!-- 提交日期 -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:text="@{@string/manager_advertising_insert_date + advertisingApprovalBean.insertTime}"
+                            android:textSize="@dimen/manager_text_view_title_size" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:text="@string/manager_advertising_comment_title"
+                            android:textSize="@dimen/manager_text_view_title_size" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/manager_layout_marginLeft"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:text="@{advertisingApprovalBean.advertisingComment}"
+                            android:textSize="@dimen/manager_text_view_content_size" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:text="@string/manager_advertising_img_title"
+                            android:textSize="@dimen/manager_text_view_title_size" />
+
+                        <ImageView
+                            android:id="@+id/manager_advertising_approval_thumbnail"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginLeft="@dimen/manager_layout_marginLeft"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:onClick="enlargeImg"
+                            android:src="@{advertisingApprovalBean.advertisingImg}" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:text="@string/manager_advertising_refuse_reason_title"
+                            android:textSize="@dimen/manager_text_view_title_size" />
+
+                        <EditText
+                            android:id="@+id/manager_advertising_refuse_data_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:background="@drawable/shape_et"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="top"
+                            android:hint="@string/manager_advertising_refuse_reason_hint"
+                            android:textSize="@dimen/manager_text_view_content_size" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1.0"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1.0">
+
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bg_blue_btn"
+                        android:onClick="@{()->advertisingApprovalPresenter.passOnClick()}"
+                        android:text="@string/manager_advertising_pass_on_btn"
+                        android:textColor="@color/colorTitleColor"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bg_blue_btn"
+                        android:onClick="@{()->advertisingApprovalPresenter.refuseOnClick()}"
+                        android:text="@string/manager_advertising_refuse_on_btn"
+                        android:textColor="@color/colorTitleColor"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

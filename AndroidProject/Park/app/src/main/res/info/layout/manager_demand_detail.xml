@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="demandDetailInfo"
+            type="com.fcn.park.info.bean.DemandDetailInfoBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 标题栏 -->
+        <include
+            android:id="@+id/app_title_layout"
+            layout="@layout/app_layout_title" />
+
+        <LinearLayout
+            android:id="@+id/demand_add_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_title_layout"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/add_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/info_manager_demand_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:text="@string/info_demand_title"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <TextView
+                        android:id="@+id/demand_detail_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_f"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:text="@{demandDetailInfo.title}" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_source"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <TextView
+                        android:id="@+id/demand_detail_source"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_t"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:text="@{demandDetailInfo.source}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_manager_contract"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <TextView
+                        android:id="@+id/demand_detail_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_t"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:text="@{demandDetailInfo.contact}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_enterprise_phone"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <TextView
+                        android:id="@+id/demand_detail_tel"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_t"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:text="@{demandDetailInfo.tel}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:text="@string/info_manager_address"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <TextView
+                        android:id="@+id/demand_detail_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height_f"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:text="@{demandDetailInfo.address}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_layout_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:text="@string/info_manager_demand"
+                        android:textSize="@dimen/info_manager_text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:gravity="center"
+                        android:padding="@dimen/info_manager_margin_top"
+                        android:text="@string/info_manager_request"
+                        android:visibility="@{TextUtils.isEmpty(demandDetailInfo.content)? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/demand_detail_detailed"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/info_manager_height"
+                        android:layout_marginTop="@dimen/info_manager_margin_top"
+                        android:background="@drawable/shape_et"
+                        android:gravity="top"
+                        android:text="@{demandDetailInfo.content}"
+                        android:visibility="@{TextUtils.isEmpty(demandDetailInfo.content)? View.GONE : View.VISIBLE}" />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

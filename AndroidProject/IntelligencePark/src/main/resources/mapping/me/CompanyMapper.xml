@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fcn.co.jp.park.mapper.me.CompanyMapper">
+    <insert id="insertImge" parameterType="fcn.co.jp.park.util.PageData">
+        INSERT INTO
+            t_picture (path)
+        VALUES
+            (#{path,jdbcType=VARCHAR})
+    </insert>
+    <select id="selectImgId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT id
+        FROM
+            t_picture
+        WHERE
+            path = #{fileRealPath,jdbcType=VARCHAR}
+    </select>
+    <insert id="insertCompanyInfo" parameterType="fcn.co.jp.park.util.PageData">
+        INSERT INTO
+        t_company (user_id, company_name, industry, address, tel, contact, mail, img_id
+        <if test="logoId != null and logoId != ''">
+            , logo_id
+        </if>
+        , insert_timestamp)
+        VALUES
+        (#{userId,jdbcType=VARCHAR}
+        , #{companyName,jdbcType=VARCHAR}
+        , #{industry,jdbcType=VARCHAR}
+        , #{address,jdbcType=VARCHAR}
+        , #{tel,jdbcType=VARCHAR}
+        , #{contact,jdbcType=VARCHAR}
+        , #{mail,jdbcType=VARCHAR}
+        , #{imgId,jdbcType=VARCHAR}
+        <if test="logoId != null and logoId != ''">
+            , #{logoId,jdbcType=VARCHAR}
+        </if>
+        , NOW())
+    </insert>
+    <!-- 更新企业认证信息 -->
+    <update id="updateCompanyInfo" parameterType="fcn.co.jp.park.util.PageData" flushCache="false">
+        UPDATE
+        t_company
+        SET
+        company_name = #{companyName,jdbcType=VARCHAR}
+        ,industry = #{industry,jdbcType=VARCHAR}
+        ,address = #{address,jdbcType=VARCHAR}
+        ,tel = #{tel,jdbcType=VARCHAR}
+        ,contact = #{contact,jdbcType=VARCHAR}
+        ,mail = #{mail,jdbcType=VARCHAR}
+        ,img_id = #{imgId,jdbcType=VARCHAR}
+        ,audit_result = '0'
+        <if test="logoId != null and logoId != ''">
+            ,logo_id = #{logoId,jdbcType=VARCHAR}
+        </if>
+
+        WHERE
+        user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+    <select id="selectCompanyAuthResult" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT CASE count(audit_result)
+               WHEN 0
+                   THEN -1
+               ELSE audit_result
+               END AS audit_result
+        FROM
+            t_company
+        WHERE
+            user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+    <!-- 添加企业轮播图片 -->
+    <insert id="insertBanners" parameterType="fcn.co.jp.park.util.PageData">
+        INSERT INTO
+            t_company_picture (company_id, picture_path, update_user, insert_user, insert_timestamp)
+        VALUES
+            (#{userId,jdbcType=VARCHAR}
+                , #{picture_path,jdbcType=VARCHAR}
+                , #{userId,jdbcType=VARCHAR}
+                , #{userId,jdbcType=VARCHAR}
+                , NOW())
+    </insert>
+    <!-- 更新企业轮播图片 -->
+    <update id="updateBanners" parameterType="java.lang.String" flushCache="false">
+        UPDATE
+            t_company_picture
+        SET
+            picture_path = #{picture_path,jdbcType=VARCHAR}
+        WHERE
+            id = #{id}
+    </update>
+    <!-- 更新企业介绍 -->
+    <update id="updateIntroduce" parameterType="fcn.co.jp.park.util.PageData" flushCache="false">
+        UPDATE
+            t_company
+        SET
+            content = #{introduce}
+        WHERE
+            user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+    <!-- 获取企业介绍 -->
+    <select id="getCompanyIntroduceInfo" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT content
+        FROM
+            t_company
+        WHERE
+            user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+    <!-- 获取公司图片 -->
+    <select id="getCompanyPictureInfo" parameterType="java.lang.String" resultType="fcn.co.jp.park.model.Picture">
+        SELECT
+            id,
+            picture_path AS path
+        FROM
+            t_company_picture
+        WHERE
+            company_id = #{userId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

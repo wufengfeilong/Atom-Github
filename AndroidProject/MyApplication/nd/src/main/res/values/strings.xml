@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">知为</string>
+    <string name="title_activity_btm_nav">BtmNavActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

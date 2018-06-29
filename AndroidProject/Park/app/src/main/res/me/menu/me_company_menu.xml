@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/company_menu_group_one">
+
+        <item
+                android:id="@+id/me_company_demand"
+                android:icon="@drawable/ic_vector_company_demand"
+                android:title="@string/me_company_demand" />
+
+    </group>
+    <group android:id="@+id/company_menu_group_two">
+
+        <item
+                android:id="@+id/me_company_my_msg"
+                android:icon="@drawable/ic_vector_no_red_circle"
+                android:title="@string/me_person_my_msg" />
+        <item
+                android:id="@+id/me_company_my_car"
+                android:icon="@drawable/ic_vector_person_my_car"
+                android:title="@string/me_person_my_car" />
+        <item
+                android:id="@+id/me_company_my_repair"
+                android:icon="@drawable/ic_vector_person_my_repair"
+                android:title="@string/me_person_my_repair" />
+
+    </group>
+    <group android:id="@+id/company_menu_group_three">
+        <item
+                android:id="@+id/me_company_my_ver"
+                android:icon="@drawable/ic_vector_person_my_ver"
+                android:title="@string/me_person_my_ver" />
+        <item
+                android:id="@+id/me_company_update_pwd"
+                android:icon="@drawable/ic_vector_person_update_pwd"
+                android:title="@string/me_person_update_pwd" />
+        <item
+                android:id="@+id/me_company_quit_login"
+                android:icon="@drawable/ic_vector_person_exit"
+                android:title="@string/me_person_quit_login" />
+    </group>
+
+</menu>

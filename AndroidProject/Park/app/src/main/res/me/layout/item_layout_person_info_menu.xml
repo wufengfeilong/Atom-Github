@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="menuBean"
+            type="com.fcn.park.me.bean.InputMenuBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@{menuBean.menuName}"
+            android:textColor="@android:color/black" />
+
+        <View style="@style/weight_view"/>
+        <EditText
+            android:id="@+id/edit_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:background="@null"
+            android:ellipsize="end"
+            android:enabled="@{menuBean.needInput?menuBean.edit:false}"
+            android:gravity="right"
+            android:hint="@{menuBean.menuValue}"
+            android:minEms="2"
+            android:singleLine="true"
+            android:textColor="#666"
+            android:textSize="13sp"
+            android:visibility="@{menuBean.image?View.GONE:View.VISIBLE}" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:visibility="@{menuBean.image?View.VISIBLE:View.GONE}"
+            binding:imageRadius="@{8}"
+            binding:imageRoundUrl="@{menuBean.image ? menuBean.menuValue : null}" />
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_vector_go_gray"
+                android:visibility="@{menuBean.needInput?View.INVISIBLE:View.VISIBLE}" />
+    </LinearLayout>
+</layout>

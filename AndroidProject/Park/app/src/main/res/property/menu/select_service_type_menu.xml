@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/property_select_service_deliver_water"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="送水服务" />
+    <item
+        android:id="@+id/property_select_service_move_house"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="搬家服务" />
+    <item
+        android:id="@+id/property_select_service_clean"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="清洗服务" />
+    <item
+        android:id="@+id/property_select_service_plant_lease"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="绿植租赁服务" />
+</menu>

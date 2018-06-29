@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义输入框属性-->
+    <declare-styleable name="InputIconLayout">
+        <!--输入框中输入的数量-->
+        <attr name="inputMaxLength" format="integer" />
+        <!--输入框的文字大小-->
+        <attr name="inputSize" format="dimension" />
+        <!--输入框中的提示-->
+        <attr name="inputHint" format="string" />
+        <!--输入框中的输入类型-->
+        <attr name="inputType" format="enum">
+            <enum name="password" value="0" />
+            <enum name="text" value="1" />
+            <enum name="num" value="2" />
+        </attr>
+        <!--输入法的配置-->
+        <attr name="imeOptions" format="enum">
+            <enum name="actionNext" value="0" />
+            <enum name="actionDone" value="1" />
+            <enum name="actionSearch" value="2" />
+        </attr>
+        <!--左侧图标-->
+        <attr name="leftIcon" format="reference" />
+        <!--图片的大小-->
+        <attr name="leftIconSize" format="dimension" />
+    </declare-styleable>
+
+    <!--滑动下标View-->
+    <declare-styleable name="SlideIndexView">
+        <!--下标View的颜色-->
+        <attr name="indexColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="NumProgressLayout">
+        <attr name="bottomText" format="string" />
+        <attr name="numText" format="string" />
+        <attr name="bottomTopMargin" format="dimension" />
+        <attr name="imageSize" format="dimension" />
+        <attr name="bottomTextSize" format="dimension" />
+        <attr name="bottomTextColor" format="color" />
+        <attr name="numTextSize" format="dimension" />
+        <attr name="numTextColor" format="color" />
+        <attr name="imageBackground" format="reference" />
+        <attr name="imageSrc" format="reference" />
+        <attr name="showLeftLines" format="boolean" />
+        <attr name="showRightLines" format="boolean" />
+        <attr name="linesHeight" format="dimension" />
+        <attr name="linesColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="TitleTabView">
+        <attr name="titleLeftIcon" format="reference" />
+        <attr name="titleName" format="string" />
+        <attr name="titleLeftMargin" format="dimension" />
+        <attr name="titleImageSize" format="dimension" />
+        <attr name="titleTextSize" format="dimension" />
+        <attr name="titleTextColor" format="color" />
+    </declare-styleable>
+    <attr name="borderXRadius" format="dimension" />
+    <attr name="borderYRadius" format="dimension" />
+    <attr name="imageType">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderXRadius" />
+        <attr name="borderYRadius" />
+        <attr name="imageType" />
+    </declare-styleable>
+
+</resources>

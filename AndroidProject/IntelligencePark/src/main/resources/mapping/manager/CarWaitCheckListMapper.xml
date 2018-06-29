@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.CarWaitCheckListMapper" >
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.CarWaitCheckListModel">
+        <id column="parkPay_id" property="parkPay_id" jdbcType="INTEGER"/>
+        <result column="applicantName" property="applicantName" jdbcType="VARCHAR"/>
+        <result column="company" property="company" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="carNumber" property="carNumber" jdbcType="VARCHAR"/>
+        <result column="applyType" property="applyType" jdbcType="VARCHAR"/>
+        <result column="onJobProImage" property="onJobProImage" jdbcType="INTEGER"/>
+        <result column="driveringCardImage" property="driveringCardImage" jdbcType="INTEGER"/>
+        <result column="driverCardImage" property="driverCardImage" jdbcType="INTEGER"/>
+        <result column="startDate" property="startDate" jdbcType="VARCHAR"/>
+        <result column="endDate" property="endDate" jdbcType="VARCHAR"/>
+        <result column="paymentmoney" property="paymentmoney" jdbcType="VARCHAR"/>
+        <result column="paymentway" property="paymentway" jdbcType="VARCHAR"/>
+        <result column="paymenttime" property="paymenttime" jdbcType="VARCHAR"/>
+        <result column="checkinfo" property="checkinfo" jdbcType="VARCHAR"/>
+        <result column="insert_timestamp" property="insertTime" jdbcType="VARCHAR"/>
+
+    </resultMap>
+    <sql id="select_car_wait_check_List">
+        parkPay_id,carNumber,company
+    </sql>
+    <sql id="get_car_wait_check_detail_byId">
+                     t.parkPay_id,
+					 t.carNumber,
+					 t.company,
+					 t.applicantName,
+					 t.phone,
+					 t.company,
+						(select file_path from t_picture p where t.onJobProImage=p.picture_id) as onJobProImage,
+						(select file_path from t_picture p where t.driverCardImage=p.picture_id) as driverCardImage,
+						(select file_path from t_picture p where t.driveringCardImage=p.picture_id) as driveringCardImage,
+			CASE t.applyType WHEN '0' THEN '按月度' WHEN '1' THEN '按季度' WHEN '2'  THEN '按年度' END AS applyType,
+					 date_format(t.startDate,'%Y-%m-%d') asstartDate,
+					 date_format(t.endDate,'%Y-%m-%d') as endDate
+    </sql>
+    <!-- 获取月租车辆待审批的车辆列表 -->
+    <select id="selectCarWaitCheckList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="select_car_wait_check_List"/>
+        from t_parkpay
+        where parkStatus = 1
+    </select>
+    <!-- 根据parkPay_id,查询月租车辆审批详情 -->
+    <select id="getCarWaitCheckDetailById" parameterType="fcn.co.jp.park.util.PageData"
+            resultType="fcn.co.jp.park.util.PageData"
+            useCache="false">
+        select
+        <include refid="get_car_wait_check_detail_byId"/>
+        from t_parkpay t
+        where t.parkPay_id = #{parkPay_id}
+    </select>
+    <!-- 月租车辆审核通过 -->
+    <update id="updateCarWaitCheckPassStatus" parameterType="fcn.co.jp.park.util.PageData">updatePasskStatus
+       update t_parkpay
+        set
+        parkStatus = #{parkStatus,jdbcType=VARCHAR},
+
+        update_user = #{updateUserId,jdbcType=VARCHAR},
+        update_timestamp = now()
+        where parkPay_id = #{parkPay_id,jdbcType=INTEGER}
+    </update>
+    <!-- 月租车辆审核驳回 -->
+    <update id="onTurnClick" parameterType="fcn.co.jp.park.util.PageData">
+        update t_parkpay
+        set
+        checkinfo = #{checkinfo,jdbcType=VARCHAR},
+        parkStatus = #{parkStatus,jdbcType=VARCHAR},
+        update_user = #{updateUserId,jdbcType=VARCHAR},
+        update_timestamp = now()
+        where parkPay_id = #{parkPay_id,jdbcType=INTEGER}
+    </update>
+    <!-- 审核通过往信息表插入信息 -->
+    <insert id="insertPassMessage" parameterType="fcn.co.jp.park.util.PageData">
+        insert into  t_message
+        set
+        title = #{title,jdbcType=VARCHAR},
+        content = #{content,jdbcType=VARCHAR},
+        activity_type = '7',
+        user_id = #{user_id,jdbcType=INTEGER},
+        update_user = #{updateUserId,jdbcType=VARCHAR},
+        insert_user = #{updateUserId,jdbcType=VARCHAR},
+        parkPay_id = #{parkPay_id,jdbcType=INTEGER},
+        update_timestamp = now()
+    </insert>
+    <!-- 驳回往信息表插入信息 -->
+    <insert id="insertTurnMessage" parameterType="fcn.co.jp.park.util.PageData">
+        insert into  t_message
+        set
+        title = #{title,jdbcType=VARCHAR},
+        content = #{checkinfo,jdbcType=VARCHAR},
+        activity_type = '7',
+        user_id = #{user_id,jdbcType=INTEGER},
+        update_user = #{updateUserId,jdbcType=VARCHAR},
+        insert_user = #{updateUserId,jdbcType=VARCHAR},
+        parkPay_id = #{parkPay_id,jdbcType=INTEGER},
+        update_timestamp = now()
+    </insert>
+</mapper>
+
+
+

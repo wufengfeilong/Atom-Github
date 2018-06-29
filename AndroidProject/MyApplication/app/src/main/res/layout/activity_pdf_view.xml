@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.fujisoft.test.pdfViewActivity">
+    <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    <com.fujisoft.test.CanvasView
+            android:id="@+id/canvasPdfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    >
+
+        <ImageButton
+                android:id="@+id/prePage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="prePage"
+                android:layout_margin="5dp"
+                android:background="@drawable/left"
+        />
+        <ImageButton
+                android:id="@+id/nextPage"
+                android:onClick="nextPage"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/right"
+        />
+    </LinearLayout>
+</FrameLayout>

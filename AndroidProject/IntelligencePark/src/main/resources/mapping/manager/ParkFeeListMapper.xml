@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.ParkFeeListMapper" >
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.ParkFeeListModel">
+    <id column="parkPay_id" property="parkPay_id" jdbcType="INTEGER"/>
+    <result column="applicantName" property="applicantName" jdbcType="VARCHAR"/>
+    <result column="company" property="company" jdbcType="VARCHAR"/>
+    <result column="phone" property="phone" jdbcType="VARCHAR"/>
+    <result column="carNumber" property="carNumber" jdbcType="VARCHAR"/>
+    <result column="applyType" property="applyType" jdbcType="VARCHAR"/>
+    <result column="onJobProImage" property="onJobProImage" jdbcType="INTEGER"/>
+    <result column="driveringCardImage" property="driveringCardImage" jdbcType="INTEGER"/>
+    <result column="driverCardImage" property="driverCardImage" jdbcType="INTEGER"/>
+    <result column="startDate" property="startDate" jdbcType="VARCHAR"/>
+    <result column="endDate" property="endDate" jdbcType="VARCHAR"/>
+    <result column="paymentmoney" property="paymentmoney" jdbcType="VARCHAR"/>
+    <result column="paymentway" property="paymentway" jdbcType="VARCHAR"/>
+    <result column="paymenttime" property="paymenttime" jdbcType="VARCHAR"/>
+    <result column="checkinfo" property="checkinfo" jdbcType="VARCHAR"/>
+    <result column="insert_timestamp" property="insertTime" jdbcType="VARCHAR"/>
+    </resultMap>
+<!-- 停车费用列表 -->
+    <sql id="select_park_fee_List">
+        parkPay_id,carNumber,paymentway, date_format(paymenttime,'%Y-%m-%d') paymenttime
+    </sql>
+    <sql id="select_park_fee_detail">
+            t.parkPay_id,
+            t.applicantName,
+            t.phone,
+            t.carNumber,
+            t.paymentmoney,
+      CASE t.paymentway WHEN '0' THEN '微信' WHEN '1' THEN '支付宝'  END AS paymentway,
+            date_format(t.paymenttime,'%Y-%m-%d') paymenttime
+
+    </sql>
+<select id="selectParkFeeList" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+   select
+    <include refid="select_park_fee_List"/>
+  FROM
+  t_parkpay
+</select>
+    <!-- 根据parkPay_id,查询月租车辆审批详情 -->
+    <select id="getParkFeeListDetailById"  parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData"
+            useCache="false">
+        select
+        <include refid="select_park_fee_detail"/>
+        from t_parkpay t
+        where parkPay_id = #{parkPay_id,jdbcType=INTEGER}
+    </select>
+</mapper>
+
+
+

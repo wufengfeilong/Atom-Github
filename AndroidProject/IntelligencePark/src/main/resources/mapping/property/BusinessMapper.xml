@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.property.BusinessMapper">
+
+    <sql id="get_business_list">
+          business_name as businessName, business_phone as phone,business_address as address,business_synopsis as synopsis
+    </sql>
+
+    <!-- 查询送水商家信息 -->
+    <select id="getDeliverWaterList" parameterType="fcn.co.jp.park.util.PageData"
+            resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="get_business_list"/>
+        from t_property_service where category = '1'
+        limit #{numS},#{numE}
+    </select>
+
+    <!-- 查询搬商家信息 -->
+    <select id="getMoveHouseList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="get_business_list"/>
+        from t_property_service where category = '2'
+        limit #{numS},#{numE}
+    </select>
+
+    <!-- 查询清洗商家信息 -->
+    <select id="getCleanList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="get_business_list"/>
+        from t_property_service where category = '3'
+        limit #{numS},#{numE}
+    </select>
+
+    <!-- 查询绿植租赁商家信息 -->
+    <select id="getPlantLeaseList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="get_business_list"/>
+        from t_property_service where category = '4'
+        limit #{numS},#{numE}
+    </select>
+
+    <!--获取送水列表总件数-->
+    <select id="getDeliverWaterListCount" resultType="java.lang.Integer">
+        select
+        count(0)
+        from
+        t_property_service where category = '1'
+    </select>
+
+    <!--获取搬家列表总件数-->
+    <select id="getMoveHouseListCount" resultType="java.lang.Integer">
+        select
+        count(0)
+        from
+        t_property_service where category = '2'
+    </select>
+
+    <!--获取清洁列表总件数-->
+    <select id="getCleanListCount" resultType="java.lang.Integer">
+        select
+        count(0)
+        from
+        t_property_service where category = '3'
+    </select>
+
+    <!--获取绿植租赁列表总件数-->
+    <select id="getPlantLeaseListCount" resultType="java.lang.Integer">
+        select
+        count(0)
+        from
+        t_property_service where category = '4'
+    </select>
+</mapper>

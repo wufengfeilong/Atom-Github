@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.property.PropertyPayMapper">
+
+    <!-- 获取水费缴费信息 -->
+    <sql id="Base_Water_Column_List">
+        T1.user_name, T2.fee AS water_fee, T2.start_num, T2.end_num, T2.record_date
+    </sql>
+    <select id="selectWaterPayInfo" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_Water_Column_List"/>
+        FROM t_user T1, t_water_electric T2
+        WHERE T1.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.pay_status = #{payStatus,jdbcType=INTEGER}
+        LIMIT 1
+    </select>
+
+    <!-- 获取电费缴费信息 -->
+    <sql id="Base_Electric_Column_List">
+        T1.user_name, T2.fee AS electric_fee, T2.start_num AS electric_start_num, T2.end_num AS electric_end_num, T2.record_date
+    </sql>
+    <select id="selectElectricPayInfo" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="Base_Electric_Column_List"/>
+        FROM t_user T1, t_water_electric T2
+        WHERE T1.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.pay_status = #{payStatus,jdbcType=INTEGER}
+        LIMIT 1
+    </select>
+
+    <!-- 获取物业费缴费信息 -->
+    <sql id="Base_Property_Column_List">
+        T1.user_name, T2.propertyfee_startDate, T2.propertyfee_endDate, T2.discount AS property_discount, T2.fee AS property_fee
+    </sql>
+    <select id="selectPropertyPayInfo" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="Base_Property_Column_List"/>
+        FROM t_user T1, t_propertyfee T2
+        WHERE T1.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.isPay = #{payStatus,jdbcType=INTEGER}
+        LIMIT 1
+    </select>
+
+    <!-- 获取租赁费缴费信息 -->
+    <sql id="Base_Rent_Column_List">
+        T1.user_name, T2.rentfee_startDate, T2.rentfee_endDate, T2.fee AS rent_fee, T2.discount AS rent_discount, T2.area, T2.unit_price
+    </sql>
+    <select id="selectRentPayInfo" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="Base_Rent_Column_List"/>
+        from t_user T1, t_rent_fee T2
+        WHERE T1.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.user_id = #{companyId,jdbcType=VARCHAR}
+        AND T2.pay_status = #{payStatus,jdbcType=INTEGER}
+        LIMIT 1
+    </select>
+
+    <!-- 获取临时停车费缴费信息 -->
+    <sql id="Base_Temporary_PlateNum_Column_List">
+        carNumber, enterTime, TIME_TO_SEC(TIMEDIFF(NOW(),enterTime)) AS timeLength
+    </sql>
+    <select id="selectTemporaryParkInfo" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="Base_Temporary_PlateNum_Column_List"/>
+        from t_parkpay
+        WHERE
+        (carNumber = #{carNumber,jdbcType=VARCHAR}
+        AND parkStatus = #{payStatus,jdbcType=INTEGER})
+        LIMIT 1
+    </select>
+
+    <!-- 获取月租车辆缴费信息 -->
+    <sql id="Base_Rent_Park_Column_List">
+        parkPay_id AS parkPayId, carNumber, startDate, endDate, paymentmoney, applyType, parkStatus,
+        DATE_FORMAT(paymenttime, '%Y-%m-%d %T') AS paymenttime,
+        DATE_FORMAT(enterTime, '%Y-%m-%d %T') AS enterTime,
+        DATE_FORMAT(exitTime, '%Y-%m-%d %T') AS exitTime, paymentway
+    </sql>
+    <select id="selectRentParkInfo" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="Base_Rent_Park_Column_List"/>
+        from t_parkpay
+        WHERE parkPay_id = #{parkPayId,jdbcType=VARCHAR}
+        AND user_id = #{userId,jdbcType=VARCHAR}
+        AND parkStatus = #{payStatus,jdbcType=INTEGER}
+        LIMIT 1
+    </select>
+
+    <!-- 获取有效的月租车辆申请信息 -->
+    <select id="selectRentParkList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_Rent_Park_Column_List"/>
+        FROM t_parkpay
+        WHERE user_id = #{userId,jdbcType=VARCHAR}
+        AND (parkStatus = 1 OR parkStatus = 2 OR parkStatus = 3 OR (parkStatus = 4 AND endDate >= date_format(NOW(),'%y-%m-%d')))
+    </select>
+
+
+    <!-- 获取有效的月租车辆申请信息 -->
+    <select id="selectPassedRentParkList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_Rent_Park_Column_List"/>
+        FROM t_parkpay
+        WHERE user_id = #{userId,jdbcType=VARCHAR}
+        AND parkStatus = 3
+    </select>
+
+    <!-- 删除符合条件的月租车辆申请信息 -->
+    <delete id="deleteRentParkItem" parameterType="fcn.co.jp.park.util.PageData">
+        DELETE
+        FROM t_parkpay
+        WHERE
+        parkPay_id = #{parkPayId,jdbcType=VARCHAR}
+    </delete>
+
+    <!-- 获取水费缴费记录列表 -->
+    <sql id="Base_WaterFeePaymentList_Column_List">
+        T1.user_name, T2.fee AS water_fee, T2.start_num, T2.end_num,
+        T2.record_date, DATE_FORMAT(T2.pay_time, '%Y-%m-%d %T') AS paymenttime,
+        T2.pay_way AS paymentway, 1 AS payType
+    </sql>
+    <select id="selectWaterFeePaymentList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_WaterFeePaymentList_Column_List"/>
+        FROM t_user T1, t_water_electric T2
+        WHERE T1.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.type = 1
+        AND T2.pay_status = 1
+        ORDER BY pay_time
+    </select>
+
+    <!-- 获取电费缴费记录列表 -->
+    <sql id="Base_ElectricFeePaymentList_Column_List">
+        T1.user_name, T2.fee AS electric_fee, T2.start_num AS electric_start_num,
+        T2.end_num AS electric_end_num, T2.record_date,
+        DATE_FORMAT(T2.pay_time, '%Y-%m-%d %T') AS paymenttime, T2.pay_way AS paymentway, 2 AS payType
+    </sql>
+    <select id="selectElectricFeePaymentList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_ElectricFeePaymentList_Column_List"/>
+        FROM t_user T1, t_water_electric T2
+        WHERE T1.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.type = 2
+        AND T2.pay_status = 1
+        ORDER BY pay_time
+    </select>
+
+    <!-- 获取物业费缴费记录列表 -->
+    <sql id="Base_PropertyFeePaymentList_Column_List">
+        T1.user_name, T2.propertyfee_startDate, T2.propertyfee_endDate,
+        T2.discount AS property_discount, T2.fee AS property_fee,
+        DATE_FORMAT(T2.pay_time, '%Y-%m-%d %T') AS paymenttime, T2.pay_way AS paymentway, 3 AS payType
+    </sql>
+    <select id="selectPropertyFeePaymentList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_PropertyFeePaymentList_Column_List"/>
+        FROM t_user T1, t_propertyfee T2
+        WHERE T1.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.isPay = 1
+        ORDER BY pay_time
+    </select>
+
+    <!-- 获取租赁费缴费记录列表 -->
+    <sql id="Base_RentFeePaymentList_Column_List">
+        T1.user_name, T2.rentfee_startDate, T2.rentfee_endDate, T2.fee AS rent_fee,
+         T2.discount AS rent_discount, T2.area, T2.unit_price,
+         DATE_FORMAT(T2.pay_time, '%Y-%m-%d %T') AS paymenttime, T2.pay_way AS paymentway, 4 AS payType
+    </sql>
+    <select id="selectRentFeePaymentList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_RentFeePaymentList_Column_List"/>
+        FROM t_user T1, t_rent_fee T2
+        WHERE T1.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.user_id = #{userId,jdbcType=VARCHAR}
+        AND T2.pay_status = 1
+        ORDER BY pay_time
+    </select>
+
+    <!-- 获取停车费缴费记录列表 -->
+    <select id="selectParkingPaymentList" resultType="fcn.co.jp.park.util.PageData"
+            parameterType="fcn.co.jp.park.util.PageData">
+        SELECT
+        <include refid="Base_Rent_Park_Column_List"/>
+        FROM t_parkpay
+        WHERE user_id = #{userId,jdbcType=VARCHAR}
+        AND (parkStatus = 3 OR parkStatus = 8 OR parkStatus = 9)
+        ORDER BY paymenttime
+    </select>
+
+</mapper>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.login.contract.LoginContract.Presenter" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/sl_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTitleColor"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTitleColor"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="7dp"
+                    android:onClick="@{()->presenter.onClickClose()}"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_vector_clear"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="50dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:src="@drawable/icon"/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="32dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlue"
+                android:text="移动智慧园区,科技改变生活"/>
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="25dp"-->
+                <!--android:layout_marginTop="50dp"-->
+                <!--android:divider="@drawable/divider_line"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="32dp"-->
+                <!--android:paddingRight="32dp"-->
+                <!--android:showDividers="middle">-->
+
+                <!--<com.fcn.park.base.widget.InputIconLayout-->
+                    <!--android:id="@+id/input_user_name"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@android:color/white"-->
+                    <!--app:inputHint="帐号"-->
+                    <!--app:inputMaxLength="30"-->
+                    <!--app:leftIcon="@drawable/ic_vector_login_user_avatar" />-->
+
+                <!--<com.fcn.park.base.widget.InputIconLayout-->
+                    <!--android:id="@+id/input_password"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@android:color/white"-->
+                    <!--app:imeOptions="actionDone"-->
+                    <!--app:inputHint="密码"-->
+                    <!--app:inputMaxLength="20"-->
+                    <!--app:inputType="password"-->
+                    <!--app:leftIcon="@drawable/ic_vector_login_password" />-->
+
+                <!--<Space-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<Button-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/bg_login_btn"-->
+                <!--android:layout_marginLeft="32dp"-->
+                <!--android:layout_marginRight="32dp"-->
+                <!--android:textColor="@color/colorTitleColor"-->
+                <!--android:textSize="18sp"-->
+                <!--android:onClick="@{()->presenter.onClickLogin()}"-->
+                <!--android:text="登录" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="34dp"-->
+                <!--android:layout_marginRight="34dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:onClick="@{()->presenter.onClickGoRegister()}"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:text="注册帐号"-->
+                    <!--android:textColor="@color/colorTitleColor" />-->
+
+                <!--<Space style="@style/weight_view" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:onClick="@{()->presenter.onClickForgetPassword()}"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:text="忘记密码?"-->
+                    <!--android:textColor="@color/colorTitleColor" />-->
+            <!--</LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:id="@+id/login_id_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp">
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@drawable/ic_vector_login_user_avatar"-->
+                        <!--android:layout_marginLeft="8dp"/>-->
+
+                    <!--<android.support.design.widget.TextInputLayout-->
+                        <!--android:id="@+id/loginLayout"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--app:passwordToggleEnabled="true"-->
+                        <!--&gt;-->
+                        <com.fcn.park.base.widget.InputIconLayout
+                            android:id="@+id/input_user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_input_round"
+                            app:inputHint="手机号"
+                            android:maxLines="1"
+                            app:inputType="num"
+                            app:leftIcon="@drawable/ic_vector_login_user_avatar"/>
+                    <!--</android.support.design.widget.TextInputLayout>-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/login_pwd_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp">>
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@drawable/ic_vector_login_password"-->
+                        <!--android:layout_marginLeft="8dp"/>-->
+
+                    <!--<android.support.design.widget.TextInputLayout-->
+                        <!--android:id="@+id/pwdLayout"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--app:passwordToggleEnabled="true"-->
+                        <!--&gt;-->
+                        <com.fcn.park.base.widget.InputIconLayout
+                            android:id="@+id/input_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_input_round"
+                            app:inputHint="密码"
+                            android:maxLines="1"
+                            app:inputType="password"
+                            app:leftIcon="@drawable/ic_vector_login_password"/>
+                    <!--</android.support.design.widget.TextInputLayout>-->
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_blue_btn"
+                    android:textColor="@color/colorTitleColor"
+                    android:textSize="18sp"
+                    android:onClick="@{()->presenter.onClickLogin()}"
+                    android:text="登录" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->presenter.onClickGoRegister()}"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlue"
+                        android:text="注册帐号" />
+
+                    <Space style="@style/weight_view" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->presenter.onClickForgetPassword()}"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlue"
+                        android:text="忘记密码?" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginBottom="8dp"
+            android:textSize="12sp"
+            android:layout_alignParentBottom="true"
+            android:text="©1996 - 2018 FUJISOFT-CHINA Co., Ltd." />
+
+    </RelativeLayout>
+</layout>

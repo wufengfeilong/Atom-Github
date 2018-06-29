@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.text.TextUtils" />
+        <import type="android.view.View" />
+        <variable
+            name="enterpriseInfo"
+            type="com.fcn.park.info.bean.EnterpriseInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <!--轮播图-->
+                <com.bigkoo.convenientbanner.ConvenientBanner
+                    android:id="@+id/convenient_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_banner_height"
+                    android:layout_margin="@dimen/info_banner_margin"
+                    app:canLoop="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_manager_demand_padding"
+                    android:background="@color/windowBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/info_manager_demand_padding">
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_enterprise_name"
+                        android:textSize="@dimen/info_news_text"
+                        binding:text="@{enterpriseInfo.businessinfo.companyName}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_enterprise_address"
+                        android:textSize="@dimen/info_news_text"
+                        binding:text="@{enterpriseInfo.businessinfo.address}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_enterprise_industry"
+                        android:textSize="@dimen/info_news_text"
+                        binding:text="@{enterpriseInfo.businessinfo.industry}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/info_manager_contract"
+                        android:textSize="@dimen/info_news_text"
+                        binding:text="@{enterpriseInfo.businessinfo.contact}" />
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/info_news_text"
+                        android:text="@string/info_enterprise_phone"
+                        binding:text="@{enterpriseInfo.businessinfo.contactTel}" />
+
+
+                    <TextView
+                        style="@style/EnterpriseInfoTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_enterprise_email"
+                        android:textSize="@dimen/info_news_text"
+                        binding:text="@{enterpriseInfo.businessinfo.mail}" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_manager_demand_padding"
+                    android:background="@color/windowBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/info_manager_demand_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_enterprise_develop"
+                        android:textSize="@dimen/info_manager_text"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/info_enterprise_card_elevation"
+                        android:text="@string/info_enterprise_no_develop"
+                        android:textSize="@dimen/info_news_text"
+                        android:visibility="@{TextUtils.isEmpty(enterpriseInfo.businessinfo.companyIntroduction)? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/info_enterprise_card_elevation"
+                        android:background="@color/windowBackground"
+                        android:padding="@dimen/info_enterprise_card_elevation"
+                        android:textSize="@dimen/info_news_text"
+                        android:text="@{enterpriseInfo.businessinfo.companyIntroduction}"
+                        android:visibility="@{TextUtils.isEmpty(enterpriseInfo.businessinfo.companyIntroduction)? View.GONE : View.VISIBLE}" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</layout>

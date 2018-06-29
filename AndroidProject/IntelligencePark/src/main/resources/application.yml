@@ -1,0 +1,43 @@
+server:
+  port: 8080
+  servlet:
+    path: /PARK
+
+web.upload-repair: C:/ParkFile/uploadFiles/repair/
+web.upload-user: C:/ParkFile/uploadFiles/user/
+web.upload-monthCarApply: C:/ParkFile/uploadFiles/monthCarApply/
+web.upload-news: C:/ParkFile/uploadFiles/news/
+web.upload-companyInfo: C:/ParkFile/uploadFiles/companyInfo/
+web.upload-advertisementInfo: C:/ParkFile/uploadFiles/advertisement/
+
+spring:
+    datasource:
+        name: smartpark
+        url: jdbc:mysql://172.29.139.15:3306/smartpark?prepStmtCacheSize=517&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+        username: root
+        password: root
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    mvc:
+        static-path-pattern: /images/**
+    resources:
+        static-locations: classpath:/static/,file:${web.upload-repair},file:${web.upload-user},file:${web.upload-monthCarApply},file:${web.upload-news},file:${web.upload-companyInfo},file:${web.upload-advertisementInfo}
+
+mybatis:
+  mapper-locations: classpath:mapping/**/*.xml
+  type-aliases-package: fcn.co.jp.park.model
+

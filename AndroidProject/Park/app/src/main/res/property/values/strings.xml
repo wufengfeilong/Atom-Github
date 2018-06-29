@@ -1,0 +1,117 @@
+<resources>
+    <string name="property_water_pay_title">水费缴费</string>
+    <string name="property_payment_list_btn_txt">缴费记录</string>
+    <string name="property_should_pay_txt">应缴金额</string>
+    <string name="property_pay_immediately_btn_txt">立即缴费</string>
+    <string name="property_water_start_num">起　　码</string>
+    <string name="property_water_end_num">止　　码</string>
+    <string name="property_water_record_date">录表日期</string>
+    <string name="property_rent_price_unit">元/平/月</string>
+    <string name="property_rent_area_unit">㎡</string>
+    <string name="property_water_unit">m³</string>
+    <string name="property_electric_unit">度</string>
+    <string name="property_yuan">元</string>
+    <string name="property_pay_empty">您尚未产生%s项目</string>
+
+
+    <string name="property_electric_pay_title">电费缴费</string>
+
+    <string name="property_management_pay_title">物业费缴费</string>
+    <string name="property_management_start_date">起始日期</string>
+    <string name="property_management_end_date">终止日期</string>
+    <string name="property_management_discount">折　　扣</string>
+
+    <string name="property_rent_pay_title">租赁费缴费</string>
+    <string name="property_rent_date_interval">起止日期</string>
+    <string name="property_rent_date_interval_unit">～</string>
+    <string name="property_rent_area">租赁面积</string>
+    <string name="property_rent_unit_price">租赁单价</string>
+    <string name="property_rent_discount">租赁折扣</string>
+
+
+    <string name="property_temporary_park_title">临停车辆缴费</string>
+    <string name="property_temporary_park_plate_num">车牌号码</string>
+    <string name="property_temporary_park_enter_time">入场时间</string>
+    <string name="property_temporary_park_time_length">停车时长</string>
+    <string name="property_temporary_park_exit_time">出场时间</string>
+    <string name="property_temporary_park_plate_hint">请输入车牌号码</string>
+    <string name="property_empty_plate_num_again">您输入的车牌号码为空，请重新输入。</string>
+    <string name="property_mistake_plate_num_again">您输入的车牌号码有误，请重新输入。</string>
+
+    <string name="property_rent_park_title">月租车辆缴费</string>
+    <string name="property_rent_park_start_time">起始时间</string>
+    <string name="property_rent_park_end_time">终止时间</string>
+    <string name="property_rent_park_type">租赁类型</string>
+
+    <string name="property_rent_park_list_title">月租车辆申请列表</string>
+    <string name="property_rent_park_list_add_btn">添加</string>
+    <string name="property_rent_park_month">月度卡</string>
+    <string name="property_rent_park_quarter">季度卡</string>
+    <string name="property_rent_park_year">年度卡</string>
+    <string name="property_rent_park_check_ok">已通过</string>
+    <string name="property_rent_park_check_no">未通过</string>
+    <string name="property_rent_park_checking">审核中</string>
+    <string name="property_rent_park_check_pay">已缴费</string>
+    <string name="property_rent_park_empty">您没有有效的申请信息。</string>
+
+    <string name="property_select_park_type_temporary">临时停车</string>
+    <string name="property_select_park_type_rent">月租停车</string>
+    <string name="property_temporary_park_plate_num_title">临停车辆号码编辑</string>
+
+
+    <string name="property_water_payment_list_title">水费缴费记录</string>
+    <string name="property_electric_payment_list_title">电费缴费记录</string>
+    <string name="property_management_payment_list_title">物业费缴费记录</string>
+    <string name="property_rent_payment_list_title">租赁费缴费记录</string>
+    <string name="property_parking_payment_list_title">停车费缴费记录</string>
+    <string name="property_payment_detail_title">缴费记录详情</string>
+    <string name="property_back_btn_txt">返回</string>
+    <string name="property_payment_empty">您尚未产生缴费记录。</string>
+
+    <string name="property_payment_type">缴费类型　</string>
+    <string name="property_payment_type_parking">停车费</string>
+    <string name="property_payment_time">缴费时间　</string>
+    <string name="property_payment_num">缴费金额　</string>
+    <string name="property_payment_plate_num">车牌号码　</string>
+
+    <string name="property_pay_status_title">支付结果</string>
+    <string name="property_pay_status_num_txt">支付金额</string>
+    <string name="property_pay_way_txt">支付方式</string>
+    <string name="property_pay_status_complete">完成</string>
+    <string name="property_pay_status_confirm">确定</string>
+    <string name="property_pay_status_need_invoice">需要发票</string>
+    <string name="property_pay_invoice_success_toast">亲爱的用户，物业已收到您索要发票的需求，您可去物业领取纸质发票。</string>
+    <string name="property_pay_invoice_failed_toast">亲爱的用户，您索要发票的需求提交未成功，您可去物业开取纸质发票。</string>
+
+    <string name="property_data_apply_error_title">数据获取失败</string>
+
+    <string name="property_pay_success">恭喜您支付成功!</string>
+    <string name="property_pay_failed">对不起支付失败!</string>
+    <string name="property_pay_icon_wei_xin">微信</string>
+    <string name="property_pay_icon_alipay">支付宝</string>
+    <string name="property_pay_icon_cancel">取消</string>
+    <string name="property_repair_title">报修追加</string>
+    <string name="property_service">便民服务</string>
+    <string name="property_deliver_water_title">送水服务</string>
+    <string name="property_move_house_title">搬家服务</string>
+    <string name="property_clean_title">清洗服务</string>
+    <string name="property_plant_lease_title">绿植租赁服务</string>
+    <string name="property_suggestion_title">投诉建议</string>
+    <string name="property_repair_name">联系人姓名</string>
+    <string name="property_repair_phone">联系人电话</string>
+    <string name="property_repair_address">报修地址</string>
+    <string name="property_repair_upload_pic">有图有真相，上传图片:</string>
+    <string name="property_repair_description">请输入问题描述，以便尽快给您处理</string>
+    <string name="property_repair_submit">提交</string>
+    <string name="property_suggestion_tips">请提出您的建议或意见:</string>
+
+    <string name="property_rent_park_person_name">姓　　名</string>
+    <string name="property_rent_park_person_name_edit_hint">请输入申请人姓名</string>
+    <string name="property_rent_park_company_name">公　　司</string>
+    <string name="property_rent_park_company_name_edit_hint">请输入公司名称</string>
+    <string name="property_rent_park_tel_num">电话号码</string>
+    <string name="property_rent_park_tel_num_edit_hint">请输入电话号码</string>
+    <string name="property_rent_park_plate_num_edit_hint">请输入车牌号码</string>
+
+
+</resources>

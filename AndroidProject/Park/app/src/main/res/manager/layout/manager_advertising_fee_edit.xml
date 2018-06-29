@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="advertisingFeeEditPresenter"
+            type="com.fcn.park.manager.presenter.ManagerAdvertisingFeeEditPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:weightSum="10.0">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="9.0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <!-- 优惠套餐设置 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:text="@string/manager_advertising_fee_offer_set"
+                        android:textColor="@color/manager_colorTextBlack"
+                        android:textSize="16sp" />
+
+                    <!-- 套餐一的设置 Start -->
+                    <LinearLayout
+                        android:id="@+id/advertising_fee_offer1_set_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/advertising_fee_offer1_set_rental_fee_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/manager_advertising_fee_offer_rent_fee"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/advertising_fee_offer1_set_rental_fee_et"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/shape_et"
+                                android:gravity="center"
+                                android:inputType="numberDecimal"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/manager_advertising_fee_offer_rent_total_money_title"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!-- 套餐一的设置 End -->
+
+                    <!-- 套餐二的设置 Start -->
+                    <LinearLayout
+                        android:id="@+id/advertising_fee_offer2_set_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/advertising_fee_offer2_set_rental_fee_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/manager_advertising_fee_offer_rent_fee"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/advertising_fee_offer2_set_rental_fee_et"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/shape_et"
+                                android:gravity="center"
+                                android:inputType="numberDecimal"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/manager_advertising_fee_offer_rent_total_money_title"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!-- 套餐二的设置 End -->
+
+                    <!-- 套餐三的设置 Start -->
+                    <LinearLayout
+                        android:id="@+id/advertising_fee_offer3_set_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="@dimen/manager_layout_marginTop"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/advertising_fee_offer3_set_rental_fee_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="@dimen/manager_layout_marginTop"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/manager_advertising_fee_offer_rent_fee"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/advertising_fee_offer3_set_rental_fee_et"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/shape_et"
+                                android:gravity="center"
+                                android:inputType="numberDecimal"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/manager_advertising_fee_offer_rent_total_money_title"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!-- 套餐三的设置 End -->
+
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1.0"
+                android:gravity="bottom"
+                android:padding="5dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_blue_btn"
+                    android:onClick="@{()->advertisingFeeEditPresenter.advertisingFeeSubmitButton()}"
+                    android:text="@string/manager_advertising_fee_submit_button"
+                    android:textColor="@color/colorTitleColor"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

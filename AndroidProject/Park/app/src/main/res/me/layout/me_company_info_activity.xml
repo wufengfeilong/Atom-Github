@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="presenter" type="com.fcn.park.me.presenter.MeCompanyInfoPresenter"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/me_company_info_ll"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/colorMeMenuSpace"
+                  android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title"/>
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:background="@android:color/white"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="请把您的公司展示给大家(最多上传5张照片):"/>
+        <LinearLayout
+                android:id="@+id/company_info_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+            <ImageView
+                    android:id="@+id/me_company_banner1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="@{()->presenter.addBanner1()}"
+                    android:src="@drawable/ic_vector_company_business_license"/>
+            <ImageView
+                    android:id="@+id/me_company_banner2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="@{()->presenter.addBanner2()}"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_vector_company_business_license"/>
+            <ImageView
+                    android:id="@+id/me_company_banner3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="@{()->presenter.addBanner3()}"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_vector_company_business_license"/>
+            <ImageView
+                    android:id="@+id/me_company_banner4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="@{()->presenter.addBanner4()}"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_vector_company_business_license"/>
+            <ImageView
+                    android:id="@+id/me_company_banner5"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="@{()->presenter.addBanner5()}"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_vector_company_business_license"/>
+        </LinearLayout>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="请输入您的公司详情:"/>
+        <EditText
+                android:id="@+id/me_company_detail_introduce"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="@drawable/shape_et"
+                android:enabled="true"
+                android:gravity="top"
+                android:minLines="8"
+                android:maxLines="10"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</layout>

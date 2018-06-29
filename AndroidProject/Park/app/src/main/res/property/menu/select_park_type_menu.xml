@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/property_select_park_type_temporary"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/property_select_park_type_temporary" />
+    <item
+        android:id="@+id/property_select_park_type_rent"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/property_select_park_type_rent" />
+</menu>

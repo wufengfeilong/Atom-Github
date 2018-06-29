@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--Created by 丁胜胜 on 2018/04/26.-->
+<!--描述：管理中心的留言详情用Mapper-->
+
+<mapper namespace="fcn.co.jp.park.mapper.manager.MessageReplyMapper">
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.MessageReplyModel">
+        <id column="suggestion_id" property="suggestionId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="describe_content" property="describeContent" jdbcType="VARCHAR"/>
+        <result column="answer_content" property="answerContent" jdbcType="VARCHAR"/>
+        <result column="update_timestamp" property="updateTimestamp" jdbcType="VARCHAR"/>
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR"/>
+        <result column="reply_status" property="replyStatus" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="get_message_reply_list">
+              t_suggestion.suggestion_id as suggestionId,
+              t_suggestion.user_id as userId,
+              t_user.user_name as userName,
+              date_format(t_suggestion.update_timestamp, '%Y-%m-%d') as updateTimestamp
+
+    </sql>
+
+    <sql id="get_message_reply_info">
+              t_suggestion.suggestion_id as suggestionId,
+              t_suggestion.user_id as userId,
+              t_user.user_name as userName,
+              t_suggestion.describe_content as describeContent,
+              t_suggestion.answer_content as answerContent,
+              date_format(t_suggestion.update_timestamp, '%Y-%m-%d') as updateTimestamp
+    </sql>
+
+    <!-- 查询留言信息列表 -->
+    <select id="getMessageReplyList" resultType="fcn.co.jp.park.util.PageData">
+        select
+              <include refid="get_message_reply_list"/>
+        from t_suggestion
+        left join t_user on t_suggestion.user_id= t_user.user_id
+        WHERE ISNULL(answer_content)
+        limit #{numS},#{numE}
+    </select>
+
+    <!--查询留言详情-->
+    <select id="getMessageReplyInfoById" parameterType="fcn.co.jp.park.util.PageData"
+            resultType="fcn.co.jp.park.util.PageData" useCache="false">
+        select
+        <include refid="get_message_reply_info"/>
+        from t_suggestion
+        left join t_user on t_suggestion.user_id= t_user.user_id
+        where suggestion_id = #{suggestionId,jdbcType=INTEGER}
+    </select>
+
+    <!-- 点击“回复”按钮后，更新信息 -->
+    <update id="updateMessageReplyInfoByAnswer" parameterType="fcn.co.jp.park.util.PageData">
+        update t_suggestion
+        set
+        reply_status = #{replyStatus,jdbcType=VARCHAR},
+        answer_content = #{answerContent,jdbcType=VARCHAR},
+        update_user = #{updateUser,jdbcType=VARCHAR},
+        update_timestamp = now()
+        where suggestion_id = #{suggestionId,jdbcType=INTEGER}
+    </update>
+
+    <!--查询报修列表总条数-->
+    <select id="getMessageReplyListCount" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer" useCache="false">
+        SELECT
+        count(0)
+        FROM
+        t_suggestion
+    </select>
+
+</mapper>

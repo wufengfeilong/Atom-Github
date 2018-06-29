@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.fcn.park.manager.contract.ManagerPostNewsDetailContract" />
+
+        <variable
+            name="infoBean"
+            type="com.fcn.park.manager.bean.DetailInfoBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="14dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{infoBean.newsTitle}"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+                <!-- 更新时间 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:text='@{@string/manager_update_time+infoBean.updateTime}'
+                    android:textColor="#868585"
+                    android:textSize="13sp"
+                    android:visibility="@{infoBean.updateTime==null?View.GONE:View.VISIBLE}" />
+                <!-- 来源 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:text='@{@string/manager_news_sources+infoBean.newsSources}'
+                    android:textColor="#868585"
+                    android:textSize="13sp"
+                    android:visibility="@{infoBean.newsSources==null?View.GONE:View.VISIBLE}" />
+                <!-- 图片 -->
+                <ImageView
+                    android:id="@+id/manager_post_news_detail_thumbnail"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@{infoBean.newsThumbnail}"
+                    android:visibility="@{infoBean.newsThumbnail==null?View.GONE:View.VISIBLE}" />
+
+                <WebView
+                    android:id="@+id/web_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

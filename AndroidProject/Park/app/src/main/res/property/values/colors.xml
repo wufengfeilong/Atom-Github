@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="property_default_gray">#FF737171</color>
+    <color name="property_colorBlue">#00FFFF</color>
+    <color name="property_colorOrange">#FF4000</color>
+    <color name="property_custom_dialog_bg">#AAFFFFFF</color>
+
+</resources>

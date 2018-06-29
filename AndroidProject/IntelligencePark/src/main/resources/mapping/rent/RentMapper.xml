@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.rent.RentMapper" >
+
+    <select id="getHouseTypeList"  parameterType="java.lang.String" resultType="fcn.co.jp.park.util.PageData">
+        select
+        id,distinguish_name
+        from m_distinguish
+        where distinguish_key = #{houseType,jdbcType=VARCHAR} order by sort asc
+    </select>
+
+    <select id="getStatusList"  parameterType="java.lang.String" resultType="fcn.co.jp.park.util.PageData">
+        select
+        id,distinguish_name
+        from m_distinguish
+        where distinguish_key = #{statusType,jdbcType=VARCHAR} order by sort asc
+    </select>
+
+    <insert id="rentInfoAdd" parameterType="fcn.co.jp.park.util.PageData" >
+        insert into t_houseInfo
+        (house_area,house_price,house_title, house_type,house_address,house_direct,house_img,house_contact,house_phone,house_status,
+        create_user,create_time)
+        values (#{house_area,jdbcType=VARCHAR},#{house_price,jdbcType=VARCHAR}, #{house_title,jdbcType=VARCHAR},
+        #{house_type,jdbcType=INTEGER},#{house_address,jdbcType=VARCHAR},#{house_direct,jdbcType=VARCHAR},
+        #{house_img,jdbcType=VARCHAR},#{house_contact,jdbcType=VARCHAR},#{house_phone,jdbcType=VARCHAR},#{house_status,jdbcType=INTEGER},
+        #{create_user,jdbcType=VARCHAR},now())
+    </insert>
+
+    <update id="rentInfoEdit" parameterType="fcn.co.jp.park.util.PageData">
+        update t_houseInfo set
+        <if test="house_area != null" >
+        house_area = #{house_area,jdbcType=VARCHAR},
+        </if>
+        <if test="house_price != null" >
+        house_price = #{house_price,jdbcType=VARCHAR},
+        </if>
+        <if test="house_title != null" >
+        house_title = #{house_title,jdbcType=VARCHAR},
+        </if>
+        house_type = #{house_type,jdbcType=INTEGER},
+        <if test="house_address != null" >
+        house_address = #{house_address,jdbcType=VARCHAR},
+        </if>
+        <if test="house_direct != null" >
+        house_direct = #{house_direct,jdbcType=VARCHAR},
+        </if>
+        <if test="house_img != null" >
+        house_img = #{house_img,jdbcType=VARCHAR},
+        </if>
+        <if test="house_price != null" >
+        house_contact = #{house_price,jdbcType=VARCHAR},
+        </if>
+        <if test="house_phone != null" >
+        house_phone = #{house_phone,jdbcType=VARCHAR},
+        </if>
+        house_status = #{house_status,jdbcType=INTEGER},
+        update_user = #{create_user,jdbcType=VARCHAR},
+        update_time = now()
+        where
+        id = #{houseId,jdbcType=INTEGER}
+    </update>
+
+    <select id="rentHouseList"  parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select
+        id,house_area,house_price,house_title,house_address,house_img
+        from t_houseInfo
+        <if test="goRent != null" >
+            where house_status = 17
+        </if>
+        LIMIT  #{numS},#{numE}
+    </select>
+
+    <select id="getHouseCount"  parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer">
+        select
+        count(*)
+        from t_houseInfo
+        <if test="goRent != null" >
+            where house_status = 17
+        </if>
+    </select>
+
+    <select id="rentHouseDetail" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select
+        h.id,house_area,house_price,house_title,m1.distinguish_name as house_type,house_address,house_direct,house_img,house_contact,house_phone,m2.distinguish_name as house_status
+        from t_houseInfo h
+        left join m_distinguish m1 on m1.id = h.house_type
+        left join m_distinguish m2 on m2.id = h.house_status
+        WHERE h.id =#{houseId,jdbcType=INTEGER}
+    </select>
+
+    <!-- 获取已发布房屋信息列表 -->
+    <select id="rentReleasedHouseList"  parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select
+        id,house_area,house_price,house_title,house_address,house_img,create_time
+        from t_houseInfo
+        where house_type = 12
+        LIMIT  #{numS},#{numE}
+    </select>
+</mapper>

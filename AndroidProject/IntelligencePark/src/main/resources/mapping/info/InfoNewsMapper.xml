@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    <mapper namespace="fcn.co.jp.park.mapper.info.InfoNewsMapper" >
+
+    <!-- 通过区分key获取项目区分表中的id，value -->
+    <select id="findListByKey" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData">
+        select
+        DISTINGUISH_ID AS distinguishId,
+        distinguish_value AS distinguishValue
+        from
+        M_DISTINGUISH
+        where
+        DISTINGUISH_KEY = #{distinguish_key}
+    </select>
+
+
+    <!-- 新闻数量 -->
+    <select id="findNewsCount" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer" useCache="false">
+        SELECT
+        count(0)
+        FROM
+        t_post_news t
+        LEFT JOIN
+        m_distinguish l
+        ON
+        t.category = l.distinguish_id
+        AND
+        l.distinguish_key = 'NEWS_TYPE'
+        <if test="category != null and category != ''">
+        WHERE
+           t.category=#{category}
+        </if>
+    </select>
+    <!-- 新闻列表 -->
+    <select id="findNewslist" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+        SELECT
+        t.news_id AS newsId,
+        pic.file_path as newsThumbnail,
+        t.title,
+        l.distinguish_value as category,
+        date_format(t.update_timestamp,'%Y-%m-%d') AS updateTimeStamp,
+        t.NEWS_SOURCES AS newsSources
+        FROM
+        t_post_news t
+        LEFT JOIN t_picture pic
+        ON
+        pic.picture_id = t.news_thumbnail
+        LEFT JOIN
+        m_distinguish l
+        ON
+        t.category = l.distinguish_id
+        AND
+        l.distinguish_key = 'NEWS_TYPE'
+
+        <if test="category != null and category != ''">
+        WHERE
+          t.category=#{category}
+        </if>
+
+        ORDER BY
+        t.update_timestamp DESC
+        LIMIT     #{numS},#{numE}
+    </select>
+
+    <!-- 通过新闻ID获取数据 -->
+    <select id="findByNewsId" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData"
+            useCache="false">
+        SELECT
+        t.NEWS_ID AS newsId,
+        t.title,
+        t.NEWS_CONTENT AS content,
+        t.NEWS_SOURCES AS sources,
+        date_format(t.UPDATE_TIMESTAMP,'%Y-%m-%d') AS updateTimestamp,
+        date_format(t.INSERT_TIMESTAMP,'%Y-%m-%d') AS insertTimestamp,
+        m.distinguish_value AS MNAME
+        FROM
+        T_POST_NEWS t
+        LEFT JOIN
+        m_distinguish m
+        ON
+        t.category = m.distinguish_id
+        AND
+        m.distinguish_key ='NEWS_TYPE'
+        WHERE
+        t.NEWS_ID =  #{id}
+
+    </select>
+
+</mapper>

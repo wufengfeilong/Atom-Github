@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="1.0">
+
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:text="序号" />
+
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="申请者" />
+
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:text="套餐类型" />
+
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="提交时间" />
+        </LinearLayout>
+        <com.liaoinstan.springview.widget.SpringView
+            android:id="@+id/spring_view_manager_advertising_approval_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.fcn.park.base.widget.EmptyRecyclerView
+                android:id="@+id/recycler_view_manager_advertising_approval_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white" />
+
+        </com.liaoinstan.springview.widget.SpringView>
+
+        <include
+            android:id="@+id/empty_view_manager_advertising_approval_list"
+            layout="@layout/include_empty_layout" />
+    </LinearLayout>
+</layout>

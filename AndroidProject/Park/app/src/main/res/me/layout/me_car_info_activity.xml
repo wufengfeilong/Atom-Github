@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="present"
+            type="com.fcn.park.me.contract.MeCarInfoContract.Presenter" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/app_layout_title" />
+
+        <com.fcn.park.base.widget.EmptyRecyclerView
+            android:id="@+id/me_car_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            android:id="@+id/empty_car_info_list"
+            layout="@layout/include_empty_layout" />
+
+    </LinearLayout>
+</layout>
+

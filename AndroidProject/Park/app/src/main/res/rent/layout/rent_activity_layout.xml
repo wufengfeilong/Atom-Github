@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="rentBean"
+            type="com.fcn.park.rent.bean.RentAddBean" />
+        <variable
+            name="presenter"
+            type="com.fcn.park.rent.contract.RentAddContract.Presenter" />
+    </data>
+
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        tools:context="com.fcn.park.rent.activity.RentAddActivity">
+        <include layout="@layout/app_layout_title" />
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="vertical"
+            android:fadingEdge="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/areaText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/areaEdit"
+                    android:layout_alignBottom="@+id/areaEdit"
+                    android:layout_weight="1"
+                    android:text="面积："
+                    android:layout_marginLeft="50dp"/>
+
+                <EditText
+                    android:id="@+id/areaEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入房屋面积"
+                    android:text="@={rentBean.house_area}"
+                    />
+
+                <TextView
+                    android:id="@+id/priceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/priceEdit"
+                    android:layout_alignBottom="@+id/priceEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="价格：" />
+
+                <EditText
+                    android:id="@+id/priceEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/areaEdit"
+                    android:layout_below="@+id/areaEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入价格"
+                    android:text="@={rentBean.house_price}"/>
+
+               <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/titleEdit"
+                    android:layout_alignBottom="@+id/titleEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text=" 标题：" />
+
+                <EditText
+                    android:id="@+id/titleEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/priceEdit"
+                    android:layout_below="@+id/priceEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入标题"
+                    android:text="@={rentBean.house_title}"/>
+
+                <TextView
+                    android:id="@+id/houstTypeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/houstTypeEdit"
+                    android:layout_alignBottom="@+id/houstTypeEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="房屋类型：" />
+
+                <Spinner
+                    android:id="@+id/houstTypeEdit"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/titleEdit"
+                    android:layout_below="@+id/titleEdit"
+                    android:dropDownWidth="210dp"
+                    android:layout_weight="0.5" />
+
+
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/addressEdit"
+                    android:layout_alignBottom="@+id/addressEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="地址："
+                    />
+
+                <EditText
+                    android:id="@+id/addressEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/houstTypeEdit"
+                    android:layout_below="@+id/houstTypeEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入房屋地址"
+                    android:text="@={rentBean.house_address}"/>
+
+                <TextView
+                    android:id="@+id/directText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/directEdit"
+                    android:layout_alignBottom="@+id/directEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="描述：" />
+
+                <EditText
+                    android:id="@+id/directEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/addressEdit"
+                    android:layout_below="@+id/addressEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入描述"
+                    android:text="@={rentBean.house_direct}"
+                    />
+                <TextView
+                    android:id="@+id/pictureText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_alignBaseline="@+id/imageContext"
+                    android:layout_alignTop="@+id/imageContext"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="图片：" />
+
+                <RelativeLayout
+                    android:id="@+id/imageContext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/directEdit"
+                    android:layout_below="@+id/directEdit"
+                    >
+                    <ImageView
+                        android:id="@+id/picture1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/find_add_img"
+                        android:onClick="@{()->presenter.imageSelect1()}"
+                        />
+                    <ImageView
+                        android:id="@+id/picture2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_toRightOf="@+id/picture1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/find_add_img"
+                        android:onClick="@{()->presenter.imageSelect2()}"
+                        android:visibility="gone"
+                        />
+                    <ImageView
+                        android:id="@+id/picture3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_toRightOf="@+id/picture2"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/find_add_img"
+                        android:onClick="@{()->presenter.imageSelect3()}"
+                        android:visibility="gone"
+                        />
+                    <ImageView
+                        android:id="@+id/picture4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_toRightOf="@+id/picture3"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/find_add_img"
+                        android:onClick="@{()->presenter.imageSelect4()}"
+                        android:visibility="gone"
+                        />
+                    <ImageView
+                        android:id="@+id/picture5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/picture1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/find_add_img"
+                        android:visibility="gone"
+                        android:onClick="@{()->presenter.imageSelect1()}"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/ContactsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/ContactsEdit"
+                    android:layout_alignBottom="@+id/ContactsEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="联系人：" />
+
+                <EditText
+                    android:id="@+id/ContactsEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/imageContext"
+                    android:layout_below="@+id/imageContext"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入联系人"
+                    android:text="@={rentBean.house_contact}"
+                    />
+
+                <TextView
+                    android:id="@+id/phoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/phoneEdit"
+                    android:layout_alignBottom="@+id/phoneEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="联系电话：" />
+
+                <EditText
+                    android:id="@+id/phoneEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/ContactsEdit"
+                    android:layout_below="@+id/ContactsEdit"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="请输入联系电话"
+                    android:text="@={rentBean.house_phone}"
+                    />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/statusEdit"
+                    android:layout_alignBottom="@+id/statusEdit"
+                    android:layout_alignRight="@+id/areaText"
+                    android:layout_weight="1"
+                    android:text="状态：" />
+
+                <Spinner
+                    android:id="@+id/statusEdit"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/phoneEdit"
+                    android:layout_below="@+id/phoneEdit"
+                    android:dropDownWidth="210dp"
+                    android:layout_weight="0.5" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/statusEdit"
+                    android:text="保存"
+                    android:onClick="@{()->presenter.addRentInfo(0)}"
+                    />
+
+                <Button
+                    android:id="@+id/applyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf ="@+id/saveButton"
+                    android:layout_below="@+id/statusEdit"
+                    android:text="发布"
+                    android:onClick="@{()->presenter.addRentInfo(1)}"
+                    />
+
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

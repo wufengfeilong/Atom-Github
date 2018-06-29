@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.me.MeRepairMapper">
+       <!--  查看报修列表-->
+    <select id="selectRepairRecordList" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+      SELECT
+      user_id AS userId,
+      repair_id AS repairId,
+      repair_content as repairContent,
+      date_format(repair_time,'%Y-%m-%d %H:%i:%s') as repairTime,
+      repair_state as repairState
+      FROM
+      t_property_repair
+     where user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+        <!-- 根据repairId,查询列表详情 -->
+        <select id="getRepairDetailById" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+        SELECT
+        repair_id AS repairId,
+        repair_address AS repairAddress,
+        repair_name AS repairName,
+        date_format(repair_time,'%Y-%m-%d %H:%i:%s') AS repairTime,
+        repair_content AS repairContent,
+        repair_phone AS repairPhone,
+        repairPicture1 AS repairPicture
+        from
+         t_property_repair
+         where repair_id = #{repairId,jdbcType=INTEGER}
+        </select>
+ </mapper>
+
+
+

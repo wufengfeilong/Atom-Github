@@ -1,0 +1,274 @@
+<resources>
+    <string name="manager_name">管理中心</string>
+    <string name="manager_user_name">用户名</string>
+
+    <!-- 管理中心画面上的Title -->
+    <string name="manager_title_enterprise_check">企业审核管理</string>
+    <string name="manager_title_property_management_fee">物业费收支</string>
+    <string name="manager_title_rent">租赁费收支</string>
+    <string name="manager_title_water_electricity_fee">水电费收支</string>
+    <string name="manager_title_publish_repairs">公共报修</string>
+    <string name="manager_title_reply_message">留言回复</string>
+    <string name="manager_title_monthly_vehicle_check">月租车辆审批</string>
+    <string name="manager_title_parking_fee">停车付费</string>
+    <string name="manager_title_make_announcement">公告发布</string>
+    <string name="manager_title_publish_activities">活动发布</string>
+    <string name="manager_title_post_news">新闻发布</string>
+    <string name="manager_title_park_introduction">园区简介</string>
+    <string name="manager_title_user_management">用户管理</string>
+    <string name="manager_title_rent_house_management">房屋租赁管理</string>
+    <string name="manager_title_advertising_position_management">广告位管理</string>
+    <string name="manager_title_reset_password">密码重置</string>
+    <string name="manager_title_quit">退出</string>
+
+    <!-- 企业审核管理 -->
+    <string name="manager_enterprise_check_list">企业审核列表</string>
+    <string name="manager_enterprise__wait_check">未审核</string>
+    <string name="manager_enterprise__turn_check">未通过</string>
+    <string name="manager_enterprise__pass_check">已通过</string>
+    <string name="manager_enterprise__company_name">公司名称</string>
+    <string name="manager_enterprise__insert_timestamp">申请时间</string>
+    <string name="manager_enterprise_check_detail">企业审核详情</string>
+
+    <!-- 物业费收支 -->
+    <string name="manager_property_management_fee_list">物业费用一览</string>
+    <string name="manager_property_management_fee_detail">物业费用明细</string>
+    <string name="manager_property_management_fee_detail_edit">物业费用明细编辑</string>
+    <string name="manager_property_company_name">公司名称：</string>
+    <string name="manager_property_fee">物业费：</string>
+    <string name="manager_property_fee_price">元</string>
+    <string name="manager_property_fee_pay_status">缴费状态：</string>
+    <string name="manager_property_fee_payed">已缴费</string>
+    <string name="manager_property_fee_notpayed">未缴费</string>
+    <string name="manager_property_fee_visibility_gone">GONE</string>
+    <string name="manager_property_fee_visibility_visible">VISIBLE</string>
+    <string name="manager_property_fee_companySpace">建筑面积：</string>
+    <string name="manager_property_fee_companySpace_unit">平米</string>
+    <string name="manager_property_fee_propertyFeeUnitPrice">物业费单价：</string>
+    <string name="manager_property_fee_propertyFeeUnitPrice_unit"> 元/平米</string>
+    <string name="manager_property_fee_discount">物业费折扣：</string>
+
+    <!-- 租赁费收支 -->
+    <string name="manager_rent_list">租赁费用一览</string>
+    <string name="manager_rent_detail">租赁费用明细</string>
+    <string name="manager_rent_detail_edit">租赁费用明细编辑</string>
+    <string name="manager_rent_fee_company_name">公司名称：</string>
+    <string name="manager_rent_fee">租赁费合计：</string>
+    <string name="manager_rent_fee_price">元</string>
+    <string name="manager_rent_fee_pay_status">缴费状态：</string>
+    <string name="manager_rent_fee_payed">已缴费</string>
+    <string name="manager_rent_fee_notpayed">未缴费</string>
+    <string name="manager_rent_fee_visibility_gone">GONE</string>
+    <string name="manager_rent_fee_visibility_visible">VISIBLE</string>
+    <string name="manager_rent_fee_companySpace">租赁面积：</string>
+    <string name="manager_rent_fee_companySpace_unit">平米</string>
+    <string name="manager_rent_fee_propertyFeeUnitPrice">租赁费单价：</string>
+    <string name="manager_rent_fee_propertyFeeUnitPrice_unit">元/平米</string>
+    <string name="manager_rent_fee_discount">租赁费折扣：</string>
+
+    <string name="manager_water_and_electric_fee_type_title">水电费管理</string>
+    <!-- 水费收支 -->
+    <string name="manager_water_fee_list">用水费用一览</string>
+    <string name="manager_water_fee_detail">用水费用明细</string>
+    <string name="manager_water_fee_company_name">公司名称：</string>
+    <string name="manager_water_fee_detail_edit">用水费用明细编辑</string>
+    <string name="manager_water_fee">水费合计：</string>
+    <string name="manager_water_fee_price">元</string>
+    <string name="manager_water_fee_payed">已缴费</string>
+    <string name="manager_water_fee_pay_status">缴费状态：</string>
+    <string name="manager_water_fee_notpayed">未缴费</string>
+    <string name="manager_water_fee_visibility_gone">GONE</string>
+    <string name="manager_water_fee_visibility_visible">VISIBLE</string>
+    <string name="manager_water_fee_waterFeeUnitPrice">水费单价</string>
+    <string name="manager_water_fee_waterFeeUnitPrice_unit">元/方</string>
+    <string name="manager_water_fee_startNum">起始水量：</string>
+    <string name="manager_water_fee_endNum">截止水量：</string>
+    <string name="manager_water_fee_costNum">总水量：</string>
+    <string name="manager_water_fee_Num_unit">m³</string>
+    <string name="manager_water_fee_unitPrice">水费单价：</string>
+    <string name="manager_water_fee_price_unit">元</string>
+    <string name="manager_water_fee_fee">应缴水费：</string>
+    <string name="manager_water_fee_recordDate">录表日期：</string>
+
+    <!-- 电费收支 -->
+    <string name="manager_electricity_fee_list">用电费用一览</string>
+    <string name="manager_electricity_fee_detail">用电费用明细</string>
+    <string name="manager_electricity_fee_detail_edit">用电费用明细编辑</string>
+    <string name="manager_electricity_fee">电费合计：</string>
+    <string name="manager_electricity_fee_company_name">公司名称：</string>
+    <string name="manager_electricity_fee_pay_status">缴费状态：</string>
+    <string name="manager_electricity_fee_price">元</string>
+    <string name="manager_electricity_fee_payed">已缴费</string>
+    <string name="manager_electricity_fee_notpayed">未缴费</string>
+    <string name="manager_electricity_fee_visibility_gone">GONE</string>
+    <string name="manager_electricity_fee_visibility_visible">VISIBLE</string>
+    <string name="manager_electricity_fee_electricityFeeUnitPrice">电费单价：</string>
+    <string name="manager_electricity_fee_electricityFeeUnitPrice_unit">元/度</string>
+    <string name="manager_electricity_fee_startNum">起始电量：</string>
+    <string name="manager_electricity_fee_endNum">截止电量：</string>
+    <string name="manager_electricity_fee_costNum">总电量：</string>
+    <string name="manager_electricity_fee_Num_unit">度</string>
+    <string name="manager_electricity_fee_unitPrice">电费单价：</string>
+    <string name="manager_electricity_fee_price_unit">元</string>
+    <string name="manager_electricity_fee_fee">应缴电费：</string>
+    <string name="manager_electricity_fee_recordDate">录表日期：</string>
+
+    <!-- 公共报修 -->
+    <string name="manager_publish_repairs_list">报修一览</string>
+    <string name="manager_publish_repairs_detail">报修详情</string>
+
+    <!-- 留言回复 -->
+    <string name="manager_reply_message_list">留言信息列表</string>
+    <string name="manager_reply_message_detail">留言信息详情</string>
+
+    <!-- 月租车辆审批 -->
+    <string name="manager_monthly_vehicle_check_list">月租车辆待审批列表</string>
+    <string name="manager_monthly_vehicle_check_detail">月租车辆待审批详情</string>
+    <string name="manager_monthly_vehicle_check_name">姓    名:</string>
+    <string name="manager_monthly_vehicle_carNumber">车牌号:</string>
+    <string name="manager_monthly_vehicle_check_phone">电    话:</string>
+    <string name="manager_monthly_vehicle_check_company">公司名称:</string>
+    <string name="manager_monthly_vehicle_check_applyType">申请类型:</string>
+    <string name="manager_monthly_vehicle_check_applyDocument">申请资料:</string>
+    <string name="manager_monthly_vehicle_check_startDate">开始时间:</string>
+    <string name="manager_monthly_vehicle_check_endDate">结束时间:</string>
+    <string name="manager_monthly_vehicle_check_checkinfo">驳回理由:</string>
+    <string name="manager_monthly_vehicle_check_checkinfo_no">请输入驳回理由！</string>
+    <string name="manager_monthly_vehicle_check_recheckinfo_no">不能重复驳回！</string>
+    <string name="manager_monthly_vehicle_check_checkinfo_fail">不能重复驳回！</string>
+
+
+    <!-- 停车付费 -->
+    <string name="manager_parking_fee_list">停车费用列表</string>
+    <string name="manager_parking_fee_detail">停车费用详情</string>
+    <string name="manager_parking_fee_name">姓    名:</string>
+    <string name="manager_parking_fee_phone">电    话:</string>
+    <string name="manager_parking_fee_carNumber">车牌号:</string>
+    <string name="manager_parking_fee_paymentmoney">缴费金额:</string>
+    <string name="manager_parking_fee_paymenttime">缴费日期:</string>
+    <string name="manager_parking_fee_paymentway">缴费方式:</string>
+
+    <string name="manager_publish_title">发 布</string>
+    <string name="manager_publish_time">发布时间：</string>
+    <string name="manager_edit_title">编 辑</string>
+    <string name="manager_edit_OK">确 认</string>
+    <string name="manager_news_sources">来源：</string>
+    <!-- 公告发布 -->
+    <string name="manager_make_announcement_list">公告列表</string>
+    <string name="manager_make_announcement">发布公告</string>
+    <string name="manager_make_announcement_detail">公告详情</string>
+    <string name="manager_make_announcement_detail_edit">公告详情编辑</string>
+
+    <!-- 活动发布 -->
+    <string name="manager_publish_activities_list">活动列表</string>
+    <string name="manager_publish_activities">发布活动</string>
+    <string name="manager_publish_activities_detail">活动详情</string>
+    <string name="manager_publish_activities_detail_edit">活动详情编辑</string>
+
+    <!-- 新闻发布 -->
+    <string name="manager_update_time">更新时间：</string>
+    <string name="manager_post_news_list">新闻列表</string>
+    <string name="manager_post_news">发布新闻</string>
+    <string name="manager_post_news_detail">新闻详情</string>
+    <string name="manager_post_news_detail_edit">新闻详情编辑</string>
+
+    <!-- 园区简介 -->
+    <string name="manager_park_no_data"></string>
+    <string name="manager_park_introduction_pose">提  出</string>
+    <string name="manager_park_introduction_detail">园区简介详情</string>
+    <string name="manager_park_introduction_detail_edit">园区简介编辑</string>
+    <string name="manager_park_introduction_add">园区简介追加</string>
+
+    <!-- 用户管理 -->
+    <string name="manager_user_management_list">系统用户列表</string>
+
+    <!-- 广告位管理 -->
+    <string name="manager_advertising_no_data">暂无数据</string>
+    <string name="manager_advertising_renter_name">　租赁者：</string>
+    <string name="manager_advertising_apply_set_type">套餐类型：</string>
+    <string name="manager_advertising_approval_status">审批状况：</string>
+    <string name="manager_advertising_remain_days">剩余天数：</string>
+    <string name="manager_advertising_end_time">终止日期：</string>
+    <string name="manager_advertising_day">　天</string>
+    <string name="manager_advertising_insert_date">提交日期：</string>
+    <string name="manager_advertising_start_date">开始日期：</string>
+    <string name="manager_advertising_check_OK">已审批</string>
+    <string name="manager_advertising_check_refuse">拒绝</string>
+    <string name="manager_advertising_type">广告位管理</string>
+    <string name="manager_advertising_position_management_list">广告位列表</string>
+    <string name="manager_advertising_position_management_check">广告位审核</string>
+    <string name="manager_advertising_fee_edit_title">费用编辑</string>
+    <string name="manager_advertising_position_management_fee_edit">广告位费用设置</string>
+
+    <!-- 广告位详情画面 -->
+    <string name="manager_advertising_comment_title">广告标语：</string>
+    <string name="manager_advertising_img_title">广告图片：</string>
+    <string name="manager_advertising_refuse_reason_title">拒绝理由：</string>
+    <string name="manager_advertising_refuse_reason_hint">拒绝时，请输入理由</string>
+    <string name="manager_advertising_pass_on_btn">通过</string>
+    <string name="manager_advertising_refuse_on_btn">拒绝</string>
+    <string name="manager_advertising_fee_msg_title">广告位审批详情</string>
+    <string name="manager_advertising_fee_msg_content_OK">恭喜您！\n您申请的广告位已经审核通过。\n申请的套餐类型是：%1$1s，\n需要缴纳广告费：%2$1s元。</string>
+    <string name="manager_advertising_fee_msg_content_NG">很遗憾！\n您申请的广告位被拒绝了。\n原因是：%1$1s。</string>
+
+    <!-- 广告位列表画面 -->
+    <string name="manager_advertising_list_no_title">序号</string>
+    <string name="manager_advertising_list_approval_status_title">审批状况</string>
+    <string name="manager_advertising_list_rent_member_title">租赁者</string>
+    <string name="manager_advertising_list_start_date_title">开始日期</string>
+    <string name="manager_advertising_list_end_date_title">终止日期</string>
+
+    <string name="manager_advertising_fee_instructions">注：输入单价与租赁天数，可计算合计费用</string>
+    <string name="manager_advertising_fee_rental_price">租赁单价：</string>
+    <string name="manager_advertising_fee_rental_price_home_page">首页：</string>
+    <string name="manager_advertising_fee_rental_price_other">其他：</string>
+    <string name="manager_advertising_fee_rental_price_unit">元/天</string>
+
+    <string name="manager_advertising_fee_offer_set">优惠套餐设置</string>
+    <string name="manager_advertising_fee_offer_set_comma">：</string>
+    <string name="manager_advertising_fee_home_offer_set">首页套餐：</string>
+    <string name="manager_advertising_fee_offer1_set">套餐一(一个月)：</string>
+    <string name="manager_advertising_fee_offer2_set">套餐二(三个月)：</string>
+    <string name="manager_advertising_fee_offer3_set">套餐三(一年)：</string>
+    <string name="manager_advertising_fee_offer_rent_fee">租赁费用：</string>
+    <string name="manager_advertising_fee_offer_rent_days_title">天</string>
+    <string name="manager_advertising_fee_offer_rent_total_money">合计费用：</string>
+    <string name="manager_advertising_fee_offer_rent_total_money_title">元</string>
+    <string name="manager_advertising_fee_offer_rent_total_money_calculate_button">计算</string>
+    <string name="manager_advertising_fee_submit_button">确　定</string>
+
+    <!-- 重置密码 -->
+    <string name="manager_reset_password">密码重置</string>
+    <string name="manager_reset_password_input_old_password_toast">请输入当前密码</string>
+    <string name="manager_reset_password_input_new_password_toast">请输入新密码</string>
+    <string name="manager_reset_password_input_right_password_toast">请输入符合规范的密码</string>
+    <string name="manager_reset_password_input_new_confirm_password_toast">请再次输入密码</string>
+    <string name="manager_reset_password_input_new_password_ng_toast">输入的新密码两次不相同</string>
+    <string name="manager_reset_password_old">旧密码</string>
+    <string name="manager_reset_password_new">新密码</string>
+    <string name="manager_reset_password_confirm_new">确认密码</string>
+    <string name="manager_reset_password_save_button">保存</string>
+
+    <!-- 退出 -->
+    <string name="manager_quit_confirm_title">温馨提示</string>
+    <string name="manager_quit_confirm_data">您是否要退出登录</string>
+    <string name="manager_quit_OK">确认</string>
+    <string name="manager_quit_cancle">取消</string>
+
+    <!-- 报修列表和详情 -->
+    <string name="manager_repair_address">报修地址：</string>
+    <string name="manager_repair_unit">报修单位：</string>
+    <string name="manager_repair_time">报修时间：</string>
+    <string name="manager_repair_name">报修姓名：</string>
+    <string name="manager_repair_tel">联系电话：</string>
+    <string name="manager_repair_pic">图片详情：</string>
+    <string name="manager_repair_con">内容详情：</string>
+    <string name="manager_repair_call">  （点击可拨打）</string>
+
+
+    <string name="message_reply_num">留言编号：</string>
+    <string name="message_reply_name">留言者：</string>
+    <string name="message_reply_time">留言时间：</string>
+
+
+</resources>

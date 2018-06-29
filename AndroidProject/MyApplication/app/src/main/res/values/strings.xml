@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name"><font color="#FF0000">大家一起来画画</font></string>
+    <string name="title_activity_canvas">画吧</string>
+</resources>

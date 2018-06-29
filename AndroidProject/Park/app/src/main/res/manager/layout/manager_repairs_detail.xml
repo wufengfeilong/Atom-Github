@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+        <data>
+            <variable
+                name="infoBean"
+                type="com.fcn.park.manager.bean.ManagerRepairsDetailInfoBean"/>
+            <variable
+                name="repairsDetailPresenter"
+                type="com.fcn.park.manager.presenter.ManagerRepairsDetailPresenter" />
+        </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <TextView
+            android:id="@+id/repair_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text='@{@string/manager_repair_address+infoBean.repairAddress}' />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginRight="@dimen/manager_repairs_detail_layout_marginRight"
+            android:background="#aa000000" />
+
+        <TextView
+            android:id="@+id/repair_repair_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text='@{@string/manager_repair_time+infoBean.repairTime}' />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginRight="@dimen/manager_repairs_detail_layout_marginRight"
+            android:background="#aa000000" />
+
+        <TextView
+            android:id="@+id/repair_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text='@{@string/manager_repair_name+infoBean.repairName }' />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginRight="@dimen/manager_repairs_detail_layout_marginRight"
+            android:background="#aa000000" />
+
+        <TextView
+            android:id="@+id/repairs_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text='@{@string/manager_repair_tel+infoBean.repairPhone+@string/manager_repair_call}'
+            android:onClick="@{()->repairsDetailPresenter.telCallOnClick()}" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginRight="@dimen/manager_repairs_detail_layout_marginRight"
+            android:background="#aa000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text="图片描述:"/>
+
+        <LinearLayout
+            android:id="@+id/repair_add_pictureList"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/repair_load_picture1"
+                android:layout_width="@dimen/manager_repairs_image_layout_width"
+                android:layout_height="@dimen/manager_repairs_image_layout_height"
+                android:layout_marginRight="@dimen/manager_repairs_image_layout_marginRight"
+                android:src="@{infoBean.repairPic1}"/>
+
+
+            <ImageView
+                android:id="@+id/repair_load_picture2"
+                android:layout_width="@dimen/manager_repairs_image_layout_width"
+                android:layout_height="@dimen/manager_repairs_image_layout_height"
+                android:layout_marginRight="@dimen/manager_repairs_image_layout_marginRight"
+                android:src="@{infoBean.repairPic2}"/>
+
+            <ImageView
+                android:id="@+id/repair_load_picture3"
+                android:layout_width="@dimen/manager_repairs_image_layout_width"
+                android:layout_height="@dimen/manager_repairs_image_layout_height"
+                android:layout_marginRight="@dimen/manager_repairs_image_layout_marginRight"
+                android:src="@{infoBean.repairPic3}"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginRight="@dimen/manager_repairs_detail_layout_marginRight"
+            android:background="#aa000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text="内容详情:" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/manager_repairs_detail_layout_marginBottom"
+            android:layout_marginLeft="@dimen/manager_repairs_detail_layout_marginLeft"
+            android:layout_marginTop="@dimen/manager_repairs_detail_layout_marginTop"
+            android:ellipsize="end"
+            android:maxLines="6"
+            android:inputType="textMultiLine"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/manager_repairs_detail_size"
+            android:text="@{infoBean.repairContent}" />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</layout>

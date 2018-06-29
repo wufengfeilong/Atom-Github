@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.info.ManagerNeedMapper" >
+    <!-- 获取企业需求数量-->
+    <select id="findDemandCount" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer">
+        SELECT
+        COUNT(0)
+        FROM
+        t_demand
+    </select>
+    <!-- 获取企业需求(列表) -->
+    <select id="findDemandList" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+        SELECT
+        demand_id AS demandId,
+        category,
+        title,
+        contact,
+        tel,
+        source,
+        DATE_FORMAT(update_timestamp,'%Y-%m-%d') UPDATE_TIMESTAMP
+        FROM
+        t_demand
+        ORDER BY  update_timestamp DESC
+        LIMIT    #{numS},#{numE}
+    </select>
+
+    <!-- 根据id,删除相应的条目 -->
+    <delete id="deleteDemandById" parameterType="fcn.co.jp.park.util.PageData">
+        delete from t_demand
+        where demand_id = #{demandId,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 发布新的需求，插入到DB -->
+    <insert id="insertDemand" parameterType="fcn.co.jp.park.util.PageData" >
+      INSERT INTO t_demand (category,title,content,source,contact,tel,address,update_user,update_timestamp,insert_user,insert_timestamp)
+      VALUES(#{category,jdbcType=INTEGER},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{source,jdbcType=VARCHAR},#{contact,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{update_user,jdbcType=VARCHAR},now(), #{insert_user,jdbcType=VARCHAR}, now())
+
+    </insert>
+
+
+    <!-- 获取发布企业需求详细信息 -->
+    <select id="getDemandDetail" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+        SELECT
+        demand_id AS demandId,
+        title,
+        source,
+        address,
+        contact,
+        tel,
+        content
+        FROM
+        t_demand
+        WHERE
+        demand_id = #{demandId}
+    </select>
+
+
+    <!-- 编辑发布企业需求详情 -->
+    <update id="managerDemandEdit" parameterType="fcn.co.jp.park.util.PageData">
+        update t_demand
+        set
+        title = #{title,jdbcType=VARCHAR},
+        content = #{content,jdbcType=VARCHAR},
+        source = #{source,jdbcType=VARCHAR},
+        contact = #{contact,jdbcType=VARCHAR},
+        tel = #{tel,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        update_user = #{update_user,jdbcType=VARCHAR},
+        update_timestamp = NOW()
+        where demand_id = #{demandId,jdbcType=INTEGER}
+
+    </update>
+
+
+
+</mapper>

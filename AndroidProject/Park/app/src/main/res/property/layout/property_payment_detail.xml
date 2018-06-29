@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.fcn.park.property.bean.PropertyMainBean" />
+
+        <variable
+            name="bean"
+            type="com.fcn.park.property.bean.PropertyMainBean" />
+
+        <variable
+            name="presenter"
+            type="com.fcn.park.property.presenter.PropertyPaymentDetailPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".property.activity.PropertyPaymentDetailActivity">
+
+        <include layout="@layout/app_layout_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/property_default_margin"
+            android:layout_marginRight="@dimen/property_default_margin"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/property_water_fee_payment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:visibility="@{bean.payType == 1  ? View.VISIBLE : View.GONE}"
+                app:bean="@{bean}" />
+
+            <include
+                layout="@layout/property_electric_fee_payment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:visibility="@{bean.payType == 2 ? View.VISIBLE : View.GONE}"
+                app:bean="@{bean}" />
+
+            <include
+                layout="@layout/property_fee_payment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:visibility="@{bean.payType == 3 ? View.VISIBLE : View.GONE}"
+                app:bean="@{bean}" />
+
+            <include
+                layout="@layout/property_rent_fee_payment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:visibility="@{bean.payType == 4 ? View.VISIBLE : View.GONE}"
+                app:bean="@{bean}" />
+
+            <include
+                layout="@layout/property_parking_payment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:visibility="@{(bean.payType == 5 || bean.payType == 6) ? View.VISIBLE : View.GONE}"
+                app:bean="@{bean}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    style="@style/property_button_style"
+                    android:layout_centerInParent="true"
+                    android:onClick="@{()->presenter.onBackBtnClick()}"
+                    android:text="@string/property_back_btn_txt"
+                    android:visibility="@{bean.payType == 0 ? View.GONE : View.VISIBLE}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="数据异常，请重新进入。"
+                    android:visibility="@{bean.payType != 0 ? View.GONE : View.VISIBLE}" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_name, password, phone
+  </sql>
+  <select id="selectAllUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertUser" parameterType="fcn.co.jp.park.util.PageData" >
+    insert into
+    t_user (user_name, password, phone)
+    values (#{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="fcn.co.jp.park.model.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="fcn.co.jp.park.model.User" >
+    update t_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="fcn.co.jp.park.model.User" >
+    update t_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+
+  <!-- 判断用户名和密码 -->
+  <select id="getUserByPhoneAndPwd" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData"
+          useCache="false"><!-- insert update delete (flushCache="true/false") -->
+    select
+    user_id,
+    user_name,
+    user_type,
+    img_path
+    from t_user
+    where 1=1
+    <if test="phone != null and password != null">
+      and
+      (phone = #{phone} and password = #{password})
+    </if>
+
+  </select>
+
+  <!-- 验证码count -->
+  <select id="isVerificationCode" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM
+    t_random
+    WHERE
+    valType=#{valType}
+  </select>
+
+  <!-- 通过手机查询个人用户-->
+
+  <select id="findByPhone" parameterType="fcn.co.jp.park.util.PageData" resultType="java.lang.Integer">
+    select
+    count(0)
+    from
+    t_user
+    where
+    phone=#{phone}
+  </select>
+
+  <!-- 新增用户验证码 -->
+  <insert id="insertCode" parameterType="fcn.co.jp.park.util.PageData">
+    INSERT INTO
+    t_random(valType, random)
+    VALUES
+    (#{valType},
+    #{random});
+  </insert>
+  <!-- 更新用户验证码 -->
+  <update id="updateCode" parameterType="fcn.co.jp.park.util.PageData">
+    UPDATE
+    t_random
+    SET
+    random=#{random}
+    WHERE
+    valType=#{valType}
+  </update>
+
+  <!-- 查询验证码时效 -->
+  <select id="findCodeVerification" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData" useCache="false">
+    SELECT
+    valTime
+    FROM
+    t_random
+    WHERE
+    valType=#{valType}
+    AND random = #{random}
+
+  </select>
+
+  <!-- 获取注册条款 -->
+  <select id="findTerms" parameterType="fcn.co.jp.park.util.PageData" resultType="fcn.co.jp.park.util.PageData"
+          useCache="false">
+    SELECT
+    id,
+    title,
+    content,
+    DATE_FORMAT(update_timestamp,'%Y-%m-%d %H:%i:%s') AS update_timestamp,
+    insert_user
+    FROM
+    t_terms
+    WHERE
+    del_flg = 0
+    ORDER BY
+    update_timestamp desc
+    limit 1
+  </select>
+
+  <!-- 通过手机修改密码 -->
+  <update id="changePwdByPhone" parameterType="fcn.co.jp.park.util.PageData" >
+    update
+    t_user
+    SET
+    password = #{pwd}
+    WHERE
+    phone = #{phone}
+  </update>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="parkFeeListBean"
+            type="com.fcn.park.manager.bean.car.ParkFeeBean.ParkFeeListBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+           <!-- 车牌号-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="@{@string/manager_parking_fee_carNumber + parkFeeListBean.carNumber}"
+                android:textColor="@color/manager_parking_fee"
+                android:textSize="@dimen/manager_item_parking_fee_content_title_size" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+           <!-- 缴费日期-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="@{@string/manager_parking_fee_paymenttime + parkFeeListBean.paymenttime}"
+                android:textColor="@color/manager_parking_fee"
+                android:textSize="@dimen/manager_item_parking_fee_content_title_size" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

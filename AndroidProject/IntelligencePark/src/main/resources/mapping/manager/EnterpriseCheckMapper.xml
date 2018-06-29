@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.manager.EnterpriseCheckMapper" >
+    <resultMap id="BaseResultMap" type="fcn.co.jp.park.model.manager.EnterpriseCheckModel">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="user_id" jdbcType="VARCHAR"/>
+        <result column="company_name" property="company_name" jdbcType="VARCHAR"/>
+        <result column="industry" property="industry" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="contact" property="contact" jdbcType="INTEGER"/>
+        <result column="mail" property="mail" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="img_id" property="img_id" jdbcType="INTEGER"/>
+        <result column="audit_time" property="audit_time" jdbcType="VARCHAR"/>
+        <result column="audit_result" property="audit_result" jdbcType="VARCHAR"/>
+        <result column="audit_reason" property="audit_reason" jdbcType="VARCHAR"/>
+        <result column="logo_id" property="logo_id" jdbcType="INTEGER"/>
+        <result column="update_timestamp" property="update_timestamp" jdbcType="VARCHAR"/>
+        <result column="update_user" property="update_user" jdbcType="VARCHAR"/>
+        <result column="insert_user" property="insert_user" jdbcType="VARCHAR"/>
+        <result column="update_user" property="update_user" jdbcType="VARCHAR"/>
+        <result column="insert_timestamp" property="insert_timestamp" jdbcType="VARCHAR"/>
+
+    </resultMap>
+    <sql id="select_enterprise_check_List">
+        id,company_name,  date_format(insert_timestamp,'%Y-%m-%d') as insert_timestamp
+    </sql>
+    <sql id="get_enterprise_check_detail_byId">
+                     t.id,
+                     t.company_name,
+					 t.industry,
+					 t.address,
+					 t.tel,
+					 t.contact,
+					 t.mail,
+					 t.img_id,
+						(select file_path from t_picture p where t.img_id=p.picture_id) as licence
+    </sql>
+    <!-- 获取企业审核列表 -->
+    <select id="selectEnterpriseCheckList" resultType="fcn.co.jp.park.util.PageData">
+        select
+        <include refid="select_enterprise_check_List"/>
+        from t_company
+        where audit_result = 0
+    </select>
+    <!-- 根据企业id,查询企业审核详情 -->
+    <select id="getEnterpriseCheckDetailById" parameterType="fcn.co.jp.park.util.PageData"
+            resultType="fcn.co.jp.park.util.PageData"
+            useCache="false">
+        select
+        <include refid="get_enterprise_check_detail_byId"/>
+        from t_company t
+        where t.id = #{id,jdbcType=INTEGER}
+    </select>
+    <!-- 企业审核通过-->
+    <update id="updateEnterpriseCheckParkStatus" parameterType="fcn.co.jp.park.util.PageData">
+       update t_company
+        set
+        audit_result ='1',
+        update_user = 'manager',
+        update_timestamp = now()
+        where id = '13'
+    </update>
+    <!-- 企业审核通过，把个人角色改为企业角色-->
+    <update id="UpdateEnterpriseCheckUserRole" parameterType="fcn.co.jp.park.util.PageData">
+        update t_user
+        set
+        user_type = '2',
+        update_user = 'manager',
+        update_timestamp = now()
+        where user_id ='123456'
+    </update>
+     <!-- 企业审核驳回-->
+     <update id="enterpriseCheckTurnClick" parameterType="fcn.co.jp.park.util.PageData">
+         update t_company
+         set
+         audit_reason = 'audit_reason',
+         audit_result = '2',
+         update_user = 'manager',
+         update_timestamp = now()
+         where id = #{id,jdbcType=INTEGER},
+     </update>
+     <!--企业审核通过往信息表插入信息-->
+     <insert id="insertEnterpriseCheckPassMessage" parameterType="fcn.co.jp.park.util.PageData">
+         insert into  t_message
+         set
+         title = #{title,jdbcType=VARCHAR},
+         content = #{content,jdbcType=VARCHAR},
+         activity_type = '8',
+         user_id = #{user_id,jdbcType=INTEGER},
+         update_user ='manager',
+         insert_user = 'manager',
+         update_timestamp = now()
+     </insert>
+    <!-- 企业审核驳回往信息表插入信息-->
+     <insert id="insertEnterpriseCheckTurnMessage" parameterType="fcn.co.jp.park.util.PageData">
+         insert into  t_message
+         set
+         title = #{title,jdbcType=VARCHAR},
+         content = #{content,jdbcType=VARCHAR},
+         activity_type = '8',
+         user_id = #{user_id,jdbcType=INTEGER},
+         update_user ='manager',
+         insert_user ='manager',
+         update_timestamp = now()
+     </insert>
+</mapper>
+
+
+

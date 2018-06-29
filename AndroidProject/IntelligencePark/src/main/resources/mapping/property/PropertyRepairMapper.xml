@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fcn.co.jp.park.mapper.property.PropertyRepairMapper" >
+    <!--追加报修信息-->
+    <insert id="insertRepair" parameterType="fcn.co.jp.park.util.PageData">
+        INSERT INTO
+        t_property_repair(user_id,repair_name,repair_phone,repair_address,repair_content,repairPicture1,repairPicture2,repairPicture3)
+        VALUES
+        (#{userId},#{repairName},#{repairPhone},#{repairAddress},#{repairContent},#{repairPicture1},#{repairPicture2},#{repairPicture3})
+    </insert>
+</mapper>

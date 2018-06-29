@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listAdvertisingBean"
+            type="com.fcn.park.manager.bean.ManagerAdvertisingApprovalListBean.ListAdvertisingApprovalBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="10.0">
+
+            <!-- 序号 -->
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2.0"
+                android:gravity="center"
+                android:text="@{listAdvertisingBean.no}" />
+
+            <!-- 审批状况 -->
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2.0"
+                android:gravity="center"
+                android:text="@{listAdvertisingBean.approvalStatus}" />
+
+            <!-- 租赁者 -->
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2.0"
+                android:gravity="center"
+                android:text="@{listAdvertisingBean.insertUser}" />
+
+            <!-- 开始日期 -->
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2.0"
+                android:gravity="center"
+                android:text="@{listAdvertisingBean.payTime}" />
+
+            <!-- 终止日期 -->
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2.0"
+                android:gravity="center"
+                android:text="@{listAdvertisingBean.endDays}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

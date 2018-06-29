@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:text="清风原木抽纸"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/goods_name" android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="18sp"
+            android:textColor="@android:color/background_dark"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+            android:text="価格:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView13"
+            app:layout_constraintTop_toTopOf="@+id/house_date"
+            android:layout_marginTop="0dp" app:layout_constraintBottom_toBottomOf="@+id/house_date"
+            android:layout_marginBottom="0dp" android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline6"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline6"
+                                          android:orientation="vertical"
+                                          app:layout_constraintGuide_percent="0.46"/>
+    <TextView
+            android:text="35665"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/price"
+            app:layout_constraintTop_toTopOf="@+id/textView13" android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13" android:layout_marginBottom="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView13" android:layout_marginLeft="0dp"
+    />
+    <TextView
+            android:text="円"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView15"
+            app:layout_constraintTop_toTopOf="@+id/price" android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/price" android:layout_marginBottom="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/price" android:layout_marginLeft="0dp"/>
+    <TextView
+            android:text="入庫日付:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/house_tv" android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="16sp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/goods_name"/>
+    <TextView
+            android:text="2017-10-10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/house_date" app:layout_constraintLeft_toRightOf="@+id/house_tv"
+            android:layout_marginLeft="0dp" app:layout_constraintTop_toTopOf="@+id/house_tv"
+            android:layout_marginTop="0dp" app:layout_constraintBottom_toBottomOf="@+id/house_tv"
+            android:layout_marginBottom="0dp" android:textSize="16sp" app:layout_constraintVertical_bias="0.0"
+    />
+    <TextView
+            android:text="数量:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView22"
+            app:layout_constraintTop_toTopOf="@+id/house_date"
+            android:layout_marginTop="0dp" app:layout_constraintBottom_toBottomOf="@+id/house_date"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="@+id/guideline7"/>
+    <TextView
+            android:text="12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/house_count"
+            app:layout_constraintLeft_toRightOf="@+id/textView22"
+            android:layout_marginLeft="0dp" app:layout_constraintTop_toTopOf="@+id/textView22"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView22" android:layout_marginBottom="0dp"
+            app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView24"
+            android:text="個"
+            app:layout_constraintLeft_toRightOf="@+id/house_count" android:layout_marginLeft="0dp"
+            app:layout_constraintTop_toTopOf="@+id/house_count" android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/house_count" android:layout_marginBottom="0dp"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline7"
+                                          android:orientation="vertical" app:layout_constraintGuide_percent="0.75"/>
+</android.support.constraint.ConstraintLayout>

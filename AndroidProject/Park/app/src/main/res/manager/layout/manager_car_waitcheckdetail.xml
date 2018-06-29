@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="managerCarWaitCheckDetailPresenter"
+            type="com.fcn.park.manager.presenter.car.ManagerCarWaitCheckDetailPresenter"/>
+        <variable
+            name="carWaitCheckDetailInfoBean"
+            type="com.fcn.park.manager.bean.car.CarWaitCheckDetailInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_layout_title" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@android:color/white"
+                        android:divider="@drawable/divider_line"
+                        android:dividerPadding="10dp"
+                        android:orientation="vertical"
+                        android:showDividers="middle">
+
+
+                        <!-- 姓名 -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="12dp"
+                            android:text='@{@string/manager_monthly_vehicle_check_name+carWaitCheckDetailInfoBean.applicantName}'
+                            android:textColor="#868585"
+                            android:textSize="13sp" />
+                        <!--  android:visibility="@{carWaitCheckDetailInfoBean.applicantName==null?View.GONE:View.VISIBLE}" />-->
+                        <!-- 电话 -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="12dp"
+                            android:text='@{@string/manager_monthly_vehicle_check_phone+carWaitCheckDetailInfoBean.phone}'
+                            android:textColor="#868585"
+                            android:textSize="13sp" />
+                        <!-- 公司名称-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="12dp"
+                            android:text='@{@string/manager_monthly_vehicle_check_company+carWaitCheckDetailInfoBean.company}'
+                            android:textColor="#868585"
+                            android:textSize="13sp" />
+                        <!-- 申请类型-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="12dp"
+                            android:text='@{@string/manager_monthly_vehicle_check_applyType+carWaitCheckDetailInfoBean.applyType}'
+                            android:textColor="#868585"
+                            android:textSize="13sp" />
+                        <!-- 申请资料-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="12dp"
+                            android:text='@{@string/manager_monthly_vehicle_check_applyDocument}'
+                            android:textColor="#868585"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@android:color/white"
+                            android:divider="@drawable/divider_line"
+                            android:dividerPadding="10dp"
+                            android:orientation="horizontal"
+                            android:showDividers="middle">
+                            <!--证件类型-->
+                            <ImageView
+                                android:id="@+id/manager_car_onJobProImage"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:onClick="onJobProImage"/>
+                             <!--   binding:text="@{carWaitCheckDetailInfoBean.onJobProImage}"/>-->
+                           <!-- 驾驶证-->
+                            <ImageView
+                                android:id="@+id/manager_car_driverCardImage"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:onClick="driverCardImage"
+                                android:src="@{carWaitCheckDetailInfoBean.driverCardImage}" />
+
+                           <!-- 行驶证-->
+                            <ImageView
+                                android:id="@+id/manager_car_driveringCardImage"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:onClick="driveringCardImage"
+                                android:src="@{carWaitCheckDetailInfoBean.driveringCardImage}" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@android:color/white"
+                            android:divider="@drawable/divider_line"
+                            android:dividerPadding="10dp"
+                            android:orientation="vertical"
+                            android:showDividers="middle">
+                            <!-- 开始时间-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_monthly_vehicle_check_startDate+carWaitCheckDetailInfoBean.startDate}'
+                                android:textColor="#868585"
+                                android:textSize="13sp" />
+                            <!-- 结束时间-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_monthly_vehicle_check_endDate+carWaitCheckDetailInfoBean.endDate}'
+                                android:textColor="#868585"
+                                android:textSize="13sp" />
+                            <!-- 审批详情-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="12dp"
+                                android:text='@{@string/manager_monthly_vehicle_check_checkinfo}'
+                                android:textColor="#868585"
+                                android:textSize="13sp" />
+
+                            <EditText
+                                android:id="@+id/manager_car_check_info_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusableInTouchMode="true"/>
+                             <!--   android:text='@{carWaitCheckDetailInfoBean.checkinfo}' />-->
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/bg_blue_btn"
+                    android:text="通过"
+                    android:textColor="@android:color/white"
+                    android:onClick="@{()->managerCarWaitCheckDetailPresenter.onPassClick()}"/>
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/bg_blue_btn"
+                    android:text="驳回"
+                    android:textColor="@android:color/white"
+                    android:onClick="@{()->managerCarWaitCheckDetailPresenter.onTurnClick()}"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
+
+

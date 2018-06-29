@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listAdvertisingApprovalBean"
+            type="com.fcn.park.manager.bean.ManagerAdvertisingApprovalListBean.ListAdvertisingApprovalBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1.0">
+
+        <TextView
+            android:id="@+id/item_layout_advertising_approval_list_no"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="@{listAdvertisingApprovalBean.no}"/>
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:text="@{listAdvertisingApprovalBean.insertUser}" />
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="@{listAdvertisingApprovalBean.setType}" />
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:text="@{listAdvertisingApprovalBean.insertTime}" />
+    </LinearLayout>
+</layout>
