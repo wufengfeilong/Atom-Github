@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:alpha="0.8"
-    android:background="@color/release_menu_bg_color">
+    android:background="@android:color/black" >
 
     <LinearLayout
         android:id="@+id/beauty_origin"

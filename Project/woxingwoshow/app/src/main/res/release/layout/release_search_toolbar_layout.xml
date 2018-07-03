@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -8,41 +8,46 @@
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/release_search"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/draft_item_icon_width"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="@dimen/release_margin"
-            android:background="@drawable/search_box"
-            android:drawableLeft="@drawable/search_white"
-            android:gravity="left|center_vertical"
-            android:hint="@{title}"
-            android:paddingLeft="@dimen/release_publish_user_info_margin"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/darker_gray" />
+        android:background="@android:color/white">
 
         <TextView
+            android:id="@+id/topic_cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="@dimen/release_margin"
-            android:layout_marginRight="@dimen/release_margin"
-            android:padding="@dimen/release_publish_user_info_margin"
-            android:clickable="true"
-            android:gravity="right|center_vertical"
-            android:maxLines="1"
-            android:onClick="onMenuClick"
-            android:singleLine="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/release_margin_middle"
+            android:layout_marginStart="@dimen/release_margin_middle"
+            android:gravity="center"
+            android:onClick="onCancelClick"
             android:text="@string/release_cancel"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/release_middle_text_size" />
-    </LinearLayout>
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/topic_search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/release_margin_middle"
+            android:layout_toStartOf="@+id/topic_cancel_btn"
+            android:background="@drawable/ellipse_shape_bg"
+            android:drawableEnd="@drawable/close_circle_bg"
+            android:drawablePadding="@dimen/release_margin_middle"
+            android:drawableStart="@drawable/topic_tag"
+            android:gravity="center_vertical|start"
+            android:hint="@{title}"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lines="1"
+            android:layout_marginBottom="@dimen/release_margin_small"
+            android:layout_marginTop="@dimen/release_margin_small"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="@dimen/release_small_text_size" />
+    </RelativeLayout>
 </layout>

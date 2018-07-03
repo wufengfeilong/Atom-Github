@@ -1,117 +1,124 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="presenter" type="woxingwoxiu.com.home.presenter.HomeFragmentPresenter"/>
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.home.presenter.HomeFragmentPresenter" />
     </data>
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/home_title_ll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-        <LinearLayout
-                android:id="@+id/home_title_ll"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:orientation="horizontal"
-                android:gravity="bottom"
-                android:background="@drawable/title_back_img"
-                android:paddingBottom="10dp"
-        >
+            android:layout_height="@dimen/immersion_title_bar_height"
+            android:background="@drawable/title_back_img"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
+
             <TextView
-                    android:id="@+id/home_title_city_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:onClick="@{()->presenter.cityClick()}"
-                    android:maxLines="1"
-                    android:text="定位中..."/>
+                android:id="@+id/home_title_city_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:onClick="@{()->presenter.cityClick()}"
+                android:text="定位中..."
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/general_text_size" />
+
             <ImageView
-                    android:id="@+id/home_title_back_iv"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/back_white"
-                    android:onClick="@{()->presenter.backClick()}"
-                    android:visibility="gone"
-            />
-            <!--<RelativeLayout-->
-                    <!--android:focusable="true"-->
-                    <!--android:focusableInTouchMode="true"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_weight="8"-->
-                    <!--android:layout_height="wrap_content">-->
-                <EditText
-                        android:id="@+id/home_title_search_et"
+                android:id="@+id/home_title_back_iv"
+                android:layout_width="@dimen/title_back_width"
+                android:layout_height="@dimen/title_back_height"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.backClick()}"
+                android:src="@drawable/back_white"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/home_title_search_et"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/search_edit_text_height"
+                android:layout_weight="1"
+                android:background="@drawable/ellipse_shape_bg"
+                android:cursorVisible="false"
+                android:drawableEnd="@drawable/scan_white"
+                android:drawableStart="@drawable/home_search"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.searchClick()}"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" />
+
+            <ImageView
+                android:id="@+id/home_title_msg_iv"
+                android:layout_width="@dimen/title_right_image_width"
+                android:layout_height="@dimen/title_right_image_height"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.letterClick()}"
+                android:src="@drawable/message" />
+
+        </LinearLayout>
+
+        <sdwxwx.com.widget.LoadStatusView
+            android:id="@+id/home_lsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/home_fragment_tab_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/general_list_item_height"
+                    android:weightSum="7">
+
+                    <sdwxwx.com.widget.TabLayout
+                        android:id="@+id/home_fragment_tl"
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        app:tabIndicatorColor="@color/home_fragment_tab_indicator"
+                        app:tabMode="scrollable"
+                        app:tabSelectedTextColor="@color/home_fragment_tab_indicator" />
+
+                    <ImageView
+                        android:id="@+id/home_tab_category"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_height="40dp"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:gravity="center_vertical"
-                        android:drawableLeft="@drawable/home_search_white"
-                        android:drawableRight="@drawable/scan_white"
-                        android:onClick="@{()->presenter.searchClick()}"
-                        android:background="@drawable/ellipse_shape_bg"/>
+                        android:contentDescription="@null"
+                        android:onClick="@{()->presenter.tabMoreClick()}"
+                        android:padding="15dp"
+                        android:src="@drawable/category" />
+                </LinearLayout>
 
-                <!--<ImageView-->
-                        <!--android:id="@+id/home_title_scan_iv"-->
-                        <!--android:layout_width="20dp"-->
-                        <!--android:layout_height="20dp"-->
-                        <!--android:layout_centerVertical="true"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--android:src="@drawable/scan"/>-->
-            <!--</RelativeLayout>-->
-            <ImageView
-                    android:id="@+id/home_title_msg_iv"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
-                    android:onClick="@{()->presenter.letterClick()}"
-                    android:src="@drawable/message" />
+                <sdwxwx.com.widget.ScrollViewPager
+                    android:id="@+id/home_fragment_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-        </LinearLayout>
-        <LinearLayout
-                android:id="@+id/home_fragment_tab_ll"
-                android:layout_width="match_parent"
-                android:weightSum="7"
-                android:layout_height="48dp">
-
-            <woxingwoxiu.com.widget.TabLayout
-                    android:id="@+id/home_fragment_tl"
-                    android:layout_width="0dp"
-                    android:layout_weight="6"
-                    app:tabMode="scrollable"
-                    app:tabIndicatorColor="@color/home_fragment_tab_indicator"
-                    app:tabSelectedTextColor="@color/home_fragment_tab_indicator"
-                    android:layout_height="match_parent">
-
-            </woxingwoxiu.com.widget.TabLayout>
-
-            <ImageView
-                    android:id="@+id/home_tab_category"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:padding="15dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/category"
-                    android:onClick="@{()->presenter.tabMoreClick()}"
-            />
-        </LinearLayout>
-
-
-        <woxingwoxiu.com.widget.ScrollViewPager
-                android:id="@+id/home_fragment_vp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-        </woxingwoxiu.com.widget.ScrollViewPager>
+            </LinearLayout>
+        </sdwxwx.com.widget.LoadStatusView>
     </LinearLayout>
 </layout>

@@ -1,89 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/gray_light"
-              android:orientation="vertical"
-              android:padding="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/graySimple"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/release_margin_middle">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/play_comment_head"
+        android:layout_width="@dimen/general_list_item_height"
+        android:layout_height="@dimen/general_list_item_height"
+        android:layout_gravity="start|top"
+        android:layout_marginStart="@dimen/release_margin_middle"
+        android:src="@drawable/default_header_image" />
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/release_margin"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:weightSum="7">
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/play_comment_head"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/phone_book_gray"
-                android:layout_height="40dp"/>
-        <LinearLayout android:layout_width="0dp"
-                      android:layout_weight="5"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical">
-            <TextView
+            android:layout_height="@dimen/general_list_item_height"
+            android:paddingTop="@dimen/release_margin_small">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/play_comment_thumb_up_count"
+                android:orientation="vertical">
+
+                <TextView
                     android:id="@+id/play_comment_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="start"
+                    android:gravity="center_vertical|start"
                     android:text="h阿里路亚"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            <TextView
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/comment_size" />
+
+                <TextView
                     android:id="@+id/play_comment_date"
-                    android:text="2018-05-14"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <TextView
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:text="2018-05-14"
+                    android:textColor="@color/gray_middle_light"
+                    android:textSize="@dimen/common_small_size" />
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/play_comment_thumb_up_count"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="121"/>
-        <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/release_margin_small"
+                android:layout_marginStart="@dimen/release_margin_middle"
+                android:layout_toStartOf="@+id/play_comment_thumb_up_iv"
+                android:gravity="center_vertical|end"
+                android:text="赞"
+                android:textColor="@android:color/darker_gray" />
+
+            <ImageView
                 android:id="@+id/play_comment_thumb_up_iv"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="18dp"
-                android:src="@drawable/thumb_up_no_select"/>
-    </LinearLayout>
-    <TextView
+                android:layout_width="@dimen/release_margin"
+                android:layout_height="@dimen/release_margin"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/release_margin"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/thumb_up_no_select" />
+        </RelativeLayout>
+
+        <TextView
             android:id="@+id/play_comment_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="@dimen/release_margin_middle"
+            android:layout_gravity="start"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:maxLines="3"
+            android:paddingBottom="@dimen/release_margin_middle"
+            android:paddingTop="@dimen/release_margin_middle"
+            android:text="你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮"
             android:textColor="@android:color/black"
-            android:text="你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮"/>
-    <LinearLayout
-            android:id="@+id/play_comment_reply_ll"
+            android:textSize="@dimen/comment_size" />
+
+        <TextView
+            android:id="@+id/play_comment_reply_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            android:visibility="gone"
-            android:background="@android:color/white"
-            android:orientation="horizontal">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/look_all"
-            android:textColor="@color/blue_light"/>
-        <TextView
-                android:id="@+id/play_comment_reply_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="8"
-                android:textColor="@color/blue_light"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/count_reply"
-                android:textColor="@color/blue_light"/>
-    </LinearLayout>
-    <View
+            android:layout_marginBottom="@dimen/release_margin_middle"
+            android:layout_marginTop="@dimen/release_margin_middle"
+            android:background="@color/white_light"
+            android:padding="@dimen/release_margin_small"
+            android:textColor="@color/blue_light" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_light"/>
+            android:layout_height="@dimen/common_video_margin"
+            android:background="@color/gray_middle_light" />
+    </LinearLayout>
 </LinearLayout>

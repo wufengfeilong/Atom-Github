@@ -2,22 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.release.presenter.RecordPresenter" />
+            type="sdwxwx.com.release.presenter.RecordPresenter" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/release_camera_top_height"
         android:orientation="horizontal">
+
         <FrameLayout
             android:id="@+id/progress_bar"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
-            <woxingwoxiu.com.release.view.RecordProgressView
+            <sdwxwx.com.release.view.RecordProgressView
                 android:id="@+id/record_progress"
                 android:layout_width="match_parent"
                 android:layout_height="6dp"
@@ -28,8 +30,9 @@
             android:id="@+id/close_camera"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/release_margin"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/release_margin"
+            android:contentDescription="@null"
             android:onClick="@{()->presenter.onCloseClick()}"
             android:scaleType="centerInside"
             android:src="@drawable/close_icon" />
@@ -38,11 +41,40 @@
             android:id="@+id/music_camera"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/release_margin"
-            android:layout_toLeftOf="@+id/reverse_camera"
+            android:layout_marginEnd="@dimen/release_margin"
+            android:layout_toStartOf="@+id/reverse_camera"
+            android:contentDescription="@null"
             android:onClick="@{()->presenter.onMusicClick()}"
             android:scaleType="centerInside"
-            android:src="@drawable/music_camera" />
+            android:src="@drawable/music_camera"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/record_music_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/release_margin"
+            android:layout_marginStart="@dimen/release_margin"
+            android:layout_toEndOf="@+id/close_camera"
+            android:layout_toStartOf="@+id/reverse_camera"
+            android:alpha="0.6"
+            android:background="@drawable/album_edit_remind_bg"
+            android:clickable="true"
+            android:ellipsize="marquee"
+            android:layout_centerVertical="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:onClick="@{()->presenter.onMusicOnlineClick()}"
+            android:paddingBottom="@dimen/release_margin_small"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:paddingTop="@dimen/release_margin_small"
+            android:singleLine="true"
+            android:text="金然 （断肠）-凉凉--《三生三世十里桃花》-翻唱-128"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/release_small_text_size"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/reverse_camera"
@@ -50,7 +82,8 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/release_margin"
             android:layout_marginRight="@dimen/release_margin"
-            android:layout_toLeftOf="@+id/more_camera"
+            android:layout_toStartOf="@+id/more_camera"
+            android:contentDescription="@null"
             android:onClick="@{()->presenter.onReverseCameraClick()}"
             android:scaleType="centerInside"
             android:src="@drawable/reverse_camera" />
@@ -59,9 +92,10 @@
             android:id="@+id/more_camera"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/release_margin"
-            android:layout_marginRight="@dimen/release_margin"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/release_margin"
+            android:layout_marginStart="@dimen/release_margin"
+            android:contentDescription="@null"
             android:onClick="@{()->presenter.onMoreClick()}"
             android:scaleType="centerInside"
             android:src="@drawable/more_camera" />

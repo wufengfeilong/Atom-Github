@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="Bean"
+            type="sdwxwx.com.bean.MusicBean" />
+        <variable
+        name="presenter"
+        type="sdwxwx.com.release.presenter.MusicOnlineTypePresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:weightSum="7"
+            android:padding="10dp">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1.7"
+                >
+            <ImageView
+                android:id="@+id/music_type_cover_url"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/beauty_nature"/>
+                <ImageView
+                    android:id="@+id/music_collection_play_music"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/start_camera"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="4.80"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:weightSum="5">
+
+                <TextView
+                    android:id="@+id/music_type_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.8"
+                    android:gravity="center_vertical"
+                    android:text="@{Bean.title}"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/music_type_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.4"
+                    android:gravity="center_vertical"
+                    android:text="@{Bean.artist}"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/music_type_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.8"
+                    android:gravity="center_vertical"
+                    android:text="@{Bean.duration}"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.50"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/music_collection_type"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/unfavorited_collection_music" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

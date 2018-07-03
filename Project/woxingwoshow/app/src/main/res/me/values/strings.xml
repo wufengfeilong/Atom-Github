@@ -1,4 +1,19 @@
 <resources>
     <string name="me_title_tx">网球小王子</string>
 
+    <string name="me_draft_item_tx">待发布</string>
+
+    <string name="agreement_agree">同意《我行我秀用户协议》</string>
+    <string name="certify_phone_tx_one">必须本人手持身份证，保证身份证上信息清晰可见[样例见左图]</string>
+    <string name="certify_phone_tx_two">上传本人身份证正面照片，保证身份证上信息清晰可见[样例见左图]</string>
+    <string name="certification">实名认证</string>
+    <string name="fans_home_fans">粉丝</string>
+    <string name="fans_home_attention">关注</string>
+    <string name="fans_home_my_team">我的团队</string>
+    <string name="fans_home_wealth">财富值</string>
+    <string name="feed_back_feedback">意见反馈</string>
+    <string name="feed_back_questions">请描述您的问题</string>
+    <string name="feed_back_commit">提交</string>
+    <string name="has_certified">已认证</string>
+    <string name="no_certified">未认证</string>
 </resources>

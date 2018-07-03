@@ -1,80 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.message.presenter.MessageFriendFansListPresenter"/>
+            type="sdwxwx.com.message.presenter.MessageFriendFansListPresenter" />
+
+        <variable
+            name="Bean"
+            type="sdwxwx.com.home.bean.RecommendUserBean" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:padding="5dp">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white">
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/feedback_back"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="center_vertical"
-                android:onClick="@{()->presenter.onClickBack()}">
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.onClickBack()}"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_black" />
 
-                <ImageView
-                    android:id="@+id/feedback_back"
-                    android:layout_width="10dp"
-                    android:layout_height="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/back_img"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/fans_or_attention"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/message_fan_margin_big"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:text="@string/fans_home_fans"
+                android:textSize="@dimen/activity_title_size" />
+        </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
+        <com.liaoinstan.springview.widget.SpringView
+            android:id="@+id/fans_list_springView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/graySimple">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="粉丝"
-                    android:textSize="17sp" />
-            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fans_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/graySimple" />
+        </com.liaoinstan.springview.widget.SpringView>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="right">
-            </LinearLayout>
-        </LinearLayout>
         <TextView
+            android:id="@+id/no_user_message"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#CDC9C9"/>
-        <!--<com.liaoinstan.springview.widget.SpringView-->
-            <!--android:id="@+id/spring_view_fans_list"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-
-            <!--<woxingwoxiu.com.widget.EmptyRecyclerView-->
-                <!--android:id="@+id/recycler_view_fans_list"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="@android:color/white" />-->
-
-        <!--</com.liaoinstan.springview.widget.SpringView>-->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fans_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/user_list_item_nick_name_size" />
     </LinearLayout>
 </layout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.release.presenter.FriendsListPresenter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="sdwxwx.com.release.activity.FriendsListActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/topic_cancel_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/release_margin_middle"
+                    android:layout_marginStart="@dimen/release_margin_middle"
+                    android:gravity="center"
+                    android:onClick="@{()->presenter.onCancelClick()}"
+                    android:text="@string/release_cancel"
+                    android:textColor="@android:color/black" />
+
+                <EditText
+                    android:id="@+id/friend_search_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/release_margin_small"
+                    android:layout_marginStart="@dimen/release_margin_middle"
+                    android:layout_marginTop="@dimen/release_margin_small"
+                    android:layout_toStartOf="@+id/topic_cancel_btn"
+                    android:background="@drawable/ellipse_shape_bg"
+                    android:drawableEnd="@drawable/close_circle_bg"
+                    android:drawablePadding="@dimen/release_margin_middle"
+                    android:drawableStart="@drawable/search_gray"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/release_friend_search_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="@dimen/release_small_text_size" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/friends_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/friends_list_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:text="@string/release_friend_search_empty"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/release_middle_text_size"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

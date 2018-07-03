@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.mob.sdk'
 
 android {
     compileSdkVersion 27
@@ -9,7 +8,7 @@ android {
     useLibrary 'org.apache.http.legacy' //环信即时通讯
     buildToolsVersion "27.0.0"
     defaultConfig {
-        applicationId "woxingwoxiu.com"
+        applicationId "sdwxwx.com"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
@@ -75,30 +74,24 @@ android {
                             'src/main/res/play/layout',
                             'src/main/res/play/values',
 
-
                     ]
         }
     }
 
 }
-MobSDK {
-    appKey "25ddb7e3706fa"
-    appSecret "604a7d6b7272d92e45367da83c2ff641"
-    ShareSDK {}
-}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support.constraint:constraint-layout:1.1.0'
-    compile 'com.android.support:appcompat-v7:27.0.0'
-    compile 'com.android.support:recyclerview-v7:27.0.0'
-    compile 'com.android.support:design:27.0.0'
+    compile 'com.android.support:appcompat-v7:27.1.1'
+    compile 'com.android.support:recyclerview-v7:27.1.1'
+    compile 'com.android.support:design:27.1.1'
     compile 'com.android.support:support-v4:27.1.1'
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.github.bumptech.glide:glide:4.7.1'
-
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.1.7'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -106,7 +99,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.youth.banner:banner:1.4.10'
 
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     // View描画
     compile 'com.lht:paintview:1.17'
@@ -136,15 +129,11 @@ dependencies {
     compile 'me.kaelaela:verticalviewpager:1.0.0@aar'
     //环信即时通讯
     compile 'com.google.android.gms:play-services-base:11.4.0'
-    compile project(':easeui')
-
+    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
     //验证码实现
     compile files('libs/Jar-eucp-sms-sdk-1.3.3.jar')
     //加载Dialog
     compile 'com.github.gittjy:LoadingDialog:1.0.2'
-    // eventbus事件传递机制
-    compile 'org.greenrobot:eventbus:3.0.0'
     //城市列表
     compile 'me.yokeyword:indexablerecyclerview:1.3.0'
 }
-

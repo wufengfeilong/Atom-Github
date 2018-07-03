@@ -10,18 +10,19 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize">
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@android:color/white">
 
         <ImageButton
             android:id="@+id/release_back_btn"
             style="?android:attr/actionButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:scaleType="centerInside"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:contentDescription="@null"
             android:onClick="onMenuClick"
+            android:scaleType="centerInside"
             android:src="@drawable/back_black" />
 
         <TextView
@@ -30,6 +31,6 @@
             android:layout_centerInParent="true"
             android:text="@{title}"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/release_middle_text_size" />
+            android:textSize="@dimen/activity_title_size" />
     </RelativeLayout>
 </layout>

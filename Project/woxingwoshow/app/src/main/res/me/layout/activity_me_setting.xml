@@ -2,251 +2,263 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.me.presenter.SettingPresenter" />
+            type="sdwxwx.com.me.presenter.SettingPresenter" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/graySimple"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
 
-            <LinearLayout
-                android:layout_width="0dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/find_back"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="center_vertical"
-                android:onClick="@{()->presenter.onClickBack()}">
+                android:layout_alignParentStart="true"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.onClickBack()}"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_black" />
 
-                <ImageView
-                    android:id="@+id/feedback_back"
-                    android:layout_width="10dp"
-                    android:layout_height="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/back_img"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="设置"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="right">
-            </LinearLayout>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:onClick="@{()->presenter.onClickQrCode()}">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="9"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@color/colorBlack"
-                    android:text="我的二维码" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text=" ＞ " />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLightGray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:onClick="@{()->presenter.onClickCertify()}">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="9"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:text="认证信息" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text=" ＞ " />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLightGray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:onClick="@{()->presenter.onClickClearCaches()}">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:text="清理缓存" />
-
-            <TextView
-                android:id="@+id/cachesSize"
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="0.00MB" />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text=" ＞ " />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLightGray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:onClick="@{()->presenter.onClickFeedback()}">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="9"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:text="用户意见反馈" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text=" ＞ " />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLightGray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:onClick="@{()->presenter.onClickAboutUs()}">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="9"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:text="关于我们" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text=" ＞ " />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLightGray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:onClick="@{()->presenter.onClickCheckUpdate()}">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="9"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:text="检查更新" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text=" ＞ " />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:onClick="@{()->presenter.onClicklogOut()}">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/colorRed"
-                android:textSize="15sp"
-                android:text="退出登录" />
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/release_set"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/activity_title_size" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/release_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onClickQrCode()}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/release_margin"
+                    android:text="@string/my_qr_code"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin_small"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/setting_right_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onClickCertify()}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/release_margin"
+                    android:text="实名认证"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <TextView
+                    android:id="@+id/is_certified"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/certify_icon"
+                    android:gravity="center_vertical|end"
+                    android:text="未认证"
+                    android:textSize="@dimen/comment_size" />
+
+                <ImageView
+                    android:id="@+id/certify_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin_small"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/setting_right_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onClickClearCaches()}"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/release_margin"
+                    android:text="清理缓存"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <TextView
+                    android:id="@+id/cachesSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/cache_size_icon"
+                    android:gravity="center_vertical|end"
+                    android:text="0.00MB"
+                    android:textSize="@dimen/comment_size" />
+
+                <ImageView
+                    android:id="@+id/cache_size_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin_small"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/setting_right_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onClickFeedback()}"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/release_margin"
+                    android:text="用户意见反馈"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin_small"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/setting_right_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onClickAboutUs()}"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/release_margin"
+                    android:text="关于我们"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin_small"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/setting_right_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onClickCheckUpdate()}"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="@dimen/release_margin"
+                    android:text="检查更新"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin"
+                    android:paddingStart="@dimen/release_margin_small"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/setting_right_icon" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_margin"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:onClick="@{()->presenter.onClicklogOut()}"
+                android:text="退出登录"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/comment_size" />
         </LinearLayout>
     </LinearLayout>
 </layout>

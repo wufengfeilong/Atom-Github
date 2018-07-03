@@ -5,15 +5,15 @@
 
         <variable
             name="presenter"
-            type="woxingwoxiu.com.release.presenter.RecordPresenter" />
+            type="sdwxwx.com.release.presenter.RecordPresenter" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/release_more_menu_height"
-        android:orientation="vertical"
-        android:alpha="0.8"
-        android:background="@color/release_menu_bg_color">
+        android:alpha="0.6"
+        android:background="@android:color/black"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"

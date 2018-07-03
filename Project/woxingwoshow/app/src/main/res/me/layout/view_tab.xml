@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="Bean"
+            type="sdwxwx.com.me.bean.MeHomeBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/me_home_video_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/action_start" />
+
+        <TextView
+            android:id="@+id/me_home_video_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/me_home_video_iv"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/me_tab_text_selector"
+            android:textSize="@dimen/comment_size" />
+    </RelativeLayout>
+</layout>

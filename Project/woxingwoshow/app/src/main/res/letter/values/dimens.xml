@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="letter_item_head_height">50dp</dimen>
+    <dimen name="letter_item_head_width">50dp</dimen>
+    <dimen name="letter_item_layout_width">260dp</dimen>
+    <dimen name="letter_item_layout_height">70dp</dimen>
+    <dimen name="letter_item_normal_size">16sp</dimen>
+    <dimen name="letter_item_margin_small">5dp</dimen>
+    <dimen name="letter_setting_head_height">60dp</dimen>
+    <dimen name="letter_setting_head_width">60dp</dimen>
+    <dimen name="letter_setting_margin_small">10dp</dimen>
+    <dimen name="letter_setting_margin_normal">20dp</dimen>
+    <dimen name="letter_setting_Text_view_height">50dp</dimen>
+    <dimen name="letter_setting_switch_width">30dp</dimen>
+    <dimen name="letter_setting_margin_micro">2dp</dimen>
+    <dimen name="letter_list_RecyclerView_margin">50dp</dimen>
+    <dimen name="letter_list_edit_height">40dp</dimen>
+    <dimen name="letter_list_edit_width">270dp</dimen>
+    <dimen name="letter_list_edit_padding">10dp</dimen>
+    <dimen name="letter_list_button_width">70dp</dimen>
+    <dimen name="letter_list_button_hright">30dp</dimen>
+</resources>

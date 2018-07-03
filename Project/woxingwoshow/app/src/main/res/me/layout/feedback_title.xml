@@ -2,52 +2,37 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.me.presenter.FeedbackPresenter" />
+            type="sdwxwx.com.me.presenter.FeedbackPresenter" />
     </data>
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/feedback_back"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:gravity="center_vertical"
-            android:onClick="@{()->presenter.onBack()}">
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:onClick="@{()->presenter.onBack()}"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:scaleType="centerInside"
+            android:src="@drawable/back_black" />
 
-            <ImageView
-                android:id="@+id/feedback_back"
-                android:layout_width="10dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/back_img"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="意见反馈"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:gravity="right">
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="用户意见反馈"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/activity_title_size" />
+    </RelativeLayout>
 </layout>

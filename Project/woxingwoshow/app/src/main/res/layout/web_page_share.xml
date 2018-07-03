@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_light"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/release_margin_middle">
+
+        <ImageView
+            android:id="@+id/play_share_send_weixin_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/send_weixin_friend" />
+
+        <ImageView
+            android:id="@+id/play_share_friend_circle_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/share_friend_circle" />
+
+        <ImageView
+            android:id="@+id/play_share_send_qq_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/send_qq_friend" />
+
+        <ImageView
+            android:id="@+id/play_share_weibo_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            android:src="@drawable/share_weibo" />
+
+        <ImageView
+            android:id="@+id/play_share_qzone_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/share_qzone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/release_line"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/release_margin_middle">
+
+        <ImageView
+            android:id="@+id/play_share_copy_link_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/copy_link" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/play_share_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/release_line"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:padding="@dimen/release_margin_middle"
+        android:text="@string/home_cancel"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/release_middle_text_size" />
+</LinearLayout>

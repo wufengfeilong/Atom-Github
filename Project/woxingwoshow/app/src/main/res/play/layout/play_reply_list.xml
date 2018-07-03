@@ -1,180 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@color/gray_light"
->
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:background="@color/white"
-            android:weightSum="7">
+    xmlns:view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_light"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white">
+
         <ImageView
-                android:id="@+id/play_reply_close_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:src="@drawable/play_video_close_gray"/>
-        <TextView android:layout_width="0dp"
-                  android:layout_weight="5"
-                  android:layout_height="match_parent"
-                  android:textSize="20sp"
-                  android:gravity="center"
-                  android:text="@string/look_reply"
-        />
+            android:id="@+id/play_reply_close_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:scaleType="centerInside"
+            android:src="@drawable/play_video_close_gray" />
+
         <TextView
-                android:id="@+id/play_reply_report_tv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:text="@string/reply_report"
-        />
-    </LinearLayout>
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/look_reply"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/activity_title_size" />
+    </RelativeLayout>
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/release_line"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/play_reply_comment_head"
+            android:layout_width="@dimen/general_list_item_height"
+            android:layout_height="@dimen/general_list_item_height"
+            android:layout_gravity="start|top"
+            android:layout_margin="@dimen/release_margin"
+            android:src="@drawable/default_header_image" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:padding="10dp">
-        <LinearLayout
+            android:layout_marginEnd="@dimen/release_margin"
+            android:layout_marginTop="@dimen/release_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:weightSum="7">
-            <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/play_reply_comment_head"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/phone_book_gray"
-                    android:layout_height="40dp"/>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="5"
-                          android:layout_height="match_parent"
-                          android:orientation="vertical">
-                <TextView
+                android:layout_height="@dimen/general_list_item_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/play_reply_comment_thumb_up_count"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:id="@+id/play_reply_comment_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|start"
                         android:text="h阿里路亚"
-                        android:textSize="16sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <TextView
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="@dimen/comment_size" />
+
+                    <TextView
                         android:id="@+id/play_reply_comment_date"
-                        android:text="2018-05-14"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <TextView
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|start"
+                        android:text="2018-05-14"
+                        android:textColor="@color/gray_middle_light"
+                        android:textSize="@dimen/common_small_size" />
+                </LinearLayout>
+
+                <TextView
                     android:id="@+id/play_reply_comment_thumb_up_count"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="121"/>
-            <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/release_margin_small"
+                    android:layout_marginStart="@dimen/release_margin_middle"
+                    android:layout_toStartOf="@+id/play_reply_comment_thumb_up_iv"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/comment_up_tx"
+                    android:textColor="@android:color/darker_gray" />
+
+                <ImageView
                     android:id="@+id/play_reply_comment_thumb_up_iv"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_height="18dp"
-                    android:src="@drawable/thumb_up_no_select"/>
-        </LinearLayout>
-        <TextView
+                    android:layout_width="@dimen/release_margin"
+                    android:layout_height="@dimen/release_margin"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/thumb_up_no_select" />
+            </RelativeLayout>
+
+            <TextView
                 android:id="@+id/play_reply_comment_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_marginRight="15dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical|start"
+                android:maxLines="3"
+                android:paddingBottom="@dimen/release_margin_middle"
+                android:paddingTop="@dimen/release_margin_middle"
+                android:text="你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮"
                 android:textColor="@android:color/black"
-                android:text="你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮"/>
+                android:textSize="@dimen/comment_size" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:padding="10dp"
-            android:orientation="horizontal"
-    >
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:text="@string/all_reply"/>
-        <TextView
-                android:id="@+id/reply_comment_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:text="5"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:text=")"/>
-    </LinearLayout>
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light"/>
+
+    <TextView
+        android:id="@+id/reply_comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/general_list_item_height"
+        android:layout_marginStart="@dimen/release_margin"
+        android:gravity="center_vertical|start"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/general_text_size" />
+
     <com.liaoinstan.springview.widget.SpringView
-            android:id="@+id/play_video_reply_sv"
-            android:layout_marginTop="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        android:id="@+id/play_video_reply_sv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
-                android:id="@+id/play_video_reply_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:id="@+id/play_video_reply_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
     </com.liaoinstan.springview.widget.SpringView>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:gravity="center_vertical"
-            android:background="@color/white"
-            android:weightSum="5"
-            android:padding="10dp">
-        <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_weight="4"
-                android:layout_height="wrap_content">
 
-            <EditText
-                    android:id="@+id/play_reply_say_sth"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:hint="@string/say_sth"
-                    android:cursorVisible="false"
-                    android:background="@drawable/ellipse_shape_bg"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:weightSum="5">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="4">
+
+            <sdwxwx.com.widget.RichEditText
+                android:id="@+id/play_reply_say_sth"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/chat_dialog_shape"
+                android:cursorVisible="true"
+                android:hint="@string/say_sth"
+                android:paddingLeft="10dp"
+                android:paddingRight="40dp"
+                android:textSize="@dimen/comment_size"
+                view:object_background_color="#54ed3649"
+                view:object_foreground_color="#f3b400" />
+
             <ImageView
-                    android:id="@+id/play_reply_at_sb"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/play_comment_at"/>
+                android:id="@+id/play_reply_at_sb"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/play_comment_at" />
         </RelativeLayout>
+
         <Button
-                android:id="@+id/play_reply_send"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="35dp"
-                android:padding="10dp"
-                android:text="@string/send"
-                android:textColor="@android:color/darker_gray"
-                android:background="@drawable/circle_corner_shape_btn_bg"/>
+            android:id="@+id/play_reply_send"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/send_btn_selector"
+            android:enabled="false"
+            android:padding="5dp"
+            android:text="@string/send"
+            android:textColor="@color/send_btn_text_selector" />
     </LinearLayout>
 </LinearLayout>

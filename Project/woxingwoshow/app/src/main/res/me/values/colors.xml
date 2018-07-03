@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="graySimple">#f7f7f7</color>
-    <color name="white">#ffffff</color>
     <color name="colorUncertify">@android:color/holo_blue_dark</color>
-    <color name="colorBlack">@android:color/black</color>
     <color name="colorRed">@android:color/holo_red_dark</color>
     <color name="colorEditText">#aaa</color>
-    <color name="colorLightGray">#ddd</color>
-    <color name="colorTitleColor">@android:color/white</color>
 </resources>

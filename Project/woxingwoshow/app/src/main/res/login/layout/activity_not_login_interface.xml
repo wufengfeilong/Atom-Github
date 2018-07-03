@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="presenter" type="woxingwoxiu.com.login.presenter.NotLoginInterfacePresenter"/>
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.login.presenter.NotLoginInterfacePresenter" />
     </data>
 
     <LinearLayout
@@ -11,71 +15,67 @@
 
         <LinearLayout
             android:id="@+id/not_login_title_ll"
-            android:background="@drawable/title_back_img"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:padding="5dp"
-            android:elevation="5dp">
+            android:layout_height="@dimen/immersion_title_bar_height"
+            android:background="@drawable/title_back_img"
+            android:gravity="bottom">
 
-            <LinearLayout
-                android:id="@+id/no_login_search"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:layout_weight="0.5"
-                android:onClick="@{()->presenter.onSearch()}"
-                >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/no_loginsearch"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="bottom|center"
-                android:layout_weight="1">
+                    android:id="@+id/no_login_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:contentDescription="@null"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{()->presenter.onSearch()}"
+                    android:padding="@dimen/release_margin"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/search" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:text="视频"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
+                    android:textSize="@dimen/activity_title_size" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="bottom|center">
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-
-                    android:text="登录/注册"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/release_margin"
+                    android:gravity="center_vertical|end"
                     android:onClick="@{()->presenter.onLogin()}"
+                    android:paddingBottom="@dimen/release_margin_small"
+                    android:paddingTop="@dimen/release_margin_small"
+                    android:text="登录/注册"
                     android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
+                    android:textSize="@dimen/comment_size" />
+            </RelativeLayout>
         </LinearLayout>
 
-        <com.liaoinstan.springview.widget.SpringView
-            android:id="@+id/not_login_video_springView"
+        <sdwxwx.com.widget.LoadStatusView
+            android:id="@+id/not_login_lsv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/not_login_video_rv"
+            <com.liaoinstan.springview.widget.SpringView
+                android:id="@+id/not_login_video_springView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
 
-        </com.liaoinstan.springview.widget.SpringView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/not_login_video_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
+            </com.liaoinstan.springview.widget.SpringView>
+        </sdwxwx.com.widget.LoadStatusView>
     </LinearLayout>
 </layout>

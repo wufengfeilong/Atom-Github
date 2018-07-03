@@ -11,13 +11,14 @@
 
         <variable
             name="presenter"
-            type="woxingwoxiu.com.release.presenter.MusicOnlinePresenter" />
+            type="sdwxwx.com.release.presenter.MusicOnlinePresenter" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="woxingwoxiu.com.release.activity.MusicOnlineActivity">
+        android:orientation="horizontal"
+        tools:context="sdwxwx.com.release.activity.MusicOnlineActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,9 +31,138 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="音乐在线选择画面待实装" />
+                android:layout_height="@dimen/release_line"
+                android:background="@color/gray_line" />
+
+            <EditText
+                android:id="@+id/search_music_title_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/music_text_margin_small"
+                android:layout_marginLeft="@dimen/music_text_margin"
+                android:layout_marginRight="@dimen/music_text_margin"
+                android:layout_marginTop="@dimen/music_text_margin_small"
+                android:background="@drawable/ellipse_shape_bg"
+                android:cursorVisible="true"
+                android:drawableStart="@drawable/search_gray"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:hint="歌曲搜索"
+                android:textSize="14sp"
+                android:lines="1"
+                android:textCursorDrawable="@null" />
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/music_search_layout_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="@dimen/music_text_margin"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/release_online_music_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/show_more_visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/music_text_margin_smaller"
+                        android:gravity="center"
+                        android:onClick="onShowMore"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/release_online_music_typeUrl"
+                            android:layout_width="@dimen/music_image_layout"
+                            android:layout_height="@dimen/music_image_layout"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="@dimen/music_image_margin_small"
+                            android:layout_marginTop="@dimen/music_image_margin"
+                            android:src="@drawable/more_down" />
+
+                        <TextView
+                            android:id="@+id/release_online_music_type_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/music_text_margin"
+                            android:layout_marginTop="@dimen/music_text_margin_smallest"
+                            android:text="@string/release_music_title_more"
+                            android:textSize="@dimen/general_text_size" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/release_line_higher"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/gray_line_height" />
+
+                    <LinearLayout
+                        android:id="@+id/release_online_music_tab_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/music_tab_layout_height"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/music_text_margin_smallest">
+
+                        <sdwxwx.com.widget.TabLayout
+                            android:id="@+id/release_online_music_tl"
+                            android:layout_width="@dimen/music_tab_layout_width"
+                            android:layout_height="@dimen/music_tab_layout_height"
+                            android:layout_weight="6"
+                            app:tabIndicatorColor="@android:color/transparent"
+                            app:tabSelectedTextColor="@color/home_fragment_tab_indicator"
+                            app:tabTextColor="@android:color/black" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/release_line"
+                        android:background="@color/gray_line" />
+
+                    <sdwxwx.com.widget.ScrollViewPager
+                        android:id="@+id/release_online_music_vp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/music_scroll_viewpager_height" />
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/music_no_answer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@android:color/white"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="居然没有结果，换个姿势再试一次吧" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/search_music_layout_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
 </layout>

@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <data>
-        <variable name="presenter" type="woxingwoxiu.com.play.presenter.PlayVideoPresenter"/>
-    </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent">
-        <SurfaceView android:layout_width="0dp" android:layout_height="0dp"/>
-        <woxingwoxiu.com.widget.VerticalViewPager
-                android:id="@+id/play_video_vvp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-        </woxingwoxiu.com.widget.VerticalViewPager>
+    <data>
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.play.presenter.PlayVideoPresenter" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SurfaceView
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <sdwxwx.com.widget.VerticalViewPager
+            android:id="@+id/play_video_vvp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </sdwxwx.com.widget.VerticalViewPager>
     </LinearLayout>
 </layout>

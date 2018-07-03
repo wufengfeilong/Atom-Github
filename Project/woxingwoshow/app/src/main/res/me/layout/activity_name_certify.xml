@@ -2,9 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.me.presenter.NameCertifyPresenter" />
+            type="sdwxwx.com.me.presenter.NameCertifyPresenter" />
     </data>
 
     <LinearLayout
@@ -12,322 +13,234 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:weightSum="10"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:background="@color/graySimple">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/feedback_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.onClickBack()}"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_black" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:layout_gravity="center"
-                android:onClick="@{()->presenter.onClickBack()}"
-                android:text=" ＜ " />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="8"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorBlack"
-                    android:text="实名认证"/>
-            </LinearLayout>
-        </LinearLayout>
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/certification"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/activity_title_size" />
+        </RelativeLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <EditText
+            android:id="@+id/real_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/release_margin"
+            android:background="@android:color/white"
+            android:hint="真实姓名"
+            android:lines="1"
+            android:paddingBottom="@dimen/release_margin_middle"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:paddingTop="@dimen/release_margin_middle"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/comment_size" />
+
+        <EditText
+            android:id="@+id/digit_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            android:hint="身份证号"
+            android:digits="0123456789xX"
+            android:lines="1"
+            android:maxLength="18"
+            android:paddingBottom="@dimen/release_margin_middle"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:paddingTop="@dimen/release_margin_middle"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/comment_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/release_margin_middle"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:paddingTop="@dimen/release_margin_middle"
+            android:text="手持身份证照片"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/comment_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/letter_item_layout_height"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <sdwxwx.com.widget.squareImageView
+                android:id="@+id/certify_phone_tou"
+                android:layout_width="@dimen/letter_item_head_height"
+                android:layout_height="@dimen/letter_item_head_height"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/release_margin_middle"
+                android:layout_marginStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/tou" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp" />
+                android:layout_marginEnd="@dimen/release_margin_middle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/certify_phone_tv_one"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical|start"
+                    android:maxLines="4"
+                    android:padding="@dimen/release_margin_small"
+                    android:text="@string/certify_phone_tx_one"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
 
                 <LinearLayout
-                    android:id="@+id/nameCertify"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:background="@color/graySimple"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:background="@drawable/shape_et"
-                        android:hint="真实姓名" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:background="@color/graySimple"
-                    android:orientation="horizontal">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:background="@drawable/shape_et"
-                        android:hint="身份证号" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:background="@color/graySimple"
-                    android:orientation="horizontal">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:background="@drawable/shape_et"
-                        android:hint="手机号" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:background="@color/graySimple"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:text="手持身份证照片" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:gravity="center_vertical"
-                        android:background="@color/graySimple"
-                        android:weightSum="100"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="5"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:textColor="@color/colorBlack"
-                            android:maxLines="4"
-                            android:text="" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="25"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/video_category"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="40"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:maxLines="4"
-                            android:text="必须本人手持身份证，保证身份证上信息清晰可见[样例见左图]" />
-
-
-                        <View
-                            android:layout_width="1px"
-                            android:layout_height="90dp"
-                            android:background="@color/colorLightGray"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="5"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:textColor="@color/colorBlack"
-                            android:maxLines="4"
-                            android:text="" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="25"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/video_category"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:background="@color/graySimple"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:text="独立身份证照" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:gravity="center_vertical"
-                        android:background="@color/graySimple"
-                        android:weightSum="100"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="5"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:textColor="@color/colorBlack"
-                            android:maxLines="4"
-                            android:text="" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="25"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/video_category"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="40"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:maxLines="4"
-                            android:text="上传本人身份证正面照片，保证身份证上信息清晰可见[样例见左图]" />
-
-
-                        <View
-                            android:layout_width="1px"
-                            android:layout_height="90dp"
-                            android:background="@color/colorLightGray"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="5"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:textColor="@color/colorBlack"
-                            android:maxLines="4"
-                            android:text="" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="25"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/video_category"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:background="@color/graySimple"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:text="本人银行卡号" />
-                    <Spinner
-                        android:id="@+id/manager_propertyFeeEdit_discount"
-                        android:paddingTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:entries="@array/bank"
-                        android:spinnerMode="dropdown" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="@color/colorLightGray"/>
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:background="@drawable/shape_et"
-                        android:hint="输入银行卡号" />
 
                     <View
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp" />
+                        android:layout_width="@dimen/release_line"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/release_margin"
+                        android:background="@android:color/darker_gray" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center_horizontal"
-                        android:background="@color/graySimple"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/agree"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textColor="@color/colorRed"
-                            android:text="同意我行我秀主播协议" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center_horizontal"
-                        android:background="@color/graySimple"
-                        android:orientation="horizontal">
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="提交审核" />
-                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/certify_phone_iv_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:onClick="@{()->presenter.onClickHandPhoto()}"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/onclick" />
                 </LinearLayout>
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="独立身份证照"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/letter_item_layout_height"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <sdwxwx.com.widget.squareImageView
+                android:id="@+id/certify_phone_two"
+                android:layout_width="@dimen/letter_item_head_height"
+                android:layout_height="@dimen/letter_item_head_height"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/release_margin_middle"
+                android:layout_marginStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/id_card_back" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/release_margin_middle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/certify_phone_tv_two"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical|start"
+                    android:maxLines="4"
+                    android:padding="@dimen/release_margin_small"
+                    android:text="@string/certify_phone_tx_two"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/comment_size" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="@dimen/release_line"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/release_margin"
+                        android:background="@android:color/darker_gray" />
+
+                    <ImageView
+                        android:id="@+id/certify_phone_iv_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:onClick="@{()->presenter.onClickCertyPhoto()}"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/onclick" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/release_margin"
+            android:gravity="center_vertical|start"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:scaleType="centerInside"
+                android:src="@drawable/agree" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="@dimen/release_margin_middle"
+                android:gravity="center_vertical|start"
+                android:onClick="@{()->presenter.onClickGoUserAgreement()}"
+                android:text="@string/agreement_agree"
+                android:textColor="@android:color/holo_red_light" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/release_margin"
+            android:background="@drawable/release_gradient_shape"
+            android:gravity="center"
+            android:onClick="@{()->presenter.onClickSave()}"
+            android:text="提交审核"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/general_text_size" />
     </LinearLayout>
 </layout>

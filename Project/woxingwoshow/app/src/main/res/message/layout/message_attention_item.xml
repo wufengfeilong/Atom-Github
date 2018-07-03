@@ -1,106 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/letter_item_layout_height"
+    android:minHeight="@dimen/letter_item_layout_height"
+    android:layout_marginTop="@dimen/release_line"
+    android:background="@android:color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/attention_head"
+        android:layout_width="@dimen/letter_item_head_height"
+        android:layout_height="@dimen/letter_item_head_height"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/release_margin_middle"
+        android:layout_marginStart="@dimen/release_margin"
+        android:src="@drawable/default_header_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/release_margin_small"
+        android:layout_marginEnd="@dimen/release_margin_middle"
+        android:layout_marginTop="@dimen/release_margin_small"
+        android:layout_toEndOf="@+id/attention_head"
+        android:layout_toStartOf="@+id/is_followed"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/head_pic"
-            android:id="@+id/attention_head"/>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/message_content"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:lines="2"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/comment_size" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/attention_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="2dp"
-                    android:text="用户01"
-                    android:textColor="@color/deepblack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="关注了你"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="1小时前"
-                android:textColor="@color/lightgray"
-                android:textSize="11sp"
-                android:id="@+id/attention_time"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/message_action" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="112"
-                    android:textSize="10sp"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/action_number"/>
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/message_fans"
-                    android:layout_margin="1dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="132"
-                    android:textSize="10sp"
-                    android:id="@+id/fans_number"/>
-
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:background="@drawable/message_attention"
-                android:layout_marginRight="2dp" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/attention_time"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:lines="1"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/common_small_size" />
     </LinearLayout>
 
-</layout>
+    <ImageView
+        android:id="@id/is_followed"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/release_margin"
+        android:src="@drawable/message_attention" />
+</RelativeLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="home_fragment_tab_indicator">#fa0d61</color>
-    <color name="gray_light">#64dedcdc</color>
+    <color name="gray_light">#64f4f2f2</color>
     <color name="gray_middle_light">#64afa7a7</color>
-    <color name="blue_light">#003399</color>
+    <color name="blue_light">#3571ea</color>
+    <color name="white_light">#c8fcfdff</color>
 </resources>

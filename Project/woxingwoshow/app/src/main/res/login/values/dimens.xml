@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="login_phone_margin">10dp</dimen>
+
+    <!-- 用户资料编辑画面  头像大小 -->
+    <dimen name="user_info_head_width">100dp</dimen>
+    <!-- 用户资料编辑画面  编辑资料文字size -->
+    <dimen name="login_middle_text_size">25sp</dimen>
+    <!-- 用户资料编辑画面  输入昵称文字size -->
+    <dimen name="login_large_text_size">30sp</dimen>
+</resources>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:paddingLeft="16dp">
+    android:paddingStart="@dimen/release_margin">
 
     <TextView
         android:id="@+id/tv_name"
@@ -13,12 +12,11 @@
         android:layout_height="wrap_content"
         android:paddingBottom="12dp"
         android:paddingTop="12dp"
-        tools:text="合肥市"
-        android:textSize="16sp" />
+        android:textSize="@dimen/general_text_size" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="#f1f1f1" />
-
+        android:background="#f1f1f1"
+        android:contentDescription="@null" />
 </LinearLayout>

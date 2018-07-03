@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+
+        <include
+            android:id="@+id/edit_filter_choose"
+            layout="@layout/record_edit_filter_choose"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_edit_bottom_bar_height"
+            android:layout_gravity="bottom"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/audio_choose"
+            layout="@layout/record_edit_bgm_choose"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_edit_volume_height"
+            android:layout_gravity="bottom"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/record_edit_music_menu"
+            layout="@layout/record_edit_music_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/release_bottom_bar_height"
+            android:layout_gravity="bottom"
+            android:visibility="gone" />
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="sdwxwx.com.bean.TopicInfoBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/add_topic_item_height"
+        android:layout_marginTop="@dimen/release_line"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/topic_tag_img"
+            android:layout_width="@dimen/release_toolbar_size"
+            android:layout_height="@dimen/release_toolbar_size"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/release_margin_middle"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/topic_tag_red" />
+
+        <!-- TODO:区分字符显示不同颜色 -->
+        <TextView
+            android:id="@+id/topic_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/release_margin_middle"
+            android:layout_toStartOf="@+id/topic_count_txt"
+            android:layout_toEndOf="@+id/topic_tag_img"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:lines="1"
+            android:text="@{bean.title}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/release_middle_text_size" />
+
+        <TextView
+            android:id="@+id/topic_count_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/release_margin_middle"
+            android:gravity="center_vertical|start"
+            android:lines="1"
+            android:text="@{bean.video_count + @string/release_topic_count}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/release_middle_text_size" />
+    </RelativeLayout>
+</layout>

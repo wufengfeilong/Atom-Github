@@ -1,51 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <data>
-        <variable
-            name="letter"
-            type="woxingwoxiu.com.letter.bean.PrivateLetterBean.LetterBean"/>
-    </data>
-    <LinearLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/general_double_list_item_height"
+    android:layout_marginTop="@dimen/release_line"
+    android:background="@android:color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/letter_list_head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/release_margin_middle"
+        android:layout_marginStart="@dimen/release_margin"
+        android:paddingBottom="@dimen/release_margin_small"
+        android:paddingTop="@dimen/release_margin_small"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_header_image"
+        app:civ_border_color="#0000"
+        app:civ_border_width="1dp" />
+
+    <RelativeLayout
+        android:id="@+id/letter_list_all"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="@color/white">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/head_pic"
-            android:layout_marginRight="5dp"
-            />
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/release_margin"
+        android:layout_toEndOf="@+id/letter_list_head"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:layout_width="260dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@{letter.userName}"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:textColor="@color/deepblack"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@{letter.letterContent}"
-                android:gravity="center_vertical"
-                android:maxEms="30"
-                android:singleLine="true"
-                android:ellipsize="end"/>
-        </LinearLayout>
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{letter.letterTime}"
-            android:gravity="right"
-            />
+            android:layout_toStartOf="@+id/letter_msg_time"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/letter_list_nick_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical|start"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/user_list_item_nick_name_size" />
 
-    </LinearLayout>
-</layout>
+            <TextView
+                android:id="@+id/letter_msg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical|start"
+                android:lines="1"
+                android:textSize="@dimen/comment_size" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/letter_msg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/release_margin_small"
+            android:gravity="end|top"
+            android:paddingTop="@dimen/release_margin_middle"
+            android:textSize="@dimen/comment_size" />
+    </RelativeLayout>
+</RelativeLayout>

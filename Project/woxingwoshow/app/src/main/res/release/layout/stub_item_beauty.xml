@@ -5,21 +5,20 @@
 
         <variable
             name="presenter"
-            type="woxingwoxiu.com.release.presenter.RecordPresenter" />
+            type="sdwxwx.com.release.presenter.RecordPresenter" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.8"
-        android:background="#07080B">
+        android:background="@android:color/black" >
 
         <LinearLayout
             android:id="@+id/beauty_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#08080b"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -37,14 +36,6 @@
                     android:text="美颜"
                     android:textColor="@drawable/record_title_text"
                     android:textSize="16sp" />
-
-                <View
-                    android:id="@+id/item_beauty_indicator"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/title_indicator_color" />
             </LinearLayout>
 
 
@@ -63,14 +54,6 @@
                     android:text="滤镜"
                     android:textColor="@drawable/record_title_text"
                     android:textSize="16sp" />
-
-                <View
-                    android:id="@+id/item_filter_indicator"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/title_indicator_color" />
             </LinearLayout>
         </LinearLayout>
 
@@ -83,7 +66,7 @@
 
         <include
             android:id="@+id/record_filter_choose"
-            layout="@layout/filter_choose"
+            layout="@layout/record_edit_filter_choose"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/beauty_title"

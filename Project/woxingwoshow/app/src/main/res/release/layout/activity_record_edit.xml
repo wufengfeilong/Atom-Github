@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/preview_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.opengl.GLSurfaceView
+            android:id="@+id/edit_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/top_tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/release_edit_margin_right">
+
+            <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/release_margin"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_white" />
+
+            <ImageView
+                android:id="@+id/filter_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/release_margin"
+                android:layout_marginStart="@dimen/release_margin"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/filter_camera" />
+
+            <ImageView
+                android:id="@+id/volume_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/release_margin"
+                android:layout_marginStart="@dimen/release_margin"
+                android:layout_toStartOf="@+id/filter_img"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/volume" />
+
+            <ImageView
+                android:id="@+id/music_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/release_margin"
+                android:layout_toStartOf="@+id/volume_img"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/set_music"
+                android:visibility="visible" />
+
+            <FrameLayout
+                android:id="@+id/music_img_checked_fl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/release_margin"
+                android:layout_toStartOf="@+id/volume_img"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onMenuClick"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/music_img_checked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/set_music" />
+
+                <ImageView
+                    android:id="@+id/music_img_checked_icon"
+                    android:layout_width="@dimen/release_margin"
+                    android:layout_height="@dimen/release_margin"
+                    android:layout_gravity="center_vertical|end"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/music_checked_icon" />
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/edit_bottom_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/save_to_draft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/release_edit_margin_bottom"
+                android:layout_marginStart="@dimen/release_margin"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:scaleType="centerInside"
+                android:src="@drawable/save_draft" />
+
+            <ImageView
+                android:id="@+id/next_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/release_edit_margin_bottom"
+                android:layout_toEndOf="@+id/save_to_draft"
+                android:contentDescription="@null"
+                android:onClick="onMenuClick"
+                android:src="@drawable/next_camera" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/edit_bar_bottom"
+        layout="@layout/record_edit_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible" />
+</RelativeLayout>

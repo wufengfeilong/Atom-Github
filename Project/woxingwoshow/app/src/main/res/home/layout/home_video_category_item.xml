@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="70dp"
-              android:gravity="center_horizontal"
-              android:padding="5dp">
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="5dp">
+
     <ImageView
-            android:id="@+id/home_video_item_category"
-            android:paddingBottom="5dp"
-            android:src="@drawable/news"
-            android:layout_width="45dp"
-            android:layout_height="60dp"
-    />
+        android:id="@+id/home_video_item_category"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:contentDescription="@null"
+        android:src="@drawable/news" />
+
+    <TextView
+        android:id="@+id/home_video_item_tv"
+        android:layout_width="45dp"
+        android:layout_height="15dp"
+        android:gravity="center"
+        android:textSize="@dimen/category_name_size" />
 </LinearLayout>

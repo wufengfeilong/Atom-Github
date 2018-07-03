@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ======================== 字体大小 start ======================== -->
+    <!--画面标题-->
+    <dimen name="activity_title_size">20sp</dimen>
+    <!--普通字体大小-->
+    <dimen name="general_text_size">16sp</dimen>
+    <!--首页栏目列表（点击tab更多出来的栏目列表）-->
+    <dimen name="category_name_size">12sp</dimen>
+    <!--视频列表标题-->
+    <dimen name="video_list_item_title_size">18sp</dimen>
+    <!--视频列表昵称-->
+    <dimen name="video_list_item_nick_name_size">10sp</dimen>
+    <!--视频列表日期-->
+    <dimen name="video_list_item_date_size">8sp</dimen>
+    <!--视频列表item点赞数-->
+    <dimen name="video_list_item_up_size">10sp</dimen>
+    <!--用户列表item昵称-->
+    <dimen name="user_list_item_nick_name_size">16sp</dimen>
+    <!--评论字体-->
+    <dimen name="comment_size">14sp</dimen>
+    <!-- 通用小字体 -->
+    <dimen name="common_small_size">12sp</dimen>
+    <!-- 通用小字体 -->
+    <dimen name="common_video_margin">1px</dimen>
+
+
+
+
+    <!-- ======================== 字体大小 end ======================== -->
+    <!-- ======================== 控件尺寸 start ======================== -->
+    <!--首页底部导航栏高度-->
+    <dimen name="home_bottom_nav_height">48dp</dimen>
+    <!--普通列表item高度-->
+    <dimen name="general_list_item_height">48dp</dimen>
+    <!--普通双排文字列表item高度-->
+    <dimen name="general_double_list_item_height">56dp</dimen>
+    <!--沉浸式标题栏高度-->
+    <dimen name="immersion_title_bar_height">80dp</dimen>
+    <!--搜索编辑框高度-->
+    <dimen name="search_edit_text_height">40dp</dimen>
+    <!--画面返回icon高度-->
+    <dimen name="title_back_height">20dp</dimen>
+    <!--画面返回icon宽度-->
+    <dimen name="title_back_width">20dp</dimen>
+    <!--标题右上角高度-->
+    <dimen name="title_right_image_height">20dp</dimen>
+    <!--标题右上角宽度-->
+    <dimen name="title_right_image_width">20dp</dimen>
+
+    <!--视频列表item高度-->
+    <dimen name="video_list_item_height">280dp</dimen>
+    <!--视频列表item头像宽-->
+    <dimen name="video_list_item_head_width">25dp</dimen>
+    <!--视频列表item头像高-->
+    <dimen name="video_list_item_head_height">25dp</dimen>
+    <!--视频列表item点赞图标宽-->
+    <dimen name="video_list_item_up_width">15dp</dimen>
+    <!--视频列表item点赞图标高-->
+    <dimen name="video_list_item_up_height">15dp</dimen>
+    <!--普通图像宽-->
+    <dimen name="general_image_width">25dp</dimen>
+    <!--普通图像高-->
+    <dimen name="general_image_height">25dp</dimen>
+
+    <!--用户列表item高度-->
+    <dimen name="user_list_item_height">70dp</dimen>
+    <!--用户列表item头像宽-->
+    <dimen name="user_list_item_head_width">36dp</dimen>
+    <!--用户列表item头像高-->
+    <dimen name="user_list_item_head_height">36dp</dimen>
+    <!--用户列表item关注图标宽-->
+    <dimen name="user_list_item_follow_width">50dp</dimen>
+    <!--用户列表item关注图标高-->
+    <dimen name="user_list_item_follow_height">30dp</dimen>
+
+    <!-- ======================== 控件尺寸 end ======================== -->
+
+    <dimen name="common_load_more_progress_size">30dp</dimen>
+    <dimen name="common_load_more_padding">20dp</dimen>
+    <dimen name="common_loading_progress_size">35dp</dimen>
+    <dimen name="common_loading_text_margin">10dp</dimen>
+    <dimen name="common_loading_text_lines_spacing">5dp</dimen>
+</resources>

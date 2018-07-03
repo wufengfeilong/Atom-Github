@@ -1,156 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.me.presenter.FindFriendsPresenter"/>
+            type="sdwxwx.com.me.presenter.FindFriendsPresenter" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/gray_light"
-        >
-        <include layout="@layout/find_friends_title"
-            app:presenter="@{presenter}"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light"/>
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/find_friends_title"
+            app:presenter="@{presenter}" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="1dp"
-            android:weightSum="2"
-            android:background="@color/white">
+            android:layout_height="@dimen/general_list_item_height"
+            android:layout_marginBottom="@dimen/release_margin_small"
+            android:layout_marginTop="@dimen/release_line"
+            android:background="@android:color/white"
+            android:weightSum="2">
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_height="match_parent"
-                android:onClick="@{()->presenter.myQrCodeClick()}"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:onClick="@{()->presenter.myQrCodeClick()}">
 
-               >
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/qr_code"/>
-                <TextView android:layout_width="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin_small"
+                    android:paddingStart="@dimen/release_margin"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/qr_code" />
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="16sp"
+                    android:layout_marginEnd="@dimen/release_margin"
                     android:text="@string/my_qr_code"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/general_text_size" />
             </LinearLayout>
 
             <View
-                android:layout_width="3dp"
+                android:layout_width="@dimen/release_line"
                 android:layout_height="match_parent"
-                android:background="@color/gray_light"/>
+                android:layout_marginBottom="@dimen/release_margin_small"
+                android:layout_marginTop="@dimen/release_margin_small"
+                android:background="@color/gray_light" />
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_height="match_parent"
-                android:onClick="@{()->presenter.toScan()}"
-                >
+                android:layout_marginStart="@dimen/release_margin"
+                android:layout_weight="1"
+                android:gravity="center_vertical|start"
+                android:onClick="@{()->presenter.toScan()}">
+
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/scan_black"/>
-                <TextView android:layout_width="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:paddingEnd="@dimen/release_margin_small"
+                    android:paddingStart="@dimen/release_margin"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/scan_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="10dp"
                     android:text="@string/scan_scan"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/general_text_size" />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/general_list_item_height"
+            android:layout_marginTop="@dimen/release_margin"
             android:background="@android:color/white"
-            android:padding="5dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp">
+            android:onClick="@{()->presenter.getPhone()}">
+
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/phone_book_gray"/>
+                android:id="@+id/phone_book_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:paddingEnd="@dimen/release_margin_middle"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/phone_book_gray" />
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/phone_book_icon"
+                android:gravity="center_vertical|start"
                 android:text="@string/phone_book"
-                android:layout_marginLeft="15dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="7dp"
-                android:gravity="right"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/not_open"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="1dp">
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/sina"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:text="@string/sina_micro_blog"
-                android:layout_marginLeft="15dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="7dp"
-                android:gravity="right"
-                >
+                android:textSize="@dimen/general_text_size" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/not_open"/>
-            </LinearLayout>
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/phone_book_right_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin_small"
+                android:scaleType="centerInside"
+                android:src="@drawable/setting_right_icon" />
+
+            <TextView
+                android:id="@+id/phone_book_bind_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/phone_book_right_icon"
+                android:gravity="center_vertical|end"
+                android:text="@string/no_bind"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/comment_size" />
+        </RelativeLayout>
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/general_list_item_height"
+            android:gravity="center_vertical|start"
+            android:paddingStart="@dimen/release_margin"
             android:text="@string/recommend_user"
-            android:paddingLeft="10dp">
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/general_text_size" />
 
-        </TextView>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recommend_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
-
-
+            android:layout_height="wrap_content" />
     </LinearLayout>
-
-
 </layout>

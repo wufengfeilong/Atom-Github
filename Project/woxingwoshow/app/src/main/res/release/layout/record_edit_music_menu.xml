@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/record_edit_music_exit_menu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/release_line"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:onClick="onMenuClick"
+            android:text="@string/record_edit_music_exit_menu"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/release_small_text_size" />
+
+        <TextView
+            android:id="@+id/record_edit_music_change_menu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/release_margin_small"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:onClick="onMenuClick"
+            android:text="@string/record_edit_music_change_menu"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/release_small_text_size" />
+
+        <TextView
+            android:id="@+id/release_edit_cancel_menu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:onClick="onMenuClick"
+            android:text="@string/release_cancel"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/release_small_text_size" />
+    </LinearLayout>
+</RelativeLayout>

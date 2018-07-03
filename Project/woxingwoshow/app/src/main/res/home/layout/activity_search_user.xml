@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="presenter" type="woxingwoxiu.com.home.presenter.SearchUserPresenter"/>
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.home.presenter.SearchUserPresenter" />
     </data>
-    <LinearLayout
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="@color/gray_light"
-            tools:context="woxingwoxiu.com.home.activity.SearchUserActivity">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_light"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        tools:context="sdwxwx.com.home.activity.SearchUserActivity">
+
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:weightSum="9"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-        >
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/general_list_item_height"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:weightSum="9">
+
             <EditText
-                    android:id="@+id/search_user_title_et"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:cursorVisible="false"
-                    android:drawableLeft="@drawable/search_gray"
-                    android:drawablePadding="5dp"
-                    android:hint="@string/search_user_et_hint"
-                    android:background="@drawable/ellipse_shape_bg"
-                    android:imeOptions="actionSearch"
-                    android:singleLine="true"
-                />
+                android:id="@+id/search_user_title_et"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/search_edit_text_height"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="8"
+                android:background="@drawable/ellipse_shape_bg"
+                android:cursorVisible="false"
+                android:drawableLeft="@drawable/search_gray"
+                android:hint="@string/search_user_et_hint"
+                android:imeOptions="actionSearch"
+                android:lines="1"
+                android:paddingStart="10dp"
+                android:textSize="@dimen/general_text_size" />
+
             <TextView
-                    android:id="@+id/search_user_title_cancel"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_margin="5dp"
-                    android:onClick="@{()->presenter.cancelClick()}"
-                    android:text="@string/home_cancel"/>
+                android:id="@+id/search_user_title_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:onClick="@{()->presenter.cancelClick()}"
+                android:text="@string/home_cancel"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,86 +56,110 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="1dp"
-                android:weightSum="2"
-                android:background="@color/white">
+                android:layout_height="@dimen/general_list_item_height"
+                android:layout_marginTop="@dimen/release_line"
+                android:background="@android:color/white"
+                android:weightSum="2">
+
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="@{()->presenter.myQrCodeClick()}"
-                    android:layout_height="match_parent">
+                    android:gravity="center_vertical|end"
+                    android:onClick="@{()->presenter.myQrCodeClick()}">
+
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/qr_code"/>
-                    <TextView android:layout_width="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="@dimen/release_margin_small"
+                        android:paddingStart="@dimen/release_margin"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/qr_code" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="16sp"
+                        android:layout_marginEnd="@dimen/release_margin"
                         android:text="@string/my_qr_code"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/general_text_size" />
                 </LinearLayout>
 
                 <View
-                    android:layout_width="3dp"
+                    android:layout_width="@dimen/release_line"
                     android:layout_height="match_parent"
-                    android:background="@color/gray_light"/>
-            <LinearLayout
+                    android:layout_marginBottom="@dimen/release_margin_small"
+                    android:layout_marginTop="@dimen/release_margin_small"
+                    android:background="@color/gray_light" />
+
+                <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/release_margin"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="@{()->presenter.scanClick()}"
-                    android:layout_height="match_parent">
-                <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/scan_black"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:textSize="16sp"
-                          android:layout_marginLeft="10dp"
-                          android:text="@string/scan_scan"
-                          android:textColor="@android:color/black"/>
+                    android:gravity="center_vertical|start"
+                    android:onClick="@{()->presenter.scanClick()}">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="@dimen/release_margin_small"
+                        android:paddingStart="@dimen/release_margin"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/scan_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/scan_scan"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/general_text_size" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-        <com.liaoinstan.springview.widget.SpringView
-                android:id="@+id/search_user_springView"
-                android:layout_marginTop="2dp"
+
+            <sdwxwx.com.widget.LoadStatusView
+                android:id="@+id/search_lsv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/search_user_rv"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </android.support.v7.widget.RecyclerView>
-            </com.liaoinstan.springview.widget.SpringView>
+                    android:layout_height="match_parent"
+                    android:background="@color/graySimple" />
+            </sdwxwx.com.widget.LoadStatusView>
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/no_answer"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@color/white"
+            android:background="@android:color/white"
             android:visibility="gone">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="居然没有结果，换个姿势再试一次吧"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="居然没有结果，换个姿势再试一次吧" />
         </LinearLayout>
-        <android.support.v7.widget.RecyclerView
-            android:visibility="gone"
-            android:id="@+id/search_layout_two"
+
+        <com.liaoinstan.springview.widget.SpringView
+            android:id="@+id/search_user_springView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp">
 
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/search_layout_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/graySimple"
+                android:visibility="gone" />
+        </com.liaoinstan.springview.widget.SpringView>
     </LinearLayout>
 </layout>

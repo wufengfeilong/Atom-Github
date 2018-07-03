@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="Bean"
+            type="sdwxwx.com.home.bean.RecommendUserBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_double_list_item_height"
+        android:layout_marginTop="@dimen/release_line"
+        android:background="@android:color/white">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fans_avatar_url"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/release_margin_middle"
+            android:layout_marginStart="@dimen/release_margin"
+            android:src="@drawable/default_header_image"
+            app:civ_border_color="#0000"
+            app:civ_border_width="1dp" />
+        <ImageView
+                android:id="@+id/fans_avatar_vip_logo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignRight="@+id/fans_avatar_url"
+                android:layout_alignBottom="@+id/fans_avatar_url"
+                android:src="@drawable/vip_icon"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/release_margin_small"
+            android:layout_marginTop="@dimen/release_margin_small"
+            android:layout_toEndOf="@+id/fans_avatar_url"
+            android:layout_toStartOf="@+id/is_followed"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical|start"
+                android:singleLine="true"
+                android:text="@{Bean.nickname}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/general_text_size" />
+
+            <TextView
+                android:id="@+id/signature"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical|start"
+                android:singleLine="true"
+                android:text="@{Bean.signature}"
+                android:textSize="@dimen/common_small_size" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/is_followed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
+            android:scaleType="centerInside"/>
+    </RelativeLayout>
+</layout>

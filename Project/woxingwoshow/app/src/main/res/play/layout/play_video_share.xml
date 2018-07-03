@@ -1,109 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_horizontal"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="10dp"
-            android:weightSum="5">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:weightSum="5">
+
         <ImageView
-                android:id="@+id/play_share_send_weixin_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/send_weixin_friend"
-                android:layout_height="100dp"/>
+            android:id="@+id/play_share_send_weixin_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/send_weixin_friend" />
+
         <ImageView
-                android:id="@+id/play_share_friend_circle_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/share_friend_circle"
-                android:layout_height="100dp"/>
+            android:id="@+id/play_share_friend_circle_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/share_friend_circle" />
+
         <ImageView
-                android:id="@+id/play_share_send_qq_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/send_qq_friend"
-                android:layout_height="100dp"/>
+            android:id="@+id/play_share_send_qq_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/send_qq_friend" />
+
         <ImageView
-                android:id="@+id/play_share_weibo_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/share_weibo"
-                android:layout_height="100dp"/>
+            android:id="@+id/play_share_weibo_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/share_weibo" />
+
         <ImageView
-                android:id="@+id/play_share_qzone_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/share_qzone"
-                android:layout_height="100dp"/>
+            android:id="@+id/play_share_qzone_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/share_qzone" />
 
     </LinearLayout>
+
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light" />
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <ImageView
+            android:id="@+id/play_share_delete_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:src="@drawable/share_delete"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/play_share_tip_off_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:src="@drawable/tip_off" />
+
+        <ImageView
+            android:id="@+id/play_share_copy_link_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:src="@drawable/copy_link" />
+
+        <ImageView
+            android:id="@+id/play_video_share_save_iv"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:src="@drawable/share_save" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/play_share_cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:weightSum="5"
-            android:orientation="horizontal">
-        <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="100dp"/>
-        <ImageView
-                android:id="@+id/play_share_tip_off_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:src="@drawable/tip_off"
-                android:layout_height="100dp"/>
-        <ImageView
-                android:id="@+id/play_share_copy_link_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:src="@drawable/copy_link"
-                android:layout_height="100dp"/>
-        <ImageView
-                android:id="@+id/play_share_save_iv"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:src="@drawable/share_save"
-                android:layout_height="100dp"/>
-        <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="100dp"/>
-    </LinearLayout>
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light"/>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">
-        <TextView
-                android:id="@+id/play_share_cancel"
-                android:layout_margin="10dp"
-                android:text="@string/home_cancel"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/home_cancel"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

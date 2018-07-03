@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 我的 视频列表的item高度 -->
+    <dimen name="me_video_item_height">200dp</dimen>
+    <dimen name="about_us_padding">30dp</dimen>
+    <dimen name="about_us_margin_small">10dp</dimen>
+    <dimen name="about_us_margin_micro">2dp</dimen>
+    <dimen name="about_us_back_image_height">15dp</dimen>
+    <dimen name="about_us_font_size">18sp</dimen>
+    <dimen name="feedback_edit_height">150dp</dimen>
+    <dimen name="feedback_edit_margin">10dp</dimen>
+    <dimen name="feedback_edit_padding">5dp</dimen>
+    <dimen name="feedback_button_margin">20dp</dimen>
+    <dimen name="feedback_button_height">35dp</dimen>
+    <dimen name="find_friends_padding">10dp</dimen>
+</resources>

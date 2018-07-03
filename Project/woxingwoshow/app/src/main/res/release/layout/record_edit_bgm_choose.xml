@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="0.8"
+    android:background="#07080B"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/record_bgm_edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/release_margin"
+        android:layout_marginTop="@dimen/release_margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="原音"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/record_mic_audio_volume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressBackgroundTint="#9b9b9b"
+                android:progressTint="@color/font_color_35"
+                android:thumbTint="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="配乐"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/record_music_audio_volume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressBackgroundTint="#9b9b9b"
+                android:progressTint="@color/font_color_35"
+                android:thumbTint="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+

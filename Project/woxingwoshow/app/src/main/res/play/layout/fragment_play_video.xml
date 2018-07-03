@@ -1,202 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="presenter" type="woxingwoxiu.com.play.presenter.PlayVideoFragmentPresenter"/>
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.play.presenter.PlayVideoFragmentPresenter" />
     </data>
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <TextureView
-                android:id="@+id/play_video_sfv"
+            android:id="@+id/play_video_sfv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ImageView
+                android:id="@+id/play_video_cover_iv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/play_video_back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.onBackClick()}"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_white" />
+
+            <ImageView
+                android:id="@+id/play_video_more"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@null"
+                android:onClick="@{()->presenter.onMoreClick()}"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
+                android:src="@drawable/more_camera" />
+        </RelativeLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:clipChildren="false"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center_vertical"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="10dp"
-                android:weightSum="8"
-        >
-            <ImageView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/back_white"
-                    android:onClick="@{()->presenter.onBackClick()}"
-                    android:id="@+id/play_video_back_iv"/>
-            <ImageView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/thumb_down_no_select"
-                    android:onClick="@{()->presenter.onThumbDownClick()}"
-                    android:id="@+id/play_video_thumb_down"
-            />
-            <View
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
-                    android:layout_height="match_parent"/>
-            <ImageView
-                    android:layout_width="4dp"
-                    android:layout_height="6dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/three_point"
-                    android:id="@+id/play_video_more"
-                    android:onClick="@{()->presenter.onMoreClick()}"/>
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/play_video_head"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->presenter.onHeadClick()}"
+                    android:src="@drawable/default_header_image" />
+
+                <TextView
+                    android:id="@+id/play_video_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->presenter.onHeadClick()}"
+                    android:text="领子变法"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/play_video_follow"
+                    android:layout_width="45dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="20dp"
+                    android:contentDescription="@null"
+                    android:onClick="@{()->presenter.onFollowClick()}"
+                    android:src="@drawable/play_follow"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/play_video_introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="20dp"
+                android:text="你诱发姑妈"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:id="@+id/play_video_music_ll"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/shadow_tran_shape_bg"
+                android:gravity="center_vertical"
+                android:onClick="@{()->presenter.onMusicClick()}"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/play_video_music_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="-5dp"
+                    android:src="@drawable/default_header_image" />
+
+                <TextView
+                    android:id="@+id/play_video_music_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="RIENDS-Marshmello"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/play_video_music_go"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="30dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/play_music_go" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:alpha="0.5"
+                android:background="@android:color/white" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:clipChildren="false"
-                android:orientation="vertical">
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
-                <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/play_video_head"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:onClick="@{()->presenter.onHeadClick()}"
-                        android:src="@drawable/phone_book_gray"/>
-                <TextView
-                        android:id="@+id/play_video_title"
-                        android:text="领子变法"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                    android:onClick="@{()->presenter.onHeadClick()}"/>
-                <ImageView
-                        android:onClick="@{()->presenter.onFollowClick()}"
-                        android:id="@+id/play_video_follow"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="45dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/play_follow"/>
-            </LinearLayout>
-            <TextView
-                    android:id="@+id/play_video_introduce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="12dp"
-                    android:text="你诱发姑妈"/>
-            <LinearLayout
-                    android:id="@+id/play_video_music_ll"
-                    android:onClick="@{()->presenter.onMusicClick()}"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/shadow_tran_shape_bg"
-                    android:orientation="horizontal">
-                <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/play_video_music_iv"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="-5dp"
-                        android:src="@drawable/phone_book_gray"/>
-                <TextView
-                        android:id="@+id/play_video_music_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="@android:color/white"
-                        android:text="RIENDS-Marshmello"
-                />
-                <ImageView
-                        android:id="@+id/play_video_music_go"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="30dp"
-                        android:src="@drawable/play_music_go"
-                />
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
-                    android:alpha="0.5"
-                    android:background="@android:color/white"/>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="10dp"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:weightSum="10"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="12dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="9">
+
                 <EditText
-                        android:id="@+id/play_video_say_sth"
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="30dp"
-                        android:hint="@string/say_sth"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:onClick="@{()->presenter.onSaySthClick()}"
-                        android:textColorHint="@android:color/white"
-                        android:background="@drawable/circle_corner_shape_bg"
-                />
+                    android:id="@+id/play_video_say_sth"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/circle_corner_shape_bg"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textSize="@dimen/comment_size"
+                    android:hint="@string/say_sth"
+                    android:onClick="@{()->presenter.onSaySthClick()}"
+                    android:textColorHint="@android:color/white" />
+
                 <ImageView
-                        android:id="@+id/play_video_comment_iv"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="20dp"
-                        android:onClick="@{()->presenter.onCommentClick()}"
-                        android:src="@drawable/comment_white"/>
+                    android:id="@+id/play_video_comment_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@null"
+                    android:onClick="@{()->presenter.onCommentClick()}"
+                    android:src="@drawable/comment_white" />
+
                 <TextView
-                        android:id="@+id/play_video_comment_count"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:text="785"/>
+                    android:id="@+id/play_video_comment_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="785"
+                    android:textColor="@android:color/white" />
+
                 <ImageView
-                        android:id="@+id/play_video_thumb_up_iv"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="20dp"
-                        android:onClick="@{()->presenter.onThumbUpClick()}"
-                        android:src="@drawable/thumb_up_no_select"/>
+                    android:id="@+id/play_video_thumb_up_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@null"
+                    android:onClick="@{()->presenter.onThumbUpClick()}"
+                    android:src="@drawable/thumb_up_no_selected" />
+
                 <TextView
-                        android:id="@+id/play_video_thumb_up_count"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:text="1.5万"/>
+                    android:id="@+id/play_video_thumb_up_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1.5万"
+                    android:textColor="@android:color/white" />
+
                 <ImageView
-                        android:id="@+id/play_video_share_iv"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="20dp"
-                        android:onClick="@{()->presenter.onShareClick()}"
-                        android:src="@drawable/paly_share_white"/>
+                    android:id="@+id/play_video_share_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@null"
+                    android:onClick="@{()->presenter.onShareClick()}"
+                    android:src="@drawable/paly_share_white" />
+
                 <TextView
-                        android:id="@+id/play_video_share_count"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:text="682"/>
+                    android:id="@+id/play_video_share_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="682"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center_vertical"
-        android:background="@color/white"
-        android:weightSum="5"
-        android:padding="10dp">
+              android:layout_width="match_parent"
+              android:layout_height="60dp" xmlns:view="http://schemas.android.com/tools"
+              android:gravity="center_vertical"
+              android:background="@android:color/white"
+              android:weightSum="5"
+              android:padding="10dp">
     <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="4"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content">
 
-        <EditText
+        <sdwxwx.com.widget.RichEditText
                 android:id="@+id/play_video_say_sth"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="@string/say_sth"
-                android:cursorVisible="false"
+                android:paddingLeft="10dp"
+                android:paddingRight="40dp"
+                view:object_background_color="#54ed3649"
+                view:object_foreground_color="#f3b400"
+                android:cursorVisible="true"
+                android:textSize="@dimen/comment_size"
                 android:background="@drawable/ellipse_shape_bg"/>
         <ImageView
                 android:id="@+id/play_video_at_sb"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="15dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/play_comment_at"/>
     </RelativeLayout>
@@ -32,7 +38,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="35dp"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="@string/send"
             android:textColor="@android:color/darker_gray"
             android:background="@drawable/circle_corner_shape_btn_bg"/>

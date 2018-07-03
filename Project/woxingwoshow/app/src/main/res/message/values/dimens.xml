@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="message_radio_padding">10dp</dimen>
+    <dimen name="message_fans_head">65dp</dimen>
+    <dimen name="message_fans_micro_margin">8dp</dimen>
+    <dimen name="message_fans_margin_small">10dp</dimen>
+    <dimen name="message_fan_margin_big">50dp</dimen>
+    <dimen name="message_fans_normal">15dp</dimen>
+    <dimen name="message_fans_layout_small">24dp</dimen>
+    <dimen name="message_fans_layout_normal">30dp</dimen>
+    <dimen name="message_fans_attention_image">160dp</dimen>
+    <dimen name="message_fans_cancel_attention_image">160dp</dimen>
+    <dimen name="message_fans_landmark_height">18dp</dimen>
+    <dimen name="message_fans_font_normal">13sp</dimen>
+    <dimen name="message_title_size">18sp</dimen>
+    <dimen name="message_fans_video_height">200dp</dimen>
+    <dimen name="message_fans_video_margin_small">10dp</dimen>
+    <dimen name="message_fans_video_height_small">20dp</dimen>
+    <dimen name="message_fans_video_height_normal">25dp</dimen>
+    <dimen name="message_fans_layout_height">50dp</dimen>
+    <dimen name="message_item_height">70dp</dimen>
+    <dimen name="message_item_small_margin">3dp</dimen>
+    <dimen name="message_item_head_height">50dp</dimen>
+    <dimen name="message_item_padding_small">2dp</dimen>
+    <dimen name="message_item_margin_small">10dp</dimen>
+    <dimen name="message_micro_margin">1dp</dimen>
+    <dimen name="message_attention_height">25dp</dimen>
+    <dimen name="message_attention_width">60dp</dimen>
+    <dimen name="message_item_font_normal">12sp</dimen>
+    <dimen name="message_item_font_samll">10sp</dimen>
 </resources>

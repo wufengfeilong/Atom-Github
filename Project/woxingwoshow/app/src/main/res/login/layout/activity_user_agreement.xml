@@ -2,38 +2,44 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="userAgreementPresenter"
-            type="woxingwoxiu.com.login.presenter.UserAgreementPresenter"/>
+            type="sdwxwx.com.login.presenter.UserAgreementPresenter" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:color/white"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white">
 
             <ImageView
                 android:id="@+id/login_cross_user"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
                 android:onClick="@{()->userAgreementPresenter.onCross()}"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:scaleType="centerInside"
                 android:src="@drawable/login_multiply" />
 
             <TextView
                 android:id="@+id/login_problem_user"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:gravity="center"
                 android:text="用户协议"
                 android:textColor="@android:color/black"
-                android:textSize="30dp" />
-
+                android:textSize="@dimen/activity_title_size" />
         </RelativeLayout>
 
         <ProgressBar
@@ -41,18 +47,12 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:max="100" />
-
+            android:max="100"
+            android:visibility="gone" />
 
         <WebView
             android:id="@+id/web_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-        </WebView>
-
+            android:layout_height="match_parent" />
     </LinearLayout>
-
 </layout>

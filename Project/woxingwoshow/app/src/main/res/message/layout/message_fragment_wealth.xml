@@ -1,69 +1,91 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="presenter"
-            type="woxingwoxiu.com.message.presenter.MessageWealthFragmentPresenter"/>
+            type="sdwxwx.com.message.presenter.MessageWealthFragmentPresenter" />
+
+        <variable
+            name="bean"
+            type="sdwxwx.com.me.bean.VideoWealthBean" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="208dp"
+            android:layout_height="0dp"
+            android:layout_weight="4"
             android:background="@drawable/wealth_bg"
-            android:orientation="vertical">
+            android:paddingTop="@dimen/release_margin">
 
-            <TextView
-                android:id="@+id/tt"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="财富值"
-                android:textColor="@color/userwhite"
-                android:textSize="30dp" />
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="120"
-                android:textColor="@color/userwhite"
-                android:textSize="30dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/release_margin"
+                    android:gravity="center"
+                    android:text="@string/fans_home_wealth"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/login_middle_text_size" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="今日收益"
-                android:textColor="@color/userwhite"
-                android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/total_wealth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/release_margin_middle"
+                    android:layout_marginTop="@dimen/release_margin"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/login_middle_text_size" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="100"
-                android:textColor="@color/userwhite"
-                android:textSize="25dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/release_margin"
+                    android:gravity="center"
+                    android:text="今日收益"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/release_middle_text_size" />
+
+                <TextView
+                    android:id="@+id/today_wealth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/release_margin"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/release_middle_text_size" />
+            </LinearLayout>
         </LinearLayout>
 
-        <com.liaoinstan.springview.widget.SpringView
-            android:id="@+id/wealth_grade_springView"
-            android:layout_marginTop="2dp"
+        <TextView
+            android:id="@+id/video_no_wealth"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/user_list_item_nick_name_size"
+            android:visibility="visible" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/wealth_grade_tg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
-        </com.liaoinstan.springview.widget.SpringView>
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/wealth_grade_tg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:visibility="gone" />
     </LinearLayout>
 </layout>

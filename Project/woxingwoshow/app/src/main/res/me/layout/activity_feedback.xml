@@ -6,36 +6,46 @@
 
         <variable
             name="presenter"
-            type="woxingwoxiu.com.me.presenter.FeedbackPresenter" />
+            type="sdwxwx.com.me.presenter.FeedbackPresenter" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/graySimple"
         android:orientation="vertical">
-        <include layout="@layout/feedback_title"
-            bind:presenter="@{presenter}"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/feedback_style"
-            android:hint="请描述您的问题："
-            android:padding="5dp"
-            android:id="@+id/feedback_content"
-            android:gravity="top"/>
+        <include
+            layout="@layout/feedback_title"
+            bind:presenter="@{presenter}" />
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_margin="20dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:text="提交"
-            android:onClick="@{()->presenter.getData()}"
-            android:background="@drawable/feedback_btn"/>
-    </LinearLayout>
+            android:layout_marginTop="@dimen/release_margin"
+            android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/feedback_content"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="@dimen/release_margin"
+                android:background="@drawable/feedback_style"
+                android:gravity="top|start"
+                android:hint="@string/feed_back_questions"
+                android:padding="@dimen/release_margin_middle"
+                android:textSize="@dimen/comment_size" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/release_margin"
+                android:background="@drawable/release_gradient_shape"
+                android:gravity="center"
+                android:onClick="@{()->presenter.getData()}"
+                android:text="@string/feed_back_commit"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/general_text_size" />
+        </LinearLayout>
+    </LinearLayout>
 </layout>

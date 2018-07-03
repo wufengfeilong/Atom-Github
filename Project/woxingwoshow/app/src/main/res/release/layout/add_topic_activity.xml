@@ -1,25 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
+            name="title"
+            type="String" />
+
+        <variable
             name="presenter"
-            type="woxingwoxiu.com.release.presenter.AddTopicPresenter" />
+            type="sdwxwx.com.release.presenter.AddTopicPresenter" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="woxingwoxiu.com.release.activity.AddTopicActivity">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="添加话题列表未完成"
-            android:textSize="@dimen/release_middle_text_size" />
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/release_search_toolbar_layout"
+                app:title="@{title}" />
+
+            <LinearLayout
+                android:id="@+id/not_use_topic_ll"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_marginTop="@dimen/release_margin_middle"
+                android:background="@android:color/white"
+                android:onClick="@{()->presenter.selectNoTopic()}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/release_toolbar_size"
+                    android:layout_height="@dimen/release_toolbar_size"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/release_margin_middle"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/topic_do_not_use" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/release_margin_middle"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/release_add_no_topic"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/release_small_text_size" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/topic_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+        </LinearLayout>
+
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -1,63 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/gray_light"
-              android:orientation="vertical"
-              android:padding="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:weightSum="7">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_list_item_height"
+        android:gravity="center"
+        android:weightSum="7">
+
         <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/play_reply_head"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/phone_book_gray"
-                android:layout_height="40dp"/>
-        <LinearLayout android:layout_width="0dp"
-                      android:layout_weight="5"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical">
+            android:id="@+id/play_reply_head"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/default_header_image" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
             <TextView
-                    android:id="@+id/play_reply_name"
-                    android:text="h阿里路亚"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            <TextView
-                    android:id="@+id/play_reply_date"
-                    android:text="2018-05-14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <TextView
-                android:id="@+id/play_reply_thumb_up_count"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
+                android:id="@+id/play_reply_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="121"/>
-        <ImageView
-                android:id="@+id/play_reply_thumb_up_iv"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="18dp"
-                android:src="@drawable/thumb_up_no_select"/>
-    </LinearLayout>
-    <TextView
-            android:id="@+id/play_reply_content"
-            android:layout_width="wrap_content"
+                android:text="h阿里路亚"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/play_reply_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018-05-14" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/play_reply_thumb_up_count"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="15dp"
-            android:textColor="@android:color/black"
-            android:text="你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮"/>
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:text="121" />
+
+        <ImageView
+            android:id="@+id/play_reply_thumb_up_iv"
+            android:layout_width="0dp"
+            android:layout_height="18dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/thumb_up_no_select" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/play_reply_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/release_margin_small"
+        android:layout_marginLeft="53dp"
+        android:layout_marginRight="15dp"
+        android:text="你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮你的长发正漂亮"
+        android:textColor="@android:color/black" />
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_light"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray_middle_light" />
 </LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="presenter"
+            type="sdwxwx.com.release.presenter.DraftListPresenter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="sdwxwx.com.release.activity.DraftListActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/release_line_gray"
+            android:orientation="vertical">
+
+            <include xmlns:app="http://schemas.android.com/apk/res-auto"
+                layout="@layout/release_toolbar_layout"
+                app:title="@{title}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/release_line"
+                android:background="@color/release_line_gray" />
+
+            <TextView
+                android:id="@+id/release_draft_remind_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingBottom="@dimen/release_margin_middle"
+                android:paddingTop="@dimen/release_margin_middle"
+                android:text="@string/release_draft_remind_tx"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/release_mini_text_size" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/draft_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/empty_tx"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="您的草稿箱是空的。"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/release_middle_text_size"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
