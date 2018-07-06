@@ -138,14 +138,16 @@
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:alpha="0.5"
-                android:background="@android:color/white" />
+                    android:id="@+id/transverse_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:alpha="0.5"
+                    android:background="@android:color/white" />
 
             <LinearLayout
+                android:id="@+id/say_sth_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -221,6 +223,20 @@
                     android:text="682"
                     android:textColor="@android:color/white" />
             </LinearLayout>
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/click_watch"
+                    android:text="点击查看"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/play_click_watch_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
         </LinearLayout>
     </RelativeLayout>
 </layout>

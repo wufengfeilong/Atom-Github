@@ -1,8 +1,11 @@
 package sdwxwx.com.release.contract;
 
+import com.liaoinstan.springview.widget.SpringView;
+
 import java.util.List;
 
 import sdwxwx.com.base.BaseView;
+import sdwxwx.com.contract.RecyclerViewContract;
 import sdwxwx.com.home.bean.SearchUserBean;
 
 /**
@@ -10,9 +13,10 @@ import sdwxwx.com.home.bean.SearchUserBean;
  */
 
 public class FriendsListContract {
-    public interface View extends BaseView {
+    public interface View extends BaseView, RecyclerViewContract.View<SearchUserBean.HaveUserBean>, SpringView.OnFreshListener {
+        void bindListData(List<SearchUserBean.HaveUserBean> list);
 
-        void refreshListData(List<SearchUserBean.HaveUserBean> list);
+        void loadMoreData(List<SearchUserBean.HaveUserBean> data);
     }
 
     public interface Presenter {

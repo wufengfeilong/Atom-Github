@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -45,6 +46,7 @@ import java.util.List;
 public class MusicOnlineFragment extends BaseFragment<MusicOnlineFragmentBinding, MusicOnlineFragmentPresenter>
         implements MusicOnlineFragmentContract.View, BaseAdapter.OnItemClickListener {
     int type;
+    private ImageView iv_music_icon;
     MusicOnlineAdapter mMusicOnlineAdapter;
     List<MusicBean> mList = new ArrayList<>();
     private MediaPlayer mMediaPlayer;
@@ -88,6 +90,7 @@ public class MusicOnlineFragment extends BaseFragment<MusicOnlineFragmentBinding
     @Override
     protected void initViews() {
         mDataBinding.setPresenter(mPresenter);
+
         initRecyclerView();
         mPermissions = new RxPermissions(getActivity());
         mMediaPlayer = new MediaPlayer();
@@ -186,7 +189,6 @@ public class MusicOnlineFragment extends BaseFragment<MusicOnlineFragmentBinding
     public void onItemClick(View view, int postion) {
         playMusic(mList.get(postion));
     }
-
     public class MusicOnlineAdapter extends BaseAdapter<MusicBean> {
         public MusicOnlineAdapter(List<MusicBean> list) {
             super(R.layout.item_music_collection_activity, list);
@@ -202,7 +204,11 @@ public class MusicOnlineFragment extends BaseFragment<MusicOnlineFragmentBinding
             } else {
                 Glide.with(mContext).load(R.drawable.start_camera).into((ImageView) holder.getView(R.id.music_collection_play));
             }
-            Glide.with(mContext).load(item.getCover_url()).into((ImageView)holder.getView(R.id.music_collection_cover));
+             //音乐封面加载异常时，显示默认图片
+              RequestOptions options = new RequestOptions().error(R.drawable.music_cover);
+              Glide.with(mContext).load(item.getCover_url()).apply(options).into((ImageView)holder.getView(R.id.music_collection_cover));
+//              Glide.with(mContext).load(item.getCover_url()).into((ImageView)holder.getView(R.id.music_collection_cover));
+
             ((ImageView) holder.getView(R.id.music_collection_cover)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -324,7 +330,6 @@ public class MusicOnlineFragment extends BaseFragment<MusicOnlineFragmentBinding
     }
 
     public void loadMoreData(int pos) {
-        mList.clear();
         if (mPresenter != null) {
             if (pos == 0) {
                 rePage++;

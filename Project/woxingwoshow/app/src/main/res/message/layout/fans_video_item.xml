@@ -1,68 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/me_video_item_height"
+    android:layout_margin="@dimen/common_video_margin">
 
-    <data>
-
-        <variable
-            name="Bean"
-            type="sdwxwx.com.me.bean.MeHomeBean" />
-    </data>
-
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/fans_home_video_item_thumbnail"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/me_video_item_height"
-        android:layout_margin="@dimen/common_video_margin">
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitXY" />
 
-        <ImageView
-            android:id="@+id/fans_home_video_item_thumbnail"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@null"
-            android:scaleType="fitXY" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/fans_home_video_thumb_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@+id/fans_home_video_good_count"
-                    android:contentDescription="@null"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/thumb_up_no_selected" />
-
-                <TextView
-                    android:id="@+id/fans_home_video_good_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/release_margin_small"
-                    android:layout_marginStart="@dimen/release_margin_small"
-                    android:gravity="center_vertical|end"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/video_list_item_up_size" />
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/fans_home_video_thumb_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/fans_home_video_good_count"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/thumb_up_no_selected" />
 
             <TextView
-                android:id="@+id/fans_home_video_release_time"
-                android:layout_width="match_parent"
+                android:id="@+id/fans_home_video_good_count"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/release_margin_small"
-                android:layout_marginTop="@dimen/release_margin_small"
+                android:layout_marginStart="@dimen/release_margin_small"
                 android:gravity="center_vertical|end"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/video_list_item_up_size" />
-        </LinearLayout>
-    </RelativeLayout>
-</layout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/fans_home_video_release_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/release_margin_small"
+            android:layout_marginTop="@dimen/release_margin_small"
+            android:gravity="center_vertical|end"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/video_list_item_up_size" />
+    </LinearLayout>
+</RelativeLayout>

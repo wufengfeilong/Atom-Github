@@ -262,6 +262,14 @@ public class LetterListActivity extends BaseActivity<ActivityLetterListBinding, 
             holder.setText(R.id.letter_msg_time, msgMap.get(item.getId() + "time"));
             //头像设定
             Glide.with(LetterListActivity.this).load(item.getAvatar_url()).into((ImageView) holder.getView(R.id.letter_list_head));
+            // 获取和当前用户的未读条数
+            int msgCount = EMClient.getInstance().chatManager().getConversation(item.getEasemob_username()).getUnreadMsgCount();
+            // 若有未读条数，则显示图片
+            if (msgCount > 0) {
+                ((ImageView)holder.getView(R.id.unread_flag)).setVisibility(View.VISIBLE);
+            } else {
+                ((ImageView)holder.getView(R.id.unread_flag)).setVisibility(View.GONE);
+            }
         }
 
     }

@@ -22,6 +22,9 @@ public class LoginHelper {
     // 是否已登录
     private boolean isOnline;
 
+    // 当前聊天最后显示时间
+    private long lastShowTime;
+
     private List<PlayVideoBean> mList;
     private List<PlayVideoBean> mNearList;
     private List<PlayVideoBean> mTopicList;
@@ -244,5 +247,14 @@ public class LoginHelper {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+
+    public long getLastShowTime() {
+        return lastShowTime;
+    }
+
+    public void setLastShowTime(long lastShowTime) {
+        this.lastShowTime = lastShowTime;
     }
 }

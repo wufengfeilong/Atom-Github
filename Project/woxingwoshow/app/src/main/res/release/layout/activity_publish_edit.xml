@@ -20,10 +20,11 @@
             <ImageView
                 android:id="@+id/back_img"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:paddingEnd="@dimen/release_margin"
                 android:contentDescription="@null"
                 android:onClick="onMenuClick"
                 android:scaleType="centerInside"
@@ -32,7 +33,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/release_publish_title_tx"
                 android:textColor="@android:color/white"

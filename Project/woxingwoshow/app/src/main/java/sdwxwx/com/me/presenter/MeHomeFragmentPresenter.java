@@ -2,6 +2,10 @@ package sdwxwx.com.me.presenter;
 
 
 import android.content.Intent;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import sdwxwx.com.base.BaseCallback;
 import sdwxwx.com.base.BasePresenter;
 import sdwxwx.com.databinding.MeHomeVideoBinding;
@@ -10,9 +14,6 @@ import sdwxwx.com.home.model.HomeCategoryVideoModel;
 import sdwxwx.com.login.utils.LoginHelper;
 import sdwxwx.com.me.contract.MeHomeFragmentContract;
 import sdwxwx.com.play.model.PlayVideoFragmentModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by 860116042 on 2018/5/16.
@@ -60,8 +61,9 @@ public class MeHomeFragmentPresenter extends BasePresenter<MeHomeFragmentContrac
                 if (getView() == null) {
                     return;
                 }
-                getView().showToast(msg);
+//                getView().showToast(msg);
                 getView().hideLoading();
+                getView().bindListData(new ArrayList<PlayVideoBean>());
                 getView().getSpringView().onFinishFreshAndLoad();
                 Intent intent = new Intent("com.sdwxwx.load.video.list.end");
                 getView().getContext().sendBroadcast(intent);
@@ -70,6 +72,41 @@ public class MeHomeFragmentPresenter extends BasePresenter<MeHomeFragmentContrac
 //                dataBinding.tempNoVideo.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    @Override
+    public void loadMeVideoMoreData(String page) {
+        getView().showLoading();
+        // 调用接口获取视频列表
+        mModel.getMyUpVideoList(
+                LoginHelper.getInstance().getUserId(),
+                "0",
+                "0",
+                "0",
+                LoginHelper.getInstance().getUserId(),
+                page,
+                new BaseCallback<List<PlayVideoBean>>() {
+                    @Override
+                    public void onSuccess(List<PlayVideoBean> data) {
+                        if (getView() == null) {
+                            return;
+                        }
+                        getView().bindListDataMore(data);
+                        getView().hideLoading();
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        if (getView() == null) {
+                            return;
+                        }
+                        getView().hideLoading();
+                        getView().bindListDataMore(new ArrayList<PlayVideoBean>());
+                        getView().getSpringView().onFinishFreshAndLoad();
+                        Intent intent = new Intent("com.sdwxwx.load.video.list.end");
+                        getView().getContext().sendBroadcast(intent);
+                    }
+                });
     }
 
     @Override
@@ -114,4 +151,39 @@ public class MeHomeFragmentPresenter extends BasePresenter<MeHomeFragmentContrac
                 });
     }
 
+    /**
+     * 获取点赞过的视频列表
+     *
+     * @param page
+     */
+    @Override
+    public void loadUpVideoMoreData(String page) {
+        mModel.getMyUpVideoList(
+                LoginHelper.getInstance().getUserId(),
+                "1",
+                "0",
+                "0",
+                LoginHelper.getInstance().getUserId(),
+                page,
+                new BaseCallback<List<PlayVideoBean>>() {
+                    @Override
+                    public void onSuccess(List<PlayVideoBean> data) {
+                        if (getView() == null) {
+                            return;
+                        }
+                        getView().bindListData(data);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        if (getView() == null) {
+                            return;
+                        }
+                        getView().showToast(msg);
+                        getView().getSpringView().onFinishFreshAndLoad();
+                        Intent intent = new Intent("com.sdwxwx.load.video.list.end");
+                        getView().getContext().sendBroadcast(intent);
+                    }
+                });
+    }
 }

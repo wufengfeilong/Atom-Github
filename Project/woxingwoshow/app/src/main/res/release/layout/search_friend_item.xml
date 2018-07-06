@@ -26,11 +26,10 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/release_margin_middle"
         android:layout_toEndOf="@+id/user_icon_img"
-        android:layout_toStartOf="@+id/topic_tag_img"
         android:ellipsize="end"
         android:gravity="center_vertical|start"
         android:lines="1"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/release_middle_text_size" />
+        android:textSize="@dimen/general_text_size" />
 
 </RelativeLayout>

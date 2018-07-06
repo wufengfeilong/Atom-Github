@@ -33,7 +33,7 @@ public class VideoThumbnailAdapter extends ArrayAdapter<VideoThumbnailInfo> {
         mRetriever = retriever;
         mNext = null;
         mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mDefaultBmp = BitmapFactory.decodeResource(context.getResources(),R.drawable.default_header_image);
+        mDefaultBmp = BitmapFactory.decodeResource(context.getResources(), android.R.color.transparent);
     }
 
     public int getTaskNum() {

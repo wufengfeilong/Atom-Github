@@ -66,5 +66,14 @@
             android:gravity="end|top"
             android:paddingTop="@dimen/release_margin_middle"
             android:textSize="@dimen/comment_size" />
+        <ImageView
+            android:id="@+id/unread_flag"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/release_margin_small"
+            android:gravity="end|bottom"
+            android:src="@drawable/red_point"
+            android:paddingTop="22dp"/>
     </RelativeLayout>
 </RelativeLayout>

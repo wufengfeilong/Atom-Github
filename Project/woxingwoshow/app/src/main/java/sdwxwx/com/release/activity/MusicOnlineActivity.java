@@ -2,11 +2,15 @@ package sdwxwx.com.release.activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +22,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import io.reactivex.functions.Consumer;
 import sdwxwx.com.R;
 import sdwxwx.com.adapter.BaseAdapter;
 import sdwxwx.com.adapter.BaseHolder;
@@ -44,12 +50,12 @@ import java.util.List;
 
 
 public class MusicOnlineActivity extends BaseActivity<MusicOnlineActivityBinding, MusicOnlinePresenter>
-        implements MusicOnlineContract.View,TabLayout.OnTabSelectedListener {
+        implements MusicOnlineContract.View,TabLayout.OnTabSelectedListener,BaseAdapter.OnItemClickListener {
     //定义适配器
     private MusicOnlineAdapter mMusicOnlineAdapter;
     private ReleaseMusicOnlineAdapter mReleaseOnlineAdapter;
     //搜索音乐结果的Adapter
-    SearchMusiceAdapter mSearchMusiceAdapter;
+    SearchMusicAdapter mSearchMusicAdapter;
 
     List<MusicBean> mSearchMusicList = new ArrayList<>();
     private MediaPlayer mMediaPlayer;
@@ -141,8 +147,9 @@ public class MusicOnlineActivity extends BaseActivity<MusicOnlineActivityBinding
             }
         });
     }
-    public class SearchMusiceAdapter extends BaseAdapter<MusicBean> {
-        public SearchMusiceAdapter(List<MusicBean> list) {
+    //搜索音乐的Adapter
+    public class SearchMusicAdapter extends BaseAdapter<MusicBean> {
+        public SearchMusicAdapter(List<MusicBean> list) {
             super(R.layout.item_music_collection_activity, list);
         }
 
@@ -156,7 +163,10 @@ public class MusicOnlineActivity extends BaseActivity<MusicOnlineActivityBinding
         } else {
             Glide.with(getContext()).load(R.drawable.start_camera).into((ImageView) holder.getView(R.id.music_collection_play));
         }
-            Glide.with(getContext()).load(item.getCover_url()).into((ImageView)holder.getView(R.id.music_collection_cover));
+        //音乐封面加载异常时，显示默认图片
+        RequestOptions options = new RequestOptions().error(R.drawable.music_cover);
+        Glide.with(getContext()).load(item.getCover_url()).apply(options).into((ImageView)holder.getView(R.id.music_collection_cover));
+//              Glide.with(mContext).load(item.getCover_url()).into((ImageView)holder.getView(R.id.music_collection_cover));
         ((ImageView) holder.getView(R.id.music_collection_cover)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -343,24 +353,69 @@ public class MusicOnlineActivity extends BaseActivity<MusicOnlineActivityBinding
 //        mMusicOnlineAdapter.notifyDataSetChanged();
     }
     @Override
-    public void bindMusicData(List<MusicBean> beanMusicList) {
+    public void onItemClick(View view, int postion) {
+        playMusic(mSearchMusicList.get(postion));
 
     }
+    @Override
+    public void playMusic(final MusicBean bean) {
+        mDialog = new AlertDialog.Builder(getContext());
+        mDialog.setMessage("确定下载此音乐？");
+        mDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    mPermissions
+                            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            .subscribe(new Consumer<Boolean>() {
+                                @Override
+                                public void accept(Boolean isAgree) {
+                                    if (isAgree) {
+                                        mPresenter.downloadOnlineMusic(bean);
+                                        Log.d("permission", "---- 请求通过----");
+                                    } else {
+                                        showToast("权限被拒绝");
+                                        for (String permission : mRequestPermissions) {
+                                            if (ContextCompat.checkSelfPermission(getContext(), permission) == PackageManager.PERMISSION_DENIED) {
+                                                Log.d("permission", "---- 权限被拒绝----" + permission);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                } else {
+                    mPresenter.downloadOnlineMusic(bean);
+                }
+
+                dialog.dismiss();
+            }
+        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).create().show();
+    }
+
 
     @Override
     public void ShowSearchData(boolean flg,List<MusicBean> list) {
+        mSearchMusicList.clear();
         if (flg) {
+            mSearchMusicList.addAll(list);
             //匹配到用户
              mDataBinding.musicSearchLayoutOne.setVisibility(View.GONE);
              mDataBinding.musicNoAnswer.setVisibility(View.GONE);
             RecyclerView searchLayoutTwo = (RecyclerView) mDataBinding.searchMusicLayoutTwo;
             searchLayoutTwo.setVisibility(View.VISIBLE);
-            SearchMusiceAdapter searchMusiceAdapter = new SearchMusiceAdapter(list);
-            mDataBinding.searchMusicLayoutTwo.setAdapter(searchMusiceAdapter);
-            searchMusiceAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            SearchMusicAdapter searchMusicAdapter = new SearchMusicAdapter(list);
+            mDataBinding.searchMusicLayoutTwo.setAdapter(searchMusicAdapter);
+            searchMusicAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int postion) {
-
+                    playMusic(mSearchMusicList.get(postion));
                 }
             });
             if (mDataBinding.searchMusicLayoutTwo != null) {

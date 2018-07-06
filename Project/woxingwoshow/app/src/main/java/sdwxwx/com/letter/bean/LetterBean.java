@@ -1,16 +1,11 @@
 package sdwxwx.com.letter.bean;
 
 
-import sdwxwx.com.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class LetterBean {
     private String icon;
     private String name;
     private String content;
-    private String createDate;
+    private long createDate;
     private boolean isComMeg;
     private String mMemberId;
 
@@ -18,7 +13,7 @@ public class LetterBean {
     public final static int SEND_MSG = 1;
 
     public LetterBean(String mMemberId,String icon, String name, String content,
-                      String createDate, boolean isComMeg) {
+                      long createDate, boolean isComMeg) {
         this.icon = icon;
         this.name = name;
         this.content = content;
@@ -69,11 +64,11 @@ public class LetterBean {
         this.name = name;
     }
 
-    public String getCreateDate() {
+    public long getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(long createDate) {
         this.createDate = createDate;
     }
 

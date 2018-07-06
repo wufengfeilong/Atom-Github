@@ -30,7 +30,7 @@
             android:id="@+id/actionbar"
             layout="@layout/record_title_bar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/release_camera_top_height"
+            android:layout_height="?attr/actionBarSize"
             android:layout_alignParentTop="true"
             app:presenter="@{presenter}" />
 

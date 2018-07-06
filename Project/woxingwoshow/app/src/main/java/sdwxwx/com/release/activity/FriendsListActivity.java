@@ -3,6 +3,7 @@ package sdwxwx.com.release.activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.liaoinstan.springview.container.DefaultFooter;
+import com.liaoinstan.springview.container.DefaultHeader;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -51,6 +54,26 @@ public class FriendsListActivity extends BaseActivity<ActivityFriendsListBinding
         // 初始化搜索编辑框领域
         initEditView();
 
+        initRecyclerView();
+
+        // 显示所有的好友
+        mPresenter.getFriendList(mDataBinding.friendSearchEdit.getText().toString(), mPageFlag);
+    }
+
+    @Override
+    public void onRefresh() {
+        mPageFlag = Constant.REQUEST_PAGE;
+        mPresenter.getFriendList(mDataBinding.friendSearchEdit.getText().toString(), mPageFlag);
+    }
+
+    @Override
+    public void onLoadmore() {
+        mPageFlag = String.valueOf(Integer.parseInt(mPageFlag) + 1);
+        mPresenter.getFriendList(mDataBinding.friendSearchEdit.getText().toString(), mPageFlag);
+    }
+
+    @Override
+    public void initRecyclerView() {
         mListAdapter = new FriendAdapter(R.layout.search_friend_item, mFriendListData);
         mDataBinding.friendsList.setLayoutManager(new LinearLayoutManager(this));
         mDataBinding.friendsList.setAdapter(mListAdapter);
@@ -67,8 +90,20 @@ public class FriendsListActivity extends BaseActivity<ActivityFriendsListBinding
                 closeActivity();
             }
         });
-        // 显示所有的好友
-        mPresenter.getFriendList(mDataBinding.friendSearchEdit.getText().toString(), mPageFlag);
+        mDataBinding.friendsListSpringView.setListener(this);
+        mDataBinding.friendsListSpringView.setHeader(new DefaultHeader(this));
+        mDataBinding.friendsListSpringView.setFooter(new DefaultFooter(this));
+        mDataBinding.friendsListEmpty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.getFriendList(mDataBinding.friendSearchEdit.getText().toString(), mPageFlag);
+            }
+        });
+    }
+
+    @Override
+    public RecyclerView getRecyclerView() {
+        return mDataBinding.friendsList;
     }
 
     private class FriendAdapter extends BaseAdapter<SearchUserBean.HaveUserBean> {
@@ -214,23 +249,52 @@ public class FriendsListActivity extends BaseActivity<ActivityFriendsListBinding
     }
 
     @Override
-    public void refreshListData(List<SearchUserBean.HaveUserBean> list) {
+    public void bindListData(List<SearchUserBean.HaveUserBean> list) {
         Log.d(TAG, "refreshListData start");
 
-        if (list != null && list.size() > 0) {
-            Log.d(TAG, "refreshListData refreshData.size() = " + list.size());
             mFriendListData.clear();
             // 加载成功
-            mPageFlag = String.valueOf(Integer.parseInt(mPageFlag) + 1);
             mFriendListData.addAll(list);
             mListAdapter.notifyDataSetChanged();
-            mDataBinding.friendsList.setVisibility(View.VISIBLE);
+
+            setEmpty();
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mDataBinding.friendsListSpringView.onFinishFreshAndLoad();
+            }
+        });
+        Log.d(TAG, "refreshListData end");
+    }
+
+    @Override
+    public void loadMoreData(List<SearchUserBean.HaveUserBean> data) {
+        Log.d(TAG, "loadMoreData start");
+
+        mFriendListData.addAll(data);
+        mListAdapter.notifyDataSetChanged();
+
+        setEmpty();
+
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mDataBinding.friendsListSpringView.onFinishFreshAndLoad();
+            }
+        });
+        Log.d(TAG, "loadMoreData end");
+    }
+
+    /**
+     * 根据数据是否为空，设置画面显示内容
+     */
+    private void setEmpty() {
+        if (mFriendListData != null && mFriendListData.size() > 0) {
+            mDataBinding.friendsListSpringView.setVisibility(View.VISIBLE);
             mDataBinding.friendsListEmpty.setVisibility(View.GONE);
         } else {
-            mDataBinding.friendsList.setVisibility(View.GONE);
+            mDataBinding.friendsListSpringView.setVisibility(View.GONE);
             mDataBinding.friendsListEmpty.setVisibility(View.VISIBLE);
         }
-
-        Log.d(TAG, "refreshListData end");
     }
 }

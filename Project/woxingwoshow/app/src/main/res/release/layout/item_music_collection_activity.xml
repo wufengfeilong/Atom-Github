@@ -35,7 +35,7 @@
                     android:id="@+id/music_collection_cover"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/beauty_nature"/>
+                    android:src="@drawable/music_cover"/>
                 <ImageView
                     android:id="@+id/music_collection_play"
                     android:layout_width="40dp"

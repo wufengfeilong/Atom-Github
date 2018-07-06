@@ -25,17 +25,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:padding="@dimen/release_margin"
                 android:onClick="@{()->presenter.back()}"
+                android:paddingBottom="@dimen/release_margin_middle"
+                android:paddingEnd="@dimen/release_margin"
+                android:paddingStart="@dimen/release_margin"
+                android:paddingTop="@dimen/release_margin_middle"
                 android:src="@drawable/back_white" />
 
             <TextView
                 android:id="@+id/txt_catagory_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:paddingBottom="@dimen/release_margin"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="@dimen/release_margin_middle"
                 android:text="话题视频"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/activity_title_size" />

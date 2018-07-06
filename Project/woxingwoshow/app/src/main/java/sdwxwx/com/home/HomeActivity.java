@@ -1,12 +1,10 @@
 package sdwxwx.com.home;
 
-import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -44,7 +42,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
     private static final String TAG = "HomeActivity";
     FragmentManager fm;
     Fragment mContent;
-    List<Fragment> list;
+    List<Fragment> fragmentList;
     List<Integer> selectedImg;
     List<Integer> unSelectImg;
     List<ImageView> navBtmIv;
@@ -73,6 +71,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
         EMClient.getInstance().chatManager().addMessageListener(this);
         //关闭之前的所有活动
         ActivityCollector.addActivity(this);
+
     }
 
     public void easeMobe() {
@@ -114,20 +113,37 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
      * @param msg
      */
     public void sendNotification(UserBean bean, String msg) {
+        String channelID = "1";
+
+        String channelName = "channel_name";
         //获取PendingIntent
         Intent mainIntent = new Intent(this, LetterListActivity.class);
         mainIntent.putExtra("memberId", bean.getId());
         mainIntent.putExtra("EmId", bean.getEasemob_username());
         mainIntent.putExtra("FansHeadUrl", bean.getAvatar_url());
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)//设置小图标
-                .setContentTitle("我行我秀")
-                .setContentText(bean.getNickname() + ":" + msg)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .build();
+
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = null;
+        if (Build.VERSION.SDK_INT>=26){
+            NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+            notification = new Notification.Builder(getApplicationContext(), channelID)
+                    .setContentTitle("我行我秀")
+                    .setContentText(bean.getNickname() + ":" + msg)
+                    .setContentIntent(pendingIntent)
+                    .setSmallIcon(R.drawable.logo)
+                    .setAutoCancel(true)
+                    .build();
+        } else {
+            notification = new Notification.Builder(this)
+                    .setSmallIcon(R.drawable.logo)//设置小图标
+                    .setContentTitle("我行我秀")
+                    .setContentText(bean.getNickname() + ":" + msg)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
+                    .build();
+        }
         notificationManager.notify(0, notification);
     }
 
@@ -141,6 +157,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
             if (TextUtils.isEmpty(((EMTextMessageBody) message.getBody()).getMessage().trim())) {
                 return;
             }
+
+            ((HomeFragment)fragmentList.get(0)).haveNewMsg();
+
             String memberId = message.getStringAttribute("memberId", null);
             memberId = memberId==null?message.ext().get("userId")+"":memberId;
             LoginModel.getMemberInfo(memberId, memberId, new BaseCallback<UserBean>() {
@@ -224,22 +243,20 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
     }
 
     private void setSelectStatus(int pos) {
-
         Glide.with(this).load(selectedImg.get(pos)).into(navBtmIv.get(pos));
-
     }
 
     private void initFragment() {
         fm = getSupportFragmentManager();
-        list = new ArrayList<>();
+        fragmentList = new ArrayList<>();
         HomeFragment homeFragment = new HomeFragment();
-        list.add(homeFragment);
+        fragmentList.add(homeFragment);
         NearFragment nearFragment = new NearFragment();
-        list.add(nearFragment);
+        fragmentList.add(nearFragment);
         MessageListFragment messageListFragment = new MessageListFragment();
-        list.add(messageListFragment);
+        fragmentList.add(messageListFragment);
         MeHomeFragment meHomeFragment = new MeHomeFragment();
-        list.add(meHomeFragment);
+        fragmentList.add(meHomeFragment);
     }
 
     private void initUnSelectImg() {
@@ -276,9 +293,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
         // update by lily
         // 获取要显示的FragmentIndex
         int intentIndex = getIntent().getIntExtra(Constant.BACK_HOME_KEY, 0);
-        transaction.replace(R.id.home_content, list.get(intentIndex));
+        transaction.replace(R.id.home_content, fragmentList.get(intentIndex));
         transaction.commit();
-        mContent = list.get(intentIndex);
+        mContent = fragmentList.get(intentIndex);
         clearSelectStatus();
         setSelectStatus(intentIndex);
 
@@ -291,7 +308,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
 //            return;
 //        }
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.home_content, list.get(position));
+        transaction.replace(R.id.home_content, fragmentList.get(position));
         transaction.commit();
         clearSelectStatus();
         setSelectStatus(position);
@@ -305,14 +322,14 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomePresente
 //            actionStartActivity(LoginActivity.class);
 //            return;
 //        }
-        if (mContent != list.get(position)) {
+        if (mContent != fragmentList.get(position)) {
             FragmentTransaction transaction = fm.beginTransaction();
-            if (!list.get(position).isAdded()) {    // 先判断是否被add过
-                transaction.hide(mContent).add(R.id.home_content, list.get(position)).commit(); // 隐藏当前的fragment，add下一个到Activity中
+            if (!fragmentList.get(position).isAdded()) {    // 先判断是否被add过
+                transaction.hide(mContent).add(R.id.home_content, fragmentList.get(position)).commit(); // 隐藏当前的fragment，add下一个到Activity中
             } else {
-                transaction.hide(mContent).show(list.get(position)).commit(); // 隐藏当前的fragment，显示下一个
+                transaction.hide(mContent).show(fragmentList.get(position)).commit(); // 隐藏当前的fragment，显示下一个
             }
-            mContent = list.get(position);
+            mContent = fragmentList.get(position);
         }
         clearSelectStatus();
         setSelectStatus(position);

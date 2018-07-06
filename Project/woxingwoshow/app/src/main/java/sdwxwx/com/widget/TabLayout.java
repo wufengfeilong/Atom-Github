@@ -130,7 +130,7 @@ import static android.support.v4.view.ViewPager.*;
  */
 @ViewPager.DecorView
 public class TabLayout extends HorizontalScrollView {
-    private static final int mTabLineOffset = 0;
+    private static final int mTabLineOffset = 25;
     private static final int DEFAULT_HEIGHT_WITH_TEXT_ICON = 72; // dps
     static final int DEFAULT_GAP_TEXT_ICON = 8; // dps
     private static final int INVALID_WIDTH = -1;

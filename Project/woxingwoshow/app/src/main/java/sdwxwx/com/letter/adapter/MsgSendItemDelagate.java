@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import sdwxwx.com.R;
 import sdwxwx.com.cons.Constant;
-import sdwxwx.com.letter.activity.LetterChatActivity;
 import sdwxwx.com.letter.bean.LetterBean;
 import sdwxwx.com.message.activity.FansHomeActivity;
+import sdwxwx.com.util.StringUtil;
 
 
 /**
@@ -43,7 +42,14 @@ public class MsgSendItemDelagate implements ItemViewDelegate<LetterBean>
     {
         holder.setText(R.id.they_content, chatMessage.getContent());
         Glide.with(context).load(chatMessage.getIcon()).into((ImageView)holder.getView(R.id.they_head_pic));
-
+        //添加时间显示
+        long msgTime = chatMessage.getCreateDate();
+        if (msgTime!=0L) {
+            holder.setVisible(R.id.they_time,true);
+            holder.setText(R.id.they_time,StringUtil.LongFormatTime(msgTime));
+        } else {
+            holder.setVisible(R.id.they_time,false);
+        }
         holder.setOnClickListener(R.id.they_head_pic, new View.OnClickListener() {
             @Override
             public void onClick(View v) {

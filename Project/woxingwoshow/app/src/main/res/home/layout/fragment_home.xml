@@ -22,7 +22,7 @@
             android:focusableInTouchMode="true"
             android:gravity="bottom"
             android:orientation="horizontal"
-            android:paddingBottom="10dp">
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/home_title_city_tv"
@@ -41,7 +41,7 @@
                 android:id="@+id/home_title_back_iv"
                 android:layout_width="@dimen/title_back_width"
                 android:layout_height="@dimen/title_back_height"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:contentDescription="@null"
@@ -68,7 +68,7 @@
                 android:id="@+id/home_title_msg_iv"
                 android:layout_width="@dimen/title_right_image_width"
                 android:layout_height="@dimen/title_right_image_height"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:contentDescription="@null"
@@ -90,7 +90,7 @@
                 <LinearLayout
                     android:id="@+id/home_fragment_tab_ll"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/general_list_item_height"
+                    android:layout_height="35dp"
                     android:weightSum="7">
 
                     <sdwxwx.com.widget.TabLayout
@@ -109,7 +109,7 @@
                         android:layout_weight="1"
                         android:contentDescription="@null"
                         android:onClick="@{()->presenter.tabMoreClick()}"
-                        android:padding="15dp"
+                        android:padding="10dp"
                         android:src="@drawable/category" />
                 </LinearLayout>
 

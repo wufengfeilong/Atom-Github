@@ -97,18 +97,20 @@ public class PlayVideoFragmentPresenter extends BasePresenter<PlayVideoFragmentC
             return;
         }
         if (getView().getIsLiked()) {
+            getView().showLoading();
             mModel.videoUnlike(LoginHelper.getInstance().getUserId(), getView().getVideoId(), new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String data) {
                     if (getView() == null) {
                         return;
                     }
+                    getView().setIsLiked("0");
                     sendFreshListBroad();
                     getView().showToast("取消点赞成功！");
                     getView().getThumbIv().setImageResource(R.drawable.thumb_up_no_selected);
-                    getView().setIsLiked("0");
                     getView().setLikeCount(-1);
                     getView().getThumbTv().setText((Integer.valueOf(getView().getThumbTv().getText().toString())-1)+"");
+                    getView().hideLoading();
                 }
 
                 @Override
@@ -117,21 +119,24 @@ public class PlayVideoFragmentPresenter extends BasePresenter<PlayVideoFragmentC
                         return;
                     }
                     getView().showToast(msg);
+                    getView().hideLoading();
                 }
             });
         } else {
+            getView().showLoading();
             mModel.videoLike(LoginHelper.getInstance().getUserId(), getView().getVideoId(), new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String data) {
                     if (getView() == null) {
                         return;
                     }
+                    getView().setIsLiked("1");
                     sendFreshListBroad();
                     getView().showToast("点赞成功！");
                     getView().getThumbIv().setImageResource(R.drawable.video_liked);
-                    getView().setIsLiked("1");
                     getView().setLikeCount(1);
                     getView().getThumbTv().setText((Integer.valueOf(getView().getThumbTv().getText().toString())+1)+"");
+                    getView().hideLoading();
                 }
 
                 @Override
@@ -140,6 +145,7 @@ public class PlayVideoFragmentPresenter extends BasePresenter<PlayVideoFragmentC
                         return;
                     }
                     getView().showToast(msg);
+                    getView().hideLoading();
                 }
             });
         }

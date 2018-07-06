@@ -33,11 +33,11 @@ public class MeHomeAdapter extends FragmentPagerAdapter {
         View v = LayoutInflater.from(context).inflate(R.layout.view_tab, null);
         TextView tv = (TextView) v.findViewById(R.id.me_home_video_tv);
         ImageView img = (ImageView) v.findViewById(R.id.me_home_video_iv);
-        if (position==0) {
+        if (position == 0) {
             tv.setText("0");
             img.setImageResource(R.drawable.me_home_tab0_selector);
-        }else {
-            tv.setText("10");
+        } else {
+            tv.setText("0");
             img.setImageResource(R.drawable.me_home_tab1_selector);
         }
         return v;

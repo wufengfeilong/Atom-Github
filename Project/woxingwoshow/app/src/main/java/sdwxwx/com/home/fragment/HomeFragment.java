@@ -12,6 +12,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.hyphenate.chat.EMClient;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -40,7 +41,7 @@ import java.util.List;
  *
  */
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragmentPresenter>
-        implements HomeFragmentContract.View{
+        implements HomeFragmentContract.View {
     private TabLayout tabLayout;
     private ScrollViewPager viewPager;
     private List<String> tabs = new ArrayList<>();
@@ -72,9 +73,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         mReceiver = new CitySelectReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constant.INTENT_FILTER_SELECT_CITY);
-        mContext.registerReceiver(mReceiver,filter);
+        mContext.registerReceiver(mReceiver, filter);
         if (!NetworkUtils.isNetworkAvaiable(mContext)) {
-            mDataBinding.homeLsv.setViewState(LoadStatusView.VIEW_STATE_ERROR,getString(R.string.common_no_network_msg));
+            mDataBinding.homeLsv.setViewState(LoadStatusView.VIEW_STATE_ERROR, getString(R.string.common_no_network_msg));
             mDataBinding.homeLsv.setOnStatusPageClickListener(new LoadStatusView.OnStatusPageClickListener() {
                 @Override
                 public void onError() {
@@ -94,6 +95,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         mHelper = LoginHelper.getInstance();
         tabLayout = mDataBinding.homeFragmentTl;
         viewPager = mDataBinding.homeFragmentVp;
+
         mPresenter.loadTabData();
     }
 
@@ -104,28 +106,31 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
+
                     @Override
                     public void onNext(Boolean value) {
                         // 如果已经给予定位的使用权限
-                        if(value){
+                        if (value) {
                             // 开始定位
                             startLocation();
-                        }else {
+                        } else {
                             // 定位不可用
                             showToast("定位不可用,请手动选择城市！");
                             mDataBinding.homeTitleCityTv.setText("定位失败");
                         }
                     }
+
                     @Override
                     public void onError(Throwable e) {
                     }
+
                     @Override
                     public void onComplete() {
                     }
                 });
     }
 
-    private void startLocation(){
+    private void startLocation() {
         mLocationClient = new LocationClient(mContext);
         //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);
@@ -143,7 +148,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
 
     @Override
     public void loadTabs(List<CategoryBean> list) {
-        for (CategoryBean bean: list) {
+        for (CategoryBean bean : list) {
             tabs.add(bean.getName());
         }
         //循环注入标签
@@ -153,7 +158,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         if (fragments.size() <= 0) {
             //设置TabLayout点击事件
             for (int i = 0; i < tabs.size(); i++) {
-                fragments.add(HomeCategoryVideoFragment.newInstance(i,list.get(i).getId(),city_id));
+                fragments.add(HomeCategoryVideoFragment.newInstance(i, list.get(i).getId(), city_id));
             }
         }
         tabLayout.addOnTabSelectedListener(this);
@@ -206,15 +211,17 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         hideCategoryVideo(false);
     }
 
-    public class CitySelectReceiver extends BroadcastReceiver{
+    public class CitySelectReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+
             city_id = Integer.valueOf(intent.getStringExtra("code"));
             String city = intent.getStringExtra("name");
             mDataBinding.homeTitleCityTv.setText(city);
-            mHelper.setCityId(city_id+"");
+            mHelper.setCityId(city_id + "");
             mHelper.setCityName(city);
+
         }
     }
 
@@ -224,6 +231,14 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
     public void onResume() {
         super.onResume();
         isFront = true;
+
+        // 右上角显示未读消息红点
+        int count = EMClient.getInstance().chatManager().getUnreadMessageCount();
+        if (count > 0) {
+            haveNewMsg();
+        } else {
+            noNewMsg();
+        }
     }
 
     @Override
@@ -240,8 +255,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
 
     public class CityLocationListener implements BDLocationListener {
         @Override
-        public void onReceiveLocation(BDLocation location){
-            final String city = location.getCity()==null?"北京市":location.getCity();    //获取城市
+        public void onReceiveLocation(BDLocation location) {
+            final String city = location.getCity() == null ? "北京市" : location.getCity();    //获取城市
             mDataBinding.homeTitleCityTv.setText(city);
             PickCityModel model = new PickCityModel();
             model.getCities(new BaseCallback<List<CityEntity>>() {
@@ -249,11 +264,11 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
                 public void onSuccess(List<CityEntity> data) {
                     //把城市列表放到Application里
                     LoginHelper.getInstance().setCityList(data);
-                    for(CityEntity cityEntity:data){
+                    for (CityEntity cityEntity : data) {
                         if (city.equals(cityEntity.getName())) {
                             city_id = Integer.parseInt(cityEntity.getId());
                             if (isFront) {
-                                mHelper.setCityId(city_id+"");
+                                mHelper.setCityId(city_id + "");
                                 mHelper.setCityName(city);
 //                                Intent intent = new Intent();
 //                                intent.setAction(Constant.INTENT_FILTER_PICK_CITY);
@@ -271,5 +286,13 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
             });
 
         }
+    }
+
+    public void haveNewMsg() {
+        mDataBinding.homeTitleMsgIv.setImageResource(R.drawable.home_nav_news);
+    }
+
+    public void noNewMsg() {
+        mDataBinding.homeTitleMsgIv.setImageResource(R.drawable.message);
     }
 }

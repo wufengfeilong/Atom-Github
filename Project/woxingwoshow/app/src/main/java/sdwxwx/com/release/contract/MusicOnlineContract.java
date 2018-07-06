@@ -13,14 +13,13 @@ import sdwxwx.com.contract.RecyclerViewContract;
 
 public interface MusicOnlineContract {
     public interface View extends BaseView,RecyclerViewContract.View<MusicTypeBean> {
-        void bindMusicData(List<MusicBean> beanList);
+        void playMusic(MusicBean bean);
         void ShowSearchData(boolean flg,List<MusicBean> data);
-//        void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state);
     }
 
     public interface Presenter {
         void loadListData();
-//        void getItemOffsets(Rect outRect, android.view.View view, RecyclerView parent, RecyclerView.State state);
+        void downloadOnlineMusic(MusicBean bean);
 
     }
 }

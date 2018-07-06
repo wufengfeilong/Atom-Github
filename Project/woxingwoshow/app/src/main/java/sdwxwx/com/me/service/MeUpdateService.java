@@ -9,19 +9,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.RemoteViews;
+import sdwxwx.com.R;
+import sdwxwx.com.cons.Constant;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import sdwxwx.com.R;
-import sdwxwx.com.cons.Constant;
 
 
 /**
@@ -98,7 +96,9 @@ public class MeUpdateService extends IntentService {
         }
         isRunning = true;
         if (type == 1) {
-            initRemoteView();
+            if (Build.VERSION.SDK_INT<26) {
+                initRemoteView();
+            }
         }
 
         try {
@@ -123,17 +123,21 @@ public class MeUpdateService extends IntentService {
                     installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
                     startActivity(installIntent);
                     try {
-                        updateNotificationManager.cancel(0);
+                        if (Build.VERSION.SDK_INT<26) {
+                            updateNotificationManager.cancel(0);
+                        }
                     } catch (Exception ex) {
                         Log.e(TAG, "startDownloade: " + ex.getMessage());
                     }
                 } else {
-                    Notification notification = new Notification.Builder(MeUpdateService.this)
-                            .setContentTitle(getString(R.string.app_name))
-                            .setContentText("下载失败")
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .build();
-                    updateNotificationManager.notify(0, notification);
+                    if (Build.VERSION.SDK_INT<26) {
+                        Notification notification = new Notification.Builder(MeUpdateService.this)
+                                .setContentTitle(getString(R.string.app_name))
+                                .setContentText("下载失败")
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .build();
+                        updateNotificationManager.notify(0, notification);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -222,12 +226,13 @@ public class MeUpdateService extends IntentService {
                         downloadCount += 1;
                         try {
                             if (type == 1) {
-
-                                updateNotification.contentView.setProgressBar(R.id.progressBar1, 100, (int) totalSize * 100 / updateTotalSize,
-                                        false);
-                                updateNotification.contentView.setTextViewText(R.id.textView1, (int) totalSize * 100 / updateTotalSize + "%");
-                                updateNotification.contentIntent = updatePendingIntent;
-                                updateNotificationManager.notify(0, updateNotification);
+                                if (Build.VERSION.SDK_INT<26) {
+                                    updateNotification.contentView.setProgressBar(R.id.progressBar1, 100, (int) totalSize * 100 / updateTotalSize,
+                                            false);
+                                    updateNotification.contentView.setTextViewText(R.id.textView1, (int) totalSize * 100 / updateTotalSize + "%");
+                                    updateNotification.contentIntent = updatePendingIntent;
+                                    updateNotificationManager.notify(0, updateNotification);
+                                }
                             }
                             if (mProgressListener != null) {
                                 mProgressListener.onProgress((int) (totalSize * 100 / updateTotalSize));

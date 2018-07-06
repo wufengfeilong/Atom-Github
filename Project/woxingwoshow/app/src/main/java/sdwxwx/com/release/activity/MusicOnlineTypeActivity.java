@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.IOException;
@@ -185,6 +186,10 @@ public class MusicOnlineTypeActivity extends BaseActivity<OnlineMusicTypeListBin
             holder.setText(R.id.music_type_author,item.getArtist());
             holder.setText(R.id.music_type_time, StringUtil.formatSecond(item.getDuration()));
             Glide.with(getContext()).load(item.getCover_url()).into((ImageView) holder.getView(R.id.music_type_cover_url));
+            //音乐封面加载异常时，显示默认图片
+            RequestOptions options = new RequestOptions().error(R.drawable.music_cover);
+            Glide.with(getContext()).load(item.getCover_url()).apply(options).into((ImageView)holder.getView(R.id.music_type_cover_url));
+//          Glide.with(getContext()).load(item.getCover_url()).into((ImageView) holder.getView(R.id.music_type_cover_url));
             if (item.isPlay()) {
                 Glide.with(getContext()).load(R.drawable.stop_camera).into((ImageView) holder.getView(R.id.music_collection_play_music));
             } else {

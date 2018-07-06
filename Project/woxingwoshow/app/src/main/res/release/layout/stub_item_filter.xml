@@ -43,14 +43,6 @@
                     android:text="滤镜"
                     android:textColor="@drawable/record_title_text"
                     android:textSize="16sp" />
-
-                <View
-                    android:id="@+id/item_filter_indicator"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/title_indicator_color" />
             </LinearLayout>
 
             <View

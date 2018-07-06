@@ -367,7 +367,7 @@ public class PublishEditActivity extends AppCompatActivity {
         if (saveDialog != null && saveDialog.isShowing()) {
             return;
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog);
         saveDialog = builder.setMessage(R.string.release_save_dialog_title)
                 .setPositiveButton(getResources().getString(R.string.release_save_btn_tx), new DialogInterface.OnClickListener() {
                     @Override

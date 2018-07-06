@@ -27,6 +27,9 @@ public class PlayVideoBean {
     String is_liked;     // 是否已点赞视频。
     String music_id;     // 音乐编号。
     String is_followed;  // 是否关注过视频作者。
+    String Video_type;   // 是否为广告视频,0为会员视频，1为广告视频
+    String Skip_url;     // 广告视频跳转路径
+
 
     public int getId() {
         return id;
@@ -194,5 +197,21 @@ public class PlayVideoBean {
 
     public void setIs_followed(String is_followed) {
         this.is_followed = is_followed;
+    }
+
+    public String getVideo_type() {
+        return Video_type;
+    }
+
+    public void setVideo_type(String video_type) {
+        Video_type = video_type;
+    }
+
+    public String getSkip_url() {
+        return Skip_url;
+    }
+
+    public void setSkip_url(String skip_url) {
+        Skip_url = skip_url;
     }
 }

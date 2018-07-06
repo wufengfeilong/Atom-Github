@@ -3,7 +3,11 @@ package sdwxwx.com.me.fragment;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
@@ -21,10 +25,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import com.bumptech.glide.Glide;
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
+
+import java.io.File;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import sdwxwx.com.R;
 import sdwxwx.com.adapter.BaseAdapter;
 import sdwxwx.com.adapter.BaseHolder;
@@ -39,13 +52,6 @@ import sdwxwx.com.play.activity.PlayVideoActivity;
 import sdwxwx.com.release.activity.DraftListActivity;
 import sdwxwx.com.release.bean.DraftVideoBean;
 import sdwxwx.com.util.StringUtil;
-
-import java.io.File;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by 860117066 on 2018/05/29.
@@ -112,10 +118,10 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
     public void onLoadmore() {
         if (type == 0) {
             mePage = mePage + 1;
-            mPresenter.loadMeVideoData(mePage + "", mDataBinding);
+            mPresenter.loadMeVideoMoreData(String.valueOf(mePage));
         } else {
             upPage = upPage + 1;
-            mPresenter.loadUpVideoData(upPage + "", mDataBinding);
+            mPresenter.loadUpVideoMoreData(String.valueOf(upPage));
         }
     }
 
@@ -160,15 +166,22 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
         }
     }
 
+    @Override
+    public void bindListDataMore(List<PlayVideoBean> data) {
+        mList.addAll(data);
+        mHomeVideoAdapter.notifyDataSetChanged();
+    }
+
     public void onLoadMore(int loadType) {
         if (loadType == 0 && loadType == type) {
             mePage = mePage + 1;
-            mPresenter.loadMeVideoData(mePage + "", mDataBinding);
+            mPresenter.loadMeVideoMoreData(String.valueOf(mePage));
         } else if (loadType == 1 && loadType == type) {
             upPage = upPage + 1;
-            mPresenter.loadUpVideoData(upPage + "", mDataBinding);
+            mPresenter.loadUpVideoMoreData(String.valueOf(upPage));
         }
     }
+
     public void onLoadCurPageData() {
         if (type == 0 ) {
             mPresenter.loadMeVideoData(mePage + "", mDataBinding);
@@ -198,6 +211,7 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
 
     @Override
     public void bindListData(List<PlayVideoBean> beanList) {
+        mList.clear();
         mList.addAll(beanList);
 
         if (type == 0) {
@@ -205,9 +219,19 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
         } else {
             LoginHelper.getInstance().setLikeList(mList);
         }
-        if (mList.size()<=0) {
+        // 获取草稿箱的视频列表
+        getListData();
+        // 有待发布视频时
+        if (hasDraft && type == 0) {
+            PlayVideoBean bean = new PlayVideoBean();
+            mList.add(0, bean);
+        }
+
+        if (mList.size() <= 0) {
             mDataBinding.homeVideoSpringView.setVisibility(View.GONE);
+            mDataBinding.emptyText.setVisibility(View.VISIBLE);
         } else {
+            mDataBinding.emptyText.setVisibility(View.GONE);
             mDataBinding.homeVideoSpringView.setVisibility(View.VISIBLE);
         }
         getActivity().runOnUiThread(new Runnable() {
@@ -270,15 +294,8 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
 
         @Override
         public int getItemCount() {
-            Log.d(TAG, "getItemCount() hasDraft = " + hasDraft);
-            if (type == 0 && hasDraft) {
-                // 有待发布视频时
-                return super.getItemCount() + 1;
-            } else {
-                return super.getItemCount();
-            }
+            return super.getItemCount();
         }
-
         @Override
         public int getItemViewType(int position) {
             Log.d(TAG, "getItemViewType() hasDraft = " + hasDraft + "  position = " + position);
@@ -311,12 +328,8 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
 
         @Override
         public void onBindViewHolder(BaseHolder holder, int position) {
-            if (type == 0 && hasDraft) {
-                if (position == 0) {
-                    holder.setImageBitmap(R.id.draft_cover, mDraftListData.get(0).getVideoCover());
-                } else {
-                    super.onBindViewHolder(holder, position - 1);
-                }
+            if (holder.getItemViewType() == 1) {
+                holder.setImageBitmap(R.id.draft_cover, mDraftListData.get(0).getVideoCover());
             } else {
                 super.onBindViewHolder(holder, position);
             }
@@ -343,23 +356,17 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
     @Override
     public void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume() start");
         if (isFresh) {
             mHomeVideoAdapter.notifyDataSetChanged();
             isFresh = false;
         }
-        Log.d(TAG, "onResume() start");
-        if (mList.size()<=0) {
+        if (mList.size() <= 0) {
             mDataBinding.homeVideoSpringView.setVisibility(View.GONE);
+            mDataBinding.emptyText.setVisibility(View.VISIBLE);
         } else {
+            mDataBinding.emptyText.setVisibility(View.GONE);
             mDataBinding.homeVideoSpringView.setVisibility(View.VISIBLE);
-        }
-        // 取草稿箱的视频列表
-        getListData();
-        // 有待发布视频时
-        if (mDraftListData != null && mDraftListData.size() > 0) {
-            hasDraft = true;
-        } else {
-            hasDraft = false;
         }
         mHomeVideoAdapter.notifyDataSetChanged();
 
@@ -425,7 +432,12 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
                 mDraftListData.add(bean);
             }
         }
-
+        // 有待发布视频时
+        if (mDraftListData != null && mDraftListData.size() > 0) {
+            hasDraft = true;
+        } else {
+            hasDraft = false;
+        }
         Log.d(TAG, "getListData() end");
     }
 
@@ -477,7 +489,6 @@ public class MeHomeVideoFragment extends BaseFragment<MeHomeVideoBinding, MeHome
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getListData();
-                    mHomeVideoAdapter.notifyDataSetChanged();
                 } else {
                     for (int grant : grantResults) {
                         if (grant != PackageManager.PERMISSION_GRANTED) {

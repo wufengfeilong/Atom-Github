@@ -9,16 +9,16 @@
         android:id="@+id/cover_title"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="@dimen/release_margin"
-        android:layout_marginStart="@dimen/release_margin">
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/cover_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:paddingEnd="@dimen/release_margin"
+            android:paddingStart="@dimen/release_margin"
             android:scaleType="centerInside"
             android:src="@drawable/back_white" />
 
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/release_margin"
             android:background="@drawable/release_gradient_shape"
             android:paddingBottom="@dimen/release_margin_small"
             android:paddingEnd="@dimen/release_margin"
@@ -85,8 +86,8 @@
                 android:background="@drawable/edit_title_bg"
                 android:gravity="center_vertical|start"
                 android:hint="@string/choose_cover_title_hint"
-                android:paddingStart="@dimen/release_margin"
                 android:lines="1"
+                android:paddingStart="@dimen/release_margin"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
                 android:textSize="@dimen/release_small_text_size" />

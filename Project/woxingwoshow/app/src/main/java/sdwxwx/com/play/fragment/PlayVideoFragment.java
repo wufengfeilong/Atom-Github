@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.*;
 import android.graphics.SurfaceTexture;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -265,6 +266,34 @@ public class PlayVideoFragment extends BaseFragment<FragmentPlayVideoBinding, Pl
         } else {
             mDataBinding.playVideoThumbUpIv.setImageResource(R.drawable.thumb_up_no_selected);
         }
+
+        if ("0".equals(mBean.getVideo_type())) {
+            mDataBinding.clickWatch.setVisibility(View.GONE);
+
+            mDataBinding.saySthLl.setVisibility(View.VISIBLE);
+            mDataBinding.playVideoMore.setVisibility(View.VISIBLE);
+            mDataBinding.transverseLine.setVisibility(View.VISIBLE);
+            mDataBinding.playVideoFollow.setVisibility(View.VISIBLE);
+        } else {
+            mDataBinding.clickWatch.setVisibility(View.VISIBLE);
+            mDataBinding.clickWatch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String url = mBean.getSkip_url();
+                    if (url == null || url == "") {
+                        return;
+                    }
+                    Uri uri = Uri.parse(url);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+            });
+            mDataBinding.saySthLl.setVisibility(View.GONE);
+            mDataBinding.playVideoMore.setVisibility(View.GONE);
+            mDataBinding.transverseLine.setVisibility(View.GONE);
+            mDataBinding.playVideoFollow.setVisibility(View.GONE);
+        }
+
 
     }
 

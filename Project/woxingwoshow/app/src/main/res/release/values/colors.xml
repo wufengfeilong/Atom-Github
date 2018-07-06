@@ -5,34 +5,10 @@
     <color name="release_publish_gray">#505050</color>
     <color name="release_line_gray">#7FC0C0C0</color>
     <color name="lighter_gray">#fdfdfd</color>
-
     <color name="font_color_35">#DC143C</color>
-    <color name="transparent1">#7fffffff</color><!--透明白色 -->
-    <color name="transparent2">#616060</color><!--透明白色 -->
-    <color name="full_black">#000000</color>
-    <color name="transparent">#00000000</color>
-
-    <color name="record_progress_black">#2c2c2c</color>
-    <color name="record_progress_bg">#2c2c2c</color>
     <color name="record_progress_blue">#368ca8</color>
     <color name="record_progress_pause">#2c2c2c</color>
     <color name="record_progress_red">#e85932</color>
-
-    <color name="record_text_default">#ff000000</color>
-    <color name="record_text_selected">#DC143C</color>
-    <color name="record_title_white">#ffffff</color>
-    <color name="record_title_bg_default">#919191</color>
-    <color name="record_title_bg_selected">#616060</color>
-
-    <color name="beauty_indicator_default">#08080b</color>
-    <color name="beauty_indicator_selected">#DC143C</color>
-
-    <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
-    <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
-    <color name="bright_foreground_disabled_material_light">#80000000</color>
-
-    <color name="grey_bg">#B02b2b2b</color>
     <color name="import_bg">#232A42</color>
     <color name="gray_line">#DEDEDE</color>
     <color name="gray_line_height">#64dedcdc</color>

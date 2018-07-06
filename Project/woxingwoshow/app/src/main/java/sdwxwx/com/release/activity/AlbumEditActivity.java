@@ -594,7 +594,7 @@ public class AlbumEditActivity extends AppCompatActivity {
             mVideoRangeSeekBar.setMaxRange(durationInSec);
         }
 
-        mVideoRangeSeekBar.setMinRange(1.0f);
+        mVideoRangeSeekBar.setMinRange(5.0f);
 
         if (durationInSec > 300.0f) {
             mVideoRangeSeekBar.setRange(0.0f, 300.0f);
@@ -608,8 +608,8 @@ public class AlbumEditActivity extends AppCompatActivity {
     private void setRangeTextView(float offset) {
         Log.d(TAG, "setRangeTextView start" + offset);
         mVideoRangeText.setText(String.format(getResources().getString(R.string.release_album_edit_tx),
-                String.valueOf((int) (mVideoRangeSeekBar.getRangeEnd())
-                - (int) (mVideoRangeSeekBar.getRangeStart()))));
+                String.valueOf((int) (mVideoRangeSeekBar.getRangeEnd()
+                - mVideoRangeSeekBar.getRangeStart()))));
 //        mVideoRangeText.setText(formatTimeStr2(((int) (10 * mVideoRangeSeekBar.getRangeEnd()))
 //                - (int) (10 * mVideoRangeSeekBar.getRangeStart())));
 //        mVideoRangeStart.setText(formatTimeStr(mVideoRangeSeekBar.getRangeStart() + offset));

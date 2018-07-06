@@ -21,7 +21,7 @@ public class FriendsListPresenter extends BasePresenter<FriendsListContract.View
      * @param page 当前批次（页码）
      */
     @Override
-    public void getFriendList(String keyWords, String page) {
+    public void getFriendList(String keyWords, final String page) {
 
         getView().showLoading();
         SearchUserModel.matchUser(LoginHelper.getInstance().getUserId(), keyWords, "1",page, Constant.DEFAULT_SIZE, new BaseCallback<List<SearchUserBean.HaveUserBean>>() {
@@ -31,7 +31,11 @@ public class FriendsListPresenter extends BasePresenter<FriendsListContract.View
                     return;
                 }
                 getView().hideLoading();
-                getView().refreshListData(data);
+                if (page.equals(Constant.REQUEST_PAGE)) {
+                    getView().bindListData(data);
+                } else {
+                    getView().loadMoreData(data);
+                }
             }
 
             @Override
@@ -41,7 +45,12 @@ public class FriendsListPresenter extends BasePresenter<FriendsListContract.View
                 }
                 getView().hideLoading();
                 List<SearchUserBean.HaveUserBean> data = new ArrayList<>();
-                getView().refreshListData(data);
+                if (page.equals(Constant.REQUEST_PAGE)) {
+                    getView().bindListData(data);
+                } else {
+                    getView().showToast("没有更多好友了");
+                    getView().loadMoreData(data);
+                }
             }
         });
     }

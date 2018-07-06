@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="HomeBottomImageView" >
-        <item name="android:padding">3dp</item>
+        <item name="android:padding">4dp</item>
         <item name="android:contentDescription">@null</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">match_parent</item>
@@ -34,7 +34,7 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowBackground">@color/full_black</item>
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
     <!-- REditText -->
     <declare-styleable name="REditText">
@@ -43,7 +43,8 @@
     </declare-styleable>
 
     <style name="TabLayoutTextStyle">
-        <item name="android:textSize">@dimen/activity_title_size</item>
+        <item name="android:textSize">@dimen/release_middle_text_size</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
     </style>
 
     <!-- 消息列表用户昵称与消息类型拼接显示 -->

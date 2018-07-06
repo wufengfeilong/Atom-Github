@@ -62,22 +62,43 @@
                     android:textSize="@dimen/release_small_text_size" />
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/friends_list"
+            <com.liaoinstan.springview.widget.SpringView
+                android:id="@+id/friends_list_springView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_height="match_parent"
+                android:visibility="visible">
 
-            <TextView
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/friends_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.liaoinstan.springview.widget.SpringView>
+
+            <LinearLayout
                 android:id="@+id/friends_list_empty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/white"
                 android:gravity="center"
-                android:text="@string/release_friend_search_empty"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/release_middle_text_size"
-                android:visibility="visible" />
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/default_header_image" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/release_margin"
+                    android:gravity="center"
+                    android:text="@string/release_friend_search_empty"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/release_middle_text_size"
+                    android:visibility="visible" />
+            </LinearLayout>
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>

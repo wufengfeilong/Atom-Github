@@ -330,10 +330,18 @@ public class HomeCategoryVideoFragment extends BaseFragment<FragmentHomeCategory
             holder.setText(R.id.home_video_item_name, item.getNickname());
             holder.setText(R.id.home_video_item_date, StringUtil.dataFormat(item.getCreate_time()));
             holder.setText(R.id.home_video_item_count, MeterUtil.numToWan(item.getLike_count()));
-            if ("0".equals(item.getIs_liked())) {
-                holder.setImageResource(R.id.home_video_item_like, R.drawable.thumb_up_no_selected);
+            // 是否为广告视频,0为会员视频，1为广告视频
+            if ("0".equals(item.getVideo_type())) {
+                ((ImageView)holder.getView(R.id.home_video_item_like)).setVisibility(View.VISIBLE);
+                ((TextView)holder.getView(R.id.home_video_item_count)).setVisibility(View.VISIBLE);
+                if ("0".equals(item.getIs_liked())) {
+                    holder.setImageResource(R.id.home_video_item_like, R.drawable.thumb_up_no_selected);
+                } else {
+                    holder.setImageResource(R.id.home_video_item_like, R.drawable.video_liked);
+                }
             } else {
-                holder.setImageResource(R.id.home_video_item_like, R.drawable.video_liked);
+                ((ImageView)holder.getView(R.id.home_video_item_like)).setVisibility(View.INVISIBLE);
+                ((TextView)holder.getView(R.id.home_video_item_count)).setVisibility(View.INVISIBLE);
             }
             Glide.with(mContext).load(item.getAvatar_url()).into((ImageView) holder.getView(R.id.home_video_item_head));
             Glide.with(mContext).load(item.getCover_url()).into((ImageView) holder.getView(R.id.home_video_item_thumbnail));
@@ -365,7 +373,7 @@ public class HomeCategoryVideoFragment extends BaseFragment<FragmentHomeCategory
     private void initBanner() {
         bannerView = mInflater.inflate(R.layout.home_fragment_banner, null);
         mBanner = bannerView.findViewById(R.id.category_video_banner);
-        mBanner.setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE);
+        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
 
         mBanner.setOnBannerListener(new OnBannerListener() {
             @Override

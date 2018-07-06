@@ -178,6 +178,7 @@ public class DraftListActivity extends BaseActivity<ActivityDraftListBinding, Dr
             mDataBinding.releaseDraftRemindText.setVisibility(View.GONE);
             mDataBinding.draftList.setVisibility(View.GONE);
             mDataBinding.emptyTx.setVisibility(View.VISIBLE);
+            sendBroadcast(new Intent("com.sdwxwx.delete.video"));
         } else {
             mDataBinding.releaseDraftRemindText.setVisibility(View.VISIBLE);
             mDataBinding.draftList.setVisibility(View.VISIBLE);

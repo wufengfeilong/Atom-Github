@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="list_chat_background">#f2f2f2</color>
+    <color name="list_chat_they_background">#f2f2f2</color>
+    <color name="list_chat_me_background">#43e0f5</color>
 </resources>

@@ -45,6 +45,7 @@
                     android:layout_height="match_parent"
                     android:onClick="@{()->presenter.onClickHeaderImg()}"
                     android:scaleType="centerCrop"
+                    android:padding="10dp"
                     android:src="@drawable/default_header_image"
                     app:civ_border_color="#0000"
                     app:civ_border_width="1dp" />
@@ -53,9 +54,11 @@
                             android:layout_alignRight="@+id/fans_head"
                             android:layout_alignBottom="@+id/fans_head"
                             android:src="@drawable/vip_icon"
-                            android:layout_marginBottom="10dp"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
+                            android:layout_marginBottom="25dp"
+                            android:layout_marginRight="10dp"
+                            android:visibility="gone"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"/>
                 </RelativeLayout>
                 <LinearLayout
                     android:layout_width="0dp"

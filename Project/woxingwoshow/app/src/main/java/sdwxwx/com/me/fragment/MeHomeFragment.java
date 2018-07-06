@@ -4,9 +4,14 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import cn.sharesdk.framework.Platform;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.sharesdk.framework.Platform;
 import sdwxwx.com.R;
 import sdwxwx.com.base.BaseCallback;
 import sdwxwx.com.base.BaseFragment;
@@ -24,26 +29,30 @@ import sdwxwx.com.widget.OnekeyShare;
 import sdwxwx.com.widget.ScrollViewPager;
 import sdwxwx.com.widget.ShareFrag;
 import sdwxwx.com.widget.TabLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  */
 public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
-        implements MeHomeContract.View,TabLayout.OnTabSelectedListener {
+        implements MeHomeContract.View, TabLayout.OnTabSelectedListener {
     private TabLayout tabLayout;
     private ScrollViewPager viewPager;
     private List<String> tabs = new ArrayList<>();
     private List<Fragment> fragments = new ArrayList<>();
     private MeHomeAdapter mMeHomeAdapter;
-    /** 会员信息是否已经取得 */
+    /**
+     * 会员信息是否已经取得
+     */
     private boolean flag = false;
-    private  String urlAddr = "";
-    /** 是否可以进行分享 */
+    private String urlAddr = "";
+    /**
+     * 是否可以进行分享
+     */
     private boolean shareFlag = false;
-    /** 头像地址 */
-    private String avatar_url="";
+    /**
+     * 头像地址
+     */
+    private String avatar_url = "";
 
 
     @Override
@@ -72,7 +81,7 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
         tabLayout.addOnTabSelectedListener(this);
 
 //        viewPager.setOffscreenPageLimit(tabs.size() - 1);//设置ViewPager的缓存界面数,默认缓存为2
-        mMeHomeAdapter = new MeHomeAdapter(getChildFragmentManager(), fragments,mContext);
+        mMeHomeAdapter = new MeHomeAdapter(getChildFragmentManager(), fragments, mContext);
         viewPager.setAdapter(mMeHomeAdapter);
 //        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setupWithViewPager(viewPager);
@@ -91,17 +100,17 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
-        }
+    }
 
-        @Override
-        public void onTabUnselected (TabLayout.Tab tab){
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
 
-        }
+    }
 
-        @Override
-        public void onTabReselected (TabLayout.Tab tab){
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
 
-        }
+    }
 
 
     public void setMeVideoCount(String count) {
@@ -122,15 +131,16 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
      */
     public void onShare() {
         // 设定URL地址
-        urlAddr = Constant.HTTP_BASE_HOST + "recommend/register?recommender=" + LoginHelper.getInstance().getUserId();;
+        urlAddr = Constant.HTTP_BASE_HOST + "recommend/register?recommender=" + LoginHelper.getInstance().getUserId();
         // 调用会员详情接口，取得相关会员详情
-        LoginModel.getMemberInfo(String.valueOf(LoginHelper.getInstance().getUserId()),String.valueOf(LoginHelper.getInstance().getUserId()), new BaseCallback<UserBean>(){
+        LoginModel.getMemberInfo(String.valueOf(LoginHelper.getInstance().getUserId()), String.valueOf(LoginHelper.getInstance().getUserId()), new BaseCallback<UserBean>() {
             @Override
             public void onSuccess(UserBean bean) {
                 if (bean == null) {
                     showToast("由于政策因素，您暂时无法对外分享");
                 } else {
-                    android.app.FragmentManager fm =getActivity().getFragmentManager();
+                    android.app.FragmentManager fm = getActivity().getFragmentManager();
+
                     ShareFrag shareFrag = new ShareFrag();
                     OnekeyShare webBean = new OnekeyShare();
                     // 设定web网页分享的URL地址
@@ -139,7 +149,7 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
                     // titel
                     webBean.setTitle("分享我在我行我秀的个人主页，快来一起玩吧～");
                     // 文字内容
-                    webBean.setText("["+bean.getNickname()+"]也在我行我秀，快来看TA的精彩作品吧！"+"["+bean.getNickname()+"]上传了"+bean.getVideo_count()+"个视频作品，一起来围观>>" + urlAddr);
+                    webBean.setText("[" + bean.getNickname() + "]也在我行我秀，快来看TA的精彩作品吧！" + "[" + bean.getNickname() + "]上传了" + bean.getVideo_count() + "个视频作品，一起来围观>>" + urlAddr);
                     // 分享者头像设定
                     webBean.setImageUrl(bean.getAvatar_url());
                     webBean.setTitleUrl(urlAddr);
@@ -151,12 +161,14 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
                     shareFrag.show(fm, null);
                 }
             }
+
             @Override
             public void onFail(String msg) {
                 showToast("由于政策因素，您暂时无法对外分享");
             }
         });
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -167,6 +179,7 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
         super.onPause();
         flag = true;
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -190,7 +203,7 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
         // 获取会员ID
         String memberId = LoginHelper.getInstance().getUserId();
         // 调用获取会员的详情信息接口
-        LoginModel.getMemberInfo(memberId,memberId, new BaseCallback<UserBean>() {
+        LoginModel.getMemberInfo(memberId, memberId, new BaseCallback<UserBean>() {
             // 如果成功则更新画面标识内容
             @Override
             public void onSuccess(UserBean data) {
@@ -235,7 +248,8 @@ public class MeHomeFragment extends BaseFragment<MeHomeBinding, MeHomePresenter>
             }
         });
     }
+
     public void clickHederImg() {
-        new AvatarScanHelper(mContext,avatar_url);
+        new AvatarScanHelper(mContext, avatar_url);
     }
 }

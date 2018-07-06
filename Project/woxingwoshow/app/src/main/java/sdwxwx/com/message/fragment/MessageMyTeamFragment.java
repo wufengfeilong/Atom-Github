@@ -112,13 +112,12 @@ public class MessageMyTeamFragment
             // 头像
             RequestOptions options = new RequestOptions().error(R.drawable.default_header_image);
             Glide.with(mContext).load(item.getAvatar_url()).apply(options).into((ImageView) holder.getView(R.id.avatar_url));
-            // vip
             // 判断显示加V图片
-//            if ("1".equals(item.getIs_certified())) {
-//                ((ImageView)holder.getView(R.id.avatar_url_vip)).setVisibility(View.VISIBLE);
-//            } else {
-//                ((ImageView)holder.getView(R.id.avatar_url_vip)).setVisibility(View.GONE);
-//            }
+            if ("1".equals(item.getIs_certified())) {
+                ((ImageView)holder.getView(R.id.avatar_url_vip)).setVisibility(View.VISIBLE);
+            } else {
+                ((ImageView)holder.getView(R.id.avatar_url_vip)).setVisibility(View.GONE);
+            }
             // 昵称
             holder.setText(R.id.team_grade_name, item.getNickname());
             // 注册时间

@@ -17,7 +17,7 @@
             android:id="@+id/city_picker_back"
             android:layout_width="@dimen/title_back_width"
             android:layout_height="@dimen/title_back_height"
-            android:layout_marginBottom="@dimen/release_margin"
+            android:layout_marginBottom="5dp"
             android:layout_marginStart="@dimen/release_margin"
             android:onClick="onBackClick"
             android:src="@drawable/back_white" />

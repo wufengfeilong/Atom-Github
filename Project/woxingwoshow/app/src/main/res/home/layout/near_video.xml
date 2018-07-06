@@ -19,7 +19,7 @@
             android:background="@drawable/title_back_img"
             android:fitsSystemWindows="true"
             android:gravity="bottom|center_horizontal"
-            android:paddingBottom="@dimen/release_margin"
+            android:paddingBottom="@dimen/release_margin_middle"
             android:text="@string/near"
             android:textColor="@android:color/white"
             android:textSize="@dimen/activity_title_size" />

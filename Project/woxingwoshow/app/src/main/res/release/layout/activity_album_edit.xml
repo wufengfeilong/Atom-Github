@@ -24,14 +24,11 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/release_margin_middle"
             android:background="@drawable/release_gray_circle_shape"
-            android:clickable="true"
-            android:focusable="true"
             android:gravity="center"
             android:onClick="onMenuClick"
+            android:paddingEnd="@dimen/release_margin_small"
             android:scaleType="centerInside"
-            android:src="@drawable/back_white"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/release_middle_text_size" />
+            android:src="@drawable/back_white" />
 
         <TextView
             android:id="@+id/album_edit_next_btn"

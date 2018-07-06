@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.text.method.NumberKeyListener;
 import android.view.inputmethod.InputMethodManager;
 
 import java.io.FileNotFoundException;
@@ -65,20 +64,6 @@ public class NameCertifyActivity extends BaseActivity<ActivityNameCertifyBinding
                 inputManager.showSoftInput(mDataBinding.realName, 0);
             }
         }, 100);
-        // 设置身份证的输入文字
-        mDataBinding.digitNumber.setKeyListener(new NumberKeyListener() {
-            @Override
-            public int getInputType() {
-                return android.text.InputType.TYPE_CLASS_PHONE;
-            }
-            // 设置只允许输入0-9，X
-            @Override
-            protected char[] getAcceptedChars() {
-                char[] numberChars = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'X','x' };
-                return numberChars;
-            }
-        });
-
     }
     @Override
     protected int getLayoutId() {

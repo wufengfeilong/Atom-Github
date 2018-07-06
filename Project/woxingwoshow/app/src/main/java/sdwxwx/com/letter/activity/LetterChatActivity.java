@@ -13,16 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import sdwxwx.com.R;
 import sdwxwx.com.base.BaseActivity;
 import sdwxwx.com.databinding.ActivityLetterChatBinding;
@@ -31,6 +26,9 @@ import sdwxwx.com.letter.bean.LetterBean;
 import sdwxwx.com.letter.contract.LetterChatContract;
 import sdwxwx.com.letter.presenter.LetterChatPresenter;
 import sdwxwx.com.login.utils.LoginHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, LetterChatPresenter> implements LetterChatContract.View, EMMessageListener {
@@ -98,11 +96,8 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
         meMemberId = LoginHelper.getInstance().getUserBean().getId();
         //对方的昵称
         Nickname = getIntent().getStringExtra("Nickname");
-
         //设置标题栏的昵称显示
         ((TextView) findViewById(R.id.chat_nickname)).setText(Nickname);
-
-
         //对话框处理逻辑
         chatDialog();
 
@@ -119,6 +114,7 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
         mReceiver = new CloseChatReceiver();
         registerReceiver(mReceiver, intentFilter);
     }
+
     //接收删除回话的广播
     public class CloseChatReceiver extends BroadcastReceiver {
         @Override
@@ -130,10 +126,12 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
     public void getConversation() {
         //清空回话
         mDatas.clear();
-
+        LoginHelper.getInstance().setLastShowTime(0L);
         //获取聊天记录
         mConversation = EMClient.getInstance().chatManager().getConversation(mEmId, null, true);
         if (mConversation != null) {
+            // 把来自此用户的所有信息设置为已读。
+            EMClient.getInstance().chatManager().getConversation(mEmId).markAllMessagesAsRead();
             int count = mConversation.getAllMessages().size();
             if (count < mConversation.getAllMsgCount() && count < 20) {
                 // 获取已经在列表中的最上边的一条消息id
@@ -148,9 +146,9 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
                 if (TextUtils.isEmpty(((EMTextMessageBody) message.getBody()).getMessage().trim())) {
                 } else if (message.getFrom().equals(meEmId)) {
 
-                    sendData(((EMTextMessageBody) message.getBody()).getMessage());
+                    sendData(((EMTextMessageBody) message.getBody()).getMessage(),message.getMsgTime());
                 } else {
-                    getData(((EMTextMessageBody) message.getBody()).getMessage());
+                    getData(((EMTextMessageBody) message.getBody()).getMessage(),message.getMsgTime());
                 }
             }
             adapter.notifyDataSetChanged();
@@ -188,7 +186,7 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
                 //判断将发送的消息是否为空
                 if (!TextUtils.isEmpty(sendMsg.getText().toString().trim())) {
                     /*画面发送*/
-                    sendData(sendMsg.getText().toString());
+                    sendData(sendMsg.getText().toString(),System.currentTimeMillis());
                     /*逻辑发送*/
                     //创建一条文本消息，content为消息文字内容，toChatUsername为对方用户id
                     //发送一条消息给对方
@@ -221,14 +219,21 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
     }
 
     //给对方发送消息 画面显示
-    public void sendData(String msg) {
+    public void sendData(String msg,long time) {
 
         LetterBean msg1 = null;
         //我的头像
         mMeHeadUrl = LoginHelper.getInstance().getUserBean().getAvatar_url();
+        //添加时间显示
+        long lastTime = LoginHelper.getInstance().getLastShowTime();
+        if (time-lastTime>1000*60*5) {
+            LoginHelper.getInstance().setLastShowTime(time);
+        } else {
+            time = 0L;
+        }
         //我的昵称
         msg1 = new LetterBean("", mMeHeadUrl, "", "" + msg,
-                null, true);
+                time, true);
 
         mDatas.add(msg1);
 //        adapter = new ChatAdapterForRv(this, mDatas);
@@ -238,11 +243,18 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
     }
 
     //收到对方消息 画面显示
-    public void getData(String msg) {
+    public void getData(String msg,long time) {
 
         LetterBean msg1 = null;
+        //添加时间显示
+        long lastTime = LoginHelper.getInstance().getLastShowTime();
+        if (time-lastTime>1000*60*5) {
+            LoginHelper.getInstance().setLastShowTime(time);
+        } else {
+            time = 0L;
+        }
         msg1 = new LetterBean(mMemberId, mFansHeadUrl, "", "" + msg,
-                null, false);
+                time, false);
 
         /*  Glide.with(getContext()).load(mFansHeadUrl).into( (ImageView)findViewById(R.id.they_head_pic));*/
         mDatas.add(msg1);
@@ -320,12 +332,13 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
 
                     //判断是否是当前用户来的消息
                     if (message.getFrom().equals(mEmId)) {
+                        // 同时把本条消息设置为已读
+                        EMClient.getInstance().chatManager().getConversation(mEmId).markAllMessagesAsRead();
                         //如果收到消息中有空格 不显示
                         if (TextUtils.isEmpty(((EMTextMessageBody) message.getBody()).getMessage().trim())) {
 
                         } else {
-
-                            getData(((EMTextMessageBody) message.getBody()).getMessage());
+                            getData(((EMTextMessageBody) message.getBody()).getMessage(),message.getMsgTime());
                             Log.d("msgok:", ((EMTextMessageBody) message.getBody()).getMessage());
                         }
                     }
@@ -349,7 +362,6 @@ public class LetterChatActivity extends BaseActivity<ActivityLetterChatBinding, 
     public void onMessageDelivered(List<EMMessage> list) {
 
     }
-
     @Override
     public void onMessageChanged(EMMessage emMessage, Object o) {
 
